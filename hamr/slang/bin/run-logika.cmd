@@ -22,9 +22,21 @@ val homeBin = Os.slashDir
 val home = homeBin.up
 
 val monitorDir = home / "src" / "main" / "component" / "isolette" / "Monitor"
-val regulaterDir = home / "src" / "main" / "component" / "isolette" / "Regulate"
+val regulateDir = home / "src" / "main" / "component" / "isolette" / "Regulate"
 
 val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin" 
 val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
 
-sireum proyek logika --par . src/main/component/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala
+val files = ISZ[Os.Path](
+    monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala",
+    monitorDir / "Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala",
+    monitorDir / "Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala",
+
+    regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala",
+    regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala",
+    regulateDir /"Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala")
+
+for(f <- files) {
+    proc"$sireum proyek logika --par ${home.value} ${f.value}".console.run()
+}
+

@@ -1,0 +1,135 @@
+// #Sireum
+
+package isolette.Monitor
+
+import org.sireum._
+import art._
+import isolette._
+import isolette.Monitor.{Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure => component}
+
+// This file was auto-generated.  Do not edit
+
+@datatype class Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_Bridge(
+  val id: Art.BridgeId,
+  val name: String,
+  val dispatchProtocol: DispatchPropertyProtocol,
+  val dispatchTriggers: Option[ISZ[Art.PortId]],
+
+  internal_failure: Port[Isolette_Data_Model.Failure_Flag_impl]
+  ) extends Bridge {
+
+  val ports : Bridge.Ports = Bridge.Ports(
+    all = ISZ(internal_failure),
+
+    dataIns = ISZ(),
+
+    dataOuts = ISZ(internal_failure),
+
+    eventIns = ISZ(),
+
+    eventOuts = ISZ()
+  )
+
+  val initialization_api : Detect_Monitor_Failure_impl_Initialization_Api = {
+    val api = Detect_Monitor_Failure_impl_Initialization_Api(
+      id,
+      internal_failure.id
+    )
+    Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_Bridge.c_initialization_api = Some(api)
+    api
+  }
+
+  val operational_api : Detect_Monitor_Failure_impl_Operational_Api = {
+    val api = Detect_Monitor_Failure_impl_Operational_Api(
+      id,
+      internal_failure.id
+    )
+    Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_Bridge.c_operational_api = Some(api)
+    api
+  }
+
+  val entryPoints : Bridge.EntryPoints =
+    Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_Bridge.EntryPoints(
+      id,
+
+      internal_failure.id,
+
+      dispatchTriggers,
+
+      initialization_api,
+      operational_api)
+}
+
+object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_Bridge {
+
+  var c_initialization_api: Option[Detect_Monitor_Failure_impl_Initialization_Api] = None()
+  var c_operational_api: Option[Detect_Monitor_Failure_impl_Operational_Api] = None()
+
+  @datatype class EntryPoints(
+    Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_BridgeId : Art.BridgeId,
+    internal_failure_Id : Art.PortId,
+    dispatchTriggers : Option[ISZ[Art.PortId]],
+    initialization_api: Detect_Monitor_Failure_impl_Initialization_Api,
+    operational_api: Detect_Monitor_Failure_impl_Operational_Api) extends Bridge.EntryPoints {
+
+    val dataInPortIds: ISZ[Art.PortId] = ISZ()
+
+    val eventInPortIds: ISZ[Art.PortId] = ISZ()
+
+    val dataOutPortIds: ISZ[Art.PortId] = ISZ(internal_failure_Id)
+
+    val eventOutPortIds: ISZ[Art.PortId] = ISZ()
+
+    def initialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Detect_Monitor_Failure_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.sendOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    def compute(): Unit = {
+      Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      // implement the following in 'component':  def timeTriggered(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.timeTriggered(operational_api)
+
+      Art.sendOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    def activate(): Unit = {
+      // implement the following method in 'component':  def activate(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.activate(operational_api)
+    }
+
+    def deactivate(): Unit = {
+      // implement the following method in 'component':  def deactivate(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.deactivate(operational_api)
+    }
+
+    def finalise(): Unit = {
+      // implement the following method in 'component':  def finalise(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.finalise(operational_api)
+    }
+
+    def recover(): Unit = {
+      // implement the following method in 'component':  def recover(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.recover(operational_api)
+    }
+
+    override
+    def testInitialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Detect_Monitor_Failure_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    override
+    def testCompute(): Unit = {
+      Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      // implement the following in 'component':  def timeTriggered(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
+      component.timeTriggered(operational_api)
+
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
+    }
+  }
+}

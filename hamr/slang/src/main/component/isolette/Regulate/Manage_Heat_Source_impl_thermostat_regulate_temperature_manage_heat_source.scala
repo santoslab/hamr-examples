@@ -102,7 +102,6 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
       // ------ NORMAL Mode -------
       case Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode =>
-        //assert(regulator_mode == api.regulator_mode)
         if (currentTemp.value > upper.value) {
           // REQ-MHS-3
           currentCmd = Isolette_Data_Model.On_Off.Off

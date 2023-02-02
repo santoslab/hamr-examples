@@ -18,8 +18,6 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
   // Used as a hack because we don't have a proper method for initialization of thread states and port values yet
   val LOW: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl.example() //TODO This example method does not provide proper initial values in a real system.
   val HIGH: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl.example() //TODO This example method does not provide proper initial values in a real system.
-  // val DEFAULT_MODE: Isolette_Data_Model.Regulator_Mode.Type = Isolette_Data_Model.Regulator_Mode.Init
-  // val DEFAULT_TEMP: Isolette_Data_Model.TempWstatus = Isolette_Data_Model.TempWstatus(InitialValues.DEFAULT_CURRENT_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
 
 
   def initialise(api: Manage_Regulator_Interface_impl_Initialization_Api): Unit = {
@@ -32,17 +30,6 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         // END INITIALIZES ENSURES
       )
     )
-    // example api usage
-
-//    api.logInfo("Example info logging")
-//    api.logDebug("Example debug logging")
-//    api.logError("Example error logging")
-//
-//    api.put_upper_desired_temp(Isolette_Data_Model.Temp_impl.example())
-//    api.put_lower_desired_temp(Isolette_Data_Model.Temp_impl.example())
-//    api.put_displayed_temp(Isolette_Data_Model.Temp_impl.example())
-//    api.put_regulator_status(Isolette_Data_Model.Status.byOrdinal(0).get)
-//    api.put_interface_failure(Isolette_Data_Model.Failure_Flag_impl.example())
 
     // set initial lower desired temp
     api.put_lower_desired_temp(
@@ -97,29 +84,20 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         // END COMPUTE ENSURES timeTriggered
       )
     )
-    // example api usage
 
     // -------------- Get values of input ports ------------------
 
     val lower: Isolette_Data_Model.TempWstatus_impl =
       api.get_lower_desired_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getlower_desired_tempWstatus().getOrElseEager(LOW)
 
     val upper: Isolette_Data_Model.TempWstatus_impl =
       api.get_upper_desired_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getupper_desired_tempWstatus().getOrElseEager(HIGH)
 
     val regulator_mode: Isolette_Data_Model.Regulator_Mode.Type =
       api.get_regulator_mode().get
-    // remove code for old approach that lacked initializers
-    // api.getregulator_mode().getOrElseEager(DEFAULT_MODE)
 
     val currentTemp: Isolette_Data_Model.TempWstatus_impl =
       api.get_current_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getcurrent_tempWstatus().getOrElseEager(DEFAULT_TEMP)
 
     // =============================================
     //  Set values for Regulator Status (Table A-6)
@@ -128,7 +106,6 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     var regulator_status: Isolette_Data_Model.Status.Type = Isolette_Data_Model.Status.Init_Status
 
     regulator_mode match {
-
 
       // =============================================
       //  Set values for Regulator Status
@@ -266,15 +243,6 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api.put_upper_desired_temp(
         Isolette_Data_Model.Temp_impl.example())
     }
-
-//    val apiUsage_upper_desired_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_upper_desired_tempWstatus()
-//    api.logInfo(s"Received on upper_desired_tempWstatus: ${apiUsage_upper_desired_tempWstatus}")
-//    val apiUsage_lower_desired_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_lower_desired_tempWstatus()
-//    api.logInfo(s"Received on lower_desired_tempWstatus: ${apiUsage_lower_desired_tempWstatus}")
-//    val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
-//    api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
-//    val apiUsage_regulator_mode: Option[Isolette_Data_Model.Regulator_Mode.Type] = api.get_regulator_mode()
-//    api.logInfo(s"Received on regulator_mode: ${apiUsage_regulator_mode}")
   }
 
   def activate(api: Manage_Regulator_Interface_impl_Operational_Api): Unit = { }

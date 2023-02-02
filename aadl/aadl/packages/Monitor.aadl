@@ -37,6 +37,8 @@ process implementation Monitor_Temperature.impl
   manage_alarm : thread manage_alarm.impl;
   --thread for monitor mode implementation
   manage_monitor_mode : thread manage_monitor_mode.impl;
+  --thread for detect monitor failer
+  detect_monitor_failure : thread detect_monitor_failure.impl;
   
 	connections	
   --Reflection of AR-08-32 dependencies.	
@@ -71,9 +73,11 @@ process implementation Monitor_Temperature.impl
   --  ... to alarm manager
   mmma : port manage_monitor_mode.monitor_mode -> manage_alarm.monitor_mode;
   
- -- send regulator interface failure to mode manager
+  -- send regulator interface failure to mode manager
   intff : port manage_monitor_interface.interface_failure -> manage_monitor_mode.interface_failure;
   
+  -- send monitor internal failure to manage monitore mode
+  mif: port detect_monitor_failure.internal_failure -> manage_monitor_mode.internal_failure;
   end Monitor_Temperature.impl;
 
 -- ===========================================================================================================
@@ -399,5 +403,21 @@ thread implementation Manage_Alarm.impl
 						lastCmd == Isolette_Data_Model::On_Off.Onn;
 	**};
 end Manage_Alarm.impl;
+
+
+thread Detect_Monitor_Failure
+  features
+  -- ==== OUTPUTS ========		
+  -- ("Monitor Interface Failure") - in case of internal failure, a flag is raised
+  internal_failure : out data port Isolette_Data_Model::Failure_Flag.impl;
+properties
+	Dispatch_Protocol => Periodic;
+	Period => Isolette_Properties::ThreadPeriod;
+	
+	Stack_Size => Isolette_Properties::StackSize;	
+end Detect_Monitor_Failure;
+
+thread implementation Detect_Monitor_Failure.impl
+end Detect_Monitor_Failure.impl;
 
 end Monitor;

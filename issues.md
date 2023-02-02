@@ -4,11 +4,11 @@
 
     Verifies: NO
 
-    [294, 12] Could not deduce the claim of proof step #5
+    [191, 12] Could not deduce the claim of proof step #5
     
         Reason: Timeout
 
-    [72, 79] Could not deduce that the postcondition holds
+    [56, 82] Could not deduce that the postcondition holds
 
         Reason: Unknown
 
@@ -18,16 +18,7 @@
 
 - Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala
 
-    ``Invalid 'None' operation 'get'`` thrown at line [90](hamr/slang/src/main/component/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala#L90).  Changing it to use the example value resolves that
-    but then proof fails at line [111](hamr/slang/src/main/component/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala#L111)
-
-    Verifies: OK, **HOWEVER** orignially received:
-
-        [63, 86] Could not deduce that the postcondition holds
-
-            Unknown
-
-    but it verifies after fixing markers and regenerating.
+   Verifies: OK
 
 # Regulate
 
@@ -41,7 +32,7 @@
 
 - Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala
 
-    Verifies: OK, **HOWEVER** the following warnings are issued
+    Verifies: OK, the following warnings are issued
 
         [87, 12] Infeasible pattern matching case
 

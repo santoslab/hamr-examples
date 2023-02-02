@@ -38,13 +38,6 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     firstInvocationFlag = true
   }
 
-//  @strictpure def monitor_status(interface_failure:Isolette_Data_Model.Failure_Flag_impl,
-//                                 internal_failure:Isolette_Data_Model.Failure_Flag_impl,
-//                                 current_temperature_status: Isolette_Data_Model.ValueStatus.Type): B = {
-//    (!(interface_failure.value || internal_failure.value)
-//      && (current_temperature_status == Isolette_Data_Model.ValueStatus.Valid))
-//  }
-
   def timeTriggered(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = {
     Contract(
       Requires(
@@ -70,7 +63,6 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         // END COMPUTE ENSURES timeTriggered
       )
     )
-    // example api usage
 
     // -------------- Get values of input ports ------------------
 
@@ -83,15 +75,8 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
 
     val interface_failure: Isolette_Data_Model.Failure_Flag_impl =
       api.get_interface_failure().get
-    //  -- old code used before initialization methods
-    // api.getinterface_failure().getOrElseEager(DEFAULT_INTERFACE_FAILURE)
 
-    // FIXME: hack of initial data port values (monitor mode)
-    val internal_failure: Isolette_Data_Model.Failure_Flag_impl = api.get_internal_failure().get //Isolette_Data_Model.Failure_Flag_impl.example() //TODO Remove for working get implementation
-     //api.getinternal_failure().get() // fails due to a missing connection
-      //api.get_internal_failure().getOrElseEager(
-        //Isolette_Data_Model.Failure_Flag_impl(InitialValues.DEFAULT_MONITOR_INTERNAL_FAILURE_FLAG))
-
+    val internal_failure: Isolette_Data_Model.Failure_Flag_impl = api.get_internal_failure().get
 
     //==============================================================================
 
@@ -101,16 +86,11 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     //                          AND Current Temperature.Status = Valid
     val monitor_status: B = {
       (!(interface_failure.value || internal_failure.value) && current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)
-      //((!(interface_failure.value || internal_failure.value) && current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid))
     }
     Deduce(
-//      1 #> ((!(api.interface_failure.value || In(api).internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)
-//          == monitor_status
-//        ) by Auto,
-      2 #> (interface_failure.value == api.interface_failure.value) by Auto,
-      3 #> (internal_failure.value == api.internal_failure.value) by Auto,
+      1 #> (interface_failure.value == api.interface_failure.value) by Auto,
+      2 #> (internal_failure.value == api.internal_failure.value) by Auto,
     )
-    //assert(monitor_status == (!(api.interface_failure.value || api.internal_failure.value) && (api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)))
 
     lastMonitorMode match {
 

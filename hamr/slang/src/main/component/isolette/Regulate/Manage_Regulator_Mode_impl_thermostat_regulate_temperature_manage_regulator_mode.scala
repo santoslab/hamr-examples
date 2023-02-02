@@ -48,28 +48,22 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         // END COMPUTE ENSURES timeTriggered
       )
     )
-    // example api usage
 
     // -------------- Get values of input ports ------------------
 
     val current_tempWstatus: Isolette_Data_Model.TempWstatus_impl =
       api.get_current_tempWstatus().get
-    //  -- old code used before initialization methods
-    // api.getcurrent_tempWstatus().getOrElseEager(DEFAULT_TEMPWSTATUS)
+
     val current_temperature_status: Isolette_Data_Model.ValueStatus.Type = current_tempWstatus.status
 
     val interface_failure: Isolette_Data_Model.Failure_Flag_impl =
       api.get_interface_failure().get
-    //  -- old code used before initialization methods
-    // api.getinterface_failure().getOrElseEager(DEFAULT_INTERFACE_FAILURE)
 
     // FIXME: hack to fix missing connection
     //  When connection is added, the initial value should be
     //  set in the initialize entry point for Detect_Regulator_Failure
-    val internal_failure: Isolette_Data_Model.Failure_Flag_impl = Isolette_Data_Model.Failure_Flag_impl.example() //TODO Remove for working get implementation
+    val internal_failure: Isolette_Data_Model.Failure_Flag_impl = Isolette_Data_Model.Failure_Flag_impl.example() // TODO Remove when port is connected
      //api.getinternal_failure().get() //-- fails due to a missing connection
-    //api.get_internal_failure().getOrElseEager(
-      //Isolette_Data_Model.Failure_Flag_impl(InitialValues.DEFAULT_REGULATOR_INTERNAL_FAILURE_FLAG))
 
     //==============================================================================
 
