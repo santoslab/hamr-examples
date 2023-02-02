@@ -9,12 +9,13 @@ import isolette._
 
 object Temp_impl {
   def example(): Isolette_Data_Model.Temp_impl = {
-    return Isolette_Data_Model.Temp_impl(Base_Types.Float_32_example())
+    return Isolette_Data_Model.Temp_impl(
+      value = Base_Types.Float_32_example())
   }
 }
 
 @datatype class Temp_impl(
-  value : F32) {
+  val value: F32) {
 }
 
 object Temp_impl_Payload {

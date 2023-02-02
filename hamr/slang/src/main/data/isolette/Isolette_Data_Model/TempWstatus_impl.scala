@@ -9,13 +9,15 @@ import isolette._
 
 object TempWstatus_impl {
   def example(): Isolette_Data_Model.TempWstatus_impl = {
-    return Isolette_Data_Model.TempWstatus_impl(Base_Types.Float_32_example(), Isolette_Data_Model.ValueStatus.byOrdinal(0).get)
+    return Isolette_Data_Model.TempWstatus_impl(
+      value = Base_Types.Float_32_example(),
+      status = Isolette_Data_Model.ValueStatus.byOrdinal(0).get)
   }
 }
 
 @datatype class TempWstatus_impl(
-  value : F32,
-  status : Isolette_Data_Model.ValueStatus.Type) {
+  val value: F32,
+  val status: Isolette_Data_Model.ValueStatus.Type) {
 }
 
 object TempWstatus_impl_Payload {

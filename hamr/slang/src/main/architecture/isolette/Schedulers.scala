@@ -33,11 +33,11 @@ object Schedulers {
     computeExecutionTime = None(),
     domain = None())
 
-  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_timingProperties: ThreadTimingProperties = ThreadTimingProperties(
+  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_timingProperties: ThreadTimingProperties = ThreadTimingProperties(
     computeExecutionTime = None(),
     domain = None())
 
-  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_timingProperties: ThreadTimingProperties = ThreadTimingProperties(
+  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_timingProperties: ThreadTimingProperties = ThreadTimingProperties(
     computeExecutionTime = None(),
     domain = None())
 
@@ -69,8 +69,8 @@ object Schedulers {
     Slot(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode.id, maxExecutionTime),
-    Slot(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface.id, maxExecutionTime),
+    Slot(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.id, maxExecutionTime),
     Slot(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat.id, maxExecutionTime),

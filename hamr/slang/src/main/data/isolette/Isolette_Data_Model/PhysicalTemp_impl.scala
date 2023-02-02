@@ -9,12 +9,13 @@ import isolette._
 
 object PhysicalTemp_impl {
   def example(): Isolette_Data_Model.PhysicalTemp_impl = {
-    return Isolette_Data_Model.PhysicalTemp_impl(Base_Types.Float_32_example())
+    return Isolette_Data_Model.PhysicalTemp_impl(
+      value = Base_Types.Float_32_example())
   }
 }
 
 @datatype class PhysicalTemp_impl(
-  value : F32) {
+  val value: F32) {
 }
 
 object PhysicalTemp_impl_Payload {
