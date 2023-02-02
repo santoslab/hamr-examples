@@ -84,14 +84,11 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
 
   @datatype class EntryPoints(
     Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_BridgeId : Art.BridgeId,
-
     current_tempWstatus_Id : Art.PortId,
     interface_failure_Id : Art.PortId,
     internal_failure_Id : Art.PortId,
     regulator_mode_Id : Art.PortId,
-
     dispatchTriggers : Option[ISZ[Art.PortId]],
-
     initialization_api: Manage_Regulator_Mode_impl_Initialization_Api,
     operational_api: Manage_Regulator_Mode_impl_Operational_Api) extends Bridge.EntryPoints {
 
@@ -105,6 +102,12 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
 
     val eventOutPortIds: ISZ[Art.PortId] = ISZ()
 
+    def initialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Manage_Regulator_Mode_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.sendOutput(eventOutPortIds, dataOutPortIds)
+    }
+
     def compute(): Unit = {
       Art.receiveInput(eventInPortIds, dataInPortIds)
 
@@ -112,22 +115,6 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       component.timeTriggered(operational_api)
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testCompute(): Unit = {
-      Art.receiveInput(eventInPortIds, dataInPortIds)
-
-      // implement the following in 'component':  def timeTriggered(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {}
-      component.timeTriggered(operational_api)
-
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testInitialise(): Unit = {
-      component.initialise(initialization_api)
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def activate(): Unit = {
@@ -145,15 +132,26 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       component.finalise(operational_api)
     }
 
-    def initialise(): Unit = {
-      // implement the following method in 'component':  def initialise(api: Manage_Regulator_Mode_impl_Initialization_Api): Unit = {}
-      component.initialise(initialization_api)
-      Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
     def recover(): Unit = {
       // implement the following method in 'component':  def recover(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {}
       component.recover(operational_api)
+    }
+
+    override
+    def testInitialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Manage_Regulator_Mode_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    override
+    def testCompute(): Unit = {
+      Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      // implement the following in 'component':  def timeTriggered(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {}
+      component.timeTriggered(operational_api)
+
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
   }
 }

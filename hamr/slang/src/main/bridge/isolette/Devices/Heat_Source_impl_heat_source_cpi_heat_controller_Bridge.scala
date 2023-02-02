@@ -72,12 +72,9 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_Bridge {
 
   @datatype class EntryPoints(
     Heat_Source_impl_heat_source_cpi_heat_controller_BridgeId : Art.BridgeId,
-
     heat_control_Id : Art.PortId,
     heat_out_Id : Art.PortId,
-
     dispatchTriggers : Option[ISZ[Art.PortId]],
-
     initialization_api: Heat_Source_impl_Initialization_Api,
     operational_api: Heat_Source_impl_Operational_Api) extends Bridge.EntryPoints {
 
@@ -89,6 +86,12 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_Bridge {
 
     val eventOutPortIds: ISZ[Art.PortId] = ISZ()
 
+    def initialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Heat_Source_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.sendOutput(eventOutPortIds, dataOutPortIds)
+    }
+
     def compute(): Unit = {
       Art.receiveInput(eventInPortIds, dataInPortIds)
 
@@ -96,22 +99,6 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_Bridge {
       component.timeTriggered(operational_api)
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testCompute(): Unit = {
-      Art.receiveInput(eventInPortIds, dataInPortIds)
-
-      // implement the following in 'component':  def timeTriggered(api: Heat_Source_impl_Operational_Api): Unit = {}
-      component.timeTriggered(operational_api)
-
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testInitialise(): Unit = {
-      component.initialise(initialization_api)
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def activate(): Unit = {
@@ -129,15 +116,26 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_Bridge {
       component.finalise(operational_api)
     }
 
-    def initialise(): Unit = {
-      // implement the following method in 'component':  def initialise(api: Heat_Source_impl_Initialization_Api): Unit = {}
-      component.initialise(initialization_api)
-      Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
     def recover(): Unit = {
       // implement the following method in 'component':  def recover(api: Heat_Source_impl_Operational_Api): Unit = {}
       component.recover(operational_api)
+    }
+
+    override
+    def testInitialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Heat_Source_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    override
+    def testCompute(): Unit = {
+      Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      // implement the following in 'component':  def timeTriggered(api: Heat_Source_impl_Operational_Api): Unit = {}
+      component.timeTriggered(operational_api)
+
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
   }
 }

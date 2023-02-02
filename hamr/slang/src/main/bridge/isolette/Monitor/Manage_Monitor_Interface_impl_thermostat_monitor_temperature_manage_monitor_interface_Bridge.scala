@@ -108,7 +108,6 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
   @datatype class EntryPoints(
     Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_BridgeId : Art.BridgeId,
-
     upper_alarm_tempWstatus_Id : Art.PortId,
     lower_alarm_tempWstatus_Id : Art.PortId,
     current_tempWstatus_Id : Art.PortId,
@@ -117,9 +116,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     lower_alarm_temp_Id : Art.PortId,
     monitor_status_Id : Art.PortId,
     interface_failure_Id : Art.PortId,
-
     dispatchTriggers : Option[ISZ[Art.PortId]],
-
     initialization_api: Manage_Monitor_Interface_impl_Initialization_Api,
     operational_api: Manage_Monitor_Interface_impl_Operational_Api) extends Bridge.EntryPoints {
 
@@ -137,6 +134,12 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
     val eventOutPortIds: ISZ[Art.PortId] = ISZ()
 
+    def initialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.sendOutput(eventOutPortIds, dataOutPortIds)
+    }
+
     def compute(): Unit = {
       Art.receiveInput(eventInPortIds, dataInPortIds)
 
@@ -144,22 +147,6 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       component.timeTriggered(operational_api)
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testCompute(): Unit = {
-      Art.receiveInput(eventInPortIds, dataInPortIds)
-
-      // implement the following in 'component':  def timeTriggered(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = {}
-      component.timeTriggered(operational_api)
-
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    override
-    def testInitialise(): Unit = {
-      component.initialise(initialization_api)
-      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def activate(): Unit = {
@@ -177,15 +164,26 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       component.finalise(operational_api)
     }
 
-    def initialise(): Unit = {
-      // implement the following method in 'component':  def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {}
-      component.initialise(initialization_api)
-      Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
     def recover(): Unit = {
       // implement the following method in 'component':  def recover(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = {}
       component.recover(operational_api)
+    }
+
+    override
+    def testInitialise(): Unit = {
+      // implement the following method in 'component':  def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {}
+      component.initialise(initialization_api)
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
+    }
+
+    override
+    def testCompute(): Unit = {
+      Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      // implement the following in 'component':  def timeTriggered(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = {}
+      component.timeTriggered(operational_api)
+
+      Art.releaseOutput(eventOutPortIds, dataOutPortIds)
     }
   }
 }
