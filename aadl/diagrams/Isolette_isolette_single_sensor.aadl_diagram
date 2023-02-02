@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="fff25810-da17-4c23-978d-59a797a096c0" manual="true">
+    <element uuid="dfadb41b-6c29-4539-b521-2b0f184cd73e" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>air_temperature</seg>
+      </bo>
+      <position y="949.0"/>
+    </element>
+    <element uuid="4b207eb4-9255-4ff3-b7e2-d522ba5eba60" manual="true" dockArea="right">
+      <bo>
+        <seg>feature</seg>
+        <seg>heat_out</seg>
+      </bo>
+      <position x="3036.098960876465" y="719.0"/>
+    </element>
+    <element uuid="e2d4f7a5-b20a-4206-ae2b-436d430cbe42" manual="true" dockArea="right">
+      <bo>
+        <seg>feature</seg>
+        <seg>operator_alarm</seg>
+      </bo>
+      <position x="2997.5833282470703" y="519.0"/>
+    </element>
+    <element uuid="83ee0c4c-2353-4d34-a6cd-9af6067f5110" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>operator_commands</seg>
+      </bo>
+      <position y="1283.0"/>
+    </element>
+    <element uuid="a895cb26-48f1-4748-8d97-1ea4b4dd552e" manual="true" dockArea="right">
+      <bo>
+        <seg>feature</seg>
+        <seg>operator_visual_information</seg>
+      </bo>
+      <position x="2923.4622497558594" y="459.0"/>
+    </element>
+    <element uuid="b5b86900-e89f-49a9-9566-26e25feb5a9b" manual="true">
+      <bo>
+        <seg>realization</seg>
+      </bo>
+    </element>
+    <element uuid="1eb7a975-38a0-4141-928f-b0f0c22b5f29" manual="true">
+      <element uuid="738bb580-7478-4ceb-b81a-954b408d0254" manual="true">
+        <element uuid="a30956b9-b4ea-4c49-a109-90863a06b49f" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>ta</seg>
+        </bo>
+      </element>
+      <element uuid="085b1dbb-8df3-4a26-b854-18cc83a7800e" manual="true">
+        <element uuid="aa464834-c4f6-4a60-ac95-a55c2353d076" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tctm</seg>
+        </bo>
+      </element>
+      <element uuid="34501ed1-7c3d-4ce2-b503-be2656dba85b" manual="true">
+        <element uuid="ee616d4f-73dd-4f16-8e21-26908f923bb5" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tctr</seg>
+        </bo>
+        <bendpoints>
+          <point x="-1473.0" y="11.0"/>
+          <point x="-1473.0" y="-471.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="3a2d6023-7cf8-4d03-a4fd-47a3d1e89f8b" manual="true">
+        <element uuid="8f1dd5e6-39b7-47a5-a089-631b286d51dc" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tdt</seg>
+        </bo>
+      </element>
+      <element uuid="dafad1f6-f155-4124-bb2d-a5d31fe98358" manual="true">
+        <element uuid="0dc8bb0a-8cff-4007-99c4-7eef66431b46" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>thc</seg>
+        </bo>
+      </element>
+      <element uuid="650dcead-cce4-4cf5-83e2-28fc23f7ab85" manual="true">
+        <element uuid="78e967b2-bd2b-4600-a827-284365e0dff0" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tlat</seg>
+        </bo>
+        <bendpoints>
+          <point x="-1463.0" y="61.0"/>
+          <point x="-1463.0" y="-92.00003051757812"/>
+        </bendpoints>
+      </element>
+      <element uuid="55176b75-ef76-4b31-9c4d-5c4088e50a81" manual="true">
+        <element uuid="9493573f-7922-4e7a-8fa5-fff923164b74" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tldt</seg>
+        </bo>
+      </element>
+      <element uuid="038046f4-b94a-4fe8-88a5-35fdb80789cf" manual="true">
+        <element uuid="5891bc83-5e0c-4100-8a39-18c45d7850b0" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tms</seg>
+        </bo>
+      </element>
+      <element uuid="1dd426c8-330d-4ade-802c-4bc2d668ee73" manual="true">
+        <element uuid="a88a10e1-bd97-4cc7-ac0d-04bd519349ef" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>trs</seg>
+        </bo>
+      </element>
+      <element uuid="ea12b539-934b-4108-8b91-fcd71b9c2a79" manual="true">
+        <element uuid="032f4a5e-7b5b-4073-adad-a4b0002a29e0" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tuat</seg>
+        </bo>
+      </element>
+      <element uuid="ff7887f7-6a9d-4449-98a6-eb812b72f9f6" manual="true">
+        <element uuid="3481695e-7915-4200-87a5-c54be11c7fc6" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>unidirectional</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>connection</seg>
+          <seg>tudt</seg>
+        </bo>
+      </element>
+      <element uuid="c651cd1a-1091-4363-9956-185c59fc3076" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>alarm_control</seg>
+        </bo>
+        <position x="2739.225257873535" y="736.0"/>
+      </element>
+      <element uuid="11356963-479d-4672-888d-76a732d8cc27" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>current_tempWstatus</seg>
+        </bo>
+        <position y="689.0"/>
+      </element>
+      <element uuid="e8224819-80d9-46b8-93c3-b91f2a1c9d7e" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>display_temperature</seg>
+        </bo>
+        <position x="2699.1927032470703" y="117.0"/>
+      </element>
+      <element uuid="616f95e3-a611-49e5-a7fe-69c4c62b423e" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>heat_control</seg>
+        </bo>
+        <position x="2746.6145782470703" y="310.0"/>
+      </element>
+      <element uuid="abb5ae59-b232-4fc8-8efa-dc6d152d028f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>lower_alarm_tempWstatus</seg>
+        </bo>
+        <position y="739.0"/>
+      </element>
+      <element uuid="b49fb38b-f78f-4242-a693-5befa41af8a5" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>lower_desired_tempWstatus</seg>
+        </bo>
+        <position y="157.0"/>
+      </element>
+      <element uuid="f37fce40-ef24-4ed1-8901-f05744d7aa90" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>monitor_status</seg>
+        </bo>
+        <position x="2732.5520782470703" y="561.0"/>
+      </element>
+      <element uuid="b8f79627-7e48-4c87-9e72-3e629b561f04" manual="true" dockArea="right">
+        <bo>
+          <seg>feature</seg>
+          <seg>regulator_status</seg>
+        </bo>
+        <position x="2724.3880157470703" y="177.0"/>
+      </element>
+      <element uuid="35c621fc-83af-48ff-8a22-376f568d8040" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>upper_alarm_tempWstatus</seg>
+        </bo>
+        <position y="536.0"/>
+      </element>
+      <element uuid="7244ecff-0165-4675-9e3a-0eacaf6355f4" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>upper_desired_tempWstatus</seg>
+        </bo>
+        <position y="107.0"/>
+      </element>
+      <element uuid="77924bb3-02f9-4057-afb4-31c8f5be6b54" manual="true">
+        <element uuid="c5ed3d7f-0da4-49f1-b844-e7be4ad08290" manual="true">
+          <element uuid="6873267d-6831-49c6-b6d2-29e997b03755" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>intff</seg>
+          </bo>
+          <bendpoints>
+            <point x="-544.0" y="7.999979496002197"/>
+            <point x="-544.0" y="11.0"/>
+          </bendpoints>
+        </element>
+        <element uuid="3ccd94e5-53cf-48ad-861c-001b2b0a0680" manual="true">
+          <element uuid="78f608eb-0eb8-493a-ae89-425a9dda5b48" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mall</seg>
+          </bo>
+        </element>
+        <element uuid="30011ef5-2650-4a90-b4c5-adfc8b443163" manual="true">
+          <element uuid="a57353c7-8ff3-47b7-94e7-b6b247cad71a" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>malrm</seg>
+          </bo>
+        </element>
+        <element uuid="65808e98-18f3-414d-b055-a1da763ffd6e" manual="true">
+          <element uuid="ccc5d030-c209-4149-9b7f-4fbb9cef0de8" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>maul</seg>
+          </bo>
+          <bendpoints>
+            <point x="192.00006103515625" y="-42.000030517578125"/>
+            <point x="192.00006103515625" y="-17.000030517578125"/>
+          </bendpoints>
+        </element>
+        <element uuid="c3147fc5-6a43-4a26-aad1-e173c376d534" manual="true">
+          <element uuid="cb0a7876-5bc1-4b6b-ad74-4f6696c63a65" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mcta</seg>
+          </bo>
+          <bendpoints>
+            <point x="-1180.0" y="11.0"/>
+            <point x="-1180.0" y="89.00003051757812"/>
+            <point x="192.0" y="89.00003051757812"/>
+            <point x="192.0" y="82.99996948242188"/>
+          </bendpoints>
+        </element>
+        <element uuid="a7471ded-12f3-4f0f-9d82-ad59af81edaf" manual="true">
+          <element uuid="f78fa14d-fdd7-4967-a100-931994c8a834" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mcti</seg>
+          </bo>
+          <bendpoints>
+            <point x="-1180.0" y="11.0"/>
+            <point x="-1180.0" y="-42.000030517578125"/>
+          </bendpoints>
+        </element>
+        <element uuid="2bfda97a-3d5b-4fb2-ba3c-6061120c9d8f" manual="true">
+          <element uuid="c3ad4e79-c88a-4d48-b2bd-d8a9d568af84" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mctm</seg>
+          </bo>
+        </element>
+        <element uuid="a6bba767-cc1d-4071-a2b2-9f4f957a9316" manual="true">
+          <element uuid="ac5d2581-4979-4fd2-8098-749fc24abcb6" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mlat</seg>
+          </bo>
+        </element>
+        <element uuid="9dab3158-6843-42cf-b159-9d6a5282146f" manual="true">
+          <element uuid="6e2a2948-9c03-419b-8b2a-e2317977bf11" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mmma</seg>
+          </bo>
+          <bendpoints>
+            <point x="-544.0" y="61.0"/>
+            <point x="-544.0" y="132.99996948242188"/>
+          </bendpoints>
+        </element>
+        <element uuid="359102f6-ca75-4ef4-84ed-e4da3e13f1cd" manual="true">
+          <element uuid="88c2a65f-1a63-4e09-bc45-2d130206265b" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mmmi</seg>
+          </bo>
+          <bendpoints>
+            <point x="-544.0" y="61.0"/>
+            <point x="-544.0" y="57.99998092651367"/>
+          </bendpoints>
+        </element>
+        <element uuid="ee46ff6e-ce9b-4d49-ba60-1856abc08f81" manual="true">
+          <element uuid="208193d1-c81f-4c90-b442-64ae92ae343d" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mms</seg>
+          </bo>
+        </element>
+        <element uuid="c2525173-663b-4ed5-9b24-b0a1233ece0f" manual="true">
+          <element uuid="1f8295e0-e4d0-4806-a56a-100062282e38" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>muat</seg>
+          </bo>
+        </element>
+        <element uuid="6f8997a5-69b9-45e8-b3af-f03c4c2e24c5" manual="true" dockArea="right">
+          <bo>
+            <seg>feature</seg>
+            <seg>alarm_control</seg>
+          </bo>
+          <position x="2184.225257873535" y="269.0"/>
+        </element>
+        <element uuid="f0aeb049-91a7-4548-9855-f9075f173423" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>current_tempWstatus</seg>
+          </bo>
+          <position y="222.0"/>
+        </element>
+        <element uuid="03f4686e-de2b-4abc-9ce8-9517a1a919fe" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>lower_alarm_tempWstatus</seg>
+          </bo>
+          <position y="119.0"/>
+        </element>
+        <element uuid="b9cbd1cc-32d4-475b-87ac-9245ba1bd574" manual="true" dockArea="right">
+          <bo>
+            <seg>feature</seg>
+            <seg>monitor_status</seg>
+          </bo>
+          <position x="2177.5520782470703" y="94.0"/>
+        </element>
+        <element uuid="059ba628-3478-4b42-9bec-d016e657b6a0" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>upper_alarm_tempWstatus</seg>
+          </bo>
+          <position y="69.0"/>
+        </element>
+        <element uuid="518833ce-0306-4770-97c9-2e6b97e026fc" manual="true">
+          <element uuid="4a5e3b7b-8a03-4f16-918b-341c4a96d2e3" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>alarm_control</seg>
+            </bo>
+            <position x="465.22525787353516" y="85.0"/>
+          </element>
+          <element uuid="faf3c750-06ce-4a24-9585-ed00086dc923" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="110.0"/>
+          </element>
+          <element uuid="f11ef4cf-85d4-4e29-b70e-2c07eaf4d5aa" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_alarm_temp</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="efd3d788-c2d0-4edb-ae62-7888faaf4c1d" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>monitor_mode</seg>
+            </bo>
+            <position y="160.0"/>
+          </element>
+          <element uuid="2e096190-fd28-4d70-b381-4d078333daf7" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_alarm_temp</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="27430f97-89c6-4c5a-bfca-9410164bd1f9" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_alarm</seg>
+          </bo>
+          <position x="1596.0" y="184.0"/>
+          <size width="558.0" height="210.0"/>
+        </element>
+        <element uuid="d6213df8-f8cc-46de-8256-3dd567eb9db7" manual="true">
+          <element uuid="635c4ca8-29d9-4c2b-8158-6aae93e98099" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="110.0"/>
+          </element>
+          <element uuid="6b40c524-660a-4c3a-8a81-946df8e22a05" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>interface_failure</seg>
+            </bo>
+            <position y="160.0"/>
+          </element>
+          <element uuid="29a95499-5721-4598-9b42-474c5dabb61a" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_alarm_temp</seg>
+            </bo>
+            <position x="594.3255081176758" y="185.0"/>
+          </element>
+          <element uuid="2c50e94a-ca15-4fc2-b152-c86985e5c0a4" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_alarm_tempWstatus</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="7fa9bc44-3f26-4377-a24c-c42d55b9764f" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>monitor_mode</seg>
+            </bo>
+            <position y="210.0"/>
+          </element>
+          <element uuid="ef150495-66fa-487e-ba7c-a4c63a85ac3b" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>monitor_status</seg>
+            </bo>
+            <position x="616.5520782470703" y="35.0"/>
+          </element>
+          <element uuid="38bda5fe-c096-4223-8d58-1e53975dd306" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_alarm_temp</seg>
+            </bo>
+            <position x="592.0859298706055" y="110.0"/>
+          </element>
+          <element uuid="89f241c5-2567-41c0-a4b7-f545556c66e2" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_alarm_tempWstatus</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="f91fc71a-7899-450e-8325-a3c3f281fce0" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_monitor_interface</seg>
+          </bo>
+          <position x="860.0" y="59.0"/>
+          <size width="716.0" height="260.0"/>
+        </element>
+        <element uuid="b570afbe-bfc6-4ae8-9934-b169d72c72b6" manual="true">
+          <element uuid="005132af-58f9-4e76-9a33-6eb2fa343752" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="cf3df7bb-2f96-4ca8-a8a7-6446ddd9b7ec" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>interface_failure</seg>
+            </bo>
+            <position x="509.1302032470703" y="10.0"/>
+          </element>
+          <element uuid="4acd8a25-14ff-46e9-b015-8800de278038" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>internal_failure</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="cc9a5c3f-20e4-457f-89ba-da86f8012261" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>monitor_mode</seg>
+            </bo>
+            <position x="518.7721328735352" y="60.0"/>
+          </element>
+          <element uuid="fb5b987b-4f3b-4307-98fa-1935c2d53c4f" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_monitor_mode</seg>
+          </bo>
+          <position x="224.0" y="212.0"/>
+          <size width="616.0" height="110.0"/>
+        </element>
+        <element uuid="54700d0f-28fa-46e6-a71f-df92a2dbcb3d" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>sc_type</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>subcomponent</seg>
+          <seg>monitor_temperature</seg>
+        </bo>
+        <position x="306.0" y="467.0"/>
+        <size width="2277.0" height="406.0"/>
+      </element>
+      <element uuid="9707cbc0-9654-412a-a66f-2e483f3e0f5f" manual="true">
+        <element uuid="62b7ffe1-c42e-4299-bd90-01b201191263" manual="true">
+          <element uuid="896cadd3-4942-4435-9337-b4c69feb1212" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mldt</seg>
+          </bo>
+          <bendpoints>
+            <point x="218.0001678466797" y="-441.0"/>
+            <point x="218.0001678466797" y="-442.9999084472656"/>
+          </bendpoints>
+        </element>
+        <element uuid="a06a7ad1-b895-4836-9dc2-aae757a61ca1" manual="true">
+          <element uuid="e14dfcc1-8b6d-4c1e-a959-4a5601b19f6b" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>mudt</seg>
+          </bo>
+          <bendpoints>
+            <point x="218.0001678466797" y="-381.0"/>
+            <point x="218.0001678466797" y="-392.9999084472656"/>
+          </bendpoints>
+        </element>
+        <element uuid="fc8d7eec-5dce-497f-a9fb-c2e00e904ca1" manual="true">
+          <element uuid="cfedeb68-6efb-4b23-9c5f-9becc04bcd31" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rcth</seg>
+          </bo>
+          <bendpoints>
+            <point x="-1226.0" y="-471.0"/>
+            <point x="-1226.0" y="-315.00006103515625"/>
+            <point x="218.0" y="-315.00006103515625"/>
+            <point x="218.0" y="-292.99993896484375"/>
+          </bendpoints>
+        </element>
+        <element uuid="c6021226-6262-4795-8aac-eb8d2c296c14" manual="true">
+          <element uuid="ea0c69a0-0513-488a-bd94-97e4195ecfc0" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rcti</seg>
+          </bo>
+        </element>
+        <element uuid="b3378214-5fe2-42ec-8265-4a71f3999980" manual="true">
+          <element uuid="d22b06c8-937e-4166-adde-790aaf60a8d6" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rctm</seg>
+          </bo>
+          <bendpoints>
+            <point x="-1226.0" y="-471.0"/>
+            <point x="-1226.0" y="-392.99993896484375"/>
+          </bendpoints>
+        </element>
+        <element uuid="d8e2d0ac-0526-4c6a-9133-59af23694ba3" manual="true">
+          <element uuid="83ba9773-27d9-4b24-b3a3-68f8f101de6f" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rdt</seg>
+          </bo>
+        </element>
+        <element uuid="0cbc2d7b-a02a-4998-ad95-d63dc5c30c46" manual="true">
+          <element uuid="287e03bc-9ec1-4306-8a72-7721f96e6a85" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rhc</seg>
+          </bo>
+        </element>
+        <element uuid="4c42d362-141e-4642-b566-2cc61bfe382b" manual="true">
+          <element uuid="58f8ad0e-d237-4767-9c76-4e674590ff75" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rif</seg>
+          </bo>
+          <bendpoints>
+            <point x="-567.0000610351562" y="-421.0"/>
+            <point x="-567.0000610351562" y="-392.99993896484375"/>
+          </bendpoints>
+        </element>
+        <element uuid="f71b7246-2a3b-413f-8d29-0a9ea51df7c6" manual="true">
+          <element uuid="e4cbb4b7-c098-4854-abe7-cabf388bb3ae" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rldt</seg>
+          </bo>
+        </element>
+        <element uuid="3f21e190-2488-48f6-ab68-1b3f42780bf5" manual="true">
+          <element uuid="11644621-f903-4587-a6a9-a87c5d470ff6" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rrmh</seg>
+          </bo>
+        </element>
+        <element uuid="60a2b59e-a7cb-43fd-83c2-20c9eb6f4238" manual="true">
+          <element uuid="268c0e79-d571-493c-820b-39ad9b828fb9" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rrmi</seg>
+          </bo>
+          <bendpoints>
+            <point x="-567.0000610351562" y="-342.99993896484375"/>
+            <point x="-567.0000610351562" y="-371.0"/>
+          </bendpoints>
+        </element>
+        <element uuid="d7b4bcb7-a689-48e0-a0ab-0e74e023b922" manual="true">
+          <element uuid="7f3328f0-3a8e-4299-b734-5fb908d7af9a" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rrs</seg>
+          </bo>
+        </element>
+        <element uuid="6d5308f6-7f43-4a94-9d98-d55c89541fb5" manual="true">
+          <element uuid="85591ad1-e4a4-40ef-baae-cbf23638b514" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>unidirectional</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>connection</seg>
+            <seg>rudt</seg>
+          </bo>
+        </element>
+        <element uuid="24150719-427b-4dcb-b4b4-5ea7c9644425" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>current_tempWstatus</seg>
+          </bo>
+          <position y="148.0"/>
+        </element>
+        <element uuid="273649d6-dbdb-4293-bdc4-774005ea0cd2" manual="true" dockArea="right">
+          <bo>
+            <seg>feature</seg>
+            <seg>displayed_temp</seg>
+          </bo>
+          <position x="2319.608070373535" y="58.0"/>
+        </element>
+        <element uuid="01dbf557-a6c0-4acc-93f2-49169562f5e3" manual="true" dockArea="right">
+          <bo>
+            <seg>feature</seg>
+            <seg>heat_control</seg>
+          </bo>
+          <position x="2339.6145782470703" y="251.0"/>
+        </element>
+        <element uuid="75866c43-26a3-4d84-a837-ffe1a7dd4622" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>lower_desired_tempWstatus</seg>
+          </bo>
+          <position y="98.0"/>
+        </element>
+        <element uuid="7651fe3d-c158-42c9-b8e9-fb690da618cb" manual="true" dockArea="right">
+          <bo>
+            <seg>feature</seg>
+            <seg>regulator_status</seg>
+          </bo>
+          <position x="2317.3880157470703" y="118.0"/>
+        </element>
+        <element uuid="573d0bd1-11b8-4fe7-8a90-7ed1ee48aecd" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>upper_desired_tempWstatus</seg>
+          </bo>
+          <position y="48.0"/>
+        </element>
+        <element uuid="5e8a2158-6798-40cd-97f1-6d351782cd5f" manual="true">
+          <element uuid="d6e5eeee-d91e-4868-9323-b8637b346d68" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="160.0"/>
+          </element>
+          <element uuid="b97e00b2-88b3-4bde-9966-c228f6faa697" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>heat_control</seg>
+            </bo>
+            <position x="527.6145782470703" y="85.0"/>
+          </element>
+          <element uuid="7e141226-d0e3-4a88-90c9-8190d39fb030" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_desired_temp</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="ad85efe6-63f7-4f7c-a04e-903c53db3ca3" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>regulator_mode</seg>
+            </bo>
+            <position y="110.0"/>
+          </element>
+          <element uuid="5e6acf9c-173d-474e-a263-91bcbe28b819" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_desired_temp</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="b2c0acaa-f139-46c2-8af8-ddee8427f01a" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_heat_source</seg>
+          </bo>
+          <position x="1681.0" y="166.0"/>
+          <size width="613.0" height="210.0"/>
+        </element>
+        <element uuid="26a489d8-849c-421c-a211-b532087b7680" manual="true">
+          <element uuid="f40c56a5-f0c7-4af1-84ba-b85355860cd3" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="110.0"/>
+          </element>
+          <element uuid="8d3b6bcc-e9a5-44b5-9263-e73670efd8e1" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>displayed_temp</seg>
+            </bo>
+            <position x="659.6080703735352" y="20.0"/>
+          </element>
+          <element uuid="5de68f52-704b-4e78-bb9c-350162b0c55a" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>interface_failure</seg>
+            </bo>
+            <position y="160.0"/>
+          </element>
+          <element uuid="f0cdd72f-76d5-4c11-9de5-7a9dea8e6d8d" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_desired_temp</seg>
+            </bo>
+            <position x="632.9348831176758" y="140.0"/>
+          </element>
+          <element uuid="a804c526-f321-4ffd-a5df-3bbce4ac3562" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>lower_desired_tempWstatus</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="d7310d5c-bbb0-4f76-a108-94e26ef273a0" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>regulator_mode</seg>
+            </bo>
+            <position y="210.0"/>
+          </element>
+          <element uuid="2bf7d625-6e87-4c08-ad05-4a8c23df0909" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>regulator_status</seg>
+            </bo>
+            <position x="657.3880157470703" y="80.0"/>
+          </element>
+          <element uuid="2a84b76b-26b8-4323-be63-efa2ccd0c716" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_desired_temp</seg>
+            </bo>
+            <position x="630.6952972412109" y="200.0"/>
+          </element>
+          <element uuid="ae9b26cd-ba44-4376-9711-cf12e4c5ec6d" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>upper_desired_tempWstatus</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="792bc3c0-34a8-45bc-9e48-37ba0d32b5f7" manual="true">
+            <bo>
+              <seg>flow_specification</seg>
+              <seg>mri_if1</seg>
+            </bo>
+          </element>
+          <element uuid="c9920b47-1995-414c-8e82-7c0fb87631f3" manual="true">
+            <bo>
+              <seg>flow_specification</seg>
+              <seg>mri_if2</seg>
+            </bo>
+          </element>
+          <element uuid="c8ac03d7-0714-4c9b-b223-a25143f5fafc" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_regulator_interface</seg>
+          </bo>
+          <position x="896.0" y="38.0"/>
+          <size width="765.0" height="260.0"/>
+        </element>
+        <element uuid="e69dc045-28d2-4dd4-b756-921c9f80d85e" manual="true">
+          <element uuid="474230e7-a24c-4eb0-9c7c-056673c765df" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>current_tempWstatus</seg>
+            </bo>
+            <position y="10.0"/>
+          </element>
+          <element uuid="86628a3c-ea4f-4388-8c81-f3c000973cd9" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>interface_failure</seg>
+            </bo>
+            <position x="532.1302032470703" y="10.0"/>
+          </element>
+          <element uuid="cfb625ca-3c16-4cde-a411-b5a850535fa9" manual="true" dockArea="left">
+            <bo>
+              <seg>feature</seg>
+              <seg>internal_failure</seg>
+            </bo>
+            <position y="60.0"/>
+          </element>
+          <element uuid="122ef11e-c352-486b-90bd-327f08c6d7ee" manual="true" dockArea="right">
+            <bo>
+              <seg>feature</seg>
+              <seg>regulator_mode</seg>
+            </bo>
+            <position x="533.6080703735352" y="60.0"/>
+          </element>
+          <element uuid="e130fc2a-ad75-436f-b225-5d61695b4264" manual="true">
+            <bo>
+              <seg>tag</seg>
+              <seg>sc_type</seg>
+            </bo>
+          </element>
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>manage_regulator_mode</seg>
+          </bo>
+          <position x="237.0" y="216.0"/>
+          <size width="639.0" height="110.0"/>
+        </element>
+        <bo>
+          <seg>subcomponent</seg>
+          <seg>regulate_temperature</seg>
+        </bo>
+        <position x="247.0" y="59.0"/>
+        <size width="2425.0" height="388.0"/>
+      </element>
+      <element uuid="2643e743-5c2d-4be7-b2ea-611d60ec8643" manual="true">
+        <bo>
+          <seg>tag</seg>
+          <seg>sc_type</seg>
+        </bo>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>thermostat</seg>
+      </bo>
+      <position y="160.0"/>
+      <size width="2832.0" height="1045.0"/>
+    </element>
+    <bo>
+      <seg>classifier</seg>
+      <seg>isolette.single_sensor</seg>
+    </bo>
+    <position x="-1700.0" y="-870.0"/>
+    <size width="3100.0" height="1479.0"/>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>classifier</seg>
+      <seg>Isolette::isolette.single_sensor</seg>
+    </context>
+  </config>
+</diagram:Diagram>

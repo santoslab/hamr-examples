@@ -1,0 +1,114 @@
+-- ===========================================================================================================
+--
+--   I s o l e t t e    D a t a    M o d e l 
+--
+--   Definitions of data types using in the system.
+--   Data types are defined using AADL standard Data Model Annex modeling notation.
+-- 
+--     AS5506/2 Volume 2: Annex B: Data Modeling Annex
+-- ===========================================================================================================
+
+package Isolette_Data_Model
+  public
+  with Data_Model;
+  with Base_Types;
+
+
+-- ----------------------------------------------------
+--   T e m p W s t a t u s
+--
+--  Derived from: AR-08-32 Table A-3 Thermostat Monitored Variables for Temperature Sensor
+--                   (Current Temperature)
+--                AR-08-32 Table A-5 Thermostat Monitored Variables for Operator Interface
+--                   (Lower/Upper Desired Temperature, Lower/Upper Alarm Temperature)
+--    Type: Float
+--
+--    Units: Fahrenheit
+-- ----------------------------------------------------
+
+data TempWstatus 
+end TempWstatus;
+
+data implementation TempWstatus.impl
+  subcomponents
+    value: data Base_Types::Float_32;
+    status: data ValueStatus;
+end TempWstatus.impl;
+
+-- ----------------------------------------------------
+--   T e m p
+--
+--  Derived from: AR-08-32 Table A-6 Thermostat Controlled Variables for Operator Interface
+--                   (Display Temperature) 
+-- ----------------------------------------------------
+  
+data Temp 
+end Temp;
+
+data implementation Temp.impl
+  subcomponents
+    value: data Base_Types::Float_32;
+end Temp.impl;
+
+
+
+data PhysicalTemp 
+end PhysicalTemp;
+
+data implementation PhysicalTemp.impl
+	subcomponents
+		value: data Base_Types::Float_32;
+end PhysicalTemp.impl;
+
+
+data TempSensorReading 
+end TempSensorReading;
+
+
+
+data On_Off
+properties
+  Data_Model::Data_Representation => Enum;
+  Data_Model::Enumerators => ("Onn", "Off");  
+end On_Off;
+
+data Valid_Flag
+end Valid_Flag;
+
+data Failure_Flag
+end Failure_Flag;
+
+data implementation Failure_Flag.impl
+	subcomponents
+		value: data Base_Types::Boolean;
+end Failure_Flag.impl;
+
+data ValueStatus
+  properties
+  Data_Model::Data_Representation => Enum;
+  Data_Model::Enumerators => ("Valid", "Invalid");
+end ValueStatus;
+
+--Regulator and Monitor Status
+data Status
+  properties
+  Data_Model::Data_Representation => Enum;
+  Data_Model::Enumerators => ("Init_Status","On_Status","Failed_Status");
+end Status;
+
+--Regulator Mode
+data Regulator_Mode
+  properties
+  Data_Model::Data_Representation => Enum;
+  Data_Model::Enumerators => ("Init_Regulator_Mode", "Normal_Regulator_Mode", "Failed_Regulator_Mode");
+end Regulator_Mode;
+
+--Monitor Mode
+data Monitor_Mode
+  properties
+  Data_Model::Data_Representation => Enum;
+  Data_Model::Enumerators => ("Init_Monitor_Mode" ,"Normal_Monitor_Mode", "Failed_Monitor_Mode");
+end Monitor_Mode;
+
+  
+end Isolette_Data_Model;  

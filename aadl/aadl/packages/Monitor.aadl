@@ -1,0 +1,403 @@
+package Monitor
+public
+with Isolette_Data_Model, Base_Types;
+-- ===========================================================================================================
+--
+-- M o n i t o r	T e m p e r a t u r e	P r o c e s s
+--
+-- @description process that holds threads that monitor air temperature and failure states
+--A.5.2 MONITOR TEMPERATURE FUNCTION
+--
+-- ===========================================================================================================
+process Monitor_Temperature
+	features
+  -- ===== INPUTs (monitored variables) ...based in part on AR-08-32 A.2 and Table A.5 
+  -- ("Alarm Range") - operator-specific alarm range for temperature
+  lower_alarm_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Alarm Range") - operator-specific alarm range for temperature
+  upper_alarm_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Current Temperature") - value of current temp (with status flag) from air temp sensor
+  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+
+  -- ===== OUTPUTs (controlled variables)  ...based in part on AR-08-32 A.2 and Table A.6
+  -- ("Monitor Mode") - enumerated type describing status/mode of monitor (Init, On/operating, or Failed)
+  monitor_status : out data port Isolette_Data_Model::Status;
+  -- ("Alarm Control") - control signal (on/off) to alarm component 
+  alarm_control : out data port Isolette_Data_Model::On_Off;
+
+end Monitor_Temperature;
+
+  -- @description thread to manage the interactions between with operator interface and the rest of the monitor process
+process implementation Monitor_Temperature.impl
+
+	subcomponents
+  --thread for monitor interface implementation
+  manage_monitor_interface : thread manage_monitor_interface.impl;
+  --thread for manage alarm implementation
+  manage_alarm : thread manage_alarm.impl;
+  --thread for monitor mode implementation
+  manage_monitor_mode : thread manage_monitor_mode.impl;
+  
+	connections	
+  --Reflection of AR-08-32 dependencies.	
+		
+  -- ==== INPUT INTERFACE values to internal components ====
+  -- send incoming alarm temperature range to monitor interface manager
+  muat : port upper_alarm_tempWstatus -> manage_monitor_interface.upper_alarm_tempWstatus;
+  mlat : port lower_alarm_tempWstatus -> manage_monitor_interface.lower_alarm_tempWstatus;
+  
+  -- send incoming current temperature (with status value)
+  --   ...to interface manager
+  mcti : port current_tempWstatus -> manage_monitor_interface.current_tempWstatus;
+  --   ...to alarm manager (controls alarm)
+  mcta : port current_tempWstatus -> manage_alarm.current_tempWstatus;
+  --   ...to mode manager
+  mctm : port current_tempWstatus -> manage_monitor_mode.current_tempWstatus;
+
+  -- ==== OUTPUT INTERFACE values from internal components ==== 
+  -- send alarm actuation command (on/off) 
+  malrm : port manage_alarm.alarm_control -> alarm_control;
+  -- send status of monitor subsystem  to operator interface
+  mms : port manage_monitor_interface.monitor_status -> monitor_status;
+  
+  -- ==== INTERNAL communication ====
+  -- send validated alarm range from interface manager to alarm manager (controller)
+  maul : port manage_monitor_interface.upper_alarm_temp -> manage_alarm.upper_alarm_temp;
+  mall : port manage_monitor_interface.lower_alarm_temp -> manage_alarm.lower_alarm_temp;
+
+  -- send monitor mode from mode manager 
+  --  ... to interface manager
+  mmmi : port manage_monitor_mode.monitor_mode -> manage_monitor_interface.monitor_mode;
+  --  ... to alarm manager
+  mmma : port manage_monitor_mode.monitor_mode -> manage_alarm.monitor_mode;
+  
+ -- send regulator interface failure to mode manager
+  intff : port manage_monitor_interface.interface_failure -> manage_monitor_mode.interface_failure;
+  
+  end Monitor_Temperature.impl;
+
+-- ===========================================================================================================
+--
+--   M a n a g e    R e g u l a t o r   I n t e r f a c e   T h r e a d
+--
+--  
+-- AR-08-32 A.5.2.1 Manage Monitor Interface Function
+-- "The manage regulator interface the upper and lower temperature statuses compared to the current
+--  status, in order to output the monitor's information: the alarm temps, the status of the monitor
+--  and whether or not the interface is in a failed state."
+-- ===========================================================================================================
+
+thread Manage_Monitor_Interface
+	features	
+-- ==== INPUTS ====	(see AR-08-32 A.5)
+  -- ("Alarm Range") - operator specified alarm range
+  upper_alarm_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Alarm Range") - operator specified alarm range
+  lower_alarm_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Current Temperature") - current temperature from temp sensor
+  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Monitor Mode") - current mode of monitor subsystem (init, normal or failed)
+  monitor_mode : in data port Isolette_Data_Model::Monitor_Mode;
+
+  -- ==== OUTPUTS ====	(see Figure A.5)  
+  -- ("Alarm Range") - validated ("valid" status confirmed & removed) alarm temperature range from operator interface
+  upper_alarm_temp: out data port Isolette_Data_Model::Temp.impl;
+  -- ("Alarm Range") - validated ("valid" status confirmed & removed) alarm temperature range from operator interface
+  lower_alarm_temp: out data port Isolette_Data_Model::Temp.impl;
+  -- ("Monitor Mode") - overall status of monitor subsystem sent to operator interface
+  monitor_status : out data port Isolette_Data_Model::Status;
+  -- ("Monitor Interface Failure") - flag indicating improper inputs; sent to determine overall subsystem mode 
+  interface_failure : out data port Isolette_Data_Model::Failure_Flag.impl;
+properties							--properties of monitor interface
+	--Dispatch_Protocol => Timed;				--Dispatch_Protocol?
+	Dispatch_Protocol => Periodic; -- jab switched to periodic
+	Period => Isolette_Properties::ThreadPeriod;
+	
+	Stack_Size => Isolette_Properties::StackSize; 
+end Manage_Monitor_Interface;
+
+thread implementation Manage_Monitor_Interface.impl
+	  -- The AADL GUMBO Annex formally specifies behavioral properties of the thread.
+  -- Each natural language requirement from AR-08-32 Section A.5.1.1 (e.g., REQ-MRI-1) is rendered as
+  -- a GUMBO specification clause.  These contracts are translated to code-level contracts by the HAMR
+  -- code generator, and the code-level Logika verification tool verifies that the Slang component implementation
+  -- conforms to the code-level contracts (and thus the GUMBO model-level contracts, and thus the requirements). 
+	annex GUMBO
+	{**
+		state
+    		lastCmd: Isolette_Data_Model::On_Off;
+    	-- specification helper function
+    	functions
+    		def timeout_condition_satisfied():Base_Types::Boolean := T;
+		--state
+		
+    	--  ====== I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints ======
+		initialize
+			--guarantee
+				--lower_alarm_tempInitially: lower_alarm_temp = Temp_impl(InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE);
+			--guarantee
+				--upper_alarm_tempInitially: upper_alarm_temp == Temp_impl(InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE);
+			guarantee
+				monitorStatusInitiallyInit: monitor_status == Isolette_Data_Model::Status.Init_Status;
+			--guarantee
+				--monitorModeInitiallyInit: monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode; TODO Gage: Find out why this is here
+				--&
+				--regulate_mode_spec == Regulator_Mode.Init;
+    			
+    	-- ======  C o m p u t e     C o n s t r a i n t s =====
+		compute
+		
+		cases
+		-- ===== Monitor Status =====
+   		--   REQ-MMI-1: If the Manage Monitor Interface mode is INIT,
+   		--   the Monitor Status shall be set to Init.	
+				case REQMMI1 "REQ-MMI-1":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode; --monitor_status == Isolette_Data_Model::Status.Init_Status;
+					guarantee monitor_status == Isolette_Data_Model::Status.Init_Status; --monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+		--   REQ-MMI-2: If the Manage Monitor Interface mode is NORMAL,
+   		--   the Monitor Status shall be set to On.
+				case REQMMI2 "REQ-MMI-2":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
+					guarantee monitor_status == Isolette_Data_Model::Status.On_Status;
+		--   REQ-MMI-3: If the Manage Monitor Interface mode is FAILED,
+   		--   the Monitor Status shall be set to Failed.
+   		--   Latency: < Max Operator Response Time
+   		--   Tolerance: N/A
+				case REQMMI3 "REQ-MMI-3":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode;
+					guarantee monitor_status == Isolette_Data_Model::Status.Failed_Status;
+		--   REQ-MMI-4: If the Status attribute of the Lower Alarm Temperature
+   		--   or the Upper Alarm Temperature is Invalid,
+   		--   the Monitor Interface Failure shall be set to True.
+   		
+   		-- ===== Interface Failure =====
+				case REQMMI4 "REQ-MMI-4":
+					assume lower_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Invalid |
+						upper_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Invalid;
+					guarantee interface_failure.value;
+		--   REQ-MMI-5: If the Status attribute of the Lower Alarm Temperature
+   		--   and the Upper Alarm Temperature is Valid,
+   		--   the Monitor Interface Failure shall be set to False.
+				case REQMMI5 "REQ-MMI-5":
+					assume lower_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid
+						&
+						upper_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid;
+					guarantee !interface_failure.value;
+		-- ===== Upper and Lower Temperature Values =====
+		--   REQ-MMI-6: If the Monitor Interface Failure is False,
+   		--   the Alarm Range variable shall be set to the Desired Temperature Range.
+				case REQMMI6 "REQ-MMI-6":
+					assume (!interface_failure.value);
+					guarantee lower_alarm_temp.value == lower_alarm_tempWstatus.value
+						&
+						upper_alarm_temp.value == upper_alarm_tempWstatus.value;
+		--   REQ-MMI-7: If the Monitor Interface Failure is True,
+   		--   the Alarm Range variable is UNSPECIFIED.
+				case REQMMI7 "REQ-MMI-7":
+					assume interface_failure.value;
+					guarantee T; --[RP] Alarm range var is LOW/HIGH vars - what does is mean to make these "UNSPECIFIED"
+					
+	**};
+end Manage_Monitor_Interface.impl;
+
+
+-- ===========================================================================================================
+--
+--   M a n a g e    R e g u l a t o r   M o d e   T h r e a d
+--
+--  
+--   AR-08-32 A.5.2.2 Manage Regulator Mode Function
+--  " The Manage Regulator Mode function deteremines the monitor's mode based on the current temperature status,
+--    and whether or not an internal or interface failure has occurred.  
+-- ===========================================================================================================
+
+thread Manage_Monitor_Mode
+  features
+  -- ==== INPUTS ========		
+  -- ("Current Temperature (Status)") - current temperature from temp sensor
+  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Monitor Interface Failure") - status of operator interface interactions
+  interface_failure : in data port Isolette_Data_Model::Failure_Flag.impl;
+  -- ("Monitor Interface Failure") - in case of internal failure, a flag is raised
+  internal_failure : in data port Isolette_Data_Model::Failure_Flag.impl;
+   
+  -- ==== OUTPUTS ========		
+  -- ("Monitor Mode") - mode of regulator (Init, Normal, Failed)   
+  monitor_mode : out data port Isolette_Data_Model::Monitor_Mode;
+properties
+	Dispatch_Protocol => Periodic; -- jab switched to Periodic
+	Period => Isolette_Properties::ThreadPeriod;
+	
+	Stack_Size => Isolette_Properties::StackSize; 	
+end Manage_Monitor_Mode;
+
+thread implementation Manage_Monitor_Mode.impl
+	annex GUMBO
+	{**
+		state
+    		firstInvocationFlag: Base_Types::Boolean;
+    		lastMonitorMode: Isolette_Data_Model::Monitor_Mode;
+    	functions
+    		def timeout_condition_satisfied():Base_Types::Boolean := T;
+		--state
+		
+	    --  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
+		initialize
+		--    REQ-MMM-1: Upon the first dispatch of the thread, the monitor mode is Init.
+			guarantee
+				MonitorModeIsInitiallyInit: monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+			guarantee
+				firstInvocationFlagInitiallyTrue: firstInvocationFlag == T;
+				 
+				--&
+				--regulate_mode_spec == Regulator_Mode.Init;
+    			
+    	-- ======  C o m p u t e     C o n s t r a i n t s =====
+		compute
+		--  REQ-MMM-2: If the current mode is Init, then
+   		--    the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
+   		--      if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
+   		--          AND Current Temperature.Status = Valid
+			cases
+				case REQMRM2 "REQ-MMM-2":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+					guarantee ((((!(interface_failure.value || internal_failure.value)) && current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode))); --TODO () not preserved see slang code manage_monitor_mode thread
+		   		--  REQ-MMM-3: If the current Monitor mode is Normal, then
+    	--      the Monitor mode is set to Failed iff
+    	--      the Monitor status is false, i.e.,
+    	--        if  (Monitor Interface Failure OR Monitor Internal Failure)
+    	--            OR NOT(Current Temperature.Status = Valid)
+				case REQMRM3 "REQ-MMM-3":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
+					guarantee (((interface_failure.value || internal_failure.value) || current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode)); --TODO () not preserved see slang code manage_monitor_mode thread
+		--  REQ-MMM-4: If the current mode is Init, then
+    	--      the mode is set to Failed iff the time during
+    	--      which the thread has been in Init mode exceeds the
+    	--      Monitor Init Timeout value.
+				case REQMRM4 "REQ-MMM-4":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+					guarantee timeout_condition_satisfied() == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode); --TODO () not preserved see slang code manage_monitor_mode thread
+	**};
+end Manage_Monitor_Mode.impl;
+
+
+-- ===========================================================================================================
+--
+--   M a n a g e    A l a r m    T h r e a d
+--
+--  
+--    A.5.2.3 Manage Alarm Function
+--  " The Manage Alarm Function turns the Alarm Control on when the Current
+--    Temperature of the Room falls below or rises above the Alarm Temperature Range."
+-- 
+-- ===========================================================================================================
+
+thread Manage_Alarm
+  features
+  -- ======== INPUTS =======
+  -- ("Current Temperature") - current temperature (from temp sensor)
+  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
+  -- ("Alarm Range") - lowest and upper bound of operator specified alarm temperature range
+  lower_alarm_temp : in data port Isolette_Data_Model::Temp.impl;
+  -- ("Alarm Range") - lowest and upper bound of operator specified alarm temperature range
+  upper_alarm_temp : in data port Isolette_Data_Model::Temp.impl;
+  -- ("Monitor Mode") - subsystem mode
+  monitor_mode : in data port Isolette_Data_Model::Monitor_Mode;
+  
+  -- ======== OUTPUTS =======
+-- ("Alarm Control") - command to turn alarm on/off (actuation command)  
+  alarm_control : out data port Isolette_Data_Model::On_Off;
+properties
+	Dispatch_Protocol => Periodic;
+	Period => Isolette_Properties::ThreadPeriod;
+	
+	Stack_Size => Isolette_Properties::StackSize; 	
+end Manage_Alarm;
+
+thread implementation Manage_Alarm.impl
+		annex GUMBO
+	{**
+		state
+    		lastCmd: Isolette_Data_Model::On_Off;
+    	functions
+    		def timeout_condition_satisfied():Base_Types::Boolean := T;
+		--state
+		
+		--     REQ-MA-1: If the Monitor Mode is INIT, the Alarm Control shall be set
+    	--	     to Off.
+		initialize
+			guarantee
+				alarmcontrolIsInitiallyOff: alarm_control == Isolette_Data_Model::On_Off.Off;
+			guarantee
+				lastCmdInitiallySetToOff: lastCmd == Isolette_Data_Model::On_Off.Off;
+				 
+				--&
+				--regulate_mode_spec == Regulator_Mode.Init;
+    			
+    	-- ======  C o m p u t e     C o n s t r a i n t s =====
+		compute
+		--   REQ-MA-1: If the Monitor Mode is INIT, the Alarm Control shall be set
+    	--     to Off.
+			cases
+				case REQMRM1 "REQ-MA-1":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+					guarantee alarm_control == Isolette_Data_Model::On_Off.Off
+						&
+						lastCmd == Isolette_Data_Model::On_Off.Off;
+						--   REQ-MA-2: If the Monitor Mode is NORMAL and the Current Temperature is
+				      	--   less than the Lower Alarm Temperature or greater than the Upper Alarm
+				      	--     Temperature, the Alarm Control shall be set to On.
+				case REQMRM2 "REQ-MA-2":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
+						&
+						(current_tempWstatus.value < lower_alarm_temp.value || current_tempWstatus.value > upper_alarm_temp.value);
+					guarantee alarm_control == Isolette_Data_Model::On_Off.Onn
+						&
+						lastCmd == Isolette_Data_Model::On_Off.Onn;
+					--   REQ-MA-3: If the Monitor Mode is NORMAL and the Current Temperature
+			      	--     is greater than or equal to the Lower Alarm Temperature and less than
+			      	--   the Lower Alarm Temperature +0.5 degrees, or the Current Temperature is
+			      	--   greater than the Upper Alarm Temperature -0.5 degrees and less than or equal
+			      	--   to the Upper Alarm Temperature, the value of the Alarm Control shall
+			      	--   not be changed.
+				case REQMRM3 "REQ-MA-3":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
+						& 
+						(
+							(
+								current_tempWstatus.value >= lower_alarm_temp.value
+								&&
+								current_tempWstatus.value < lower_alarm_temp.value + f32"0.5"
+							) ||
+							(
+								(current_tempWstatus.value > upper_alarm_temp.value - f32"0.5")
+								&&
+								current_tempWstatus.value <= upper_alarm_temp.value
+							)
+						);
+					guarantee alarm_control == In(lastCmd)
+						&
+						lastCmd == In(lastCmd);
+						--     REQ-MA-4: If the Monitor Mode is NORMAL and the value of the Current
+				      	--     Temperature is greater than or equal to the Lower Alarm Temperature
+				      	--   +0.5 degrees and less than or equal to the Upper Alarm Temperature
+				      	--     -0.5 degrees, the Alarm Control shall be set to Off.
+				case REQMRM4 "REQ-MRM-4":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
+						&
+						current_tempWstatus.value >= lower_alarm_temp.value + f32"0.5" |
+						current_tempWstatus.value <= upper_alarm_temp.value - f32"0.5";
+					guarantee alarm_control == Isolette_Data_Model::On_Off.Off
+						&
+						lastCmd == Isolette_Data_Model::On_Off.Off;
+						--   REQ-MA-5: If the Monitor Mode is FAILED, the Alarm Control shall be
+				      	--   set to On.
+				case REQMRM5 "REQ-MRM-5":
+					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode;
+					guarantee alarm_control == Isolette_Data_Model::On_Off.Onn
+						&
+						lastCmd == Isolette_Data_Model::On_Off.Onn;
+	**};
+end Manage_Alarm.impl;
+
+end Monitor;
