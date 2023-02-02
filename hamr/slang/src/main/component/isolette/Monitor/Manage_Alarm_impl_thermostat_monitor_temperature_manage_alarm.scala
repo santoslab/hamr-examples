@@ -277,14 +277,6 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         |^ (currentTemp.value >= lower.value + 0.5f & currentTemp.value <= upper.value - 0.5f))
         by Smt2("cvc5", 5000, 10000000)
     )
-//    val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
-//    api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
-//    val apiUsage_lower_alarm_temp: Option[Isolette_Data_Model.Temp_impl] = api.get_lower_alarm_temp()
-//    api.logInfo(s"Received on lower_alarm_temp: ${apiUsage_lower_alarm_temp}")
-//    val apiUsage_upper_alarm_temp: Option[Isolette_Data_Model.Temp_impl] = api.get_upper_alarm_temp()
-//    api.logInfo(s"Received on upper_alarm_temp: ${apiUsage_upper_alarm_temp}")
-//    val apiUsage_monitor_mode: Option[isolette.Isolette_Data_Model.Monitor_Mode.Type] = api.get_monitor_mode()
-//    api.logInfo(s"Received on monitor_mode: ${apiUsage_monitor_mode}")
   }
 
   def activate(api: Manage_Alarm_impl_Operational_Api): Unit = { }
