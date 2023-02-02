@@ -1,70 +1,72 @@
 package art
 
-import org.sireum.{B, F, ISZ, String, T}
 import org.sireum.S64._
-import art.Art.{BridgeId, Time}
+import org.sireum.{B, F, String, T}
 
-import scala.collection.mutable.{Map => MMap}
 import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.{Executors, TimeUnit}
+import scala.collection.mutable.{Map => MMap}
 
 object ArtTimer_Ext {
 
-  val m: MMap[String, AtomicBoolean] = ArtNative_Ext.concMap()
-  val executor = Executors.newSingleThreadScheduledExecutor()
+  protected[art] val scheduledCallbacks: MMap[String, AtomicBoolean] = ArtNative_Ext.concMap()
+  private val executor = Executors.newSingleThreadScheduledExecutor()
 
   def finalise(): Unit = {
     executor.shutdownNow()
     ArtNative.logInfo(Art.logTitle, "Finalized ArtTimer")
   }
 
-  def clearTimeout(eventId: String): Unit = {
-    m.get(eventId) match {
+  def cancel(id: String): Unit = {
+    scheduledCallbacks.get(id) match {
       case Some(b) =>
-        b.set(false)
-        m.remove(eventId)
-        ArtNative.logInfo(Art.logTitle, s"timeout cleared for $eventId")
+        val userRequested = b.get()
+        b.set(F)
+        scheduledCallbacks.remove(id)
+        if (userRequested) {
+          ArtNative.logInfo(Art.logTitle, s"Callback cleared for $id")
+        }
       case _ =>
     }
   }
 
-  def setTimeout(bridgeId: BridgeId, eventId: String, wait: Art.Time, autoClear: B, callback: () => Unit): Unit = {
-    if(m.get(eventId).nonEmpty) {
-      art.Art.logError(bridgeId, s"callback already set for $eventId")
+  def scheduleTrait(id: String, replaceExisting: B, delay: Art.Time, callback: TimerCallback): Unit = {
+    schedule(id, replaceExisting, delay, callback.callback _)
+  }
+
+  def schedule(id: String, replaceExisting: B, delay: Art.Time, callback: () => Unit): Unit = {
+    if (scheduledCallbacks.get(id).nonEmpty) {
+      if (!replaceExisting) {
+        ArtNative.logInfo(Art.logTitle, s"Callback already scheduled for $id")
+        return
+      } else {
+        cancel(id)
+      }
+    }
+
+    if (delay < s64"0") {
+      ArtNative.logInfo(Art.logTitle, s"Invalid delay time: ${delay}.  Value must be non-negative.")
       return
     }
 
-    if(wait < s64"0") {
-      art.Art.logError(bridgeId, s"Invalid wait time: ${wait}.  Value must be non-negative.")
-      return
-    }
-
-    var b = new AtomicBoolean(true)
-
-    val bridge = Art.bridges(bridgeId).get
-    val eventOuts = bridge.ports.eventOuts.map(_.id)
-    val dataOuts = bridge.ports.dataOuts.map(_.id)
+    val shouldInvokeCallback = new AtomicBoolean(T)
 
     val task = new Runnable {
       override def run(): Unit = {
-        if (b.get()) {
-          bridge.synchronized {
-            callback()
-            Art.sendOutput(eventOuts, dataOuts)
-            if(autoClear) {
-              clearTimeout(eventId)
-            }
-          }
+        if (shouldInvokeCallback.get()) {
+          shouldInvokeCallback.set(F)
+          cancel(id)
+
+          callback()
         }
       }
     }
 
-    m.put(eventId, b)
+    scheduledCallbacks.put(id, shouldInvokeCallback)
 
-    val adjusted = wait.toMP.toLong * ArtNative_Ext.slowdown.toMP.toLong
+    val adjusted = delay.toMP.toLong * ArtNative_Ext.slowdown.toMP.toLong
     executor.schedule(task, adjusted, TimeUnit.MILLISECONDS)
 
-    art.Art.logInfo(bridgeId, s"callback set for $eventId")
+    ArtNative.logInfo(Art.logTitle, s"Callback scheduled for $id")
   }
 }

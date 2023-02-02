@@ -97,8 +97,8 @@ object ArtNative_Ext {
     outPortVariables.clear()
     outInfrastructurePorts.clear()
 
-    // clear pending ArtTimer events (also done after a test completes)
-    ArtTimer_Ext.m.keys.foreach(ArtTimer_Ext.clearTimeout)
+    // cancel pending ArtTimer callbacks (also done after a test completes)
+    ArtTimer_Ext.scheduledCallbacks.keys.foreach(ArtTimer_Ext.cancel)
 
     //scheduler.initialize()
   }
@@ -109,8 +109,8 @@ object ArtNative_Ext {
     outPortVariables.clear()
     outInfrastructurePorts.clear()
 
-    // clear pending ArtTimer events (also done after a test completes)
-    ArtTimer_Ext.m.keys.foreach(ArtTimer_Ext.clearTimeout)
+    // cancel pending ArtTimer callbacks (also done after a test completes)
+    ArtTimer_Ext.scheduledCallbacks.keys.foreach(ArtTimer_Ext.cancel)
   }
 
 
@@ -330,8 +330,8 @@ object ArtNative_Ext {
     outPortVariables.clear()
     outInfrastructurePorts.clear()
 
-    // clear pending ArtTimer events (also done after a test completes)
-    ArtTimer_Ext.m.keys.foreach(ArtTimer_Ext.clearTimeout)
+    // cancel pending ArtTimer callbacks (also done after a test completes)
+    ArtTimer_Ext.scheduledCallbacks.keys.foreach(ArtTimer_Ext.cancel)
 
     bridge.entryPoints.testInitialise()
     logInfo(Art.logTitle, s"Initialized bridge: ${bridge.name}")
@@ -374,8 +374,8 @@ object ArtNative_Ext {
     bridge.entryPoints.finalise()
     logInfo(Art.logTitle, s"Finalized bridge: ${bridge.name}")
 
-    // clear pending ArtTimer events (also done before a test begins)
-    ArtTimer_Ext.m.keys.foreach(ArtTimer_Ext.clearTimeout)
+    // cancel pending ArtTimer callbacks (also done before a test begins)
+    ArtTimer_Ext.scheduledCallbacks.keys.foreach(ArtTimer_Ext.cancel)
   }
 
   // JH: Refactored

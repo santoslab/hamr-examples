@@ -76,38 +76,18 @@ object Arch {
       regulator_mode = regulator_mode
     )
   }
-  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm : isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge = {
-    val current_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 18, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_current_tempWstatus", mode = DataIn)
-    val lower_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 19, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_lower_alarm_temp", mode = DataIn)
-    val upper_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 20, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_upper_alarm_temp", mode = DataIn)
-    val monitor_mode = Port[Isolette_Data_Model.Monitor_Mode.Type] (id = 21, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_monitor_mode", mode = DataIn)
-    val alarm_control = Port[Isolette_Data_Model.On_Off.Type] (id = 22, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_alarm_control", mode = DataOut)
-
-    isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge(
-      id = 3,
-      name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm",
-      dispatchProtocol = Periodic(period = 1000),
-      dispatchTriggers = None(),
-
-      current_tempWstatus = current_tempWstatus,
-      lower_alarm_temp = lower_alarm_temp,
-      upper_alarm_temp = upper_alarm_temp,
-      monitor_mode = monitor_mode,
-      alarm_control = alarm_control
-    )
-  }
   val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface : isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Bridge = {
-    val upper_alarm_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 23, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_upper_alarm_tempWstatus", mode = DataIn)
-    val lower_alarm_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 24, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_lower_alarm_tempWstatus", mode = DataIn)
-    val current_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 25, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_current_tempWstatus", mode = DataIn)
-    val monitor_mode = Port[Isolette_Data_Model.Monitor_Mode.Type] (id = 26, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_monitor_mode", mode = DataIn)
-    val upper_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 27, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_upper_alarm_temp", mode = DataOut)
-    val lower_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 28, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_lower_alarm_temp", mode = DataOut)
-    val monitor_status = Port[Isolette_Data_Model.Status.Type] (id = 29, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_monitor_status", mode = DataOut)
-    val interface_failure = Port[Isolette_Data_Model.Failure_Flag_impl] (id = 30, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_interface_failure", mode = DataOut)
+    val upper_alarm_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 18, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_upper_alarm_tempWstatus", mode = DataIn)
+    val lower_alarm_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 19, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_lower_alarm_tempWstatus", mode = DataIn)
+    val current_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 20, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_current_tempWstatus", mode = DataIn)
+    val monitor_mode = Port[Isolette_Data_Model.Monitor_Mode.Type] (id = 21, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_monitor_mode", mode = DataIn)
+    val upper_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 22, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_upper_alarm_temp", mode = DataOut)
+    val lower_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 23, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_lower_alarm_temp", mode = DataOut)
+    val monitor_status = Port[Isolette_Data_Model.Status.Type] (id = 24, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_monitor_status", mode = DataOut)
+    val interface_failure = Port[Isolette_Data_Model.Failure_Flag_impl] (id = 25, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface_interface_failure", mode = DataOut)
 
     isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Bridge(
-      id = 4,
+      id = 3,
       name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface",
       dispatchProtocol = Periodic(period = 1000),
       dispatchTriggers = None(),
@@ -120,6 +100,26 @@ object Arch {
       lower_alarm_temp = lower_alarm_temp,
       monitor_status = monitor_status,
       interface_failure = interface_failure
+    )
+  }
+  val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm : isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge = {
+    val current_tempWstatus = Port[Isolette_Data_Model.TempWstatus_impl] (id = 26, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_current_tempWstatus", mode = DataIn)
+    val lower_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 27, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_lower_alarm_temp", mode = DataIn)
+    val upper_alarm_temp = Port[Isolette_Data_Model.Temp_impl] (id = 28, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_upper_alarm_temp", mode = DataIn)
+    val monitor_mode = Port[Isolette_Data_Model.Monitor_Mode.Type] (id = 29, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_monitor_mode", mode = DataIn)
+    val alarm_control = Port[Isolette_Data_Model.On_Off.Type] (id = 30, name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm_alarm_control", mode = DataOut)
+
+    isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge(
+      id = 4,
+      name = "isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm",
+      dispatchProtocol = Periodic(period = 1000),
+      dispatchTriggers = None(),
+
+      current_tempWstatus = current_tempWstatus,
+      lower_alarm_temp = lower_alarm_temp,
+      upper_alarm_temp = upper_alarm_temp,
+      monitor_mode = monitor_mode,
+      alarm_control = alarm_control
     )
   }
   val isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode : isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Bridge = {
@@ -198,7 +198,7 @@ object Arch {
   val ad : ArchitectureDescription = {
 
     ArchitectureDescription(
-      components = ISZ (isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface, isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source, isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode, isolette_single_sensor_Instance_operator_interface_oip_oit, isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat, isolette_single_sensor_Instance_heat_source_cpi_heat_controller),
+      components = ISZ (isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface, isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source, isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm, isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode, isolette_single_sensor_Instance_operator_interface_oip_oit, isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat, isolette_single_sensor_Instance_heat_source_cpi_heat_controller),
 
       connections = ISZ (Connection(from = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.upper_desired_temp, to = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source.upper_desired_temp),
                          Connection(from = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.lower_desired_temp, to = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source.lower_desired_temp),
@@ -213,8 +213,8 @@ object Arch {
                          Connection(from = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.displayed_temp, to = isolette_single_sensor_Instance_operator_interface_oip_oit.display_temperature),
                          Connection(from = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.regulator_status, to = isolette_single_sensor_Instance_operator_interface_oip_oit.regulator_status),
                          Connection(from = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source.heat_control, to = isolette_single_sensor_Instance_heat_source_cpi_heat_controller.heat_control),
-                         Connection(from = isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.alarm_control, to = isolette_single_sensor_Instance_operator_interface_oip_oit.alarm_control),
                          Connection(from = isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface.monitor_status, to = isolette_single_sensor_Instance_operator_interface_oip_oit.monitor_status),
+                         Connection(from = isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.alarm_control, to = isolette_single_sensor_Instance_operator_interface_oip_oit.alarm_control),
                          Connection(from = isolette_single_sensor_Instance_operator_interface_oip_oit.lower_desired_tempWstatus, to = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.lower_desired_tempWstatus),
                          Connection(from = isolette_single_sensor_Instance_operator_interface_oip_oit.upper_desired_tempWstatus, to = isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.upper_desired_tempWstatus),
                          Connection(from = isolette_single_sensor_Instance_operator_interface_oip_oit.lower_alarm_tempWstatus, to = isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_interface.lower_alarm_tempWstatus),
