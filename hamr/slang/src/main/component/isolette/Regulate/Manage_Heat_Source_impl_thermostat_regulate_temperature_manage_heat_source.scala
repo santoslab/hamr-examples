@@ -64,7 +64,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value > api.upper_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off),
         // case ReqMHS4
         //   Req-MHS-4
-        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value >= api.lower_desired_temp.value & api.current_tempWstatus.value <= api.upper_desired_temp.value) -->: (api.heat_control == In(lastCmd)),
+        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & (api.current_tempWstatus.value >= api.lower_desired_temp.value & api.current_tempWstatus.value <= api.upper_desired_temp.value)) -->: (api.heat_control == In(lastCmd)),
         // case ReqMHS5
         //   Req-MHS-5
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off)

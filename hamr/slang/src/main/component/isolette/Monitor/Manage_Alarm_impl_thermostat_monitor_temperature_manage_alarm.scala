@@ -51,38 +51,22 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         api
       ),
       Ensures(
-        // BEGIN COMPUTE_ENSURES timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMRM1
         //   REQ-MA-1
-        (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQMRM2
         //   REQ-MA-2
-        (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-          (api.current_tempWstatus.value < api.lower_alarm_temp.value || api.current_tempWstatus.value > api.upper_alarm_temp.value)) -->:
-          (api.alarm_control == Isolette_Data_Model.On_Off.Onn & lastCmd == Isolette_Data_Model.On_Off.Onn),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode & (api.current_tempWstatus.value < api.lower_alarm_temp.value || api.current_tempWstatus.value > api.upper_alarm_temp.value)) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Onn & lastCmd == Isolette_Data_Model.On_Off.Onn),
         // case REQMRM3
         //   REQ-MA-3
-        (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-          ((api.current_tempWstatus.value >= api.lower_alarm_temp.value
-            && api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f)
-            || (api.current_tempWstatus.value > api.upper_alarm_temp.value - 0.5f
-            && api.current_tempWstatus.value <= api.upper_alarm_temp.value))) -->:
-          (api.alarm_control == In(lastCmd) &
-          lastCmd == In(lastCmd)),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode & (api.current_tempWstatus.value >= api.lower_alarm_temp.value && api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f || api.current_tempWstatus.value > api.upper_alarm_temp.value - 0.5f && api.current_tempWstatus.value <= api.upper_alarm_temp.value)) -->: (api.alarm_control == In(lastCmd) & lastCmd == In(lastCmd)),
         // case REQMRM4
         //   REQ-MRM-4
-        (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-          api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f && api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->:
-          (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode & api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f | api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQMRM5
         //   REQ-MRM-5
-        (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
-          (api.alarm_control == Isolette_Data_Model.On_Off.Onn & lastCmd == Isolette_Data_Model.On_Off.Onn)
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Onn & lastCmd == Isolette_Data_Model.On_Off.Onn)
         // END COMPUTE ENSURES timeTriggered
       )
     )

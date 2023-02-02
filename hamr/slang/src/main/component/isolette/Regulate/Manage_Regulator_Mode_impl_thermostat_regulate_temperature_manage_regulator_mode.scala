@@ -13,15 +13,13 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
   // END FUNCTIONS
   // BEGIN STATE VARS
   var lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type = Isolette_Data_Model.Regulator_Mode.byOrdinal(0).get
-  var isFirstInvocation:B = true
   // END STATE VARS
 
   def initialise(api: Manage_Regulator_Mode_impl_Initialization_Api): Unit = {
     Contract(
     Modifies(
       api,
-      lastRegulatorMode,
-      isFirstInvocation
+      lastRegulatorMode
     ),
       Ensures(
         // BEGIN INITIALIZES ENSURES
@@ -32,22 +30,21 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     )
     // example api usage
     lastRegulatorMode = Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
-    isFirstInvocation = true
     api.put_regulator_mode(lastRegulatorMode)
   }
 
   def timeTriggered(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {
     Contract(
       Requires(In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode),
-      Modifies(lastRegulatorMode,api,isFirstInvocation),
+      Modifies(lastRegulatorMode,api),
       Ensures(
         // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMRM2
         //   REQ-MRM-2
-        (lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode)),
+        (In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode)),
         // case REQMRM4
         //   REQ-MRM-4
-        (lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (((api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
+        (In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (((api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
         // END COMPUTE ENSURES timeTriggered
       )
     )
@@ -126,7 +123,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     }
 
     api.put_regulator_mode(lastRegulatorMode)
-    isFirstInvocation = false
+
     val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
     api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
     val apiUsage_interface_failure: Option[Isolette_Data_Model.Failure_Flag_impl] = api.get_interface_failure()

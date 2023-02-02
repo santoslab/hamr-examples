@@ -57,20 +57,16 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       ),
       Ensures(
         api.monitor_mode == lastMonitorMode,
-        // BEGIN COMPUTE_ENSURES timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMRM2
         //   REQ-MMM-2
-        (In(api).monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
-          ((!(api.interface_failure.value || In(api).internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ==
-            (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode)),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode)),
         // case REQMRM3
         //   REQ-MMM-3
-        (In(api).monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->: ((api.interface_failure.value || api.internal_failure.value || api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode)),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->: ((api.interface_failure.value || api.internal_failure.value || api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode)),
         // case REQMRM4
         //   REQ-MMM-4
-        (In(api).monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
-          (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() ==
-            (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
         // END COMPUTE ENSURES timeTriggered
       )
     )
