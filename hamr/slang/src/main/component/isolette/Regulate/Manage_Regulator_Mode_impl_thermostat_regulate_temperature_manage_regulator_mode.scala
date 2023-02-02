@@ -46,14 +46,14 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       Requires(In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode),
       Modifies(lastRegulatorMode,api,isFirstInvocation),
       Ensures(
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMRM2
         //   REQ-MRM-2
         (lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode)),
         // case REQMRM4
         //   REQ-MRM-4
         (lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (((api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // example api usage

@@ -63,16 +63,16 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
   def timeTriggered(api: Manage_Regulator_Interface_impl_Operational_Api): Unit = {
     Contract(
       Requires(
-        // BEGIN_COMPUTE_REQUIRES_timeTriggered
+        // BEGIN COMPUTE REQUIRES timeTriggered
         // assume lower_is_not_higher_than_upper
         api.lower_desired_temp.value <= api.upper_desired_temp.value
-        // END_COMPUTE REQUIRES_timeTriggered
+        // END COMPUTE REQUIRES timeTriggered
       ),
       Modifies(
         api
       ),
       Ensures(
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMRI1
         //   REQ-MRI-1
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.Init_Status),
@@ -94,7 +94,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         // case REQMRI8
         //   REQ-MRI-8
         (!(api.interface_failure.value)) -->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value & api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // example api usage

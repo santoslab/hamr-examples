@@ -63,7 +63,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       ),
       Ensures(
         api.monitor_mode == lastMonitorMode,
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE_ENSURES timeTriggered
         // case REQMRM2
         //   REQ-MMM-2
         (In(api).monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
@@ -77,7 +77,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         (In(api).monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
           (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() ==
             (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // example api usage

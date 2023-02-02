@@ -56,7 +56,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         api
       ),
       Ensures(
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE_ENSURES timeTriggered
         // case REQMRM1
         //   REQ-MA-1
         (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
@@ -88,7 +88,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         (api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
           api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
           (api.alarm_control == Isolette_Data_Model.On_Off.Onn & lastCmd == Isolette_Data_Model.On_Off.Onn)
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // example api usage

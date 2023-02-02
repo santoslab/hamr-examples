@@ -62,7 +62,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         lastCmd
       ),
       Ensures(
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // case REQMMI1
         //   REQ-MMI-1
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (api.monitor_status == Isolette_Data_Model.Status.Init_Status),
@@ -84,7 +84,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         // case REQMMI7
         //   REQ-MMI-7
         (api.interface_failure.value) -->: (T)
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // example api usage

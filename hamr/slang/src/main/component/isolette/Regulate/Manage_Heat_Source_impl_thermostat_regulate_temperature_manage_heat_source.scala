@@ -42,14 +42,14 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
   def timeTriggered(api: Manage_Heat_Source_impl_Operational_Api): Unit = {
     Contract(
       Requires(
-        // BEGIN_COMPUTE_REQUIRES_timeTriggered
+        // BEGIN COMPUTE REQUIRES timeTriggered
         // assume lower_is_lower_temp
         api.lower_desired_temp.value <= api.upper_desired_temp.value
-        // END_COMPUTE REQUIRES_timeTriggered
+        // END COMPUTE REQUIRES timeTriggered
       ),
       Modifies(api,lastCmd),
       Ensures(
-        // BEGIN_COMPUTE_ENSURES_timeTriggered
+        // BEGIN COMPUTE ENSURES timeTriggered
         // guarantee lastCmd
         //   Set lastCmd to value of output Cmd port
         lastCmd == api.heat_control,
@@ -68,7 +68,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
         // case ReqMHS5
         //   Req-MHS-5
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off)
-        // END_COMPUTE ENSURES_timeTriggered
+        // END COMPUTE ENSURES timeTriggered
       )
     )
     // -------------- Get values of input ports ------------------
