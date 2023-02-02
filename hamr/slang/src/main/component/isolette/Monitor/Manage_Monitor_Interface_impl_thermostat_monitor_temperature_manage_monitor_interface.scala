@@ -51,8 +51,10 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
     api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl.example())
     api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl.example())
-    api.put_monitor_status(Isolette_Data_Model.Status.byOrdinal(0).get)
+    //api.put_monitor_status(Isolette_Data_Model.Status.byOrdinal(0).get)
     api.put_interface_failure(Isolette_Data_Model.Failure_Flag_impl.example())
+
+    api.put_monitor_status(Isolette_Data_Model.Status.Init_Status)
   }
 
   def timeTriggered(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = {
@@ -140,8 +142,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         assert(monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
         monitor_status = Isolette_Data_Model.Status.Failed_Status
 
-      case _ => //TODO This is not needed, but used to make sure that the above is exhaustive as I work on verification (Gage)
-        assert(monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
+      //case _ => //TODO This is not needed, but used to make sure that the above is exhaustive as I work on verification (Gage)
+      //  assert(monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
     }
     assert(((monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)||(monitor_status == Isolette_Data_Model.Status.Init_Status)))
     assert(((monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)-->:(monitor_status == Isolette_Data_Model.Status.Init_Status)))

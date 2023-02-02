@@ -36,12 +36,6 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     // example api usage
     api.put_monitor_mode(Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
     firstInvocationFlag = true
-
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
-    api.put_monitor_mode(Isolette_Data_Model.Monitor_Mode.byOrdinal(0).get)
   }
 
 //  @strictpure def monitor_status(interface_failure:Isolette_Data_Model.Failure_Flag_impl,

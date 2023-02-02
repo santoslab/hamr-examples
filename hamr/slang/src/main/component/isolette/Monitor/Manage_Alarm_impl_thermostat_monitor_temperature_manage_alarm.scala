@@ -36,11 +36,6 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
     //  REQ-MA-1: If the Monitor Mode is INIT, the Alarm Control shall be set
     //    to Off.
     api.put_alarm_control(Isolette_Data_Model.On_Off.Off)
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
-    //api.put_alarm_control(Isolette_Data_Model.On_Off.byOrdinal(0).get)
   }
 
   def timeTriggered(api: Manage_Alarm_impl_Operational_Api): Unit = {

@@ -34,11 +34,6 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     lastRegulatorMode = Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
     isFirstInvocation = true
     api.put_regulator_mode(lastRegulatorMode)
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
-    api.put_regulator_mode(Isolette_Data_Model.Regulator_Mode.byOrdinal(0).get)
   }
 
   def timeTriggered(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {
