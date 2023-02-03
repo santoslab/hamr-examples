@@ -4,12 +4,12 @@
 
 Install Kekinian, FMIDE, and IVE by following the instructions: [Installing and Updating FMIDE (customization of AADL OSATE IDE) and HAMR](https://hamr.sireum.org/hamr-doc/ch0X-hamr-installation.html#installing-and-updating-fmide-customization-of-aadl-osate-ide-and-hamr) 
 
-It's recommended that you set the environment variable ``SIREUM_HOME`` so that it points to the directory where you cloned/installed Keninian
+It's recommended that you set the environment variable ``SIREUM_HOME`` so that it points to the directory where you cloned/installed Kekinian
 
 
 ## Regenerating the Slang Project
 
-From within FMIDE, 
+To regenerate from within FMIDE, 
 
 - Select ``File >> Import ...``, then choose ``Existing Project into Workspace``.
 
@@ -25,7 +25,7 @@ From within FMIDE,
 - Select the ``JVM`` platform, point the output directory to [./hamr/slang](./hamr/slang/), set the ``Base Package Name`` to be ``isolette`` and click ``Run``.
 
 
-From the command line, invoke the following script: [./aadl/bin/run-hamr.cmd](./aadl/bin/run-hamr.cmd)
+Or, you can regenerate from the command line by invoking the following script: [./aadl/bin/run-hamr.cmd](./aadl/bin/run-hamr.cmd)
 
 ```
 ./aadl/bin/run-hamr.cmd
