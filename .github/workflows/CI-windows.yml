@@ -1,0 +1,102 @@
+name: Windows
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+
+  ci:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        testSuffix: ${{ fromJSON('["BaseBehaviorTest","HamrTranspileTests,GumboTest","CodeGenTest_Base","CodegenTest_CASE"]') }}
+    name: '${{ matrix.testSuffix }}'
+    steps:
+      - name: Support longpaths
+        run: git config --system core.longpaths true
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Install Cygwin
+        shell: cmd
+        run: |
+          choco config get cacheLocation
+          choco install --no-progress cygwin
+          C:\tools\cygwin\cygwinsetup.exe -qgnNdO -R C:/tools/cygwin -s http://mirrors.kernel.org/sourceware/cygwin/ -P gcc-core,gcc-g++,make,cmake
+      - name: Retrieve versions.properties
+        run: |
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/sireum/kekinian/master/versions.properties" -OutFile "versions.properties"
+      - name: Cache Java
+        id: cache-java
+        uses: actions/cache@v3
+        with:
+          path: bin\win\java
+          key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-java
+      - name: Cache Scala
+        id: cache-scala
+        uses: actions/cache@v3
+        with:
+          path: bin\scala
+          key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-scala
+      - name: Cache Coursier
+        id: cache-coursier
+        uses: actions/cache@v3
+        with:
+          path: cache\coursier
+          key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-coursier
+      - name: Cache OSATE
+        id: cache-osate
+        uses: actions/cache@v3
+        with:
+          path: bin\win\osate
+          key: ${{ runner.os }}-${{ hashFiles('jvm\src\main\resources\phantom_versions.properties') }}-osate
+      - name: Check LongPathsEnabled
+        run: |
+          (Get-ItemProperty "HKLM:System\CurrentControlSet\Control\FileSystem").LongPathsEnabled
+      - name: Test
+        shell: cmd
+        run: |
+          xcopy %GITHUB_WORKSPACE%\cache\coursier %HOMEDRIVE%%HOMEPATH%\cache\coursier\ /E/H
+          set COURSIER_CACHE=%HOMEDRIVE%%HOMEPATH%\cache\coursier
+          set PATH=C:\tools\cygwin\bin;C:\tools\cygwin\usr\bin;%PATH%
+          set CC=gcc.exe
+          set CXX=c++.exe
+          cd /d %GITHUB_WORKSPACE%
+          
+          set XHOME=%cd%
+
+          rem see https://github.com/sireum/osate-plugin/blob/57785407d84793cf1f8d5926647e4dc75ab197a9/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java#L508-L517
+          set CHECK_PHANTOM_HAMR_API_COMPATIBILITY=true
+          
+          git clone --rec https://github.com/sireum/kekinian.git
+          set SIREUM_HOME=%XHOME%\kekinian
+          call %SIREUM_HOME%\bin\build.cmd setup
+
+          echo Done installing kekinian.  Errorlevel %errorlevel%
+
+          if %errorlevel% neq 0 (
+            if exist %SIREUM_HOME%\out\sireum-proyek\assemble\sireum.jar (
+              REM build.cmd sometimes fails on windows when it tries to
+              REM replace the in-use bin\sireum.jar with the freshly built one.
+              REM Workaround is to manually copy the jar over
+              copy %SIREUM_HOME%\out\sireum-proyek\assemble\sireum.jar %SIREUM_HOME%\bin
+
+              echo Manually copied sireum.jar to bin. Errorlevel %errorlevel%
+            ) else (
+              echo "Error occurred while building sireum.jar"
+              exit /b %errorlevel%
+            )
+          )
+
+          set PATH=%SIREUM_HOME%\bin;%PATH%
+      
+          call %SIREUM_HOME%\bin\install\fmide.cmd --verbose
+          echo Done installing FMIDE. Errorlevel %errorlevel%
+
+          if %errorlevel% neq 0 exit /b %errorlevel%
+
+          call ci.cmd
+
+          if %errorlevel% neq 0 exit /b %errorlevel%
