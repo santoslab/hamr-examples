@@ -51,7 +51,7 @@ val codegenArgs = ISZ("hamr", "codegen",
   "--package-name", "isolette",
   "--output-dir", (aadlDir.up / "hamr" / "slang").string,
   "--verbose",
-  "--no-proyek-ive",
+  //"--no-proyek-ive",
   "--aadl-root-dir", aadlDir.string,
   (aadlDir / ".system").string)
 
