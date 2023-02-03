@@ -15,6 +15,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+      - name: Checkout-Keninian
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          repository: sireum\kekinian
+          path: kekinian          
       - name: Install Cygwin
         shell: cmd
         run: |
@@ -66,7 +72,6 @@ jobs:
           rem see https://github.com/sireum/osate-plugin/blob/57785407d84793cf1f8d5926647e4dc75ab197a9/org.sireum.aadl.osate.cli/src/org/sireum/aadl/osate/cli/Phantom.java#L508-L517
           set CHECK_PHANTOM_HAMR_API_COMPATIBILITY=true
           
-          git clone --rec https://github.com/sireum/kekinian.git
           set SIREUM_HOME=%XHOME%\kekinian
           call %SIREUM_HOME%\bin\build.cmd setup
 

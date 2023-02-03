@@ -13,6 +13,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+      - name: Checkout-Keninian
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          repository: sireum/kekinian
+          path: kekinian
       - name: Retrieve versions.properties
         run: |
           wget -q https://raw.githubusercontent.com/sireum/kekinian/master/versions.properties
@@ -54,7 +60,6 @@ jobs:
           # build Sireum
           ################################################
 
-          git clone --rec https://github.com/sireum/kekinian.git
           ./kekinian/bin/build.cmd setup
 
           export SIREUM_HOME=${XHOME}/kekinian
