@@ -35,7 +35,8 @@ if (result == 0) {
 
 if (result == 0) {
     // timeout will return a non-zero exit code so ignore it
-    proc"$sireum proyek run $slangDir isolette.Demo".console.echo.timeout(15000).run()
+    val to: Z = if (Os.isWin) 25000 else 15000
+    proc"$sireum proyek run $slangDir isolette.Demo".console.echo.timeout(to).run()
 }
 
 Os.exit(result)
