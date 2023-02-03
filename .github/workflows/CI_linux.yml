@@ -67,4 +67,4 @@ jobs:
 
           $SIREUM_HOME/bin/install/fmide.cmd --verbose
 
-          ci.cmd
+          .ci/test.cmd

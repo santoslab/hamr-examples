@@ -18,7 +18,7 @@ exit /B %errorlevel%
 
 import org.sireum._
 
-val rootDir = Os.slashDir.up.up
+val rootDir = Os.slashDir.up
 
 val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin"
 val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")

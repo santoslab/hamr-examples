@@ -93,6 +93,6 @@ jobs:
 
           if %errorlevel% neq 0 exit /b %errorlevel%
 
-          call ci.cmd
+          call .ci\test.cmd
 
           if %errorlevel% neq 0 exit /b %errorlevel%
