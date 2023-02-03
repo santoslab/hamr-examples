@@ -49,4 +49,4 @@ or, invoke the script [./hamr/slang/bin/run-logika.cmd](./hamr/slang/bin/run-log
 ./hamr/slang/bin/run-logika.cmd
 ```
 
-From within IVE, if the file is in Logika (ie. its first line looks like [this](./hamr/slang/src/main/component/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala#L1) then you can right click the editor and in the context menu choose ``Logika Check (All in File)`` or ``Logika Check (Line)``.
+From within IVE, if the file is in Logika (ie. its first line looks like [this](./hamr/slang/src/main/component/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala#L1)) then you can right click the editor and in the context menu choose ``Logika Check (All in File)`` or ``Logika Check (Line)``.
