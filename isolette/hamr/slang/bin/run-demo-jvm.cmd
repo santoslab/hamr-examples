@@ -35,7 +35,7 @@ if (result == 0) {
 
 if (result == 0) {
     // timeout will return a non-zero exit code so ignore it
-    proc"$sireum proyek run $slangDir isolette.Demo".console.echo.timeout(10000).run()
+    proc"$sireum proyek run $slangDir isolette.Demo".console.echo.timeout(15000).run()
 }
 
 Os.exit(result)
