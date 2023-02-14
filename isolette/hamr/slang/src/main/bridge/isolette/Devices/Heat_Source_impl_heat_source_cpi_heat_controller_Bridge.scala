@@ -13,23 +13,23 @@ import isolette.Devices.{Heat_Source_impl_heat_source_cpi_heat_controller => com
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[ISZ[Art.PortId]],
+  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
 
   heat_control: Port[Isolette_Data_Model.On_Off.Type],
   heat_out: Port[Isolette_Environment.Heat.Type]
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = ISZ(heat_control,
-              heat_out),
+    all = IS[Art.PortId, art.UPort](heat_control,
+                                    heat_out),
 
-    dataIns = ISZ(heat_control),
+    dataIns = IS[Art.PortId, art.UPort](heat_control),
 
-    dataOuts = ISZ(heat_out),
+    dataOuts = IS[Art.PortId, art.UPort](heat_out),
 
-    eventIns = ISZ(),
+    eventIns = IS[Art.PortId, art.UPort](),
 
-    eventOuts = ISZ()
+    eventOuts = IS[Art.PortId, art.UPort]()
   )
 
   val initialization_api : Heat_Source_impl_Initialization_Api = {
@@ -74,17 +74,17 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_Bridge {
     Heat_Source_impl_heat_source_cpi_heat_controller_BridgeId : Art.BridgeId,
     heat_control_Id : Art.PortId,
     heat_out_Id : Art.PortId,
-    dispatchTriggers : Option[ISZ[Art.PortId]],
+    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
     initialization_api: Heat_Source_impl_Initialization_Api,
     operational_api: Heat_Source_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: ISZ[Art.PortId] = ISZ(heat_control_Id)
+    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS(heat_control_Id)
 
-    val eventInPortIds: ISZ[Art.PortId] = ISZ()
+    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
 
-    val dataOutPortIds: ISZ[Art.PortId] = ISZ(heat_out_Id)
+    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(heat_out_Id)
 
-    val eventOutPortIds: ISZ[Art.PortId] = ISZ()
+    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: Heat_Source_impl_Initialization_Api): Unit = {}

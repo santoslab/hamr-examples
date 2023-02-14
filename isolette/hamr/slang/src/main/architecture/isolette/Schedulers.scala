@@ -62,7 +62,15 @@ object Schedulers {
     domain = None())
 
   // roundRobinSchedule represents the component dispatch order
-  val roundRobinSchedule: ISZ[art.Bridge] = Arch.ad.components
+  val roundRobinSchedule: ISZ[art.Bridge] = {
+    // convert IS[Art.BridgeId, art.Bridge] to an IS[Z, art.Bridge] to allow bridges to be dispatched
+    // multiple times during a hyper-period
+    var ret: ISZ[art.Bridge] = ISZ()
+    for(e <- Arch.ad.components) {
+      ret = ret :+ e
+    }
+    ret
+  }
 
   val framePeriod: Z = 1000
   val numComponents: Z = Arch.ad.components.size

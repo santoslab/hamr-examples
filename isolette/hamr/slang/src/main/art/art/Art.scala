@@ -6,28 +6,29 @@ import org.sireum._
 import art.scheduling.Scheduler
 
 object Art {
-  type PortId = Z
-  type BridgeId = Z
+
+  @range(min = 0, max = 9, index = T) class BridgeId
+
+  @range(min = 0, max = 47, index = T) class PortId
+
+  @range(min = 0, max = 25, index = T) class ConnectionId
+
   type Time = S64 // Z might be too small after transpiling
 
-  val z16max: PortId = org.sireum.conversions.Z16.toZ(Z16.Max) // 32,767
-
-  val maxComponents: BridgeId = 10
-  val maxPorts: PortId = 48
+  val maxComponents: Z = 10
+  val maxPorts: Z = 48
 
   val logTitle: String = "Art"
   val bridges: MS[BridgeId, Option[Bridge]] = MS.create[BridgeId, Option[Bridge]](maxComponents, None[Bridge]())
-  val connections: MS[PortId, ISZ[PortId]] = MS.create[PortId, ISZ[PortId]](maxPorts, ISZ())
+  val connections: MS[PortId, IS[PortId, PortId]] = MS.create[PortId, IS[PortId, PortId]](maxPorts, IS())
   val ports: MS[PortId, Option[UPort]] = MS.create[PortId, Option[UPort]](maxPorts, None[UPort]())
 
-  def bridge(bridgeId: BridgeId): Bridge = {
-    val Some(r) = bridges(bridgeId)
-    return r
+  @pure def bridge(bridgeId: BridgeId): Bridge = {
+    return bridges(bridgeId).get
   }
 
-  def port(p: PortId) : UPort = {
-    val Some(r) = ports(p)
-    return r
+  @pure def port(p: PortId) : UPort = {
+    return ports(p).get
   }
 
   def register(bridge: Bridge): Unit = {
@@ -54,7 +55,7 @@ object Art {
     return ArtNative.dispatchStatus(bridgeId)
   }
 
-  def receiveInput(eventPortIds: ISZ[PortId], dataPortIds: ISZ[PortId]): Unit = { // RECEIVE_INPUT
+  def receiveInput(eventPortIds: IS[PortId, PortId], dataPortIds: IS[PortId, PortId]): Unit = { // RECEIVE_INPUT
     ArtNative.receiveInput(eventPortIds, dataPortIds)
   }
 
@@ -66,7 +67,7 @@ object Art {
     return ArtNative.getValue(portId)
   }
 
-  def sendOutput(eventPortIds: ISZ[Art.PortId], dataPortIds: ISZ[Art.PortId]): Unit = { // SEND_OUTPUT
+  def sendOutput(eventPortIds: IS[PortId, PortId], dataPortIds: IS[PortId, PortId]): Unit = { // SEND_OUTPUT
     ArtNative.sendOutput(eventPortIds, dataPortIds)
   }
 
@@ -258,7 +259,7 @@ object Art {
     ArtNative.finalizeSystemTest()
   }
 
-  def releaseOutput(eventPortIds: ISZ[Art.PortId], dataPortIds: ISZ[Art.PortId]): Unit = {
+  def releaseOutput(eventPortIds: IS[PortId, PortId], dataPortIds: IS[PortId, PortId]): Unit = {
     ArtNative.releaseOutput(eventPortIds, dataPortIds)
   }
 

@@ -1,6 +1,7 @@
 package isolette
 
 import org.sireum._
+import art.Art
 import art.scheduling.static.Schedule.DScheduleSpec
 
 // This file was auto-generated.  Do not edit

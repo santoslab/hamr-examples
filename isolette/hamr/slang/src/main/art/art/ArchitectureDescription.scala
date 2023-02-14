@@ -5,11 +5,11 @@ package art
 import org.sireum._
 
 
-@datatype class ArchitectureDescription(components: ISZ[Bridge],
-                                        connections: ISZ[UConnection]) {
-  @spec val allPorts: ISZ[UPort] = $
+@datatype class ArchitectureDescription(components: IS[Art.BridgeId, Bridge],
+                                        connections: IS[Art.ConnectionId, UConnection]) {
+  @spec val allPorts: IS[Art.PortId, UPort] = $
 
-  @spec def allPortsSpec(i: Z): ISZ[UPort] = $
+  @spec def allPortsSpec(i: Z): IS[Art.PortId, UPort] = $
   /*
     l"""
     = base:  ISZ[UPort](), if i == 0
@@ -118,11 +118,11 @@ object Bridge {
     def testInitialise(): Unit = { println("Default testInitialise") }
   }
 
-  @datatype class Ports(all: ISZ[UPort],
-                        dataIns: ISZ[UPort],
-                        dataOuts: ISZ[UPort],
-                        eventIns: ISZ[UPort],
-                        eventOuts: ISZ[UPort])
+  @datatype class Ports(all: IS[Art.PortId, UPort],
+                        dataIns: IS[Art.PortId, UPort],
+                        dataOuts: IS[Art.PortId, UPort],
+                        eventIns: IS[Art.PortId, UPort],
+                        eventOuts: IS[Art.PortId, UPort])
 
 }
 
@@ -146,4 +146,4 @@ object DispatchPropertyProtocol {
 
 @datatype class TimeTriggered() extends DispatchStatus
 
-@datatype class EventTriggered(portIds: ISZ[Art.PortId]) extends DispatchStatus
+@datatype class EventTriggered(portIds: IS[Art.PortId, Art.PortId]) extends DispatchStatus

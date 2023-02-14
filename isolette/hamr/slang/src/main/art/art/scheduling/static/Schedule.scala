@@ -3,7 +3,7 @@
 package art.scheduling.static
 
 import org.sireum._
-import art.{Art, Bridge}
+import art.Art
 
 object Schedule {
 
@@ -29,16 +29,16 @@ object Schedule {
 
   // contract invariants on schedule
 
-  @datatype class Slot(bridgeId: art.Art.BridgeId, length: Z)
+  @datatype class Slot(bridgeId: Art.BridgeId, length: Z)
 
   val emptyDScheduleSpec: DScheduleSpec = DScheduleSpec(0,0,DSchedule(ISZ()))
 
   // ---------- schedule structure
 
   var dScheduleSpec: DScheduleSpec = emptyDScheduleSpec
-  var domainToBridgeIdMap: ISZ[Art.BridgeId] = ISZ()
+  var domainToBridgeIdMap: IS[Art.BridgeId, Art.BridgeId] = IS[Art.BridgeId, Art.BridgeId]()
 
-  def setSchedule(spec: DScheduleSpec, bridgeMap: ISZ[Art.BridgeId]) : Unit = {
+  def setSchedule(spec: DScheduleSpec, bridgeMap: IS[Art.BridgeId, Art.BridgeId]) : Unit = {
     // pre-condition -- all structural invariants for the domain schedule hold
     validDScheduleSpec(spec)
     // checking period for each thread requires alignment with model -- cannot check that here -- client should guarantee
@@ -52,19 +52,19 @@ object Schedule {
 
   // --------- helper method for accessing schedule info
 
-  def getBridgeIdFromSlot(slot: Slot): Z = {
+  def getBridgeIdFromSlot(slot: Slot): Art.BridgeId = {
     //val domainId = slot.domain
     //val bridgeId = domainToBridgeIdMap(domainId).get
     val bridgeId = slot.bridgeId
     return bridgeId
   }
 
-  def getBridgeIdFromSlotNumber(slotNum: Z): Z = {
+  def getBridgeIdFromSlotNumber(slotNum: Z): Art.BridgeId = {
     val slot: Slot = dScheduleSpec.schedule.slots(slotNum)
     return getBridgeIdFromSlot(slot)
   }
 
-  def getBridgeId(scheduleState : Explorer.ScheduleState): Z = {
+  def getBridgeId(scheduleState : Explorer.ScheduleState): Art.BridgeId = {
     return getBridgeIdFromSlotNumber(scheduleState.slotNum)
   }
 

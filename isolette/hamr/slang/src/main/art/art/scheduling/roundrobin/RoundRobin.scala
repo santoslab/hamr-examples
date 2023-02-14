@@ -8,8 +8,8 @@ import art.{Art, ArtNative, DispatchPropertyProtocol}
 
 @record class RoundRobin(bridges: ISZ[art.Bridge]) extends Scheduler {
 
-  var lastDispatch: MS[Art.BridgeId, Art.Time] = MS.create(bridges.size, s64"0")
-  var lastSporadic: MS[Art.BridgeId, Art.Time] = MS.create(bridges.size, s64"0")
+  var lastDispatch: MS[Art.BridgeId, Art.Time] = MS.create[Art.BridgeId, Art.Time](bridges.size, s64"0")
+  var lastSporadic: MS[Art.BridgeId, Art.Time] = MS.create[Art.BridgeId, Art.Time](bridges.size, s64"0")
 
   override def initialize(): Unit = {
     RoundRobinExtensions.init()

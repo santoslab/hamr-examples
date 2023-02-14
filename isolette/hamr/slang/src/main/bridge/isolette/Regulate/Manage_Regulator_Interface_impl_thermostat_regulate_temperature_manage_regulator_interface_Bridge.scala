@@ -13,7 +13,7 @@ import isolette.Regulate.{Manage_Regulator_Interface_impl_thermostat_regulate_te
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[ISZ[Art.PortId]],
+  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
 
   upper_desired_tempWstatus: Port[Isolette_Data_Model.TempWstatus_impl],
   lower_desired_tempWstatus: Port[Isolette_Data_Model.TempWstatus_impl],
@@ -27,30 +27,30 @@ import isolette.Regulate.{Manage_Regulator_Interface_impl_thermostat_regulate_te
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = ISZ(upper_desired_tempWstatus,
-              lower_desired_tempWstatus,
-              current_tempWstatus,
-              regulator_mode,
-              upper_desired_temp,
-              lower_desired_temp,
-              displayed_temp,
-              regulator_status,
-              interface_failure),
+    all = IS[Art.PortId, art.UPort](upper_desired_tempWstatus,
+                                    lower_desired_tempWstatus,
+                                    current_tempWstatus,
+                                    regulator_mode,
+                                    upper_desired_temp,
+                                    lower_desired_temp,
+                                    displayed_temp,
+                                    regulator_status,
+                                    interface_failure),
 
-    dataIns = ISZ(upper_desired_tempWstatus,
-                  lower_desired_tempWstatus,
-                  current_tempWstatus,
-                  regulator_mode),
+    dataIns = IS[Art.PortId, art.UPort](upper_desired_tempWstatus,
+                                        lower_desired_tempWstatus,
+                                        current_tempWstatus,
+                                        regulator_mode),
 
-    dataOuts = ISZ(upper_desired_temp,
-                   lower_desired_temp,
-                   displayed_temp,
-                   regulator_status,
-                   interface_failure),
+    dataOuts = IS[Art.PortId, art.UPort](upper_desired_temp,
+                                         lower_desired_temp,
+                                         displayed_temp,
+                                         regulator_status,
+                                         interface_failure),
 
-    eventIns = ISZ(),
+    eventIns = IS[Art.PortId, art.UPort](),
 
-    eventOuts = ISZ()
+    eventOuts = IS[Art.PortId, art.UPort]()
   )
 
   val initialization_api : Manage_Regulator_Interface_impl_Initialization_Api = {
@@ -123,24 +123,24 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     displayed_temp_Id : Art.PortId,
     regulator_status_Id : Art.PortId,
     interface_failure_Id : Art.PortId,
-    dispatchTriggers : Option[ISZ[Art.PortId]],
+    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
     initialization_api: Manage_Regulator_Interface_impl_Initialization_Api,
     operational_api: Manage_Regulator_Interface_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: ISZ[Art.PortId] = ISZ(upper_desired_tempWstatus_Id,
-                                             lower_desired_tempWstatus_Id,
-                                             current_tempWstatus_Id,
-                                             regulator_mode_Id)
+    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS(upper_desired_tempWstatus_Id,
+                                                       lower_desired_tempWstatus_Id,
+                                                       current_tempWstatus_Id,
+                                                       regulator_mode_Id)
 
-    val eventInPortIds: ISZ[Art.PortId] = ISZ()
+    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
 
-    val dataOutPortIds: ISZ[Art.PortId] = ISZ(upper_desired_temp_Id,
-                                              lower_desired_temp_Id,
-                                              displayed_temp_Id,
-                                              regulator_status_Id,
-                                              interface_failure_Id)
+    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(upper_desired_temp_Id,
+                                                        lower_desired_temp_Id,
+                                                        displayed_temp_Id,
+                                                        regulator_status_Id,
+                                                        interface_failure_Id)
 
-    val eventOutPortIds: ISZ[Art.PortId] = ISZ()
+    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: Manage_Regulator_Interface_impl_Initialization_Api): Unit = {}

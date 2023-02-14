@@ -13,7 +13,7 @@ import isolette.Isolette.{operator_interface_thread_impl_operator_interface_oip_
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[ISZ[Art.PortId]],
+  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
 
   regulator_status: Port[Isolette_Data_Model.Status.Type],
   monitor_status: Port[Isolette_Data_Model.Status.Type],
@@ -26,28 +26,28 @@ import isolette.Isolette.{operator_interface_thread_impl_operator_interface_oip_
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = ISZ(regulator_status,
-              monitor_status,
-              display_temperature,
-              alarm_control,
-              lower_desired_tempWstatus,
-              upper_desired_tempWstatus,
-              lower_alarm_tempWstatus,
-              upper_alarm_tempWstatus),
+    all = IS[Art.PortId, art.UPort](regulator_status,
+                                    monitor_status,
+                                    display_temperature,
+                                    alarm_control,
+                                    lower_desired_tempWstatus,
+                                    upper_desired_tempWstatus,
+                                    lower_alarm_tempWstatus,
+                                    upper_alarm_tempWstatus),
 
-    dataIns = ISZ(regulator_status,
-                  monitor_status,
-                  display_temperature,
-                  alarm_control),
+    dataIns = IS[Art.PortId, art.UPort](regulator_status,
+                                        monitor_status,
+                                        display_temperature,
+                                        alarm_control),
 
-    dataOuts = ISZ(lower_desired_tempWstatus,
-                   upper_desired_tempWstatus,
-                   lower_alarm_tempWstatus,
-                   upper_alarm_tempWstatus),
+    dataOuts = IS[Art.PortId, art.UPort](lower_desired_tempWstatus,
+                                         upper_desired_tempWstatus,
+                                         lower_alarm_tempWstatus,
+                                         upper_alarm_tempWstatus),
 
-    eventIns = ISZ(),
+    eventIns = IS[Art.PortId, art.UPort](),
 
-    eventOuts = ISZ()
+    eventOuts = IS[Art.PortId, art.UPort]()
   )
 
   val initialization_api : operator_interface_thread_impl_Initialization_Api = {
@@ -116,23 +116,23 @@ object operator_interface_thread_impl_operator_interface_oip_oit_Bridge {
     upper_desired_tempWstatus_Id : Art.PortId,
     lower_alarm_tempWstatus_Id : Art.PortId,
     upper_alarm_tempWstatus_Id : Art.PortId,
-    dispatchTriggers : Option[ISZ[Art.PortId]],
+    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
     initialization_api: operator_interface_thread_impl_Initialization_Api,
     operational_api: operator_interface_thread_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: ISZ[Art.PortId] = ISZ(regulator_status_Id,
-                                             monitor_status_Id,
-                                             display_temperature_Id,
-                                             alarm_control_Id)
+    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS(regulator_status_Id,
+                                                       monitor_status_Id,
+                                                       display_temperature_Id,
+                                                       alarm_control_Id)
 
-    val eventInPortIds: ISZ[Art.PortId] = ISZ()
+    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
 
-    val dataOutPortIds: ISZ[Art.PortId] = ISZ(lower_desired_tempWstatus_Id,
-                                              upper_desired_tempWstatus_Id,
-                                              lower_alarm_tempWstatus_Id,
-                                              upper_alarm_tempWstatus_Id)
+    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(lower_desired_tempWstatus_Id,
+                                                        upper_desired_tempWstatus_Id,
+                                                        lower_alarm_tempWstatus_Id,
+                                                        upper_alarm_tempWstatus_Id)
 
-    val eventOutPortIds: ISZ[Art.PortId] = ISZ()
+    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: operator_interface_thread_impl_Initialization_Api): Unit = {}

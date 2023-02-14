@@ -2,6 +2,7 @@ package art
 
 import org.sireum._
 import art.Art.Time
+import art.Art.BridgeId._
 import scala.collection.mutable.{Map => MMap, Set => MSet}
 
 object ArtDebug_Ext {
@@ -35,7 +36,6 @@ object ArtDebug_Ext {
   }
 
   def injectPort(bridgeId: Art.BridgeId, port: Art.PortId, data: DataContent): Unit = {
-    assert(z"0" <= bridgeId && bridgeId < Art.maxComponents && Art.bridges(bridgeId).nonEmpty)
 
     val bridge = Art.bridges(bridgeId).get
     assert(bridge.ports.all.elements.map(_.id).contains(port))
