@@ -12,13 +12,13 @@ import art.scheduling.Scheduler
   def dispatchStatus(bridgeId: Art.BridgeId): DispatchStatus = $
 
 
-  def receiveInput(eventPortIds: IS[Art.PortId, Art.PortId], dataPortIds: IS[Art.PortId, Art.PortId]): Unit = $
+  def receiveInput(eventPortIds: ISZ[Art.PortId], dataPortIds: ISZ[Art.PortId]): Unit = $
 
   def putValue(portId: Art.PortId, data: DataContent): Unit = $
 
   def getValue(portId: Art.PortId): Option[DataContent] = $
 
-  def sendOutput(eventPortIds: IS[Art.PortId, Art.PortId], dataPortIds: IS[Art.PortId, Art.PortId]): Unit = $
+  def sendOutput(eventPortIds: ISZ[Art.PortId], dataPortIds: ISZ[Art.PortId]): Unit = $
 
 
   def logInfo(title: String, msg: String): Unit = $
@@ -106,7 +106,7 @@ import art.scheduling.Scheduler
    * @param eventPortIds the event ports to be "copied and cleared" (but currently nothing happens)
    * @param dataPortIds the data ports to be "copied and cleared" (but currently nothing happens)
    */
-  def releaseOutput(eventPortIds: IS[Art.PortId, Art.PortId], dataPortIds: IS[Art.PortId, Art.PortId]): Unit = $
+  def releaseOutput(eventPortIds: ISZ[Art.PortId], dataPortIds: ISZ[Art.PortId]): Unit = $
 
   /**
    * Because a bridge's testCompute() doesn't clear outputs, this method can be used by users to manually

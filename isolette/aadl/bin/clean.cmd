@@ -22,6 +22,7 @@ val hamrDir: Os.Path = Os.slashDir.up.up / "hamr"
 val slangDir = hamrDir / "slang"
 
 val toKeep = ops.ISZOps(ISZ(
+  (slangDir / "bin"),
   (slangDir / "src" / "main" / "component"),
   (slangDir / "src" / "test" / "bridge"),
 ))

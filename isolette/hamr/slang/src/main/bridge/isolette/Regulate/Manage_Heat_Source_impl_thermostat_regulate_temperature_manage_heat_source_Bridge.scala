@@ -13,7 +13,7 @@ import isolette.Regulate.{Manage_Heat_Source_impl_thermostat_regulate_temperatur
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
+  val dispatchTriggers: Option[ISZ[Art.PortId]],
 
   current_tempWstatus: Port[Isolette_Data_Model.TempWstatus_impl],
   lower_desired_temp: Port[Isolette_Data_Model.Temp_impl],
@@ -23,22 +23,16 @@ import isolette.Regulate.{Manage_Heat_Source_impl_thermostat_regulate_temperatur
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = IS[Art.PortId, art.UPort](current_tempWstatus,
-                                    lower_desired_temp,
-                                    upper_desired_temp,
-                                    regulator_mode,
-                                    heat_control),
+    dataIns = ISZ[art.UPort](current_tempWstatus,
+                             lower_desired_temp,
+                             upper_desired_temp,
+                             regulator_mode),
 
-    dataIns = IS[Art.PortId, art.UPort](current_tempWstatus,
-                                        lower_desired_temp,
-                                        upper_desired_temp,
-                                        regulator_mode),
+    dataOuts = ISZ[art.UPort](heat_control),
 
-    dataOuts = IS[Art.PortId, art.UPort](heat_control),
+    eventIns = ISZ[art.UPort](),
 
-    eventIns = IS[Art.PortId, art.UPort](),
-
-    eventOuts = IS[Art.PortId, art.UPort]()
+    eventOuts = ISZ[art.UPort]()
   )
 
   val initialization_api : Manage_Heat_Source_impl_Initialization_Api = {
@@ -95,20 +89,20 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     upper_desired_temp_Id : Art.PortId,
     regulator_mode_Id : Art.PortId,
     heat_control_Id : Art.PortId,
-    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
+    dispatchTriggers : Option[ISZ[Art.PortId]],
     initialization_api: Manage_Heat_Source_impl_Initialization_Api,
     operational_api: Manage_Heat_Source_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS(current_tempWstatus_Id,
-                                                       lower_desired_temp_Id,
-                                                       upper_desired_temp_Id,
-                                                       regulator_mode_Id)
+    val dataInPortIds: ISZ[Art.PortId] = IS(current_tempWstatus_Id,
+                                            lower_desired_temp_Id,
+                                            upper_desired_temp_Id,
+                                            regulator_mode_Id)
 
-    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventInPortIds: ISZ[Art.PortId] = IS()
 
-    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(heat_control_Id)
+    val dataOutPortIds: ISZ[Art.PortId] = IS(heat_control_Id)
 
-    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: Manage_Heat_Source_impl_Initialization_Api): Unit = {}

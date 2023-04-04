@@ -8,7 +8,7 @@ import art.scheduling.static.Schedule.DScheduleSpec
 
 object ScheduleProvider {
 
-  def getRoundRobinOrder(): ISZ[art.Bridge] = {
+  def getRoundRobinOrder(): ISZ[Art.BridgeId] = {
     return Schedulers.roundRobinSchedule
   }
 

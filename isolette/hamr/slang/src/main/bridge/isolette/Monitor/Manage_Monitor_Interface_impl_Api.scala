@@ -23,7 +23,9 @@ import isolette._
   def put_upper_alarm_temp(value : Isolette_Data_Model.Temp_impl) : Unit = {
     Contract(
       Modifies(upper_alarm_temp),
-      Ensures(upper_alarm_temp == value)
+      Ensures(
+        upper_alarm_temp == value
+      )
     )
     Spec {
       upper_alarm_temp = value
@@ -38,7 +40,9 @@ import isolette._
   def put_lower_alarm_temp(value : Isolette_Data_Model.Temp_impl) : Unit = {
     Contract(
       Modifies(lower_alarm_temp),
-      Ensures(lower_alarm_temp == value)
+      Ensures(
+        lower_alarm_temp == value
+      )
     )
     Spec {
       lower_alarm_temp = value
@@ -53,7 +57,9 @@ import isolette._
   def put_monitor_status(value : Isolette_Data_Model.Status.Type) : Unit = {
     Contract(
       Modifies(monitor_status),
-      Ensures(monitor_status == value)
+      Ensures(
+        monitor_status == value
+      )
     )
     Spec {
       monitor_status = value
@@ -68,7 +74,9 @@ import isolette._
   def put_interface_failure(value : Isolette_Data_Model.Failure_Flag_impl) : Unit = {
     Contract(
       Modifies(interface_failure),
-      Ensures(interface_failure == value)
+      Ensures(
+        interface_failure == value
+      )
     )
     Spec {
       interface_failure = value

@@ -31,14 +31,14 @@ object Schedule {
 
   @datatype class Slot(bridgeId: Art.BridgeId, length: Z)
 
-  val emptyDScheduleSpec: DScheduleSpec = DScheduleSpec(0,0,DSchedule(ISZ()))
+  val emptyDScheduleSpec: DScheduleSpec = DScheduleSpec(0, 0, DSchedule(ISZ()))
 
   // ---------- schedule structure
 
   var dScheduleSpec: DScheduleSpec = emptyDScheduleSpec
   var domainToBridgeIdMap: IS[Art.BridgeId, Art.BridgeId] = IS[Art.BridgeId, Art.BridgeId]()
 
-  def setSchedule(spec: DScheduleSpec, bridgeMap: IS[Art.BridgeId, Art.BridgeId]) : Unit = {
+  def setSchedule(spec: DScheduleSpec, bridgeMap: IS[Art.BridgeId, Art.BridgeId]): Unit = {
     // pre-condition -- all structural invariants for the domain schedule hold
     validDScheduleSpec(spec)
     // checking period for each thread requires alignment with model -- cannot check that here -- client should guarantee
@@ -64,7 +64,7 @@ object Schedule {
     return getBridgeIdFromSlot(slot)
   }
 
-  def getBridgeId(scheduleState : Explorer.ScheduleState): Art.BridgeId = {
+  def getBridgeId(scheduleState: Explorer.ScheduleState): Art.BridgeId = {
     return getBridgeIdFromSlotNumber(scheduleState.slotNum)
   }
 
@@ -89,7 +89,7 @@ object Schedule {
      */
   }
 
-  def threadNickNameFromScheduleState(scheduleState: Explorer.ScheduleState) : String = {
+  def threadNickNameFromScheduleState(scheduleState: Explorer.ScheduleState): String = {
     val bridgeId = Schedule.getBridgeIdFromSlotNumber(scheduleState.slotNum)
     return threadNickName(bridgeId)
   }
@@ -118,9 +118,9 @@ object Schedule {
 
   // aggregate invariant on static schedule
   def validDScheduleSpec(dScheduleSpec: DScheduleSpec): B = {
-    checkMaxDomain(dScheduleSpec)
-    checkNoMissingDomain(dScheduleSpec)
-    checkHyperPeriodTicks(dScheduleSpec)
+    return checkMaxDomain(dScheduleSpec) &&
+      checkNoMissingDomain(dScheduleSpec) &&
+      checkHyperPeriodTicks(dScheduleSpec)
   }
 
   // Invariant: no domain id referenced in a slot exceeds the specified max domain
@@ -216,7 +216,7 @@ object Schedule {
      */
   }
 
-  def computeElaspedRemainingHPTicks(slotNum: Z, dScheduleSpec: DScheduleSpec) : (Z,Z) = {
+  def computeElaspedRemainingHPTicks(slotNum: Z, dScheduleSpec: DScheduleSpec): (Z, Z) = {
     // pre-condition
     //  TODO: well-formed dScheduleSpec
     //  TODO: valid slotNum (define function for below)
@@ -227,7 +227,7 @@ object Schedule {
       elaspedHPTicks = elaspedHPTicks + dScheduleSpec.schedule.slots(0).length
     }
     val remainingHPTicks: Z = dScheduleSpec.hyperPeriod - elaspedHPTicks
-    return (elaspedHPTicks,remainingHPTicks)
+    return (elaspedHPTicks, remainingHPTicks)
   }
 }
 

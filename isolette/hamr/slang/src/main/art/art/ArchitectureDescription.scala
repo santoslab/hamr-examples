@@ -7,9 +7,9 @@ import org.sireum._
 
 @datatype class ArchitectureDescription(components: IS[Art.BridgeId, Bridge],
                                         connections: IS[Art.ConnectionId, UConnection]) {
-  @spec val allPorts: IS[Art.PortId, UPort] = $
+  @spec val allPorts: ISZ[UPort] = $
 
-  @spec def allPortsSpec(i: Z): IS[Art.PortId, UPort] = $
+  @spec def allPortsSpec(i: Z): ISZ[UPort] = $
   /*
     l"""
     = base:  ISZ[UPort](), if i == 0
@@ -113,16 +113,19 @@ object Bridge {
 
     def finalise(): Unit
 
-    def testCompute(): Unit = { println("Default testCompute") }
+    def testCompute(): Unit = {
+      println("Default testCompute")
+    }
 
-    def testInitialise(): Unit = { println("Default testInitialise") }
+    def testInitialise(): Unit = {
+      println("Default testInitialise")
+    }
   }
 
-  @datatype class Ports(all: IS[Art.PortId, UPort],
-                        dataIns: IS[Art.PortId, UPort],
-                        dataOuts: IS[Art.PortId, UPort],
-                        eventIns: IS[Art.PortId, UPort],
-                        eventOuts: IS[Art.PortId, UPort])
+  @datatype class Ports(dataIns: ISZ[UPort],
+                        dataOuts: ISZ[UPort],
+                        eventIns: ISZ[UPort],
+                        eventOuts: ISZ[UPort])
 
 }
 
@@ -146,4 +149,4 @@ object DispatchPropertyProtocol {
 
 @datatype class TimeTriggered() extends DispatchStatus
 
-@datatype class EventTriggered(portIds: IS[Art.PortId, Art.PortId]) extends DispatchStatus
+@datatype class EventTriggered(portIds: ISZ[Art.PortId]) extends DispatchStatus

@@ -24,7 +24,9 @@ import isolette._
   def put_upper_desired_temp(value : Isolette_Data_Model.Temp_impl) : Unit = {
     Contract(
       Modifies(upper_desired_temp),
-      Ensures(upper_desired_temp == value)
+      Ensures(
+        upper_desired_temp == value
+      )
     )
     Spec {
       upper_desired_temp = value
@@ -39,7 +41,9 @@ import isolette._
   def put_lower_desired_temp(value : Isolette_Data_Model.Temp_impl) : Unit = {
     Contract(
       Modifies(lower_desired_temp),
-      Ensures(lower_desired_temp == value)
+      Ensures(
+        lower_desired_temp == value
+      )
     )
     Spec {
       lower_desired_temp = value
@@ -54,7 +58,9 @@ import isolette._
   def put_displayed_temp(value : Isolette_Data_Model.Temp_impl) : Unit = {
     Contract(
       Modifies(displayed_temp),
-      Ensures(displayed_temp == value)
+      Ensures(
+        displayed_temp == value
+      )
     )
     Spec {
       displayed_temp = value
@@ -69,7 +75,9 @@ import isolette._
   def put_regulator_status(value : Isolette_Data_Model.Status.Type) : Unit = {
     Contract(
       Modifies(regulator_status),
-      Ensures(regulator_status == value)
+      Ensures(
+        regulator_status == value
+      )
     )
     Spec {
       regulator_status = value
@@ -84,7 +92,9 @@ import isolette._
   def put_interface_failure(value : Isolette_Data_Model.Failure_Flag_impl) : Unit = {
     Contract(
       Modifies(interface_failure),
-      Ensures(interface_failure == value)
+      Ensures(
+        interface_failure == value
+      )
     )
     Spec {
       interface_failure = value

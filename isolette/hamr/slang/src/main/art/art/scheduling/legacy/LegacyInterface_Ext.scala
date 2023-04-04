@@ -32,7 +32,7 @@ object LegacyInterface_Ext {
               }
             }
             catch {
-              case x : Throwable =>
+              case x: Throwable =>
                 x.printStackTrace()
                 terminated = true
             }

@@ -13,23 +13,20 @@ import isolette.Devices.{Temperature_Sensor_impl_temperature_sensor_cpi_thermost
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
+  val dispatchTriggers: Option[ISZ[Art.PortId]],
 
   air: Port[Isolette_Data_Model.PhysicalTemp_impl],
   current_tempWstatus: Port[Isolette_Data_Model.TempWstatus_impl]
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = IS[Art.PortId, art.UPort](air,
-                                    current_tempWstatus),
+    dataIns = ISZ[art.UPort](air),
 
-    dataIns = IS[Art.PortId, art.UPort](air),
+    dataOuts = ISZ[art.UPort](current_tempWstatus),
 
-    dataOuts = IS[Art.PortId, art.UPort](current_tempWstatus),
+    eventIns = ISZ[art.UPort](),
 
-    eventIns = IS[Art.PortId, art.UPort](),
-
-    eventOuts = IS[Art.PortId, art.UPort]()
+    eventOuts = ISZ[art.UPort]()
   )
 
   val initialization_api : Temperature_Sensor_impl_Initialization_Api = {
@@ -74,17 +71,17 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_Bridge {
     Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_BridgeId : Art.BridgeId,
     air_Id : Art.PortId,
     current_tempWstatus_Id : Art.PortId,
-    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
+    dispatchTriggers : Option[ISZ[Art.PortId]],
     initialization_api: Temperature_Sensor_impl_Initialization_Api,
     operational_api: Temperature_Sensor_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS(air_Id)
+    val dataInPortIds: ISZ[Art.PortId] = IS(air_Id)
 
-    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventInPortIds: ISZ[Art.PortId] = IS()
 
-    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(current_tempWstatus_Id)
+    val dataOutPortIds: ISZ[Art.PortId] = IS(current_tempWstatus_Id)
 
-    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: Temperature_Sensor_impl_Initialization_Api): Unit = {}

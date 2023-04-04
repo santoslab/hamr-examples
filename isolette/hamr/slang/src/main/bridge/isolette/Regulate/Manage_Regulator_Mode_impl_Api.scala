@@ -19,7 +19,9 @@ import isolette._
   def put_regulator_mode(value : Isolette_Data_Model.Regulator_Mode.Type) : Unit = {
     Contract(
       Modifies(regulator_mode),
-      Ensures(regulator_mode == value)
+      Ensures(
+        regulator_mode == value
+      )
     )
     Spec {
       regulator_mode = value

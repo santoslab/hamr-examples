@@ -13,21 +13,19 @@ import isolette.Monitor.{Detect_Monitor_Failure_impl_thermostat_monitor_temperat
   val id: Art.BridgeId,
   val name: String,
   val dispatchProtocol: DispatchPropertyProtocol,
-  val dispatchTriggers: Option[IS[Art.PortId, Art.PortId]],
+  val dispatchTriggers: Option[ISZ[Art.PortId]],
 
   internal_failure: Port[Isolette_Data_Model.Failure_Flag_impl]
   ) extends Bridge {
 
   val ports : Bridge.Ports = Bridge.Ports(
-    all = IS[Art.PortId, art.UPort](internal_failure),
+    dataIns = ISZ[art.UPort](),
 
-    dataIns = IS[Art.PortId, art.UPort](),
+    dataOuts = ISZ[art.UPort](internal_failure),
 
-    dataOuts = IS[Art.PortId, art.UPort](internal_failure),
+    eventIns = ISZ[art.UPort](),
 
-    eventIns = IS[Art.PortId, art.UPort](),
-
-    eventOuts = IS[Art.PortId, art.UPort]()
+    eventOuts = ISZ[art.UPort]()
   )
 
   val initialization_api : Detect_Monitor_Failure_impl_Initialization_Api = {
@@ -68,17 +66,17 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
   @datatype class EntryPoints(
     Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_BridgeId : Art.BridgeId,
     internal_failure_Id : Art.PortId,
-    dispatchTriggers : Option[IS[Art.PortId, Art.PortId]],
+    dispatchTriggers : Option[ISZ[Art.PortId]],
     initialization_api: Detect_Monitor_Failure_impl_Initialization_Api,
     operational_api: Detect_Monitor_Failure_impl_Operational_Api) extends Bridge.EntryPoints {
 
-    val dataInPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val dataInPortIds: ISZ[Art.PortId] = IS()
 
-    val eventInPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventInPortIds: ISZ[Art.PortId] = IS()
 
-    val dataOutPortIds: IS[Art.PortId, Art.PortId] = IS(internal_failure_Id)
+    val dataOutPortIds: ISZ[Art.PortId] = IS(internal_failure_Id)
 
-    val eventOutPortIds: IS[Art.PortId, Art.PortId] = IS()
+    val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
       // implement the following method in 'component':  def initialise(api: Detect_Monitor_Failure_impl_Initialization_Api): Unit = {}

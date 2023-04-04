@@ -20,7 +20,9 @@ import isolette._
   def put_alarm_control(value : Isolette_Data_Model.On_Off.Type) : Unit = {
     Contract(
       Modifies(alarm_control),
-      Ensures(alarm_control == value)
+      Ensures(
+        alarm_control == value
+      )
     )
     Spec {
       alarm_control = value

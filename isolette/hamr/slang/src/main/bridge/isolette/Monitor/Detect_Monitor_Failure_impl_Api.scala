@@ -10,7 +10,20 @@ import isolette._
   def id: Art.BridgeId
   def internal_failure_Id : Art.PortId
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var internal_failure: Isolette_Data_Model.Failure_Flag_impl = $
+
   def put_internal_failure(value : Isolette_Data_Model.Failure_Flag_impl) : Unit = {
+    Contract(
+      Modifies(internal_failure),
+      Ensures(
+        internal_failure == value
+      )
+    )
+    Spec {
+      internal_failure = value
+    }
+
     Art.putValue(internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 

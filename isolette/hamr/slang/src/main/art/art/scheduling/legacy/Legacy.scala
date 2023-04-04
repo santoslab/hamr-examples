@@ -8,7 +8,7 @@ import art.scheduling.Scheduler
 
 @record class Legacy(bridges: IS[Art.BridgeId, art.Bridge]) extends Scheduler {
 
-  override def initialize(): Unit = { }
+  override def initialize(): Unit = {}
 
   override def initializationPhase(): Unit = {
     for (bridge <- bridges) {

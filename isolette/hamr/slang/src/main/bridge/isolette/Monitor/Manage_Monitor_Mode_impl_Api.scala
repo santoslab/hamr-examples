@@ -19,7 +19,9 @@ import isolette._
   def put_monitor_mode(value : Isolette_Data_Model.Monitor_Mode.Type) : Unit = {
     Contract(
       Modifies(monitor_mode),
-      Ensures(monitor_mode == value)
+      Ensures(
+        monitor_mode == value
+      )
     )
     Spec {
       monitor_mode = value

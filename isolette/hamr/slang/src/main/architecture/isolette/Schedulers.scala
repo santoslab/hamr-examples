@@ -62,12 +62,12 @@ object Schedulers {
     domain = None())
 
   // roundRobinSchedule represents the component dispatch order
-  val roundRobinSchedule: ISZ[art.Bridge] = {
-    // convert IS[Art.BridgeId, art.Bridge] to an IS[Z, art.Bridge] to allow bridges to be dispatched
+  val roundRobinSchedule: ISZ[Art.BridgeId] = {
+    // convert IS[Art.BridgeId, art.Bridge] to an IS[Z, Art.BridgeId] to allow bridges to be dispatched
     // multiple times during a hyper-period
-    var ret: ISZ[art.Bridge] = ISZ()
+    var ret: ISZ[Art.BridgeId] = ISZ()
     for(e <- Arch.ad.components) {
-      ret = ret :+ e
+      ret = ret :+ e.id
     }
     ret
   }
@@ -91,7 +91,7 @@ object Schedulers {
   )))
 
 
-  def getRoundRobinScheduler(schedule: Option[ISZ[art.Bridge]]): RoundRobin = {
+  def getRoundRobinScheduler(schedule: Option[ISZ[Art.BridgeId]]): RoundRobin = {
     if(roundRobinSchedule.isEmpty) {} // line needed for transpiler; do not remove
     schedule match {
       case Some(s) => return RoundRobin(s)
@@ -112,7 +112,9 @@ object Schedulers {
   }
 }
 
+// the purpose of this extension is to allow users to provide custom schedules
+// at the C level after transpiling
 @ext(name = "ScheduleProvider") object ScheduleProviderI {
-  def getRoundRobinOrder(): ISZ[art.Bridge] = $
+  def getRoundRobinOrder(): ISZ[Art.BridgeId] = $
   def getStaticSchedule(): DScheduleSpec = $
 }

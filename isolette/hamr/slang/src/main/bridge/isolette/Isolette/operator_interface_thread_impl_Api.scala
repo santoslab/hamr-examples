@@ -17,19 +17,71 @@ import isolette._
   def lower_alarm_tempWstatus_Id : Art.PortId
   def upper_alarm_tempWstatus_Id : Art.PortId
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var lower_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl = $
+
   def put_lower_desired_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl) : Unit = {
+    Contract(
+      Modifies(lower_desired_tempWstatus),
+      Ensures(
+        lower_desired_tempWstatus == value
+      )
+    )
+    Spec {
+      lower_desired_tempWstatus = value
+    }
+
     Art.putValue(lower_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl = $
+
   def put_upper_desired_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl) : Unit = {
+    Contract(
+      Modifies(upper_desired_tempWstatus),
+      Ensures(
+        upper_desired_tempWstatus == value
+      )
+    )
+    Spec {
+      upper_desired_tempWstatus = value
+    }
+
     Art.putValue(upper_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl = $
+
   def put_lower_alarm_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl) : Unit = {
+    Contract(
+      Modifies(lower_alarm_tempWstatus),
+      Ensures(
+        lower_alarm_tempWstatus == value
+      )
+    )
+    Spec {
+      lower_alarm_tempWstatus = value
+    }
+
     Art.putValue(lower_alarm_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
+  // Logika spec var representing port state for outgoing data port
+  @spec var upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl = $
+
   def put_upper_alarm_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl) : Unit = {
+    Contract(
+      Modifies(upper_alarm_tempWstatus),
+      Ensures(
+        upper_alarm_tempWstatus == value
+      )
+    )
+    Spec {
+      upper_alarm_tempWstatus = value
+    }
+
     Art.putValue(upper_alarm_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
@@ -68,7 +120,15 @@ import isolette._
   val lower_alarm_tempWstatus_Id : Art.PortId,
   val upper_alarm_tempWstatus_Id : Art.PortId) extends operator_interface_thread_impl_Api {
 
+  // Logika spec var representing port state for incoming data port
+  @spec var regulator_status: Isolette_Data_Model.Status.Type = $
+
   def get_regulator_status() : Option[Isolette_Data_Model.Status.Type] = {
+    Contract(
+      Ensures(
+        Res == Some(regulator_status)
+      )
+    )
     val value : Option[Isolette_Data_Model.Status.Type] = Art.getValue(regulator_status_Id) match {
       case Some(Isolette_Data_Model.Status_Payload(v)) => Some(v)
       case Some(v) =>
@@ -79,7 +139,15 @@ import isolette._
     return value
   }
 
+  // Logika spec var representing port state for incoming data port
+  @spec var monitor_status: Isolette_Data_Model.Status.Type = $
+
   def get_monitor_status() : Option[Isolette_Data_Model.Status.Type] = {
+    Contract(
+      Ensures(
+        Res == Some(monitor_status)
+      )
+    )
     val value : Option[Isolette_Data_Model.Status.Type] = Art.getValue(monitor_status_Id) match {
       case Some(Isolette_Data_Model.Status_Payload(v)) => Some(v)
       case Some(v) =>
@@ -90,7 +158,15 @@ import isolette._
     return value
   }
 
+  // Logika spec var representing port state for incoming data port
+  @spec var display_temperature: Isolette_Data_Model.Temp_impl = $
+
   def get_display_temperature() : Option[Isolette_Data_Model.Temp_impl] = {
+    Contract(
+      Ensures(
+        Res == Some(display_temperature)
+      )
+    )
     val value : Option[Isolette_Data_Model.Temp_impl] = Art.getValue(display_temperature_Id) match {
       case Some(Isolette_Data_Model.Temp_impl_Payload(v)) => Some(v)
       case Some(v) =>
@@ -101,7 +177,15 @@ import isolette._
     return value
   }
 
+  // Logika spec var representing port state for incoming data port
+  @spec var alarm_control: Isolette_Data_Model.On_Off.Type = $
+
   def get_alarm_control() : Option[Isolette_Data_Model.On_Off.Type] = {
+    Contract(
+      Ensures(
+        Res == Some(alarm_control)
+      )
+    )
     val value : Option[Isolette_Data_Model.On_Off.Type] = Art.getValue(alarm_control_Id) match {
       case Some(Isolette_Data_Model.On_Off_Payload(v)) => Some(v)
       case Some(v) =>

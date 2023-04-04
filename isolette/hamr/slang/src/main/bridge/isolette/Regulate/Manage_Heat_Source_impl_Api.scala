@@ -20,7 +20,9 @@ import isolette._
   def put_heat_control(value : Isolette_Data_Model.On_Off.Type) : Unit = {
     Contract(
       Modifies(heat_control),
-      Ensures(heat_control == value)
+      Ensures(
+        heat_control == value
+      )
     )
     Spec {
       heat_control = value
