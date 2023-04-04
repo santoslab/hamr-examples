@@ -77,7 +77,9 @@ for(f <- files) {
   println(s"Checking ${f.file.name}")
   println(st"sireum ${(input, " ")}".render)
 
+  val start = org.sireum.extension.Time.currentMillis
   val results = Sireum.runWithReporter(input, reporter)
+  val elapsed = s"in ${(org.sireum.extension.Time.currentMillis - start) / 1000} s"
 
   var report =  ISZ[String]()
 
@@ -101,7 +103,7 @@ for(f <- files) {
   } else {
     println(s"  Everything accounted for:")
   }
-  println(s"  Verification ${if(results._1 == 0) "succeeded!" else "failed"}\n")
+  println(s"  Verification ${if(results._1 == 0) s"succeeded $elapsed!" else s"failed $elapsed"}\n")
 }
 
 Os.exit(result)
