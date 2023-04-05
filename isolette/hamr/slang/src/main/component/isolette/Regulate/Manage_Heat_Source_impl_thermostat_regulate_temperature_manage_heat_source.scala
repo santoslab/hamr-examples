@@ -24,7 +24,9 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
         // BEGIN INITIALIZES ENSURES
         // guarantee initlastCmd
         lastCmd == Isolette_Data_Model.On_Off.Off,
-        // guarantee initheatcontrol
+        // guarantee REQ_MHS_1
+        //   If the Regulator Mode is INIT, the Heat Control shall be
+        //   set to Off
         api.heat_control == Isolette_Data_Model.On_Off.Off
         // END INITIALIZES ENSURES
       )
@@ -53,20 +55,27 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
         // guarantee lastCmd
         //   Set lastCmd to value of output Cmd port
         lastCmd == api.heat_control,
-        // case ReqMHS1
-        //   Req-MHS-1
+        // case REQ_MHS_1
+        //   If the Regulator Mode is INIT, the Heat Control shall be
+        //   set to Off.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off),
-        // case ReqMHS2
-        //   Req-MHS-2
+        // case REQ_MHS_2
+        //   If the Regulator Mode is NORMAL and the Current Temperature is less than
+        //   the Lower Desired Temperature, the Heat Control shall be set to On.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value < api.lower_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Onn),
-        // case ReqMHS3
-        //   Req-MHS-3
+        // case REQ_MHS_3
+        //   If the Regulator Mode is NORMAL and the Current Temperature is greater than
+        //   the Upper Desired Temperature, the Heat Control shall be set to Off.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value > api.upper_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off),
-        // case ReqMHS4
-        //   Req-MHS-4
+        // case REQ_MHS_4
+        //   If the Regulator Mode is NORMAL and the Current
+        //   Temperature is greater than or equal to the Lower Desired Temperature
+        //   and less than or equal to the Upper Desired Temperature, the value of
+        //   the Heat Control shall not be changed.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & (api.current_tempWstatus.value >= api.lower_desired_temp.value & api.current_tempWstatus.value <= api.upper_desired_temp.value)) -->: (api.heat_control == In(lastCmd)),
-        // case ReqMHS5
-        //   Req-MHS-5
+        // case REQ_MHS_5
+        //   If the Regulator Mode is FAILED, the Heat Control shall be
+        //   set to Off.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off)
         // END COMPUTE ENSURES timeTriggered
       )

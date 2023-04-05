@@ -60,27 +60,46 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       ),
       Ensures(
         // BEGIN COMPUTE ENSURES timeTriggered
-        // case REQMRI1
-        //   REQ-MRI-1
+        // case REQ_MRI_1
+        //   If the Regulator Mode is INIT,
+        //   the Regulator Status shall be set to Init.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.Init_Status),
-        // case REQMRI2
-        //   REQ-MRI-2
+        // case REQ_MRI_2
+        //   If the Regulator Mode is NORMAL,
+        //   the Regulator Status shall be set to On
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.On_Status),
-        // case REQMRI3
-        //   REQ-MRI-3
+        // case REQ_MRI_3
+        //   If the Regulator Mode is FAILED,
+        //   the Regulator Status shall be set to Failed.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.Failed_Status),
-        // case REQMRI4
-        //   REQ-MRI-4
+        // case REQ_MRI_4
+        //   If the Regulator Mode is NORMAL, the
+        //   Display Temperature shall be set to the value of the
+        //   Current Temperature rounded to the nearest integer.
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (api.displayed_temp.value == Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.ROUND(api.current_tempWstatus.value)),
-        // case REQMRI6
-        //   REQ-MRI-6
+        // case REQ_MRI_5
+        //   If the Regulator Mode is not NORMAL,
+        //   the value of the Display Temperature is UNSPECIFIED.
+        (T) -->: (T),
+        // case REQ_MRI_6
+        //   If the Status attribute of the Lower Desired Temperature
+        //   or the Upper Desired Temperature is Invalid,
+        //   the Regulator Interface Failure shall be set to True.
         (api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid | api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.interface_failure.value),
-        // case REQMRI7
-        //   REQ-MRI-7
+        // case REQ_MRI_7
+        //   If the Status attribute of the Lower Desired Temperature
+        //   and the Upper Desired Temperature is Valid,
+        //   the Regulator Interface Failure shall be set to False.
         (T) -->: (api.interface_failure.value == !(api.upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid & api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
-        // case REQMRI8
-        //   REQ-MRI-8
-        (!(api.interface_failure.value)) -->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value & api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)
+        // case REQ_MRI_8
+        //   If the Regulator Interface Failure is False
+        (!(api.interface_failure.value)) -->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value & api.upper_desired_temp.value == api.upper_desired_tempWstatus.value),
+        // case REQ_MRI_9
+        //   If the Regulator Interface Failure is True,
+        //   the Desired Range is UNSPECIFIED.
+        //   the Desired Range shall be set to the Desired Temperature Range.
+        //   (** currently omitted due to the 'UNSPECIFIED' **)
+        (T) -->: (T)
         // END COMPUTE ENSURES timeTriggered
       )
     )

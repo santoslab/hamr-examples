@@ -62,6 +62,8 @@ process implementation Regulate_Temperature.impl
   --and temperature  status,  determines the mode of the regulator process (i.e., if the mode is Init, Normal, or Failed modes)
   manage_regulator_mode : thread manage_regulator_mode.impl;
 
+  detect_regulator_failure : thread detect_regulator_failure.impl;
+  
 	connections
 	-- Reflects the data dependencies in AR-08-32 Figure A-3
 	--  (note Detect Regulator Failure not modeled currently)
@@ -101,6 +103,8 @@ process implementation Regulate_Temperature.impl
 
 -- ("Regulator Interface Failure") - send regulator interface failure to mode manager
   rif : port manage_regulator_interface.interface_failure -> manage_regulator_mode.interface_failure;
+  
+  mif : port detect_regulator_failure.internal_failure -> manage_regulator_mode.internal_failure;
 end Regulate_Temperature.impl;
 
 
@@ -205,63 +209,62 @@ thread Manage_Regulator_Interface
   
       cases
       -- ====== Regulator Status ======    
-      --   REQ-MRI-1: 
-      --     If the Regulator Mode is INIT,
-      --     the Regulator Status shall be set to Init.
-        case REQMRI1 "REQ-MRI-1":
+
+        case REQ_MRI_1 "If the Regulator Mode is INIT,
+      					|the Regulator Status shall be set to Init.":
           assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
           guarantee regulator_status == Isolette_Data_Model::Status.Init_Status;
-      --   REQ-MRI-2: 
-      --    If the Regulator Mode is NORMAL,
-      --    the Regulator Status shall be set to On.    
-        case REQMRI2 "REQ-MRI-2":
+
+        case REQ_MRI_2 "If the Regulator Mode is NORMAL,
+      					|the Regulator Status shall be set to On":
           assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
           guarantee regulator_status == Isolette_Data_Model::Status.On_Status;
-      --   REQ-MRI-3: 
-      --    If the Regulator Mode is FAILED,
-      --    the Regulator Status shall be set to Failed.   
-        case REQMRI3 "REQ-MRI-3":
+
+        case REQ_MRI_3 "If the Regulator Mode is FAILED,
+      					|the Regulator Status shall be set to Failed.":
           assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
           guarantee regulator_status == Isolette_Data_Model::Status.Failed_Status;
+
       -- ===== Display Temperature =====
-      --   REQ-MRI-4: 
-      --    If the Regulator Mode is NORMAL, the
-      --    Display Temperature shall be set to the value of the
-      --    Current Temperature rounded to the nearest integer.    
-        case REQMRI4 "REQ-MRI-4":
+
+        case REQ_MRI_4 "If the Regulator Mode is NORMAL, the
+      					|Display Temperature shall be set to the value of the
+      					|Current Temperature rounded to the nearest integer.":
           assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
           guarantee displayed_temp.value == ROUND(current_tempWstatus.value);
-      --   REQ-MRI-5:
-      --    If the Regulator Mode is not NORMAL,
-      --    the value of the Display Temperature is UNSPECIFIED.
-        --case REQMRI5 "REQ-MRI-5": NO CASE NEEDED
-        --assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-        --guarantee displayed_temp ==
+
+		case REQ_MRI_5 "If the Regulator Mode is not NORMAL,
+      					|the value of the Display Temperature is UNSPECIFIED.": 
+      	  assume T;
+      	  guarantee T;
+      	  
       -- ===== Regulator Interface Failure =====
-      --   REQ-MRI-6: 
-      --    If the Status attribute of the Lower Desired Temperature
-      --    or the Upper Desired Temperature is Invalid,
-      --    the Regulator Interface Failure shall be set to True.      
-        case REQMRI6 "REQ-MRI-6":
+
+        case REQ_MRI_6 "If the Status attribute of the Lower Desired Temperature
+      					|or the Upper Desired Temperature is Invalid,
+      					|the Regulator Interface Failure shall be set to True.":
           assume ((upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) | (upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid));
           guarantee interface_failure.value;
-      --   REQ-MRI-7: 
-      --    If the Status attribute of the Lower Desired Temperature
-      --    and the Upper Desired Temperature is Valid,
-      --    the Regulator Interface Failure shall be set to False.   
-        case REQMRI7 "REQ-MRI-7":
+
+        case REQ_MRI_7 "If the Status attribute of the Lower Desired Temperature
+      					|and the Upper Desired Temperature is Valid,
+      					|the Regulator Interface Failure shall be set to False.":
           assume T;
           guarantee (interface_failure.value == (!((upper_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) & (lower_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid))));
+
       -- ===== Desired Range =====
-      --   REQ-MRI-8: 
-      --    If the Regulator Interface Failure is False,
-        case REQMRI8 "REQ-MRI-8":
+
+        case REQ_MRI_8 "If the Regulator Interface Failure is False":
           assume (!interface_failure.value);
           guarantee ((lower_desired_temp.value == lower_desired_tempWstatus.value) & (upper_desired_temp.value == upper_desired_tempWstatus.value));
-      --   REQ-MRI-9: If the Regulator Interface Failure is True,
-      --    the Desired Range is UNSPECIFIED.
-      --    the Desired Range shall be set to the Desired Temperature Range.
-      --   (** currently omitted due to the "UNSPECIFIED" **)     
+      
+      	case REQ_MRI_9 "If the Regulator Interface Failure is True,
+      					|the Desired Range is UNSPECIFIED.
+      					|the Desired Range shall be set to the Desired Temperature Range.
+      					|(** currently omitted due to the 'UNSPECIFIED' **)" : 
+      	  assume T;
+      	  guarantee T;
+      	       
   **};        
 	 
 end Manage_Regulator_Interface;
@@ -319,9 +322,9 @@ annex GUMBO
     
     --  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
     initialize
-      -- REQ-MRM-1: The initial mode of the regular is INIT.
       guarantee
-        RegulatorModeIsInitiallyInit: regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode; 
+        REQ_MRM_1 "The initial mode of the regular is INIT" :
+         regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode; 
         -- TBD: add a constraint for the state variable lastRegulatorMode
           
     --  ======= C o m p u t e   E n t r y    P o i n t    Behavior Constraints  ======
@@ -330,35 +333,66 @@ annex GUMBO
         -- Gage TBD: throughout, add constraints on the lastRegulatorMode state variable
         
         -- Gage TBD: add case for when we are currently in INIT and we stay in INIT (name: Req-MRM-maintain-init)
-      
-        -- REQ-MRM-2: "transition from Init to Normal"
-        --   If the current regulator mode is Init, then
-        --   the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
-        --     if  NOT (Regulator Interface Failure OR Regulator Internal Failure)
-        --     AND Current Temperature.Status = Valid
-        case REQMRM2 "REQ-MRM-2":
-          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
-          guarantee ((((!(interface_failure.value || internal_failure.value)) && current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>: (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)));
-        
-        
-        -- Gage TBD: add case for when we are currently in NORMAL and we stay in NORMAL (name: Req-MRM-maintain-normal)
-        
-        
-        -- REQ-MRM-3: "transition for NORMAL to FAILED"
-        -- Gage TBD: add this case
-        
 
-        -- REQ-MRM-4: "transition from INIT to FAILED" 
-        --   If the current regulator mode is Normal, then
-        --   the regulator mode is set to Failed iff
-        --   the regulator status is false, i.e.,
-        --       if  (Regulator Interface Failure OR Regulator Internal Failure)
-        --       OR NOT(Current Temperature.Status = Valid)
-        case REQMRM4 "REQ-MRM-4":
+        case REQ_MRM_2 "'transition from Init to Normal'
+        				|If the current regulator mode is Init, then
+        				|the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
+        				|  if NOT (Regulator Interface Failure OR Regulator Internal Failure)
+        				|     AND Current Temperature.Status = Valid":
+          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+          guarantee 
+          	((!(interface_failure.value || internal_failure.value)) && 
+          	    current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
+          	 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
+
+		case REQ_MRM_Maintain_Normal "'maintaining NORMAL, NORMAL to NORMAL'
+        							|If the current regulator mode is Normal, then
+        							|the regulator mode is stays normal iff
+        							|the regulaor status is not false i.e.,
+        							|       if NOT(
+        							|           (Regulator Interface Failure OR Regulator Internal Failure)
+        							|           OR NOT(Current Temperature.Status = Valid)
+        							|       )":
+			assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
+			guarantee 
+			  ((!(interface_failure.value || internal_failure.value)) && 
+          	     current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>:
+          	  (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
+				 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
+				 	        
+        case REQ_MRM_3 "'transition for NORMAL to FAILED'
+      					|If the current regulator mode is Normal, then
+        				|the regulator mode is set to Failed iff
+        				|the regulator status is false, i.e.,
+        				|   if  (Regulator Interface Failure OR Regulator Internal Failure)
+        				|       OR NOT(Current Temperature.Status = Valid)":
           assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-          guarantee (((interface_failure.value || internal_failure.value) && current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>: (regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode));
-        
-        -- Gage TBD: add case for when we are currently in FAIL and we stay in FAIL (name: Req-MRM-maintain-fail)
+          guarantee 
+            ((interface_failure.value || internal_failure.value) &&
+				current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>:
+          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+          	 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+
+        case REQ_MRM_4 "'transition from INIT to FAILED' 
+        				|If the current regulator mode is Init, then
+        				|the regulator mode and lastRegulatorMode state value is set to Failed iff
+        				|the regulator status is false, i.e.,
+        				|       if  (Regulator Interface Failure OR Regulator Internal Failure)
+        				|       OR NOT(Current Temperature.Status = Valid)":
+          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+          guarantee 
+          	((interface_failure.value || internal_failure.value) && 
+          	    current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+          		lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+
+        case REQ_MRM_MaintainFailed "'maintaining FAIL, FAIL to FAIL'
+        							|If the current regulator mode is Failed, then
+        							|the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed":
+        	assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
+        	guarantee (regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+          		lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
   **};
 
 end Manage_Regulator_Mode;
@@ -417,11 +451,10 @@ features
   initialize
     guarantee
       initlastCmd: lastCmd == Isolette_Data_Model::On_Off.Off;
-    guarantee  
-      -- REQ-MHS-1: 
-      --   If the Regulator Mode is INIT, the Heat Control shall be
-      --   set to Off.
-      initheatcontrol: heat_control == Isolette_Data_Model::On_Off.Off;
+    guarantee REQ_MHS_1 
+      			"If the Regulator Mode is INIT, the Heat Control shall be
+      			|set to Off":
+      heat_control == Isolette_Data_Model::On_Off.Off;
 
   --  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====      
   compute
@@ -433,44 +466,35 @@ features
       lastCmd == heat_control;
 
    cases
-     -- REQ-MHS-1: 
-     --   If the Regulator Mode is INIT, the Heat Control shall be
-     --   set to Off.
-     case ReqMHS1 "Req-MHS-1": 
+
+     case REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
+     				|set to Off.": 
        assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
        guarantee heat_control == Isolette_Data_Model::On_Off.Off;
        
-     -- REQ-MHS-2: 
-     --   If the Regulator Mode is NORMAL and the Current Temperature is less than
-     --   the Lower Desired Temperature, the Heat Control shall be set to On.
-     case ReqMHS2 "Req-MHS-2":
+     case REQ_MHS_2 "If the Regulator Mode is NORMAL and the Current Temperature is less than
+					|the Lower Desired Temperature, the Heat Control shall be set to On.":
        assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
                & (current_tempWstatus.value < lower_desired_temp.value);
        guarantee heat_control == Isolette_Data_Model::On_Off.Onn;
 
-     -- REQ-MHS-3: 
-     --   If the Regulator Mode is NORMAL and the Current Temperature is greater than
-     --   the Upper Desired Temperature, the Heat Control shall be set to Off.
-     case ReqMHS3 "Req-MHS-3":
+     case REQ_MHS_3 "If the Regulator Mode is NORMAL and the Current Temperature is greater than
+     				|the Upper Desired Temperature, the Heat Control shall be set to Off.":
        assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
                & (current_tempWstatus.value > upper_desired_temp.value);
        guarantee heat_control == Isolette_Data_Model::On_Off.Off;
      
-     -- REQ-MHS-4: 
-     --  If the Regulator Mode is NORMAL and the Current
-     --  Temperature is greater than or equal to the Lower Desired Temperature
-     --  and less than or equal to the Upper Desired Temperature, the value of
-     --  the Heat Control shall not be changed.
-     case ReqMHS4 "Req-MHS-4":
+     case REQ_MHS_4 "If the Regulator Mode is NORMAL and the Current
+					|Temperature is greater than or equal to the Lower Desired Temperature
+     				|and less than or equal to the Upper Desired Temperature, the value of
+     				|the Heat Control shall not be changed.":
        assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
                & (current_tempWstatus.value >= lower_desired_temp.value
                   & current_tempWstatus.value <= upper_desired_temp.value); 
        guarantee heat_control == In(lastCmd);
-                        
-     -- REQ-MHS-5: 
-     --   If the Regulator Mode is FAILED, the Heat Control shall be
-     --   set to Off.
-     case ReqMHS5 "Req-MHS-5":
+
+     case REQ_MHS_5 "If the Regulator Mode is FAILED, the Heat Control shall be
+					|set to Off.":
        assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
        guarantee heat_control == Isolette_Data_Model::On_Off.Off;
   **};
@@ -479,4 +503,18 @@ end Manage_Heat_Source;
 thread implementation Manage_Heat_Source.impl
 end Manage_Heat_Source.impl;
 
+thread Detect_Regulator_Failure
+  features
+  -- ==== OUTPUTS ========		
+  -- ("Monitor Interface Failure") - in case of internal failure, a flag is raised
+  internal_failure : out data port Isolette_Data_Model::Failure_Flag.impl;
+properties
+	Dispatch_Protocol => Periodic;
+	Period => Isolette_Properties::ThreadPeriod;
+	
+	Stack_Size => Isolette_Properties::StackSize;	
+end Detect_Regulator_Failure;
+
+thread implementation Detect_Regulator_Failure.impl
+end Detect_Regulator_Failure.impl;
 end Regulate;

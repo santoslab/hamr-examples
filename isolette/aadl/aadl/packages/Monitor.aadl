@@ -153,51 +153,50 @@ thread implementation Manage_Monitor_Interface.impl
 		
 		cases
 		-- ===== Monitor Status =====
-   		--   REQ-MMI-1: If the Manage Monitor Interface mode is INIT,
-   		--   the Monitor Status shall be set to Init.	
-				case REQMMI1 "REQ-MMI-1":
+				case REQ_MMI_1 "If the Manage Monitor Interface mode is INIT,
+   								|the Monitor Status shall be set to Init." :
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode; --monitor_status == Isolette_Data_Model::Status.Init_Status;
 					guarantee monitor_status == Isolette_Data_Model::Status.Init_Status; --monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
-		--   REQ-MMI-2: If the Manage Monitor Interface mode is NORMAL,
-   		--   the Monitor Status shall be set to On.
-				case REQMMI2 "REQ-MMI-2":
+
+				case REQ_MMI_2 "If the Manage Monitor Interface mode is NORMAL,
+   								|the Monitor Status shall be set to On" :
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
 					guarantee monitor_status == Isolette_Data_Model::Status.On_Status;
-		--   REQ-MMI-3: If the Manage Monitor Interface mode is FAILED,
-   		--   the Monitor Status shall be set to Failed.
-   		--   Latency: < Max Operator Response Time
-   		--   Tolerance: N/A
-				case REQMMI3 "REQ-MMI-3":
+
+				case REQ_MMI_3 "If the Manage Monitor Interface mode is FAILED,
+   								|the Monitor Status shall be set to Failed.
+   								|Latency: < Max Operator Response Time
+   								|Tolerance: N/A" :
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode;
 					guarantee monitor_status == Isolette_Data_Model::Status.Failed_Status;
-		--   REQ-MMI-4: If the Status attribute of the Lower Alarm Temperature
-   		--   or the Upper Alarm Temperature is Invalid,
-   		--   the Monitor Interface Failure shall be set to True.
    		
    		-- ===== Interface Failure =====
-				case REQMMI4 "REQ-MMI-4":
+				case REQ_MMI_4 "If the Status attribute of the Lower Alarm Temperature
+   								|or the Upper Alarm Temperature is Invalid,
+   								|the Monitor Interface Failure shall be set to True":
 					assume lower_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Invalid |
 						upper_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Invalid;
 					guarantee interface_failure.value;
-		--   REQ-MMI-5: If the Status attribute of the Lower Alarm Temperature
-   		--   and the Upper Alarm Temperature is Valid,
-   		--   the Monitor Interface Failure shall be set to False.
-				case REQMMI5 "REQ-MMI-5":
+
+				case REQ_MMI_5 "If the Status attribute of the Lower Alarm Temperature
+   								|and the Upper Alarm Temperature is Valid,
+   								|the Monitor Interface Failure shall be set to False":
 					assume lower_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid
 						&
 						upper_alarm_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid;
 					guarantee !interface_failure.value;
+					
 		-- ===== Upper and Lower Temperature Values =====
-		--   REQ-MMI-6: If the Monitor Interface Failure is False,
-   		--   the Alarm Range variable shall be set to the Desired Temperature Range.
-				case REQMMI6 "REQ-MMI-6":
+
+				case REQ_MMI_6 "If the Monitor Interface Failure is False,
+   								|the Alarm Range variable shall be set to the Desired Temperature Range":
 					assume (!interface_failure.value);
 					guarantee lower_alarm_temp.value == lower_alarm_tempWstatus.value
 						&
 						upper_alarm_temp.value == upper_alarm_tempWstatus.value;
-		--   REQ-MMI-7: If the Monitor Interface Failure is True,
-   		--   the Alarm Range variable is UNSPECIFIED.
-				case REQMMI7 "REQ-MMI-7":
+
+				case REQ_MMI_7 "If the Monitor Interface Failure is True,
+   								|the Alarm Range variable is UNSPECIFIED":
 					assume interface_failure.value;
 					guarantee T; --[RP] Alarm range var is LOW/HIGH vars - what does is mean to make these "UNSPECIFIED"
 					
@@ -258,27 +257,26 @@ thread implementation Manage_Monitor_Mode.impl
     			
     	-- ======  C o m p u t e     C o n s t r a i n t s =====
 		compute
-		--  REQ-MMM-2: If the current mode is Init, then
-   		--    the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
-   		--      if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
-   		--          AND Current Temperature.Status = Valid
 			cases
-				case REQMRM2 "REQ-MMM-2":
+				case REQ_MRM_2 "If the current mode is Init, then
+   								|the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
+   								|if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
+   								|AND Current Temperature.Status = Valid":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
 					guarantee ((((!(interface_failure.value || internal_failure.value)) && current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode))); --TODO () not preserved see slang code manage_monitor_mode thread
-		   		--  REQ-MMM-3: If the current Monitor mode is Normal, then
-    	--      the Monitor mode is set to Failed iff
-    	--      the Monitor status is false, i.e.,
-    	--        if  (Monitor Interface Failure OR Monitor Internal Failure)
-    	--            OR NOT(Current Temperature.Status = Valid)
-				case REQMRM3 "REQ-MMM-3":
+		
+				case REQ_MRM_3 "If the current Monitor mode is Normal, then
+    							|the Monitor mode is set to Failed iff
+    							|the Monitor status is false, i.e.,
+	    						|if  (Monitor Interface Failure OR Monitor Internal Failure)
+    							|OR NOT(Current Temperature.Status = Valid)":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
 					guarantee (((interface_failure.value || internal_failure.value) || current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode)); --TODO () not preserved see slang code manage_monitor_mode thread
-		--  REQ-MMM-4: If the current mode is Init, then
-    	--      the mode is set to Failed iff the time during
-    	--      which the thread has been in Init mode exceeds the
-    	--      Monitor Init Timeout value.
-				case REQMRM4 "REQ-MMM-4":
+
+				case REQ_MRM_4 "If the current mode is Init, then
+    							|the mode is set to Failed iff the time during
+    							|which the thread has been in Init mode exceeds the
+    							|Monitor Init Timeout value.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
 					guarantee timeout_condition_satisfied() == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode); --TODO () not preserved see slang code manage_monitor_mode thread
 	**};
@@ -340,31 +338,38 @@ thread implementation Manage_Alarm.impl
     			
     	-- ======  C o m p u t e     C o n s t r a i n t s =====
 		compute
-		--   REQ-MA-1: If the Monitor Mode is INIT, the Alarm Control shall be set
-    	--     to Off.
+		    assume NanAssumes:
+    			current_tempWstatus.value != F32.NaN && 
+    			upper_alarm_temp.value != F32.NaN && 
+    			lower_alarm_temp.value != F32.NaN && 
+    			current_tempWstatus.value - 0.5f != F32.NaN && 
+    			current_tempWstatus.value + 0.5f != F32.NaN;
+			
 			cases
-				case REQMRM1 "REQ-MA-1":
+
+				case REQ_MRM_1 "If the Monitor Mode is INIT, the Alarm Control shall be set
+    							|to Off.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
 					guarantee alarm_control == Isolette_Data_Model::On_Off.Off
 						&
 						lastCmd == Isolette_Data_Model::On_Off.Off;
-						--   REQ-MA-2: If the Monitor Mode is NORMAL and the Current Temperature is
-				      	--   less than the Lower Alarm Temperature or greater than the Upper Alarm
-				      	--     Temperature, the Alarm Control shall be set to On.
-				case REQMRM2 "REQ-MA-2":
+
+				case REQ_MRM_2 "If the Monitor Mode is NORMAL and the Current Temperature is
+								|less than the Lower Alarm Temperature or greater than the Upper Alarm
+								|Temperature, the Alarm Control shall be set to On.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
 						&
 						(current_tempWstatus.value < lower_alarm_temp.value || current_tempWstatus.value > upper_alarm_temp.value);
 					guarantee alarm_control == Isolette_Data_Model::On_Off.Onn
 						&
 						lastCmd == Isolette_Data_Model::On_Off.Onn;
-					--   REQ-MA-3: If the Monitor Mode is NORMAL and the Current Temperature
-			      	--     is greater than or equal to the Lower Alarm Temperature and less than
-			      	--   the Lower Alarm Temperature +0.5 degrees, or the Current Temperature is
-			      	--   greater than the Upper Alarm Temperature -0.5 degrees and less than or equal
-			      	--   to the Upper Alarm Temperature, the value of the Alarm Control shall
-			      	--   not be changed.
-				case REQMRM3 "REQ-MA-3":
+				
+				case REQ_MRM_3 "If the Monitor Mode is NORMAL and the Current Temperature
+								|is greater than or equal to the Lower Alarm Temperature and less than
+			    				|the Lower Alarm Temperature +0.5 degrees, or the Current Temperature is
+			    				|greater than the Upper Alarm Temperature -0.5 degrees and less than or equal
+			    				|to the Upper Alarm Temperature, the value of the Alarm Control shall
+			    				|not be changed.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
 						& 
 						(
@@ -382,11 +387,11 @@ thread implementation Manage_Alarm.impl
 					guarantee alarm_control == In(lastCmd)
 						&
 						lastCmd == In(lastCmd);
-						--     REQ-MA-4: If the Monitor Mode is NORMAL and the value of the Current
-				      	--     Temperature is greater than or equal to the Lower Alarm Temperature
-				      	--   +0.5 degrees and less than or equal to the Upper Alarm Temperature
-				      	--     -0.5 degrees, the Alarm Control shall be set to Off.
-				case REQMRM4 "REQ-MRM-4":
+				
+				case REQ_MRM_4 "If the Monitor Mode is NORMAL and the value of the Current
+					            |Temperature is greater than or equal to the Lower Alarm Temperature
+				             	|+0.5 degrees and less than or equal to the Upper Alarm Temperature
+				             	|-0.5 degrees, the Alarm Control shall be set to Off.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode
 						&
 						current_tempWstatus.value >= lower_alarm_temp.value + f32"0.5" |
@@ -394,9 +399,9 @@ thread implementation Manage_Alarm.impl
 					guarantee alarm_control == Isolette_Data_Model::On_Off.Off
 						&
 						lastCmd == Isolette_Data_Model::On_Off.Off;
-						--   REQ-MA-5: If the Monitor Mode is FAILED, the Alarm Control shall be
-				      	--   set to On.
-				case REQMRM5 "REQ-MRM-5":
+				
+				case REQ_MRM_5 "If the Monitor Mode is FAILED, the Alarm Control shall be
+					             |set to On.":
 					assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode;
 					guarantee alarm_control == Isolette_Data_Model::On_Off.Onn
 						&

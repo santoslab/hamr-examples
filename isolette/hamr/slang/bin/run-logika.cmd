@@ -40,31 +40,30 @@ val isCi: B = Os.env("GITLAB_CI").nonEmpty || Os.env("GITHUB_ACTIONS").nonEmpty 
 val defaultOpts = LogikaOpt(timeout = (if(isCi) 10000 else 2000), rlimit = 2000000)
 
 val files = ISZ[C](
-  C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala", defaultOpts, ISZ(), ISZ(
-    "[56, 82] Could not deduce that the postcondition holds",
-    "[191, 12] Could not deduce the claim of proof step #5")),
+
+C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala",
+    defaultOpts(timeout = 10000), ISZ(), ISZ(
+    "[74, 349] Could not deduce that the postcondition holds")),
 
   C(monitorDir / "Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala", defaultOpts, ISZ(
-    "[214, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[216, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[218, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[220, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+    "[215, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[217, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[219, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[221, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
   C(monitorDir / "Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala", defaultOpts, ISZ(
-    "[146, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[148, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[150, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+    "[156, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[158, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[160, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
   C(regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala", defaultOpts, ISZ(), ISZ()),
 
   C(regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala", defaultOpts, ISZ(), ISZ()),
 
   C(regulateDir /"Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala", defaultOpts, ISZ(
-    "[81, 12] Infeasible pattern matching case",
-    "[115, 12] Infeasible pattern matching case",
-    "[122, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[124, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[126, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()))
+    "[151, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[153, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[155, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()))
 
 var result: Z = 0
 for(f <- files) {

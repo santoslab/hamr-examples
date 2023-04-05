@@ -51,14 +51,24 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       Ensures(
         api.monitor_mode == lastMonitorMode,
         // BEGIN COMPUTE ENSURES timeTriggered
-        // case REQMRM2
-        //   REQ-MMM-2
+        // case REQ_MRM_2
+        //   If the current mode is Init, then
+        //   the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
+        //   if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
+        //   AND Current Temperature.Status = Valid
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) && api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode)),
-        // case REQMRM3
-        //   REQ-MMM-3
+        // case REQ_MRM_3
+        //   If the current Monitor mode is Normal, then
+        //   the Monitor mode is set to Failed iff
+        //   the Monitor status is false, i.e.,
+        //   if  (Monitor Interface Failure OR Monitor Internal Failure)
+        //   OR NOT(Current Temperature.Status = Valid)
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->: ((api.interface_failure.value || api.internal_failure.value || api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode)),
-        // case REQMRM4
-        //   REQ-MMM-4
+        // case REQ_MRM_4
+        //   If the current mode is Init, then
+        //   the mode is set to Failed iff the time during
+        //   which the thread has been in Init mode exceeds the
+        //   Monitor Init Timeout value.
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
         // END COMPUTE ENSURES timeTriggered
       )

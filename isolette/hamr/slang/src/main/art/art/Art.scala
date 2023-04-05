@@ -7,17 +7,17 @@ import art.scheduling.Scheduler
 
 object Art {
 
-  @range(min = 0, max = 9, index = T) class BridgeId
+  @range(min = 0, max = 10, index = T) class BridgeId
 
-  @range(min = 0, max = 47, index = T) class PortId
+  @range(min = 0, max = 48, index = T) class PortId
 
-  @range(min = 0, max = 25, index = T) class ConnectionId
+  @range(min = 0, max = 26, index = T) class ConnectionId
 
   type Time = S64 // Z might be too small after transpiling
 
-  val numComponents: Z = 10
-  val numPorts: Z = 48
-  val numConnections: Z = 26
+  val numComponents: Z = 11
+  val numPorts: Z = 49
+  val numConnections: Z = 27
 
   val logTitle: String = "Art"
 

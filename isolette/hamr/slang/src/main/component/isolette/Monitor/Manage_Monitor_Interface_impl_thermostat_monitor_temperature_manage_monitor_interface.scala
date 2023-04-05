@@ -65,26 +65,37 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       ),
       Ensures(
         // BEGIN COMPUTE ENSURES timeTriggered
-        // case REQMMI1
-        //   REQ-MMI-1
+        // case REQ_MMI_1
+        //   If the Manage Monitor Interface mode is INIT,
+        //   the Monitor Status shall be set to Init.
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (api.monitor_status == Isolette_Data_Model.Status.Init_Status),
-        // case REQMMI2
-        //   REQ-MMI-2
+        // case REQ_MMI_2
+        //   If the Manage Monitor Interface mode is NORMAL,
+        //   the Monitor Status shall be set to On
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->: (api.monitor_status == Isolette_Data_Model.Status.On_Status),
-        // case REQMMI3
-        //   REQ-MMI-3
+        // case REQ_MMI_3
+        //   If the Manage Monitor Interface mode is FAILED,
+        //   the Monitor Status shall be set to Failed.
+        //   Latency: < Max Operator Response Time
+        //   Tolerance: N/A
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->: (api.monitor_status == Isolette_Data_Model.Status.Failed_Status),
-        // case REQMMI4
-        //   REQ-MMI-4
+        // case REQ_MMI_4
+        //   If the Status attribute of the Lower Alarm Temperature
+        //   or the Upper Alarm Temperature is Invalid,
+        //   the Monitor Interface Failure shall be set to True
         (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid | api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->: (api.interface_failure.value),
-        // case REQMMI5
-        //   REQ-MMI-5
+        // case REQ_MMI_5
+        //   If the Status attribute of the Lower Alarm Temperature
+        //   and the Upper Alarm Temperature is Valid,
+        //   the Monitor Interface Failure shall be set to False
         (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid & api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (!(api.interface_failure.value)),
-        // case REQMMI6
-        //   REQ-MMI-6
+        // case REQ_MMI_6
+        //   If the Monitor Interface Failure is False,
+        //   the Alarm Range variable shall be set to the Desired Temperature Range
         (!(api.interface_failure.value)) -->: (api.lower_alarm_temp.value == api.lower_alarm_tempWstatus.value & api.upper_alarm_temp.value == api.upper_alarm_tempWstatus.value),
-        // case REQMMI7
-        //   REQ-MMI-7
+        // case REQ_MMI_7
+        //   If the Monitor Interface Failure is True,
+        //   the Alarm Range variable is UNSPECIFIED
         (api.interface_failure.value) -->: (T)
         // END COMPUTE ENSURES timeTriggered
       )
@@ -93,25 +104,15 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
     val lower: Isolette_Data_Model.TempWstatus_impl =
       api.get_lower_alarm_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getlower_alarm_tempWstatus().getOrElseEager(LOW)
 
-    // api.logInfo(s"   XXXXXXXXXXX  ${lower}")
     val upper: Isolette_Data_Model.TempWstatus_impl =
       api.get_upper_alarm_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getupper_alarm_tempWstatus().getOrElseEager(HIGH)
 
     val monitor_mode: Isolette_Data_Model.Monitor_Mode.Type =
       api.get_monitor_mode().get
-    // remove code for old approach that lacked initializers
-    // api.getmonitor_mode().getOrElseEager(DEFAULT_MODE)
 
     val currentTemp: Isolette_Data_Model.TempWstatus_impl =
       api.get_current_tempWstatus().get
-    // remove code for old approach that lacked initializers
-    // api.getcurrent_tempWstatus().getOrElseEager(DEFAULT_TEMP)
-
 
     // =============================================
     //  Set values for Monitor Status (Table A-6)
