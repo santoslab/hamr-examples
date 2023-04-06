@@ -35,24 +35,24 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
     //  REQ-MA-1: If the Monitor Mode is INIT, the Alarm Control shall be set
     //    to Off.
     api.put_alarm_control(Isolette_Data_Model.On_Off.Off)
+
+    api.logInfo(s"Sent on alarm_control: ${Isolette_Data_Model.On_Off.Off}")
   }
 
   def timeTriggered(api: Manage_Alarm_impl_Operational_Api): Unit = {
     Contract(
       Requires(
-        api.lower_alarm_temp.value < api.upper_alarm_temp.value,
-        api.upper_alarm_temp.value - api.lower_alarm_temp.value > 15.0f,
-        api.upper_alarm_temp.value > -512.0f & api.upper_alarm_temp.value < 512.0f,
-        api.lower_alarm_temp.value > -512.0f & api.lower_alarm_temp.value < 512.0f,
         // BEGIN COMPUTE REQUIRES timeTriggered
         // assume NanAssumes
-        api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN
+        //   Assume the port values are valid F32s
+        api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN,
+        // assume alarmRange
+        //   Assume the lower alarm is at least 1.0f less than the upper alarm
+        //   to account for the 0.5f tolerance
+        api.upper_alarm_temp.value - api.lower_alarm_temp.value > 1.0f
         // END COMPUTE REQUIRES timeTriggered
       ),
-      Modifies(
-        lastCmd,
-        api
-      ),
+      Modifies(lastCmd, api),
       Ensures(
         // BEGIN COMPUTE ENSURES timeTriggered
         // case REQ_MRM_1
@@ -77,7 +77,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   Temperature is greater than or equal to the Lower Alarm Temperature
         //   +0.5 degrees and less than or equal to the Upper Alarm Temperature
         //   -0.5 degrees, the Alarm Control shall be set to Off.
-        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode & api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f | api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
+        (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode & api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f & api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off & lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQ_MRM_5
         //   If the Monitor Mode is FAILED, the Alarm Control shall be
         //   set to On.
@@ -85,30 +85,17 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         // END COMPUTE ENSURES timeTriggered
       )
     )
+
     // -------------- Get values of input ports ------------------
 
-    val lower: Isolette_Data_Model.Temp_impl =
+    val lowerAlarm: Isolette_Data_Model.Temp_impl =
       api.get_lower_alarm_temp().get
 
-    Deduce(
-      1 #> (lower.value == api.lower_alarm_temp.value) by Auto,
-      2 #> (lower.value - 0.5f == api.lower_alarm_temp.value - 0.5f) by Auto
-    )
-
-    val upper: Isolette_Data_Model.Temp_impl =
+    val upperAlarm: Isolette_Data_Model.Temp_impl =
       api.get_upper_alarm_temp().get
-
-    Deduce(
-      1 #> (upper.value == api.upper_alarm_temp.value) by Auto,
-      2 #> (upper.value - 0.5f == api.upper_alarm_temp.value - 0.5f) by Auto
-    )
 
     val monitor_mode: Isolette_Data_Model.Monitor_Mode.Type =
       api.get_monitor_mode().get
-
-    Deduce(
-      1 #> (api.monitor_mode == monitor_mode) by Auto
-    )
 
     val currentTemp: Isolette_Data_Model.TempWstatus_impl =
       api.get_current_tempWstatus().get
@@ -116,87 +103,35 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
     // current command defaults to value of last command
     var currentCmd: Isolette_Data_Model.On_Off.Type = lastCmd
 
-    if (!(currentTemp.value == F32.NaN || upper.value == F32.NaN || lower.value == F32.NaN || upper.value - 0.5f == F32.NaN || lower.value + 0.5f == F32.NaN)) {
-      Deduce(
-        1 #> (currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN) by Auto,
-        2 #> ((currentTemp.value > upper.value || currentTemp.value < lower.value) |^
-          (currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f) |^
-          (((currentTemp.value >= lower.value
-            && currentTemp.value < lower.value + 0.5f)
-            || (currentTemp.value > upper.value - 0.5f
-            && currentTemp.value <= upper.value)))) by Auto
-      )
+    monitor_mode match {
+      case Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode =>
+        // REQ_MRM_1
+        currentCmd = Isolette_Data_Model.On_Off.Off
+      case Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode =>
+        if (currentTemp.value < lowerAlarm.value || currentTemp.value > upperAlarm.value) {
+          // REQ_MRM_2
+          currentCmd = Isolette_Data_Model.On_Off.Onn
+        }
+        else if ((currentTemp.value >= lowerAlarm.value && currentTemp.value < lowerAlarm.value + 0.5f) ||
+          (currentTemp.value > upperAlarm.value - 0.5f && currentTemp.value <= upperAlarm.value)) {
+          // REQ_MRM_3
+          currentCmd = lastCmd
+        }
+        else if (currentTemp.value >= lowerAlarm.value + 0.5f && currentTemp.value <= upperAlarm.value - 0.5f) {
+          // REQ_MRM_4
+          currentCmd = Isolette_Data_Model.On_Off.Off
+        }
+        else {
+          assert (F) // should be infeasible
+        }
+      case Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode =>
+        // REQ_MRM_5
+        currentCmd = Isolette_Data_Model.On_Off.Onn
     }
-
-    if (currentTemp.value == F32.NaN || upper.value == F32.NaN || lower.value == F32.NaN || upper.value - 0.5f == F32.NaN || lower.value + 0.5f == F32.NaN) {
-
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = Isolette_Data_Model.On_Off.Onn
-    }
-    else if (monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) {
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = Isolette_Data_Model.On_Off.Off
-    }
-    else if (monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) {
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = Isolette_Data_Model.On_Off.Onn
-    }
-    else if (monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode && (currentTemp.value > upper.value || currentTemp.value < lower.value)) {
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = Isolette_Data_Model.On_Off.Onn
-    }
-    else if (monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode && (currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f)) {
-      assert((currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = Isolette_Data_Model.On_Off.Off
-      Deduce(
-        1 #> ((api.current_tempWstatus.value != F32.NaN && api.upper_alarm_temp.value != F32.NaN && api.lower_alarm_temp.value != F32.NaN && api.current_tempWstatus.value - 0.5f != F32.NaN && api.current_tempWstatus.value + 0.5f != F32.NaN &&
-          api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-          api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f && api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->:
-          (currentCmd == Isolette_Data_Model.On_Off.Off)) by Auto
-      )
-      assert((currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f) -->: (currentCmd == Isolette_Data_Model.On_Off.Off))
-    }
-    else if (monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode && ((currentTemp.value >= lower.value
-      && currentTemp.value < lower.value + 0.5f)
-      || (currentTemp.value > upper.value - 0.5f
-      && currentTemp.value <= upper.value))) {
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-      currentCmd = lastCmd
-    }
-    else {
-      assert(!(currentTemp.value != F32.NaN && upper.value != F32.NaN && lower.value != F32.NaN && currentTemp.value - 0.5f != F32.NaN && currentTemp.value + 0.5f != F32.NaN &&
-        monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &&
-        currentTemp.value >= lower.value + 0.5f && currentTemp.value <= upper.value - 0.5f))
-    }
-    //ASSERT 3
-    Deduce(1 #> (api.current_tempWstatus == currentTemp && api.current_tempWstatus.value == currentTemp.value) by Auto)
-    Deduce(1 #> (api.upper_alarm_temp == upper && api.upper_alarm_temp.value == upper.value) by Auto)
-    Deduce(1 #> (api.lower_alarm_temp == lower && api.lower_alarm_temp.value == lower.value) by Auto)
     lastCmd = currentCmd
     api.put_alarm_control(currentCmd)
-    Deduce(
-      2 #> (currentCmd == api.alarm_control) by Auto,
-      3 #> (lastCmd == currentCmd) by Auto,
-      4 #> ((currentCmd == Isolette_Data_Model.On_Off.Off) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off && lastCmd == Isolette_Data_Model.On_Off.Off)) by Auto,
-      5 #> ((currentTemp.value > upper.value | currentTemp.value < lower.value)
-        |^ ((currentTemp.value <= upper.value & currentTemp.value > upper.value - 0.5f) | (currentTemp.value >= lower.value & currentTemp.value < lower.value + 0.5f))
-        |^ (currentTemp.value >= lower.value + 0.5f & currentTemp.value <= upper.value - 0.5f))
-        by Smt2("cvc5", 5000, 10000000)
-    )
+
+    api.logInfo(s"Sent on alarm_control: $lastCmd")
   }
 
   def activate(api: Manage_Alarm_impl_Operational_Api): Unit = { }

@@ -45,6 +45,12 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     // set initial regulator failure
     api.put_interface_failure(
       Isolette_Data_Model.Failure_Flag_impl.example())
+
+    api.logInfo(s"Sent on lower_desired_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+    api.logInfo(s"Sent on upper_desired_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+    api.logInfo(s"Sent on displayed_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+    api.logInfo(s"Sent on regulator_status: ${Isolette_Data_Model.Status.Init_Status}")
+    api.logInfo(s"Sent on interface_failure: ${Isolette_Data_Model.Failure_Flag_impl.example()}")
   }
 
   def timeTriggered(api: Manage_Regulator_Interface_impl_Operational_Api): Unit = {
@@ -154,6 +160,8 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
 
     api.put_regulator_status(regulator_status)
 
+    api.logInfo(s"Sent onf regulator_status: $regulator_status")
+
     // =============================================
     //  Set values for Display Temperature (Table A-6)
     // =============================================
@@ -191,6 +199,8 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     }
 
     api.put_displayed_temp(display_temperature)
+
+    api.logInfo(s"Sent on displayed_temp: $display_temperature")
 
     // =============================================
     //  Set values for Regulator Interface Failure internal variable
@@ -231,9 +241,10 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     }
 
     // create the appropriately typed value to send on the output port and set the port value
-    var interface_failure_flag = Isolette_Data_Model.Failure_Flag_impl(interface_failure)
+    val interface_failure_flag = Isolette_Data_Model.Failure_Flag_impl(interface_failure)
     api.put_interface_failure(interface_failure_flag)
 
+    api.logInfo(s"Sent on interface_failure: $interface_failure_flag")
 
     // =============================================
     //  Set values for Desired Range internal variable
@@ -250,6 +261,9 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       // the Desired Range shall be set to the Desired Temperature Range.
       api.put_lower_desired_temp(Isolette_Data_Model.Temp_impl(lower.value))
       api.put_upper_desired_temp(Isolette_Data_Model.Temp_impl(upper.value))
+
+      api.logInfo(s"Sent on lower_desired_temp: ${Isolette_Data_Model.Temp_impl(lower.value)}")
+      api.logInfo(s"Sent on upper_desired_temp: ${Isolette_Data_Model.Temp_impl(upper.value)}")
     } else {
       // FIXME: The requirement is that the values should be unspecified.
       //  For now, set the values to the default values from the initial values file.
@@ -261,6 +275,9 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         Isolette_Data_Model.Temp_impl.example())
       api.put_upper_desired_temp(
         Isolette_Data_Model.Temp_impl.example())
+
+      api.logInfo(s"Sent on lower_desired_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+      api.logInfo(s"Sent on upper_desired_temp: ${Isolette_Data_Model.Temp_impl.example()}")
     }
   }
 

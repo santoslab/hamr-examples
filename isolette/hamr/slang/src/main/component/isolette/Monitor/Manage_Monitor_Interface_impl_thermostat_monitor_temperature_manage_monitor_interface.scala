@@ -45,16 +45,17 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       //Failure_Flag_impl(
         //InitialValues.DEFAULT_MONITOR_INTERFACE_FAILURE_FLAG))
 
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
     api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl.example())
     api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl.example())
     //api.put_monitor_status(Isolette_Data_Model.Status.byOrdinal(0).get)
     api.put_interface_failure(Isolette_Data_Model.Failure_Flag_impl.example())
 
     api.put_monitor_status(Isolette_Data_Model.Status.Init_Status)
+
+    api.logInfo(s"Sent on upper_alarm_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+    api.logInfo(s"Sent on lower_alarm_temp: ${Isolette_Data_Model.Temp_impl.example()}")
+    api.logInfo(s"Sent on interface_failure: ${Isolette_Data_Model.Failure_Flag_impl.example()}")
+    api.logInfo(s"Sent on monitor_status: ${Isolette_Data_Model.Status.Init_Status}")
   }
 
   def timeTriggered(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = {
@@ -149,6 +150,9 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     assert(((monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)||(monitor_status == Isolette_Data_Model.Status.Init_Status)))
     assert(((monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)-->:(monitor_status == Isolette_Data_Model.Status.Init_Status)))
     api.put_monitor_status(monitor_status)
+
+    api.logInfo(s"Sent on monitor_status: $monitor_status")
+
     Deduce(
       1 #> (api.monitor_status == monitor_status) by Auto,
       2 #> ((monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)-->:(monitor_status == Isolette_Data_Model.Status.Init_Status)) by Auto,
@@ -192,6 +196,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     var interface_failure_flag = Isolette_Data_Model.Failure_Flag_impl(interface_failure)
     api.put_interface_failure(interface_failure_flag)
 
+    api.logInfo(s"Sent on interface_failure: $interface_failure_flag")
+
 
     // =============================================
     //  Set values for Alarm Range internal variable
@@ -202,6 +208,9 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       //  the Alarm Range variable shall be set to the Desired Temperature Range.
       api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl(lower.value))
       api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl(upper.value))
+
+      api.logInfo(s"Sent on lower_alarm_temp: ${Isolette_Data_Model.Temp_impl(lower.value)}")
+      api.logInfo(s"Sent on upper_alarm_temp: ${Isolette_Data_Model.Temp_impl(upper.value)}")
     } else {
       //  REQ-MMI-7: If the Monitor Interface Failure is True,
       //  the Alarm Range variable is UNSPECIFIED.
@@ -210,15 +219,6 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       //api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl(InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE))
       //api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl(InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE))
     }
-
-    val apiUsage_upper_alarm_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_upper_alarm_tempWstatus()
-    api.logInfo(s"Received on upper_alarm_tempWstatus: ${apiUsage_upper_alarm_tempWstatus}")
-    val apiUsage_lower_alarm_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_lower_alarm_tempWstatus()
-    api.logInfo(s"Received on lower_alarm_tempWstatus: ${apiUsage_lower_alarm_tempWstatus}")
-    val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
-    api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
-    val apiUsage_monitor_mode: Option[Isolette_Data_Model.Monitor_Mode.Type] = api.get_monitor_mode()
-    api.logInfo(s"Received on monitor_mode: ${apiUsage_monitor_mode}")
   }
 
   def activate(api: Manage_Monitor_Interface_impl_Operational_Api): Unit = { }

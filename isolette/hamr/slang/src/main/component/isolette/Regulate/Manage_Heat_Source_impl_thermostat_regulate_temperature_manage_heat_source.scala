@@ -36,6 +36,8 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     // set to Off
     val currentCmd = Isolette_Data_Model.On_Off.Off
     api.put_heat_control(currentCmd)
+
+    api.logInfo(s"Sent on heat_control: $currentCmd")
   }
 
   //======================================
@@ -130,6 +132,9 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
     // -------------- Set values of output ports ------------------
     api.put_heat_control(currentCmd)
+
+    api.logInfo(s"Sent on heat_control: $currentCmd")
+
     // api.put_heat_control(Isolette_Data_Model.On_Off.Off)  // seeded bug/error
     // Deduce( |- (api.heat_control == Isolette_Data_Model.On_Off.Onn))  // should fail
     lastCmd = currentCmd

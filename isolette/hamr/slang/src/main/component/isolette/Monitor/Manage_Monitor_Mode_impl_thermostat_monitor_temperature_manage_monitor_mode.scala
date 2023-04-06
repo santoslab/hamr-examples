@@ -35,6 +35,9 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     )
     // example api usage
     api.put_monitor_mode(Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
+
+    api.logInfo(s"Sent on monitor_mode: ${Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode}")
+
     firstInvocationFlag = true
   }
 
@@ -150,14 +153,10 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     }
 
     api.put_monitor_mode(lastMonitorMode)
-    firstInvocationFlag = F
 
-    val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
-    api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
-    val apiUsage_interface_failure: Option[Isolette_Data_Model.Failure_Flag_impl] = api.get_interface_failure()
-    api.logInfo(s"Received on interface_failure: ${apiUsage_interface_failure}")
-    val apiUsage_internal_failure: Option[Isolette_Data_Model.Failure_Flag_impl] = api.get_internal_failure()
-    api.logInfo(s"Received on internal_failure: ${apiUsage_internal_failure}")
+    api.logInfo(s"Sent on monitor_mode: $lastMonitorMode")
+
+    firstInvocationFlag = F
 
     Deduce(
       1#> (In(api).internal_failure == api.internal_failure)  by Auto,

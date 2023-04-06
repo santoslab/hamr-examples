@@ -32,6 +32,8 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     // example api usage
     lastRegulatorMode = Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
     api.put_regulator_mode(lastRegulatorMode)
+
+    api.logInfo(s"Sent on regulator_mode: $lastRegulatorMode")
   }
 
   def timeTriggered(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = {
@@ -147,12 +149,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
 
     api.put_regulator_mode(lastRegulatorMode)
 
-    val apiUsage_current_tempWstatus: Option[Isolette_Data_Model.TempWstatus_impl] = api.get_current_tempWstatus()
-    api.logInfo(s"Received on current_tempWstatus: ${apiUsage_current_tempWstatus}")
-    val apiUsage_interface_failure: Option[Isolette_Data_Model.Failure_Flag_impl] = api.get_interface_failure()
-    api.logInfo(s"Received on interface_failure: ${apiUsage_interface_failure}")
-    val apiUsage_internal_failure: Option[Isolette_Data_Model.Failure_Flag_impl] = api.get_internal_failure()
-    api.logInfo(s"Received on internal_failure: ${apiUsage_internal_failure}")
+    api.logInfo(s"Sent on regulator_mode: $lastRegulatorMode")
   }
 
   def activate(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = { }

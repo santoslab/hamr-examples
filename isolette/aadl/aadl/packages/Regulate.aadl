@@ -1,6 +1,6 @@
 package Regulate
 public
-with Isolette_Data_Model, Isolette_Properties, Base_Types;
+	with Isolette_Data_Model, Isolette_Properties, Base_Types;
 
 -- ===========================================================================================================
 --
@@ -10,103 +10,99 @@ with Isolette_Data_Model, Isolette_Properties, Base_Types;
 -- A.5.1 REGULATE TEMPERATURE FUNCTION
 -- 
 -- ===========================================================================================================
-process Regulate_Temperature
-  features
-  -- ===== INPUTs (monitored variables) ...based in part on AR-08-32 Figure A.2 and Table A.5 
-  --  desired temperature range from operator interface 		
-  lower_desired_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  upper_desired_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  --  actual temperature from temp sensor
-  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-     
-  -- ===== OUTPUTs (controlled variables)  ...based in part on AR-08-32 Figure A.2 and Table A.6
-  -- status of regulate temperature function as reported to operator interface
-  regulator_status : out data port Isolette_Data_Model::Status;
-  -- value of current temperature to display on operator interface
-  displayed_temp : out data port Isolette_Data_Model::Temp.impl;
-  -- actuation command to heater
-  heat_control : out data port Isolette_Data_Model::On_Off;
-  
--- defs // propositional and first order predicates
---         -- these would probably be in a library somewhere associated with the system data
---         -- model or the subsystem/process data model. Alternately, we should allow
---         -- such predicates to be attached to types.
---         -- Many such predicates need to be shared between Alisa and Slang 
---         -- see Table A-3 in FAA REMH
---         current_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.0
---         -- see Table A-5 in FAA          
---         lower_desired_temp_range(temp: Temp) = temp >= 97.0 and temp <= 99.0;
---         upper_desired_temp_range(temp: Temp) = temp >= 98.0 and temp <= 100.0;
---         -- see Table A-5 in FAA 
---         lower_alarm_temp_range(temp: Temp) = temp >= 93.0 and temp <= 98.0;
---         upper_alarm_temp_range(temp: Temp) = temp >= 98.0 and temp <= 103.0;
---         -- see Table A-6 in FAA REMH
---         displayed_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.00;
-         
-         
-end Regulate_Temperature;
- 
+	process Regulate_Temperature
+		features
+			-- ===== INPUTs (monitored variables) ...based in part on AR-08-32 Figure A.2 and Table A.5 
+			--  desired temperature range from operator interface 		
+			lower_desired_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			upper_desired_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			--  actual temperature from temp sensor
+			current_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+
+			-- ===== OUTPUTs (controlled variables)  ...based in part on AR-08-32 Figure A.2 and Table A.6
+			-- status of regulate temperature function as reported to operator interface
+			regulator_status: out data port Isolette_Data_Model::Status;
+			-- value of current temperature to display on operator interface
+			displayed_temp: out data port Isolette_Data_Model::Temp.impl;
+			-- actuation command to heater
+			heat_control: out data port Isolette_Data_Model::On_Off;
+
+		-- defs // propositional and first order predicates
+		--         -- these would probably be in a library somewhere associated with the system data
+		--         -- model or the subsystem/process data model. Alternately, we should allow
+		--         -- such predicates to be attached to types.
+		--         -- Many such predicates need to be shared between Alisa and Slang 
+		--         -- see Table A-3 in FAA REMH
+		--         current_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.0
+		--         -- see Table A-5 in FAA          
+		--         lower_desired_temp_range(temp: Temp) = temp >= 97.0 and temp <= 99.0;
+		--         upper_desired_temp_range(temp: Temp) = temp >= 98.0 and temp <= 100.0;
+		--         -- see Table A-5 in FAA 
+		--         lower_alarm_temp_range(temp: Temp) = temp >= 93.0 and temp <= 98.0;
+		--         upper_alarm_temp_range(temp: Temp) = temp >= 98.0 and temp <= 103.0;
+		--         -- see Table A-6 in FAA REMH
+		--         displayed_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.00;
+	end Regulate_Temperature;
+
 --@description process implementation that holds threads that regulate air temperature
-process implementation Regulate_Temperature.impl
-	subcomponents
-  -- captures the design concept in AR-08-32 Figure A-3		
+	process implementation Regulate_Temperature.impl
+		subcomponents
+			-- captures the design concept in AR-08-32 Figure A-3		
+			--thread to manage the interactions between with operator interface and the rest of the regulator process
+			manage_regulator_interface: thread Manage_Regulator_Interface.impl;
 
-  --thread to manage the interactions between with operator interface and the rest of the regulator process
-  manage_regulator_interface : thread Manage_Regulator_Interface.impl;
+			-- thread to manage the heat source.  Receives the desired range, current determine, and determines whether or not to
+			--send an on/off command to the heat source
+			manage_heat_source: thread manage_heat_source.impl;
 
-  -- thread to manage the heat source.  Receives the desired range, current determine, and determines whether or not to
-  --send an on/off command to the heat source
-  manage_heat_source : thread manage_heat_source.impl;
+			--thread to manage the regular mode. Based inputs describing the failure status of the interface, subsystem internals,
+			--and temperature  status,  determines the mode of the regulator process (i.e., if the mode is Init, Normal, or Failed modes)
+			manage_regulator_mode: thread manage_regulator_mode.impl;
 
-  --thread to manage the regular mode. Based inputs describing the failure status of the interface, subsystem internals,
-  --and temperature  status,  determines the mode of the regulator process (i.e., if the mode is Init, Normal, or Failed modes)
-  manage_regulator_mode : thread manage_regulator_mode.impl;
+			detect_regulator_failure: thread detect_regulator_failure.impl;
 
-  detect_regulator_failure : thread detect_regulator_failure.impl;
-  
-	connections
-	-- Reflects the data dependencies in AR-08-32 Figure A-3
-	--  (note Detect Regulator Failure not modeled currently)
-	-- The names in quotes refer to the arc labels in Figure A-3
-	--
-  -- ==== INPUT INTERFACE values to internal components ==== 		
-  -- ("Desired Temperature Range") - incoming desired temperature range goes to regulator interface manager 
-  rudt : port upper_desired_tempWstatus -> manage_regulator_interface.upper_desired_tempWstatus;
-  rldt : port lower_desired_tempWstatus -> manage_regulator_interface.lower_desired_tempWstatus;
+		connections
+			-- Reflects the data dependencies in AR-08-32 Figure A-3
+			--  (note Detect Regulator Failure not modeled currently)
+			-- The names in quotes refer to the arc labels in Figure A-3
+			--
+			-- ==== INPUT INTERFACE values to internal components ==== 		
+			-- ("Desired Temperature Range") - incoming desired temperature range goes to regulator interface manager 
+			rudt: port upper_desired_tempWstatus -> manage_regulator_interface.upper_desired_tempWstatus;
+			rldt: port lower_desired_tempWstatus -> manage_regulator_interface.lower_desired_tempWstatus;
 
-  -- ("Current Temperature") - incoming current temperature (with status value) 
-  --   ...to Manage Regulator Interface
-  rcti : port current_tempWstatus -> manage_regulator_interface.current_tempWstatus;   
-  --   ...and to Manage Heat Source
-  rcth : port current_tempWstatus -> manage_heat_source.current_tempWstatus;
-  --   ...and to Manage Regulator Mode
-  rctm : port current_tempWstatus -> manage_regulator_mode.current_tempWstatus;
-   
-  -- ==== OUTPUT INTERFACE values from internal components ==== 
-  -- ("Display Temperature") output temperature to display on operator interface 
-  rdt : port manage_regulator_interface.displayed_temp -> displayed_temp;  
-  -- ("Regulator Status") output regulator subsystem status to operator interface 
-  rrs : port manage_regulator_interface.regulator_status -> regulator_status;
-  -- ("Heat Control") output on/off command to heat source 
-  rhc : port manage_heat_source.heat_control -> heat_control;
-  
-  -- ==== INTERNAL communication ====
--- ("Desired Range") - send validated desired temperature from Manage Regulator Interface to Manage Heat Source 
-  mudt : port manage_regulator_interface.upper_desired_temp -> manage_heat_source.upper_desired_temp;
-  mldt : port manage_regulator_interface.lower_desired_temp -> manage_heat_source.lower_desired_temp;
-  
--- ("Regulator Mode") - send regulator mode from mode manager 
---  ... to interface manager
-  rrmi : port manage_regulator_mode.regulator_mode -> manage_regulator_interface.regulator_mode;
---  ... and to heat source manager
-  rrmh : port manage_regulator_mode.regulator_mode -> manage_heat_source.regulator_mode;
+			-- ("Current Temperature") - incoming current temperature (with status value) 
+			--   ...to Manage Regulator Interface
+			rcti: port current_tempWstatus -> manage_regulator_interface.current_tempWstatus;
+			--   ...and to Manage Heat Source
+			rcth: port current_tempWstatus -> manage_heat_source.current_tempWstatus;
+			--   ...and to Manage Regulator Mode
+			rctm: port current_tempWstatus -> manage_regulator_mode.current_tempWstatus;
 
--- ("Regulator Interface Failure") - send regulator interface failure to mode manager
-  rif : port manage_regulator_interface.interface_failure -> manage_regulator_mode.interface_failure;
-  
-  mif : port detect_regulator_failure.internal_failure -> manage_regulator_mode.internal_failure;
-end Regulate_Temperature.impl;
+			-- ==== OUTPUT INTERFACE values from internal components ==== 
+			-- ("Display Temperature") output temperature to display on operator interface 
+			rdt: port manage_regulator_interface.displayed_temp -> displayed_temp;
+			-- ("Regulator Status") output regulator subsystem status to operator interface 
+			rrs: port manage_regulator_interface.regulator_status -> regulator_status;
+			-- ("Heat Control") output on/off command to heat source 
+			rhc: port manage_heat_source.heat_control -> heat_control;
 
+			-- ==== INTERNAL communication ====
+			-- ("Desired Range") - send validated desired temperature from Manage Regulator Interface to Manage Heat Source 
+			mudt: port manage_regulator_interface.upper_desired_temp -> manage_heat_source.upper_desired_temp;
+			mldt: port manage_regulator_interface.lower_desired_temp -> manage_heat_source.lower_desired_temp;
+
+			-- ("Regulator Mode") - send regulator mode from mode manager 
+			--  ... to interface manager
+			rrmi: port manage_regulator_mode.regulator_mode -> manage_regulator_interface.regulator_mode;
+			--  ... and to heat source manager
+			rrmh: port manage_regulator_mode.regulator_mode -> manage_heat_source.regulator_mode;
+	
+			-- ("Regulator Interface Failure") - send regulator interface failure to mode manager
+			rif: port manage_regulator_interface.interface_failure -> manage_regulator_mode.interface_failure;
+
+			mif: port detect_regulator_failure.internal_failure -> manage_regulator_mode.internal_failure;
+	end Regulate_Temperature.impl;
 
 -- ===========================================================================================================
 --
@@ -119,159 +115,153 @@ end Regulate_Temperature.impl;
 --   These include obtaining the Desired Range, reporting back the status of the Regulate Temperature Function, 
 --   and reporting back the Display Temperature."
 -- ===========================================================================================================
+	thread Manage_Regulator_Interface
+		features
+			-- ==== INPUTS ====	(see Figure A.3)
+			-- ("Desired Temperature Range") - desired temperature from operator interface
+			upper_desired_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			lower_desired_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			-- ("Current Temperature") - current temperature from temp sensor
+			current_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			-- ("Regulator Mode") - current mode of regulator subsystem
+			regulator_mode: in data port Isolette_Data_Model::Regulator_Mode;
 
-thread Manage_Regulator_Interface
-  features
-  -- ==== INPUTS ====	(see Figure A.3)
-  -- ("Desired Temperature Range") - desired temperature from operator interface
-  upper_desired_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  lower_desired_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  -- ("Current Temperature") - current temperature from temp sensor
-  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  -- ("Regulator Mode") - current mode of regulator subsystem
-  regulator_mode : in data port Isolette_Data_Model::Regulator_Mode;
-  
-  -- ==== OUTPUTS ====	(see Figure A.3)
-  -- ("Desired Range") - validated ("valid" status confirmed) desired temperature range from operator interface
-  upper_desired_temp: out data port Isolette_Data_Model::Temp.impl;
-  lower_desired_temp: out data port Isolette_Data_Model::Temp.impl;
-  -- current temperature to display on operator interface
-  displayed_temp : out data port Isolette_Data_Model::Temp.impl;
-  -- overall status of regulator subsystem sent to operator interface
-  regulator_status : out data port Isolette_Data_Model::Status;
-  -- flag indicating improper inputs; sent to determine overall subsystem mode 
-  interface_failure : out data port Isolette_Data_Model::Failure_Flag.impl;
-  
-  -- AADL flows indicate data flows between input and output ports that we would like the thread implementation
-  -- to realize.
-  flows
-	  -- JMH: would like the following syntax (stuff in comment) with the name being optional 
-	  -- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
-	  
-	  -- ==== desired temps function flows ====
-	  --   summary: this is a pair-wise propagation of data that just strips
-	  --     of the status tag
-	  mri_dt1: flow path upper_desired_tempWstatus -> upper_desired_temp;	
-	  -- these two flows are independent 
-	  mri_dt2: flow path lower_desired_tempWstatus -> lower_desired_temp;
-	  
-	  -- ==== displayed temp function flows ====
-	  --   summary: the displayed temp depends both on current temp/status (data dependence)
-	  --            as well as mode (control dependence)
-	  -- data dependence
-	  --    current temperature is the value to be displayed in normal mode
-      mri_dspt1: flow path current_tempWstatus -> displayed_temp;
-      -- control dependence
-      --    in modes other than normal mode, the displayed value is unspecified
-      mri_dspt2: flow path regulator_mode -> displayed_temp;
-      -- uncaptured at the moment is the notion (from reqs) that if
-      -- regulator mode is init or failed, then the display_temp is
-      -- unspecified.
-      
-      -- ==== regulator status function ====
-      --   summary: regulator mode is just propagated (essentially renamed)
-      --            to regulator status
-      -- data dependence 	
-	  mri_rs: flow path regulator_mode -> regulator_status;
-	  
-	  -- interface failure function 	
-	  mri_if1: flow path upper_desired_tempWstatus -> interface_failure;
-      mri_if2: flow path lower_desired_tempWstatus -> interface_failure;
-       
- -- AADL thread properties configure the software structure and resources of the thread,
- --  including the entry points that are called by the scheduling framework.       
- properties
-	Dispatch_Protocol => Periodic;
-	Period => Isolette_Properties::ThreadPeriod;
-	
-	Stack_Size => Isolette_Properties::StackSize;
+			-- ==== OUTPUTS ====	(see Figure A.3)
+			-- ("Desired Range") - validated ("valid" status confirmed) desired temperature range from operator interface
+			upper_desired_temp: out data port Isolette_Data_Model::Temp.impl;
+			lower_desired_temp: out data port Isolette_Data_Model::Temp.impl;
+			-- current temperature to display on operator interface
+			displayed_temp: out data port Isolette_Data_Model::Temp.impl;
+			-- overall status of regulator subsystem sent to operator interface
+			regulator_status: out data port Isolette_Data_Model::Status;
+			-- flag indicating improper inputs; sent to determine overall subsystem mode 
+			interface_failure: out data port Isolette_Data_Model::Failure_Flag.impl;
 
-  -- The AADL GUMBO Annex formally specifies behavioral properties of the thread.
-  -- Each natural language requirement from AR-08-32 Section A.5.1.1 (e.g., REQ-MRI-1) is rendered as
-  -- a GUMBO specification clause.  These contracts are translated to code-level contracts by the HAMR
-  -- code generator, and the code-level Logika verification tool verifies that the Slang component implementation
-  -- conforms to the code-level contracts (and thus the GUMBO model-level contracts, and thus the requirements). 
-  annex GUMBO
-  {**
-    -- specification helper function
-    functions
-      def ROUND(num:Base_Types::Float_32):Base_Types::Float_32 := num;
+		-- AADL flows indicate data flows between input and output ports that we would like the thread implementation
+		-- to realize.
+		flows
+			-- JMH: would like the following syntax (stuff in comment) with the name being optional 
+			-- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
+			-- ==== desired temps function flows ====
+			--   summary: this is a pair-wise propagation of data that just strips
+			--     of the status tag
+			mri_dt1: flow path upper_desired_tempWstatus -> upper_desired_temp;
+			-- these two flows are independent 
+			mri_dt2: flow path lower_desired_tempWstatus -> lower_desired_temp;
 
-    --  ====== I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints ======
-    initialize
-      guarantee
-        RegulatorStatusIsInitiallyInit: regulator_status == Isolette_Data_Model::Status.Init_Status;
-     
-    --  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====
-    compute
-      -- general assumption between incoming port values    
-      assume lower_is_not_higher_than_upper: lower_desired_temp.value <= upper_desired_temp.value;
-  
-      cases
-      -- ====== Regulator Status ======    
+			-- ==== displayed temp function flows ====
+			--   summary: the displayed temp depends both on current temp/status (data dependence)
+			--            as well as mode (control dependence)
+			-- data dependence
+			--    current temperature is the value to be displayed in normal mode
+			mri_dspt1: flow path current_tempWstatus -> displayed_temp;
+			-- control dependence
+			--    in modes other than normal mode, the displayed value is unspecified
+			mri_dspt2: flow path regulator_mode -> displayed_temp;
+			-- uncaptured at the moment is the notion (from reqs) that if
+			-- regulator mode is init or failed, then the display_temp is
+			-- unspecified.
+			-- ==== regulator status function ====
+			--   summary: regulator mode is just propagated (essentially renamed)
+			--            to regulator status
+			-- data dependence 	
+			mri_rs: flow path regulator_mode -> regulator_status;
 
-        case REQ_MRI_1 "If the Regulator Mode is INIT,
-      					|the Regulator Status shall be set to Init.":
-          assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
-          guarantee regulator_status == Isolette_Data_Model::Status.Init_Status;
+			-- interface failure function 	
+			mri_if1: flow path upper_desired_tempWstatus -> interface_failure;
+			mri_if2: flow path lower_desired_tempWstatus -> interface_failure;
 
-        case REQ_MRI_2 "If the Regulator Mode is NORMAL,
-      					|the Regulator Status shall be set to On":
-          assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-          guarantee regulator_status == Isolette_Data_Model::Status.On_Status;
+		-- AADL thread properties configure the software structure and resources of the thread,
+		--  including the entry points that are called by the scheduling framework.       
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => Isolette_Properties::ThreadPeriod;
 
-        case REQ_MRI_3 "If the Regulator Mode is FAILED,
-      					|the Regulator Status shall be set to Failed.":
-          assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
-          guarantee regulator_status == Isolette_Data_Model::Status.Failed_Status;
+			Stack_Size => Isolette_Properties::StackSize;
 
-      -- ===== Display Temperature =====
+		-- The AADL GUMBO Annex formally specifies behavioral properties of the thread.
+		-- Each natural language requirement from AR-08-32 Section A.5.1.1 (e.g., REQ-MRI-1) is rendered as
+		-- a GUMBO specification clause.  These contracts are translated to code-level contracts by the HAMR
+		-- code generator, and the code-level Logika verification tool verifies that the Slang component implementation
+		-- conforms to the code-level contracts (and thus the GUMBO model-level contracts, and thus the requirements). 
+		annex GUMBO {**
+			-- specification helper function
+			functions
+				def ROUND(num:Base_Types::Float_32):Base_Types::Float_32 := num;
+			
+			--  ====== I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints ======
+			initialize
+				guarantee
+					RegulatorStatusIsInitiallyInit: regulator_status == Isolette_Data_Model::Status.Init_Status;
+			
+			--  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====
+			compute
+				-- general assumption between incoming port values    
+				assume lower_is_not_higher_than_upper: lower_desired_temp.value <= upper_desired_temp.value;
+			
+				cases
+					-- ====== Regulator Status ======    
+			
+					case REQ_MRI_1 "If the Regulator Mode is INIT,
+									|the Regulator Status shall be set to Init.":
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+						guarantee regulator_status == Isolette_Data_Model::Status.Init_Status;
+			
+					case REQ_MRI_2 "If the Regulator Mode is NORMAL,
+									|the Regulator Status shall be set to On":
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
+						guarantee regulator_status == Isolette_Data_Model::Status.On_Status;
+			
+					case REQ_MRI_3 "If the Regulator Mode is FAILED,
+									|the Regulator Status shall be set to Failed.":
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
+						guarantee regulator_status == Isolette_Data_Model::Status.Failed_Status;
+			
+					-- ===== Display Temperature =====
+			
+					case REQ_MRI_4 "If the Regulator Mode is NORMAL, the
+									|Display Temperature shall be set to the value of the
+									|Current Temperature rounded to the nearest integer.":
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
+						guarantee displayed_temp.value == ROUND(current_tempWstatus.value);
+			
+					case REQ_MRI_5 "If the Regulator Mode is not NORMAL,
+									|the value of the Display Temperature is UNSPECIFIED.": 
+						assume T;
+						guarantee T;
 
-        case REQ_MRI_4 "If the Regulator Mode is NORMAL, the
-      					|Display Temperature shall be set to the value of the
-      					|Current Temperature rounded to the nearest integer.":
-          assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-          guarantee displayed_temp.value == ROUND(current_tempWstatus.value);
+					-- ===== Regulator Interface Failure =====
+			
+					case REQ_MRI_6 "If the Status attribute of the Lower Desired Temperature
+									|or the Upper Desired Temperature is Invalid,
+									|the Regulator Interface Failure shall be set to True.":
+						assume ((upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) | (upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid));
+						guarantee interface_failure.value;
+			
+					case REQ_MRI_7 "If the Status attribute of the Lower Desired Temperature
+									|and the Upper Desired Temperature is Valid,
+									|the Regulator Interface Failure shall be set to False.":
+						assume T;
+						guarantee (interface_failure.value == (!((upper_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) & (lower_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid))));
+			
+					-- ===== Desired Range =====
+			
+					case REQ_MRI_8 "If the Regulator Interface Failure is False":
+						assume (!interface_failure.value);
+						guarantee ((lower_desired_temp.value == lower_desired_tempWstatus.value) & (upper_desired_temp.value == upper_desired_tempWstatus.value));
+					
+					case REQ_MRI_9 "If the Regulator Interface Failure is True,
+									|the Desired Range is UNSPECIFIED.
+									|the Desired Range shall be set to the Desired Temperature Range.
+									|(** currently omitted due to the 'UNSPECIFIED' **)" : 
+						assume T;
+						guarantee T;
+		**};
 
-		case REQ_MRI_5 "If the Regulator Mode is not NORMAL,
-      					|the value of the Display Temperature is UNSPECIFIED.": 
-      	  assume T;
-      	  guarantee T;
-      	  
-      -- ===== Regulator Interface Failure =====
+	end Manage_Regulator_Interface;
 
-        case REQ_MRI_6 "If the Status attribute of the Lower Desired Temperature
-      					|or the Upper Desired Temperature is Invalid,
-      					|the Regulator Interface Failure shall be set to True.":
-          assume ((upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) | (upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid));
-          guarantee interface_failure.value;
-
-        case REQ_MRI_7 "If the Status attribute of the Lower Desired Temperature
-      					|and the Upper Desired Temperature is Valid,
-      					|the Regulator Interface Failure shall be set to False.":
-          assume T;
-          guarantee (interface_failure.value == (!((upper_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) & (lower_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid))));
-
-      -- ===== Desired Range =====
-
-        case REQ_MRI_8 "If the Regulator Interface Failure is False":
-          assume (!interface_failure.value);
-          guarantee ((lower_desired_temp.value == lower_desired_tempWstatus.value) & (upper_desired_temp.value == upper_desired_tempWstatus.value));
-      
-      	case REQ_MRI_9 "If the Regulator Interface Failure is True,
-      					|the Desired Range is UNSPECIFIED.
-      					|the Desired Range shall be set to the Desired Temperature Range.
-      					|(** currently omitted due to the 'UNSPECIFIED' **)" : 
-      	  assume T;
-      	  guarantee T;
-      	       
-  **};        
-	 
-end Manage_Regulator_Interface;
-
-thread implementation Manage_Regulator_Interface.impl
-end Manage_Regulator_Interface.impl;
-
+	thread implementation Manage_Regulator_Interface.impl
+	end Manage_Regulator_Interface.impl;
 
 -- ===========================================================================================================
 --
@@ -283,122 +273,117 @@ end Manage_Regulator_Interface.impl;
 --  "The Manage Regulator Mode Function determines the mode of the Regulate Temperature Function."
 --
 -- ===========================================================================================================
+	thread Manage_Regulator_Mode
+		features
+			-- ==== INPUTS ========	 (see Figure A.3)
+			-- ("Current Temperature (Status)" - current temperature from temp sensor
+			current_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			-- ("Regulator Interface Failure") - status of operator interface interactions
+			interface_failure: in data port Isolette_Data_Model::Failure_Flag.impl;
+			-- ("Regulator Internal Failure") - internal status of regulator
+			internal_failure: in data port Isolette_Data_Model::Failure_Flag.impl;
 
-thread Manage_Regulator_Mode
-  features
-  -- ==== INPUTS ========	 (see Figure A.3)
-  -- ("Current Temperature (Status)" - current temperature from temp sensor
-  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  -- ("Regulator Interface Failure") - status of operator interface interactions
-  interface_failure : in data port Isolette_Data_Model::Failure_Flag.impl;
-  -- ("Regulator Internal Failure") - internal status of regulator
-  internal_failure : in data port Isolette_Data_Model::Failure_Flag.impl;
-  
-  -- ==== OUTPUTS ========  (see Figure A.3)
-  -- ("Regulator Mode") - mode of regulator (Init, Normal, Failed)
-  regulator_mode : out data port Isolette_Data_Model::Regulator_Mode;
+			-- ==== OUTPUTS ========  (see Figure A.3)
+			-- ("Regulator Mode") - mode of regulator (Init, Normal, Failed)
+			regulator_mode: out data port Isolette_Data_Model::Regulator_Mode;
 
-flows
-	  -- ==== regulator_mode function flows ====
-	  --   summary: all three inputs are used to determine regulator_mode
-	  mrm_ctws2rm: flow path current_tempWstatus -> regulator_mode;
-	  mrm_iff2rm: flow path interface_failure -> regulator_mode;
-	  mrm_itf2rm: flow path internal_failure -> regulator_mode;	
-	  
-properties
-	Dispatch_Protocol => Periodic;
-	Period => Isolette_Properties::ThreadPeriod;
-	
-	Stack_Size => Isolette_Properties::StackSize;
-annex GUMBO	  
-  {**
-    -- indicate that the component maintains an internal state (variables) that influence it's behavior
-    state
-        lastRegulatorMode: Isolette_Data_Model::Regulator_Mode;
-    
-    -- Note: In AR-08-32, requirements for Manage Regulator Mode are not given in natural language clauses,
-    --       but instead are phrased in terms of a state machine.  We interpret the state machine transitions
-    --       as natural language clauses in the comments below.
-    
-    --  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
-    initialize
-      guarantee
-        REQ_MRM_1 "The initial mode of the regular is INIT" :
-         regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode; 
-        -- TBD: add a constraint for the state variable lastRegulatorMode
-          
-    --  ======= C o m p u t e   E n t r y    P o i n t    Behavior Constraints  ======
-    compute
-      cases
-        -- Gage TBD: throughout, add constraints on the lastRegulatorMode state variable
-        
-        -- Gage TBD: add case for when we are currently in INIT and we stay in INIT (name: Req-MRM-maintain-init)
+		flows
+			-- ==== regulator_mode function flows ====
+			--   summary: all three inputs are used to determine regulator_mode
+			mrm_ctws2rm: flow path current_tempWstatus -> regulator_mode;
+			mrm_iff2rm: flow path interface_failure -> regulator_mode;
+			mrm_itf2rm: flow path internal_failure -> regulator_mode;
 
-        case REQ_MRM_2 "'transition from Init to Normal'
-        				|If the current regulator mode is Init, then
-        				|the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
-        				|  if NOT (Regulator Interface Failure OR Regulator Internal Failure)
-        				|     AND Current Temperature.Status = Valid":
-          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
-          guarantee 
-          	((!(interface_failure.value || internal_failure.value)) && 
-          	    current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>: 
-          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
-          	 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => Isolette_Properties::ThreadPeriod;
 
-		case REQ_MRM_Maintain_Normal "'maintaining NORMAL, NORMAL to NORMAL'
-        							|If the current regulator mode is Normal, then
-        							|the regulator mode is stays normal iff
-        							|the regulaor status is not false i.e.,
-        							|       if NOT(
-        							|           (Regulator Interface Failure OR Regulator Internal Failure)
-        							|           OR NOT(Current Temperature.Status = Valid)
-        							|       )":
-			assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-			guarantee 
-			  ((!(interface_failure.value || internal_failure.value)) && 
-          	     current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>:
-          	  (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
-				 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
-				 	        
-        case REQ_MRM_3 "'transition for NORMAL to FAILED'
-      					|If the current regulator mode is Normal, then
-        				|the regulator mode is set to Failed iff
-        				|the regulator status is false, i.e.,
-        				|   if  (Regulator Interface Failure OR Regulator Internal Failure)
-        				|       OR NOT(Current Temperature.Status = Valid)":
-          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
-          guarantee 
-            ((interface_failure.value || internal_failure.value) &&
-				current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>:
-          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
-          	 	lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+			Stack_Size => Isolette_Properties::StackSize;
+		annex GUMBO {**
+			-- indicate that the component maintains an internal state (variables) that influence it's behavior
+			state
+				lastRegulatorMode: Isolette_Data_Model::Regulator_Mode;
 
-        case REQ_MRM_4 "'transition from INIT to FAILED' 
-        				|If the current regulator mode is Init, then
-        				|the regulator mode and lastRegulatorMode state value is set to Failed iff
-        				|the regulator status is false, i.e.,
-        				|       if  (Regulator Interface Failure OR Regulator Internal Failure)
-        				|       OR NOT(Current Temperature.Status = Valid)":
-          assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
-          guarantee 
-          	((interface_failure.value || internal_failure.value) && 
-          	    current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>: 
-          	(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
-          		lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+			-- Note: In AR-08-32, requirements for Manage Regulator Mode are not given in natural language clauses,
+			--       but instead are phrased in terms of a state machine.  We interpret the state machine transitions
+			--       as natural language clauses in the comments below.
+			
+			--  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
+			initialize
+				guarantee REQ_MRM_1 "The initial mode of the regular is INIT" :
+					regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode; 
+				
+				-- TBD: add a constraint for the state variable lastRegulatorMode
+			
+			--  ======= C o m p u t e   E n t r y    P o i n t    Behavior Constraints  ======
+			compute
+				cases
+			
+					case REQ_MRM_2 "'transition from Init to Normal'
+									|If the current regulator mode is Init, then
+									|the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
+									|  if NOT (Regulator Interface Failure OR Regulator Internal Failure)
+									|     AND Current Temperature.Status = Valid":
+						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+						guarantee 
+							((!(interface_failure.value || internal_failure.value)) && 
+								current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+							(regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
+								lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
+			
+					case REQ_MRM_Maintain_Normal "'maintaining NORMAL, NORMAL to NORMAL'
+												|If the current regulator mode is Normal, then
+												|the regulator mode is stays normal iff
+												|the regulaor status is not false i.e.,
+												|       if NOT(
+												|           (Regulator Interface Failure OR Regulator Internal Failure)
+												|           OR NOT(Current Temperature.Status = Valid)
+												|       )":
+						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
+						guarantee 
+							((!(interface_failure.value || internal_failure.value)) && 
+								current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>:
+							(regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode &&
+								lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode);
+							 	        
+					case REQ_MRM_3 "'transition for NORMAL to FAILED'
+									|If the current regulator mode is Normal, then
+									|the regulator mode is set to Failed iff
+									|the regulator status is false, i.e.,
+									|   if  (Regulator Interface Failure OR Regulator Internal Failure)
+									|       OR NOT(Current Temperature.Status = Valid)":
+						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
+						guarantee 
+							((interface_failure.value || internal_failure.value) &&
+								current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>:
+							(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+								lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+			
+					case REQ_MRM_4 "'transition from INIT to FAILED' 
+									|If the current regulator mode is Init, then
+									|the regulator mode and lastRegulatorMode state value is set to Failed iff
+									|the regulator status is false, i.e.,
+									|       if  (Regulator Interface Failure OR Regulator Internal Failure)
+									|       OR NOT(Current Temperature.Status = Valid)":
+						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+						guarantee 
+							((interface_failure.value || internal_failure.value) && 
+								current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+							(regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+								lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+			
+					case REQ_MRM_MaintainFailed "'maintaining FAIL, FAIL to FAIL'
+												|If the current regulator mode is Failed, then
+												|the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed":
+						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
+						guarantee (regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
+							lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
+		**};
 
-        case REQ_MRM_MaintainFailed "'maintaining FAIL, FAIL to FAIL'
-        							|If the current regulator mode is Failed, then
-        							|the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed":
-        	assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
-        	guarantee (regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
-          		lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
-  **};
+	end Manage_Regulator_Mode;
 
-end Manage_Regulator_Mode;
-
-thread implementation Manage_Regulator_Mode.impl
-end Manage_Regulator_Mode.impl;
+	thread implementation Manage_Regulator_Mode.impl
+	end Manage_Regulator_Mode.impl;
 
 -- ===========================================================================================================
 --
@@ -411,110 +396,107 @@ end Manage_Regulator_Mode.impl;
 --   of the Isolette within the Desired Temperature Range."
 --
 -- ===========================================================================================================
+	thread Manage_Heat_Source
+		features
+			-- ======== INPUTS =======
+			-- ("Current Temperature") - current temperature (from temp sensor)
+			current_tempWstatus: in data port Isolette_Data_Model::TempWstatus.impl;
+			-- ("Desired Range") - lowest and upper bound of desired temperature range
+			lower_desired_temp: in data port Isolette_Data_Model::Temp.impl;
+			upper_desired_temp: in data port Isolette_Data_Model::Temp.impl;
+			-- ("Regulator Mode") - subsystem mode 
+			regulator_mode: in data port Isolette_Data_Model::Regulator_Mode;
 
-thread Manage_Heat_Source
-features
-  -- ======== INPUTS =======
-  -- ("Current Temperature") - current temperature (from temp sensor)
-  current_tempWstatus : in data port Isolette_Data_Model::TempWstatus.impl;
-  -- ("Desired Range") - lowest and upper bound of desired temperature range
-  lower_desired_temp : in data port Isolette_Data_Model::Temp.impl;
-  upper_desired_temp : in data port Isolette_Data_Model::Temp.impl;
-  -- ("Regulator Mode") - subsystem mode 
-  regulator_mode : in data port Isolette_Data_Model::Regulator_Mode;
-    
-  -- ======== OUTPUTS =======
-  -- ("Heat Control") - command to turn heater on/off (actuation command)
-  heat_control : out data port Isolette_Data_Model::On_Off;
-  
-	flows
-	  -- JMH would like the following syntax (stuff in comment) with the name being optional 
-	  -- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
-	  
-	  mhs_fp1: flow path current_tempWstatus -> heat_control;	
-	  mhs_fp2: flow path lower_desired_temp -> heat_control;	
-	  mhs_fp3: flow path upper_desired_temp -> heat_control;
-      mhs_fp4: flow path regulator_mode -> heat_control;		  	
-	
-	properties
-    Dispatch_Protocol => Periodic;
-    Period => Isolette_Properties::ThreadPeriod;
-  
-  	Stack_Size => Isolette_Properties::StackSize; 
-  	
-  annex GUMBO {**
-  -- indicate that the component maintains an internal state (variables) that influence its behavior
-  state
-    lastCmd: Isolette_Data_Model::On_Off;
+			-- ======== OUTPUTS =======
+			-- ("Heat Control") - command to turn heater on/off (actuation command)
+			heat_control: out data port Isolette_Data_Model::On_Off;
 
-  --  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
-  initialize
-    guarantee
-      initlastCmd: lastCmd == Isolette_Data_Model::On_Off.Off;
-    guarantee REQ_MHS_1 
-      			"If the Regulator Mode is INIT, the Heat Control shall be
-      			|set to Off":
-      heat_control == Isolette_Data_Model::On_Off.Off;
+		flows
+			-- JMH would like the following syntax (stuff in comment) with the name being optional 
+			-- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
+			mhs_fp1: flow path current_tempWstatus -> heat_control;
+			mhs_fp2: flow path lower_desired_temp -> heat_control;
+			mhs_fp3: flow path upper_desired_temp -> heat_control;
+			mhs_fp4: flow path regulator_mode -> heat_control;
 
-  --  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====      
-  compute
-    -- assumption on set points enforced within the Operator Interface
-    assume lower_is_lower_temp: lower_desired_temp.value <= upper_desired_temp.value;
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => Isolette_Properties::ThreadPeriod;
 
-    -- the lastCmd state variable is always equal to the value of the heat_control output port
-    guarantee lastCmd "Set lastCmd to value of output Cmd port":
-      lastCmd == heat_control;
+			Stack_Size => Isolette_Properties::StackSize;
 
-   cases
+		annex GUMBO {**
+			-- indicate that the component maintains an internal state (variables) that influence its behavior
+			state
+				lastCmd: Isolette_Data_Model::On_Off;
+			
+			--  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
+			initialize
+				guarantee
+					initlastCmd: lastCmd == Isolette_Data_Model::On_Off.Off;
+				guarantee REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
+									|set to Off":
+					heat_control == Isolette_Data_Model::On_Off.Off;
+			
+			--  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====      
+			compute
+				-- assumption on set points enforced within the Operator Interface
+				assume lower_is_lower_temp: lower_desired_temp.value <= upper_desired_temp.value;
+			
+				-- the lastCmd state variable is always equal to the value of the heat_control output port
+				guarantee lastCmd "Set lastCmd to value of output Cmd port":
+					lastCmd == heat_control;
+			
+				cases
+			
+					case REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
+									|set to Off.": 
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
+						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
+			
+					case REQ_MHS_2 "If the Regulator Mode is NORMAL and the Current Temperature is less than
+									|the Lower Desired Temperature, the Heat Control shall be set to On.":
+						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
+							& (current_tempWstatus.value < lower_desired_temp.value);
+						guarantee heat_control == Isolette_Data_Model::On_Off.Onn;
+			
+					case REQ_MHS_3 "If the Regulator Mode is NORMAL and the Current Temperature is greater than
+									|the Upper Desired Temperature, the Heat Control shall be set to Off.":
+						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
+							& (current_tempWstatus.value > upper_desired_temp.value);
+						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
+			
+					case REQ_MHS_4 "If the Regulator Mode is NORMAL and the Current
+								|Temperature is greater than or equal to the Lower Desired Temperature
+								|and less than or equal to the Upper Desired Temperature, the value of
+								|the Heat Control shall not be changed.":
+						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
+							& (current_tempWstatus.value >= lower_desired_temp.value
+							& current_tempWstatus.value <= upper_desired_temp.value); 
+						guarantee heat_control == In(lastCmd);
+			
+					case REQ_MHS_5 "If the Regulator Mode is FAILED, the Heat Control shall be
+									|set to Off.":
+						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
+						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
+		**};
+	end Manage_Heat_Source;
 
-     case REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
-     				|set to Off.": 
-       assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
-       guarantee heat_control == Isolette_Data_Model::On_Off.Off;
-       
-     case REQ_MHS_2 "If the Regulator Mode is NORMAL and the Current Temperature is less than
-					|the Lower Desired Temperature, the Heat Control shall be set to On.":
-       assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
-               & (current_tempWstatus.value < lower_desired_temp.value);
-       guarantee heat_control == Isolette_Data_Model::On_Off.Onn;
+	thread implementation Manage_Heat_Source.impl
+	end Manage_Heat_Source.impl;
 
-     case REQ_MHS_3 "If the Regulator Mode is NORMAL and the Current Temperature is greater than
-     				|the Upper Desired Temperature, the Heat Control shall be set to Off.":
-       assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
-               & (current_tempWstatus.value > upper_desired_temp.value);
-       guarantee heat_control == Isolette_Data_Model::On_Off.Off;
-     
-     case REQ_MHS_4 "If the Regulator Mode is NORMAL and the Current
-					|Temperature is greater than or equal to the Lower Desired Temperature
-     				|and less than or equal to the Upper Desired Temperature, the value of
-     				|the Heat Control shall not be changed.":
-       assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
-               & (current_tempWstatus.value >= lower_desired_temp.value
-                  & current_tempWstatus.value <= upper_desired_temp.value); 
-       guarantee heat_control == In(lastCmd);
+	thread Detect_Regulator_Failure
+		features
+			-- ==== OUTPUTS ========		
+			-- ("Monitor Interface Failure") - in case of internal failure, a flag is raised
+			internal_failure: out data port Isolette_Data_Model::Failure_Flag.impl;
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => Isolette_Properties::ThreadPeriod;
 
-     case REQ_MHS_5 "If the Regulator Mode is FAILED, the Heat Control shall be
-					|set to Off.":
-       assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
-       guarantee heat_control == Isolette_Data_Model::On_Off.Off;
-  **};
-end Manage_Heat_Source;
+			Stack_Size => Isolette_Properties::StackSize;
+	end Detect_Regulator_Failure;
 
-thread implementation Manage_Heat_Source.impl
-end Manage_Heat_Source.impl;
-
-thread Detect_Regulator_Failure
-  features
-  -- ==== OUTPUTS ========		
-  -- ("Monitor Interface Failure") - in case of internal failure, a flag is raised
-  internal_failure : out data port Isolette_Data_Model::Failure_Flag.impl;
-properties
-	Dispatch_Protocol => Periodic;
-	Period => Isolette_Properties::ThreadPeriod;
-	
-	Stack_Size => Isolette_Properties::StackSize;	
-end Detect_Regulator_Failure;
-
-thread implementation Detect_Regulator_Failure.impl
-end Detect_Regulator_Failure.impl;
+	thread implementation Detect_Regulator_Failure.impl
+	end Detect_Regulator_Failure.impl;
 end Regulate;

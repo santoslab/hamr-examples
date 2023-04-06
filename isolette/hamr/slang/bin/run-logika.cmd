@@ -41,29 +41,47 @@ val defaultOpts = LogikaOpt(timeout = (if(isCi) 10000 else 2000), rlimit = 20000
 
 val files = ISZ[C](
 
-C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala",
-    defaultOpts(timeout = 10000), ISZ(), ISZ(
-    "[74, 349] Could not deduce that the postcondition holds")),
+  C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala", defaultOpts, ISZ(
+    "[39, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[134, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
   C(monitorDir / "Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala", defaultOpts, ISZ(
-    "[215, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[217, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[219, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[221, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+    "[55, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[56, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[57, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[58, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[154, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[199, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[212, 19] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[213, 19] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
   C(monitorDir / "Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala", defaultOpts, ISZ(
-    "[156, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[158, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[160, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+    "[39, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[157, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
-  C(regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala", defaultOpts, ISZ(), ISZ()),
+  C(regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala", defaultOpts, ISZ(
+    "[40, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[136, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
-  C(regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala", defaultOpts, ISZ(), ISZ()),
+  C(regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala", defaultOpts, ISZ(
+    "[49, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[50, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[51, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[52, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[53, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[163, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[203, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[247, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[265, 19] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[266, 19] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[279, 19] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[280, 19] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
 
-  C(regulateDir /"Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala", defaultOpts, ISZ(
-    "[151, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[153, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[155, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()))
+  C(regulateDir / "Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala", defaultOpts, ISZ(
+    "[36, 17] String interpolation is currently over-approximated to produce an unconstrained string",
+    "[152, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ())
+)
+
 
 var result: Z = 0
 for(f <- files) {
