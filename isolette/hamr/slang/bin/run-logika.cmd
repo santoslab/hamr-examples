@@ -27,71 +27,58 @@ val regulateDir = home / "src" / "main" / "component" / "isolette" / "Regulate"
 val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin" 
 val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
 
+val ignoreStringInterpWarnings: B = T // if T then ignore string interp warnings as the strings only appear in api.logInfo calls and not in contracts
+
 val isCi: B = Os.env("GITLAB_CI").nonEmpty || Os.env("GITHUB_ACTIONS").nonEmpty || Os.env("BUILD_ID").nonEmpty
 
-@datatype class C(val file: Os.Path,
-                  val logikaOpts: LogikaOpt,
-                  val expectedWarnings: ISZ[String],
-                  val expectedErrors: ISZ[String])
+val initialisePrefix = "initialise"
+val timeTriggeredPrefix = "timeTriggered"
+
+@datatype class ExpectedReport(val expectedWarnings: ISZ[String],
+                               val expectedErrors: ISZ[String])
+val emptyReport = ExpectedReport(ISZ(), ISZ())
+
+val emptyMap = Map.empty[String, ExpectedReport] + (initialisePrefix ~> emptyReport) + (timeTriggeredPrefix ~> emptyReport)
 
 @datatype class LogikaOpt (val timeout: Z,
                            val rlimit: Z)
 
 val defaultOpts = LogikaOpt(timeout = (if(isCi) 10000 else 2000), rlimit = 2000000)
 
+@datatype class C(val file: Os.Path,
+                  val logikaOpts: LogikaOpt,
+                  val expectedReports: Map[String, ExpectedReport])
+
 val files = ISZ[C](
 
-  C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala", defaultOpts, ISZ(
-    "[39, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[134, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+  C(monitorDir / "Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.scala", defaultOpts, emptyMap),
 
-  C(monitorDir / "Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala", defaultOpts, ISZ(
-    "[55, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[56, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[57, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[58, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[154, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[199, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[212, 19] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[213, 19] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+  C(monitorDir / "Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.scala", defaultOpts, emptyMap),
 
-  C(monitorDir / "Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala", defaultOpts, ISZ(
-    "[39, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[157, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+  C(monitorDir / "Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.scala", defaultOpts, emptyMap),
 
-  C(regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala", defaultOpts, ISZ(
-    "[40, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[136, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+  C(regulateDir / "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.scala", defaultOpts, emptyMap),
 
-  C(regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala", defaultOpts, ISZ(
-    "[49, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[50, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[51, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[52, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[53, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[163, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[203, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[247, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[265, 19] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[266, 19] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[279, 19] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[280, 19] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ()),
+  C(regulateDir / "Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.scala", defaultOpts, emptyMap),
 
-  C(regulateDir / "Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala", defaultOpts, ISZ(
-    "[36, 17] String interpolation is currently over-approximated to produce an unconstrained string",
-    "[152, 17] String interpolation is currently over-approximated to produce an unconstrained string"), ISZ())
+  C(regulateDir / "Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.scala", defaultOpts, emptyMap)
 )
 
+println("Initializing runtime library ...\n")
+Sireum.initRuntimeLibrary()
 
 var result: Z = 0
-for(f <- files) {
+for(f <- files;
+    entryPoint <- ISZ(initialisePrefix, timeTriggeredPrefix)) {
+
   val reporter = org.sireum.message.Reporter.create
   val input = ISZ[String]("proyek", "logika",
     "--timeout", f.logikaOpts.timeout.string, //
     "--rlimit", f.logikaOpts.rlimit.string, //
+    "--line", findMethod(entryPoint, f.file).string, //
     home.value, f.file.value)
 
-  println(s"Checking ${f.file.name}")
+  println(s"Checking $entryPoint method of ${f.file.name}")
   println(st"sireum ${(input, " ")}".render)
 
   val start = org.sireum.extension.Time.currentMillis
@@ -110,8 +97,9 @@ for(f <- files) {
     }
   }
 
-  compare("warning", f.expectedWarnings, reporter.warnings)
-  compare("error", f.expectedErrors, reporter.errors)
+  compare("warning", f.expectedReports.get(entryPoint).get.expectedWarnings, reporter.warnings.filter(p =>
+    !ignoreStringInterpWarnings || !ops.StringOps(p.text).contains("String interpolation is currently over-approximated to produce an unconstrained string")))
+  compare("error", f.expectedReports.get(entryPoint).get.expectedErrors, reporter.errors)
 
   if (report.nonEmpty) {
     println(s"*** Failed ***\n")
@@ -124,3 +112,17 @@ for(f <- files) {
 }
 
 Os.exit(result)
+
+def findMethod(key: String, f: Os.Path): Z = {
+  assert(f.isFile && !ops.StringOps(f.read).contains("\r"))
+
+  var line = 1
+  // add space before newline as split does not preserve empty lines (i.e. those that only contain newline char)
+  for(l <- ops.StringOps(ops.StringOps(f.read).replaceAllLiterally("\n", " \n")).split(c => c == '\n')) {
+    if (ops.StringOps(l).contains(s"def $key(api: ")) {
+      return line
+    }
+    line = line + 1
+  }
+  halt(s"Infeasible, didn't find $key in $f")
+}
