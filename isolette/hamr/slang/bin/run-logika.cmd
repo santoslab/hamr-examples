@@ -114,7 +114,8 @@ for(f <- files;
 Os.exit(result)
 
 def findMethod(key: String, f: Os.Path): Z = {
-  assert(f.isFile && !ops.StringOps(f.read).contains("\r"))
+  assert(f.isFile, s"$f is not a file")
+  assert(!ops.StringOps(f.read).contains("\r"), s"$f contains windows style new lines")
 
   var line = 1
   // add space before newline as split does not preserve empty lines (i.e. those that only contain newline char)
