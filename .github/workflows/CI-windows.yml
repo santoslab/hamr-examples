@@ -11,6 +11,12 @@ jobs:
   ci:
     runs-on: windows-latest
     steps:
+      - name: Set git to use LF
+        run: |
+          git config - l
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+          git config - l
       - name: Support longpaths
         run: git config --system core.longpaths true
       - name: Checkout
