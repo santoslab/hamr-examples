@@ -75,6 +75,7 @@ for(f <- files;
   val input = ISZ[String]("proyek", "logika",
     "--timeout", f.logikaOpts.timeout.string, //
     "--rlimit", f.logikaOpts.rlimit.string, //
+    "--par",
     "--line", findMethod(entryPoint, f.file).string, //
     home.value, f.file.value)
 
