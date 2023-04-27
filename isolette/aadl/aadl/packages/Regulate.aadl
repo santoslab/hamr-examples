@@ -197,7 +197,7 @@ public
 			--  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====
 			compute
 				-- general assumption between incoming port values    
-				assume lower_is_not_higher_than_upper: lower_desired_temp.value <= upper_desired_temp.value;
+				assume lower_is_not_higher_than_upper: lower_desired_tempWstatus.value <= upper_desired_tempWstatus.value;
 			
 				cases
 					-- ====== Regulator Status ======    
@@ -247,8 +247,10 @@ public
 					-- ===== Desired Range =====
 			
 					case REQ_MRI_8 "If the Regulator Interface Failure is False":
-						assume (!interface_failure.value);
-						guarantee ((lower_desired_temp.value == lower_desired_tempWstatus.value) & (upper_desired_temp.value == upper_desired_tempWstatus.value));
+					    assume T;
+						guarantee 
+							(!interface_failure.value) ->: 
+								((lower_desired_temp.value == lower_desired_tempWstatus.value) & (upper_desired_temp.value == upper_desired_tempWstatus.value));
 					
 					case REQ_MRI_9 "If the Regulator Interface Failure is True,
 									|the Desired Range is UNSPECIFIED.
@@ -412,8 +414,7 @@ public
 			heat_control: out data port Isolette_Data_Model::On_Off;
 
 		flows
-			-- JMH would like the following syntax (stuff in comment) with the name being optional 
-			-- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
+
 			mhs_fp1: flow path current_tempWstatus -> heat_control;
 			mhs_fp2: flow path lower_desired_temp -> heat_control;
 			mhs_fp3: flow path upper_desired_temp -> heat_control;

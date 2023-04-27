@@ -1,0 +1,40 @@
+#ifndef MANAGE_ALARM_IMPL_THERMOSTAT_MONITOR_TEMPERATURE_MANAGE_ALARM_API_H
+#define MANAGE_ALARM_IMPL_THERMOSTAT_MONITOR_TEMPERATURE_MANAGE_ALARM_API_H
+
+#include <all.h>
+
+// This file was auto-generated.  Do not edit
+
+bool api_get_current_tempWstatus__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  isolette_Isolette_Data_Model_TempWstatus_impl value);
+
+bool api_get_lower_alarm_temp__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  isolette_Isolette_Data_Model_Temp_impl value);
+
+bool api_get_upper_alarm_temp__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  isolette_Isolette_Data_Model_Temp_impl value);
+
+bool api_get_monitor_mode__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  isolette_Isolette_Data_Model_Monitor_Mode_Type *value);
+
+void api_put_alarm_control__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  isolette_Isolette_Data_Model_On_Off_Type value);
+
+void api_logInfo__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  String str);
+
+void api_logDebug__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  String str);
+
+void api_logError__isolette_Monitor_Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm(
+  STACK_FRAME
+  String str);
+
+#endif

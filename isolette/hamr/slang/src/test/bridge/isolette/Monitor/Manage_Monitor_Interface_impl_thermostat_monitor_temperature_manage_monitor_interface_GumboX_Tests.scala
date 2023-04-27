@@ -1,0 +1,52 @@
+package isolette.Monitor
+
+import org.sireum._
+import isolette.Monitor._
+import isolette.GumboXResult
+import isolette.RandomLib
+import org.sireum.Random.Impl.Xoshiro256
+
+// This file was auto-generated.  Do not edit
+class Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX_Tests extends Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX_TestHarness {
+
+  {
+    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+    val ranLiblower_alarm_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+    val ranLibmonitor_mode = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+    val ranLibupper_alarm_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+
+    for (i <- 0 to 100) {
+      this.registerTest(i.toString) {
+        var retry: B = T
+
+        for (j <- 0 to 100 if retry) {
+          val api_current_tempWstatus = ranLibcurrent_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
+          val api_lower_alarm_tempWstatus = ranLiblower_alarm_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
+          val api_monitor_mode = ranLibmonitor_mode.next_Isolette_Data_ModelMonitor_ModeType()
+          val api_upper_alarm_tempWstatus = ranLibupper_alarm_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
+
+          println(st"""${if (j > 0) s"Retry $j: " else ""}Testing with
+                      |    current_tempWstatus = $api_current_tempWstatus
+                      |    lower_alarm_tempWstatus = $api_lower_alarm_tempWstatus
+                      |    monitor_mode = $api_monitor_mode
+                      |    upper_alarm_tempWstatus = $api_upper_alarm_tempWstatus""".render)
+
+          testComputeCB(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus) match {
+            case GumboXResult.Pre_Condition_Unsat =>
+            case GumboXResult.Post_Condition_Fail =>
+              fail ("Post condition did not hold")
+              retry = F
+            case GumboXResult.Post_Condition_Pass =>
+              // success
+              println ("Success!")
+              retry = F
+          }
+        }
+
+        if (retry) {
+          fail ("Unable to satisfy precondition")
+        }
+      }
+    }
+  }
+}

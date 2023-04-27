@@ -16,6 +16,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.byOrdinal(0).get
   // END STATE VARS
 
+  val unspecified: Isolette_Data_Model.Temp_impl = Isolette_Data_Model.Temp_impl(0f)
+
   def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {
     Contract(
       Modifies(
@@ -28,26 +30,9 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         // END INITIALIZES ENSURES
       )
     )
-    // example api usage
-
-    // set initial lower desired temp
-    //api.put_lower_alarm_temp(
-      //Temp_impl(
-        //InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE))
-    // set initial upper desired temp
-    //api.put_upper_alarm_temp(
-      //Temp_impl(
-        //InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE))
-    // set initial regulator status
-    //api.put_monitor_status(InitialValues.DEFAULT_MONITOR_STATUS)
-    // set initial regulator failure
-    //api.put_interface_failure(
-      //Failure_Flag_impl(
-        //InitialValues.DEFAULT_MONITOR_INTERFACE_FAILURE_FLAG))
 
     api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl.example())
     api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl.example())
-    //api.put_monitor_status(Isolette_Data_Model.Status.byOrdinal(0).get)
     api.put_interface_failure(Isolette_Data_Model.Failure_Flag_impl.example())
 
     api.put_monitor_status(Isolette_Data_Model.Status.Init_Status)
@@ -84,36 +69,34 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         //   If the Status attribute of the Lower Alarm Temperature
         //   or the Upper Alarm Temperature is Invalid,
         //   the Monitor Interface Failure shall be set to True
-        (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid | api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->: (api.interface_failure.value),
+        (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid |
+           api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->: (api.interface_failure.value),
         // case REQ_MMI_5
         //   If the Status attribute of the Lower Alarm Temperature
         //   and the Upper Alarm Temperature is Valid,
         //   the Monitor Interface Failure shall be set to False
-        (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid & api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (!(api.interface_failure.value)),
+        (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
+           api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->: (!(api.interface_failure.value)),
         // case REQ_MMI_6
         //   If the Monitor Interface Failure is False,
         //   the Alarm Range variable shall be set to the Desired Temperature Range
-        (!(api.interface_failure.value)) -->: (api.lower_alarm_temp.value == api.lower_alarm_tempWstatus.value & api.upper_alarm_temp.value == api.upper_alarm_tempWstatus.value),
+        (T) -->: (!(api.interface_failure.value) -->:
+          (api.lower_alarm_temp.value == api.lower_alarm_tempWstatus.value &
+            api.upper_alarm_temp.value == api.upper_alarm_tempWstatus.value)),
         // case REQ_MMI_7
         //   If the Monitor Interface Failure is True,
         //   the Alarm Range variable is UNSPECIFIED
-        (api.interface_failure.value) -->: (T)
+        (T) -->: (api.interface_failure.value -->: T)
         // END COMPUTE ENSURES timeTriggered
       )
     )
-    // example api usage
+    val lower: Isolette_Data_Model.TempWstatus_impl = api.get_lower_alarm_tempWstatus().get
 
-    val lower: Isolette_Data_Model.TempWstatus_impl =
-      api.get_lower_alarm_tempWstatus().get
+    val upper: Isolette_Data_Model.TempWstatus_impl = api.get_upper_alarm_tempWstatus().get
 
-    val upper: Isolette_Data_Model.TempWstatus_impl =
-      api.get_upper_alarm_tempWstatus().get
+    val monitor_mode: Isolette_Data_Model.Monitor_Mode.Type = api.get_monitor_mode().get
 
-    val monitor_mode: Isolette_Data_Model.Monitor_Mode.Type =
-      api.get_monitor_mode().get
-
-    val currentTemp: Isolette_Data_Model.TempWstatus_impl =
-      api.get_current_tempWstatus().get
+    val currentTemp: Isolette_Data_Model.TempWstatus_impl = api.get_current_tempWstatus().get
 
     // =============================================
     //  Set values for Monitor Status (Table A-6)
@@ -143,9 +126,6 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         //  the Monitor Status shall be set to Failed.
         assert(monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
         monitor_status = Isolette_Data_Model.Status.Failed_Status
-
-      //case _ => //TODO This is not needed, but used to make sure that the above is exhaustive as I work on verification (Gage)
-      //  assert(monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
     }
     assert(((monitor_mode != Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)||(monitor_status == Isolette_Data_Model.Status.Init_Status)))
     assert(((monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)-->:(monitor_status == Isolette_Data_Model.Status.Init_Status)))
@@ -216,8 +196,11 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       //  the Alarm Range variable is UNSPECIFIED.
       //  [RP] Values from initialization should be maintained here, but are not. Putting default values to skirt error
       //       while running unit test - should really be putting an "UNSPECIFIED" value.
-      //api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl(InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE))
-      //api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl(InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE))
+      api.put_lower_alarm_temp(unspecified)
+      api.put_upper_alarm_temp(unspecified)
+
+      api.logInfo(s"Sent on lower_alarm_temp: ${Isolette_Data_Model.Temp_impl(lower.value)}")
+      api.logInfo(s"Sent on upper_alarm_temp: ${Isolette_Data_Model.Temp_impl(upper.value)}")
     }
   }
 

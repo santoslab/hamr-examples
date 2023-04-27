@@ -37,7 +37,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     val currentCmd = Isolette_Data_Model.On_Off.Off
     api.put_heat_control(currentCmd)
 
-    api.logInfo(s"Sent on heat_control: $currentCmd")
+    //api.logInfo(s"Sent on heat_control: $currentCmd")
   }
 
   //======================================
@@ -64,17 +64,21 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
         // case REQ_MHS_2
         //   If the Regulator Mode is NORMAL and the Current Temperature is less than
         //   the Lower Desired Temperature, the Heat Control shall be set to On.
-        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value < api.lower_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Onn),
+        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
+           api.current_tempWstatus.value < api.lower_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Onn),
         // case REQ_MHS_3
         //   If the Regulator Mode is NORMAL and the Current Temperature is greater than
         //   the Upper Desired Temperature, the Heat Control shall be set to Off.
-        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & api.current_tempWstatus.value > api.upper_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off),
+        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
+           api.current_tempWstatus.value > api.upper_desired_temp.value) -->: (api.heat_control == Isolette_Data_Model.On_Off.Off),
         // case REQ_MHS_4
         //   If the Regulator Mode is NORMAL and the Current
         //   Temperature is greater than or equal to the Lower Desired Temperature
         //   and less than or equal to the Upper Desired Temperature, the value of
         //   the Heat Control shall not be changed.
-        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode & (api.current_tempWstatus.value >= api.lower_desired_temp.value & api.current_tempWstatus.value <= api.upper_desired_temp.value)) -->: (api.heat_control == In(lastCmd)),
+        (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
+           (api.current_tempWstatus.value >= api.lower_desired_temp.value &
+             api.current_tempWstatus.value <= api.upper_desired_temp.value)) -->: (api.heat_control == In(lastCmd)),
         // case REQ_MHS_5
         //   If the Regulator Mode is FAILED, the Heat Control shall be
         //   set to Off.
@@ -83,26 +87,15 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       )
     )
     // -------------- Get values of input ports ------------------
-    // lower desired temperature
-    Deduce(
-      1 #> (api.lower_desired_temp.value <= api.upper_desired_temp.value) by Auto
-    )
-    val lower: Isolette_Data_Model.Temp_impl =
-      api.get_lower_desired_temp().get
-    // upper desired temperature
-    val upper: Isolette_Data_Model.Temp_impl =
-      api.get_upper_desired_temp().get
-    // regulator mode
-    val regulator_mode: Isolette_Data_Model.Regulator_Mode.Type =
-      api.get_regulator_mode().get
-    // current temperature with status
-    val currentTemp: Isolette_Data_Model.TempWstatus_impl =
-      api.get_current_tempWstatus().get
+    val lower: Isolette_Data_Model.Temp_impl = api.get_lower_desired_temp().get
+    val upper: Isolette_Data_Model.Temp_impl = api.get_upper_desired_temp().get
+    val regulator_mode: Isolette_Data_Model.Regulator_Mode.Type = api.get_regulator_mode().get
+    val currentTemp: Isolette_Data_Model.TempWstatus_impl = api.get_current_tempWstatus().get
+
     //================ compute / control logic ===========================
 
     // current command defaults to value of last command (REQ-MHS-4)
     var currentCmd: Isolette_Data_Model.On_Off.Type = lastCmd
-    // Deduce( |- (currentCmd == Isolette_Data_Model.On_Off.Onn))  // should fail, and it does fail
 
     regulator_mode match {
 
@@ -118,7 +111,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
           currentCmd = Isolette_Data_Model.On_Off.Off
         } else if (currentTemp.value < lower.value) {
           // REQ-MHS-2
-          // currentCmd = Isolette_Data_Model.On_Off.Off // seeded bug/error
+          //currentCmd = Isolette_Data_Model.On_Off.Off // seeded bug/error
           currentCmd = Isolette_Data_Model.On_Off.Onn
         }
 
@@ -133,9 +126,9 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     // -------------- Set values of output ports ------------------
     api.put_heat_control(currentCmd)
 
-    api.logInfo(s"Sent on heat_control: $currentCmd")
+    api.logInfo(s"Sent on currentCmd data port: $currentCmd")
 
-    // api.put_heat_control(Isolette_Data_Model.On_Off.Off)  // seeded bug/error
+    //api.put_heat_control(Isolette_Data_Model.On_Off.Off)  // seeded bug/error
     // Deduce( |- (api.heat_control == Isolette_Data_Model.On_Off.Onn))  // should fail
     lastCmd = currentCmd
     // Deduce( |- (lastCmd == Isolette_Data_Model.On_Off.Onn))  // should fail

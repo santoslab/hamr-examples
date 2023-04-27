@@ -58,7 +58,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       Requires(
         // BEGIN COMPUTE REQUIRES timeTriggered
         // assume lower_is_not_higher_than_upper
-        api.lower_desired_temp.value <= api.upper_desired_temp.value
+        api.lower_desired_tempWstatus.value <= api.upper_desired_tempWstatus.value
         // END COMPUTE REQUIRES timeTriggered
       ),
       Modifies(
@@ -91,15 +91,19 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         //   If the Status attribute of the Lower Desired Temperature
         //   or the Upper Desired Temperature is Invalid,
         //   the Regulator Interface Failure shall be set to True.
-        (api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid | api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.interface_failure.value),
+        (api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid |
+           api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.interface_failure.value),
         // case REQ_MRI_7
         //   If the Status attribute of the Lower Desired Temperature
         //   and the Upper Desired Temperature is Valid,
         //   the Regulator Interface Failure shall be set to False.
-        (T) -->: (api.interface_failure.value == !(api.upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid & api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
+        (T) -->: (api.interface_failure.value == !(api.upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
+           api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
         // case REQ_MRI_8
         //   If the Regulator Interface Failure is False
-        (!(api.interface_failure.value)) -->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value & api.upper_desired_temp.value == api.upper_desired_tempWstatus.value),
+        (T) -->: (!(api.interface_failure.value) ->:
+          (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value &
+            api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)),
         // case REQ_MRI_9
         //   If the Regulator Interface Failure is True,
         //   the Desired Range is UNSPECIFIED.

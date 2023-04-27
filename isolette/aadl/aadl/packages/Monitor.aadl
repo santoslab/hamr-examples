@@ -188,15 +188,18 @@ public
 			
 						case REQ_MMI_6 "If the Monitor Interface Failure is False,
 										|the Alarm Range variable shall be set to the Desired Temperature Range":
-							assume (!interface_failure.value);
-							guarantee lower_alarm_temp.value == lower_alarm_tempWstatus.value
-								&
-								upper_alarm_temp.value == upper_alarm_tempWstatus.value;
+							assume T;
+							guarantee 
+								(!interface_failure.value) ~~>: 
+									(lower_alarm_temp.value == lower_alarm_tempWstatus.value
+									&
+									upper_alarm_temp.value == upper_alarm_tempWstatus.value);
 			
 						case REQ_MMI_7 "If the Monitor Interface Failure is True,
 										|the Alarm Range variable is UNSPECIFIED":
-							assume interface_failure.value;
-							guarantee T; --[RP] Alarm range var is LOW/HIGH vars - what does is mean to make these "UNSPECIFIED"
+							assume T;
+							guarantee 
+								interface_failure.value ~~>: T; --[RP] Alarm range var is LOW/HIGH vars - what does is mean to make these "UNSPECIFIED"
 							
 		**};
 	end Manage_Monitor_Interface.impl;
@@ -233,21 +236,15 @@ public
 	thread implementation Manage_Monitor_Mode.impl
 		annex GUMBO {**
 			state
-				firstInvocationFlag: Base_Types::Boolean;
 				lastMonitorMode: Isolette_Data_Model::Monitor_Mode;
 				
 			functions
-				def timeout_condition_satisfied():Base_Types::Boolean := T;
-				
+				def timeout_condition_satisfied():Base_Types::Boolean := F;
+								
 			--  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
 			initialize
-				--    REQ-MMM-1: Upon the first dispatch of the thread, the monitor mode is Init.
-				guarantee
-					MonitorModeIsInitiallyInit: monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
-				guarantee
-					firstInvocationFlagInitiallyTrue: firstInvocationFlag == T;
-					--&
-					--regulate_mode_spec == Regulator_Mode.Init;
+				guarantee REQ_MMM_1 "Upon the first dispatch of the thread, the monitor mode is Init." :
+					monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
 			
 				-- ======  C o m p u t e     C o n s t r a i n t s =====
 				compute
@@ -256,22 +253,26 @@ public
 										|the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
 										|if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
 										|AND Current Temperature.Status = Valid":
-							assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
-							guarantee ((((!(interface_failure.value || internal_failure.value)) && current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode))); --TODO () not preserved see slang code manage_monitor_mode thread
-					
+							assume lastMonitorMode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+							guarantee 
+								((!(interface_failure.value || internal_failure.value)) && current_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+									(monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode);
+							
 						case REQ_MRM_3 "If the current Monitor mode is Normal, then
 										|the Monitor mode is set to Failed iff
 										|the Monitor status is false, i.e.,
 										|if  (Monitor Interface Failure OR Monitor Internal Failure)
 										|OR NOT(Current Temperature.Status = Valid)":
-							assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
-							guarantee (((interface_failure.value || internal_failure.value) || current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode)); --TODO () not preserved see slang code manage_monitor_mode thread
-			
+							assume lastMonitorMode == Isolette_Data_Model::Monitor_Mode.Normal_Monitor_Mode;
+							guarantee 
+								((interface_failure.value || internal_failure.value) || current_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) ~~>: 
+									(monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode);
+										
 						case REQ_MRM_4 "If the current mode is Init, then
 										|the mode is set to Failed iff the time during
 										|which the thread has been in Init mode exceeds the
 										|Monitor Init Timeout value.":
-							assume monitor_mode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
+							assume lastMonitorMode == Isolette_Data_Model::Monitor_Mode.Init_Monitor_Mode;
 							guarantee timeout_condition_satisfied() == (monitor_mode == Isolette_Data_Model::Monitor_Mode.Failed_Monitor_Mode); --TODO () not preserved see slang code manage_monitor_mode thread
 		**};
 	end Manage_Monitor_Mode.impl;
