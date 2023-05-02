@@ -2,7 +2,8 @@ package isolette.Regulate
 
 import org.sireum._
 import isolette.Regulate._
-import isolette.GumboXResult
+import isolette.GumboXUtil
+import isolette.GumboXUtil.GumboXResult
 import isolette.RandomLib
 import org.sireum.Random.Impl.Xoshiro256
 
@@ -19,7 +20,8 @@ class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_reg
       this.registerTest(i.toString) {
         var retry: B = T
 
-        for (j <- 0 to 100 if retry) {
+        var j: Z = 0
+        while (j < GumboXUtil.numRetries && retry) {
           val api_current_tempWstatus = ranLibcurrent_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
           val api_lower_desired_tempWstatus = ranLiblower_desired_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
           val api_regulator_mode = ranLibregulator_mode.next_Isolette_Data_ModelRegulator_ModeType()
@@ -41,6 +43,7 @@ class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_reg
               println ("Success!")
               retry = F
           }
+          j = j + 1
         }
 
         if (retry) {

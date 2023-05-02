@@ -995,4 +995,118 @@ import org.sireum.Random.Gen64
   }
 }
 
+@record class Gen_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(param: RandomLibI) extends MJen[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container] {
+  override def generate(f: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(param: RandomLibI) extends MJen[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container] {
+  override def generate(f: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(param: RandomLibI) extends MJen[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container] {
+  override def generate(f: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(param: RandomLibI) extends MJen[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container] {
+  override def generate(f: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(param: RandomLibI) extends MJen[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container] {
+  override def generate(f: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(param: RandomLibI) extends MJen[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container] {
+  override def generate(f: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.next_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
 

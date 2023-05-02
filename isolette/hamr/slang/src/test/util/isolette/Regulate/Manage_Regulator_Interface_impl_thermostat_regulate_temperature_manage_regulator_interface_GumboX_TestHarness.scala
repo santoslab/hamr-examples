@@ -2,6 +2,7 @@ package isolette.Regulate
 
 import org.sireum._
 import isolette._
+import isolette.GumboXUtil.GumboXResult
 
 // This file was auto-generated.  Do not edit
 abstract class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX_TestHarness extends Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_TestApi {

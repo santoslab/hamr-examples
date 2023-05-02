@@ -2,7 +2,8 @@ package isolette.Monitor
 
 import org.sireum._
 import isolette.Monitor._
-import isolette.GumboXResult
+import isolette.GumboXUtil
+import isolette.GumboXUtil.GumboXResult
 import isolette.RandomLib
 import org.sireum.Random.Impl.Xoshiro256
 
@@ -18,7 +19,8 @@ class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mod
       this.registerTest(i.toString) {
         var retry: B = T
 
-        for (j <- 0 to 100 if retry) {
+        var j: Z = 0
+        while (j < GumboXUtil.numRetries && retry) {
           val api_current_tempWstatus = ranLibcurrent_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
           val api_interface_failure = ranLibinterface_failure.next_Isolette_Data_ModelFailure_Flag_impl()
           val api_internal_failure = ranLibinternal_failure.next_Isolette_Data_ModelFailure_Flag_impl()
@@ -38,6 +40,7 @@ class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mod
               println ("Success!")
               retry = F
           }
+          j = j + 1
         }
 
         if (retry) {

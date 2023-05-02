@@ -3,8 +3,13 @@ package isolette
 
 import org.sireum._
 
-@enum object GumboXResult {
-  "Pre_Condition_Unsat"
-  "Post_Condition_Pass"
-  "Post_Condition_Fail"
+object GumboXUtil {
+
+  var numRetries: Z = 100
+
+  @enum object GumboXResult {
+    "Pre_Condition_Unsat"
+    "Post_Condition_Pass"
+    "Post_Condition_Fail"
+  }
 }

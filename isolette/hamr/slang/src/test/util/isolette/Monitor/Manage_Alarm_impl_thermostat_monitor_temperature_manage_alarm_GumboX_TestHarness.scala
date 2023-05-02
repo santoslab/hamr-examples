@@ -2,6 +2,7 @@ package isolette.Monitor
 
 import org.sireum._
 import isolette._
+import isolette.GumboXUtil.GumboXResult
 
 // This file was auto-generated.  Do not edit
 abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_TestApi {
