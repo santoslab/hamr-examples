@@ -193,7 +193,12 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** CEP-T-Case: Top-Level case contracts for manage_heat_source's compute entrypoint
     *
-    * @param In_lastCmd pre-state state variable* @param api_current_tempWstatus port variable* @param api_heat_control port variable* @param api_lower_desired_temp port variable* @param api_regulator_mode port variable* @param api_upper_desired_temp port variable
+    * @param In_lastCmd pre-state state variable
+    * @param api_current_tempWstatus port variable
+    * @param api_heat_control port variable
+    * @param api_lower_desired_temp port variable
+    * @param api_regulator_mode port variable
+    * @param api_upper_desired_temp port variable
     */
   @strictpure def compute_CEP_T_Case (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,

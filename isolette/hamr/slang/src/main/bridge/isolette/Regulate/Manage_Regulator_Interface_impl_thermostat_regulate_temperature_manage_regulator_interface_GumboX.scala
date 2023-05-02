@@ -207,7 +207,15 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
 
   /** CEP-T-Case: Top-Level case contracts for manage_regulator_interface's compute entrypoint
     *
-    * @param api_current_tempWstatus port variable* @param api_displayed_temp port variable* @param api_interface_failure port variable* @param api_lower_desired_temp port variable* @param api_lower_desired_tempWstatus port variable* @param api_regulator_mode port variable* @param api_regulator_status port variable* @param api_upper_desired_temp port variable* @param api_upper_desired_tempWstatus port variable
+    * @param api_current_tempWstatus port variable
+    * @param api_displayed_temp port variable
+    * @param api_interface_failure port variable
+    * @param api_lower_desired_temp port variable
+    * @param api_lower_desired_tempWstatus port variable
+    * @param api_regulator_mode port variable
+    * @param api_regulator_status port variable
+    * @param api_upper_desired_temp port variable
+    * @param api_upper_desired_tempWstatus port variable
     */
   @strictpure def compute_CEP_T_Case (
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,

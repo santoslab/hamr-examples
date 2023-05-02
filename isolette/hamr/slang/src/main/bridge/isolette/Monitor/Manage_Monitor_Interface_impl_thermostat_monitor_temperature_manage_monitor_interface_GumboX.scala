@@ -151,7 +151,13 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
   /** CEP-T-Case: Top-Level case contracts for manage_monitor_interface's compute entrypoint
     *
-    * @param api_interface_failure port variable* @param api_lower_alarm_temp port variable* @param api_lower_alarm_tempWstatus port variable* @param api_monitor_mode port variable* @param api_monitor_status port variable* @param api_upper_alarm_temp port variable* @param api_upper_alarm_tempWstatus port variable
+    * @param api_interface_failure port variable
+    * @param api_lower_alarm_temp port variable
+    * @param api_lower_alarm_tempWstatus port variable
+    * @param api_monitor_mode port variable
+    * @param api_monitor_status port variable
+    * @param api_upper_alarm_temp port variable
+    * @param api_upper_alarm_tempWstatus port variable
     */
   @strictpure def compute_CEP_T_Case (
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,

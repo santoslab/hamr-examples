@@ -100,7 +100,11 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
 
   /** CEP-T-Case: Top-Level case contracts for manage_monitor_mode's compute entrypoint
     *
-    * @param In_lastMonitorMode pre-state state variable* @param api_current_tempWstatus port variable* @param api_interface_failure port variable* @param api_internal_failure port variable* @param api_monitor_mode port variable
+    * @param In_lastMonitorMode pre-state state variable
+    * @param api_current_tempWstatus port variable
+    * @param api_interface_failure port variable
+    * @param api_internal_failure port variable
+    * @param api_monitor_mode port variable
     */
   @strictpure def compute_CEP_T_Case (
       In_lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,

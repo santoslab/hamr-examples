@@ -165,7 +165,12 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
 
   /** CEP-T-Case: Top-Level case contracts for manage_regulator_mode's compute entrypoint
     *
-    * @param In_lastRegulatorMode pre-state state variable* @param lastRegulatorMode post-state state variable* @param api_current_tempWstatus port variable* @param api_interface_failure port variable* @param api_internal_failure port variable* @param api_regulator_mode port variable
+    * @param In_lastRegulatorMode pre-state state variable
+    * @param lastRegulatorMode post-state state variable
+    * @param api_current_tempWstatus port variable
+    * @param api_interface_failure port variable
+    * @param api_internal_failure port variable
+    * @param api_regulator_mode port variable
     */
   @strictpure def compute_CEP_T_Case (
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,

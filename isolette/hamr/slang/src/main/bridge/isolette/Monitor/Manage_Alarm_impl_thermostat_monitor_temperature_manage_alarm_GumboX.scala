@@ -223,7 +223,13 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
 
   /** CEP-T-Case: Top-Level case contracts for manage_alarm's compute entrypoint
     *
-    * @param In_lastCmd pre-state state variable* @param lastCmd post-state state variable* @param api_alarm_control port variable* @param api_current_tempWstatus port variable* @param api_lower_alarm_temp port variable* @param api_monitor_mode port variable* @param api_upper_alarm_temp port variable
+    * @param In_lastCmd pre-state state variable
+    * @param lastCmd post-state state variable
+    * @param api_alarm_control port variable
+    * @param api_current_tempWstatus port variable
+    * @param api_lower_alarm_temp port variable
+    * @param api_monitor_mode port variable
+    * @param api_upper_alarm_temp port variable
     */
   @strictpure def compute_CEP_T_Case (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
