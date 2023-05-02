@@ -79,9 +79,9 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
 
   /** CEP-T-Assm: Top-level assume contracts for manage_alarm's compute entrypoint
     *
-    * * @param api_current_tempWstatus port variable
-      * @param api_lower_alarm_temp port variable
-      * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus port variable
+    * @param api_lower_alarm_temp port variable
+    * @param api_upper_alarm_temp port variable
     */
   @strictpure def compute_CEP_T_Assm (
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,

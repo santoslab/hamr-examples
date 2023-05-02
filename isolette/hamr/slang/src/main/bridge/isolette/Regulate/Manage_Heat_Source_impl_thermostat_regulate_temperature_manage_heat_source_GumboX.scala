@@ -62,8 +62,8 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** CEP-T-Assm: Top-level assume contracts for manage_heat_source's compute entrypoint
     *
-    * * @param api_lower_desired_temp port variable
-      * @param api_upper_desired_temp port variable
+    * @param api_lower_desired_temp port variable
+    * @param api_upper_desired_temp port variable
     */
   @strictpure def compute_CEP_T_Assm (
       api_lower_desired_temp: Isolette_Data_Model.Temp_impl,
