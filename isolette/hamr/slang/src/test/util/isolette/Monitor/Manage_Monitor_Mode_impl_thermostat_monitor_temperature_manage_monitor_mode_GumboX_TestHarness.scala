@@ -28,7 +28,7 @@ abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_mo
     val lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type = isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.lastMonitorMode
 
     // Step 6 [CheckPost]: invoke the oracle function
-    val postResult = isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX.compute_CEP_Post(In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure, api_monitor_mode)
+    val postResult = isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX.compute_CEP_Post(In_lastMonitorMode, lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure, api_monitor_mode)
     if (!postResult) {
       return GumboXResult.Post_Condition_Fail
     }

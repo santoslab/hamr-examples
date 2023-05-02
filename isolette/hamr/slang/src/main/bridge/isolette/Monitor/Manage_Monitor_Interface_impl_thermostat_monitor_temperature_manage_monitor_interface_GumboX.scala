@@ -16,15 +16,38 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_monitor_status: Isolette_Data_Model.Status.Type): B =
     api_monitor_status == Isolette_Data_Model.Status.Init_Status
 
+  /** IEP-Guar: Initialize Entrypoint Contracts for manage_monitor_interface
+    *
+    * @param lastCmd post-state state variable
+    * @param api_interface_failure port variable
+    * @param api_lower_alarm_temp port variable
+    * @param api_monitor_status port variable
+    * @param api_upper_alarm_temp port variable
+    */
+  @strictpure def initialize_IEP_Guar (
+      lastCmd: Isolette_Data_Model.On_Off.Type,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
+      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_monitor_status: Isolette_Data_Model.Status.Type,
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+    initialize_monitorStatusInitiallyInit(api_monitor_status)
+
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
+    * @param lastCmd post-state state variable
+    * @param api_interface_failure port variable
+    * @param api_lower_alarm_temp port variable
     * @param api_monitor_status port variable
+    * @param api_upper_alarm_temp port variable
     */
   @strictpure def inititialize_IEP_Post (
-      api_monitor_status: Isolette_Data_Model.Status.Type): B =
-    (
-     // IEP-Guar: Initialize Entrypoint contract for manage_monitor_interface
-     initialize_monitorStatusInitiallyInit(api_monitor_status))
+      lastCmd: Isolette_Data_Model.On_Off.Type,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
+      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_monitor_status: Isolette_Data_Model.Status.Type,
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+    (// IEP-Guar: Initialize Entrypoint contract for manage_monitor_interface
+     initialize_IEP_Guar(lastCmd, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp))
 
   /** guarantees REQ_MMI_1
     *   If the Manage Monitor Interface mode is INIT,
@@ -148,6 +171,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
   /** CEP-Post: Compute Entrypoint Post-Condition for manage_monitor_interface
     *
+    * @param In_lastCmd pre-state state variable
+    * @param lastCmd post-state state variable
     * @param api_interface_failure port variable
     * @param api_lower_alarm_temp port variable
     * @param api_lower_alarm_tempWstatus port variable
@@ -157,6 +182,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     * @param api_upper_alarm_tempWstatus port variable
     */
   @strictpure def compute_CEP_Post (
+      In_lastCmd: Isolette_Data_Model.On_Off.Type,
+      lastCmd: Isolette_Data_Model.On_Off.Type,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,

@@ -14,7 +14,7 @@ abstract class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_m
     //   manage_regulator_interface does not have incoming ports or state variables
 
     // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
-    val CEP_Pre_Result: B = isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Pre (api_lower_desired_tempWstatus, api_upper_desired_tempWstatus)
+    val CEP_Pre_Result: B = isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Pre (api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
     if (!CEP_Pre_Result) {
       return GumboXResult.Pre_Condition_Unsat
     }

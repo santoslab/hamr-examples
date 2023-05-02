@@ -17,15 +17,26 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
     api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode
 
+  /** IEP-Guar: Initialize Entrypoint Contracts for manage_monitor_mode
+    *
+    * @param lastMonitorMode post-state state variable
+    * @param api_monitor_mode port variable
+    */
+  @strictpure def initialize_IEP_Guar (
+      lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,
+      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
+    initialize_REQ_MMM_1(api_monitor_mode)
+
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
+    * @param lastMonitorMode post-state state variable
     * @param api_monitor_mode port variable
     */
   @strictpure def inititialize_IEP_Post (
+      lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
-    (
-     // IEP-Guar: Initialize Entrypoint contract for manage_monitor_mode
-     initialize_REQ_MMM_1(api_monitor_mode))
+    (// IEP-Guar: Initialize Entrypoint contract for manage_monitor_mode
+     initialize_IEP_Guar(lastMonitorMode, api_monitor_mode))
 
   /** guarantees REQ_MRM_2
     *   If the current mode is Init, then
@@ -104,6 +115,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
   /** CEP-Post: Compute Entrypoint Post-Condition for manage_monitor_mode
     *
     * @param In_lastMonitorMode pre-state state variable
+    * @param lastMonitorMode post-state state variable
     * @param api_current_tempWstatus port variable
     * @param api_interface_failure port variable
     * @param api_internal_failure port variable
@@ -111,6 +123,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     */
   @strictpure def compute_CEP_Post (
       In_lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,
+      lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,

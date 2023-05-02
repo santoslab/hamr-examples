@@ -14,7 +14,7 @@ abstract class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_he
     val In_lastCmd: Isolette_Data_Model.On_Off.Type = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.lastCmd
 
     // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
-    val CEP_Pre_Result: B = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Pre (api_lower_desired_temp, api_upper_desired_temp)
+    val CEP_Pre_Result: B = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Pre (In_lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
     if (!CEP_Pre_Result) {
       return GumboXResult.Pre_Condition_Unsat
     }

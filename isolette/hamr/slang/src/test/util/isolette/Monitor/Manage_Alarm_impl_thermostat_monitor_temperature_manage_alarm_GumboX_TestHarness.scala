@@ -14,7 +14,7 @@ abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Gum
     val In_lastCmd: Isolette_Data_Model.On_Off.Type = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.lastCmd
 
     // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
-    val CEP_Pre_Result: B = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Pre (api_current_tempWstatus, api_lower_alarm_temp, api_upper_alarm_temp)
+    val CEP_Pre_Result: B = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Pre (In_lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
     if (!CEP_Pre_Result) {
       return GumboXResult.Pre_Condition_Unsat
     }

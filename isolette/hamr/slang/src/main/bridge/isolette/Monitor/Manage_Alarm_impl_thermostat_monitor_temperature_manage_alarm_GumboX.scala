@@ -44,8 +44,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
   @strictpure def inititialize_IEP_Post (
       lastCmd: Isolette_Data_Model.On_Off.Type,
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
-    (
-     // IEP-Guar: Initialize Entrypoint contract for manage_alarm
+    (// IEP-Guar: Initialize Entrypoint contract for manage_alarm
      initialize_IEP_Guar(lastCmd, api_alarm_control))
 
   /** Compute Entrypoint Contract
@@ -93,13 +92,17 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
 
   /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_alarm
     *
+    * @param In_lastCmd pre-state state variable
     * @param api_current_tempWstatus port variable
     * @param api_lower_alarm_temp port variable
+    * @param api_monitor_mode port variable
     * @param api_upper_alarm_temp port variable
     */
   @strictpure def compute_CEP_Pre (
+      In_lastCmd: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-Assm: assume clauses of manage_alarm's compute entrypoint
      compute_CEP_T_Assm (api_current_tempWstatus, api_lower_alarm_temp, api_upper_alarm_temp))

@@ -17,15 +17,26 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
     api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
 
+  /** IEP-Guar: Initialize Entrypoint Contracts for manage_regulator_mode
+    *
+    * @param lastRegulatorMode post-state state variable
+    * @param api_regulator_mode port variable
+    */
+  @strictpure def initialize_IEP_Guar (
+      lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
+      api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
+    initialize_REQ_MRM_1(api_regulator_mode)
+
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
+    * @param lastRegulatorMode post-state state variable
     * @param api_regulator_mode port variable
     */
   @strictpure def inititialize_IEP_Post (
+      lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (
-     // IEP-Guar: Initialize Entrypoint contract for manage_regulator_mode
-     initialize_REQ_MRM_1(api_regulator_mode))
+    (// IEP-Guar: Initialize Entrypoint contract for manage_regulator_mode
+     initialize_IEP_Guar(lastRegulatorMode, api_regulator_mode))
 
   /** guarantees REQ_MRM_2
     *   'transition from Init to Normal'

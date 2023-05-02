@@ -46,8 +46,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
   @strictpure def inititialize_IEP_Post (
       lastCmd: Isolette_Data_Model.On_Off.Type,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
-    (
-     // IEP-Guar: Initialize Entrypoint contract for manage_heat_source
+    (// IEP-Guar: Initialize Entrypoint contract for manage_heat_source
      initialize_IEP_Guar(lastCmd, api_heat_control))
 
   /** Compute Entrypoint Contract
@@ -73,11 +72,17 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_heat_source
     *
+    * @param In_lastCmd pre-state state variable
+    * @param api_current_tempWstatus port variable
     * @param api_lower_desired_temp port variable
+    * @param api_regulator_mode port variable
     * @param api_upper_desired_temp port variable
     */
   @strictpure def compute_CEP_Pre (
+      In_lastCmd: Isolette_Data_Model.On_Off.Type,
+      api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_desired_temp: Isolette_Data_Model.Temp_impl,
+      api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-Assm: assume clauses of manage_heat_source's compute entrypoint
      compute_CEP_T_Assm (api_lower_desired_temp, api_upper_desired_temp))
