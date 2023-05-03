@@ -21,7 +21,7 @@ import org.sireum.Random.Gen64
 
     def next_Z(): Z = {
       var r = gen.nextZ()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_Z.filter(r)) {
           return r
         }
@@ -43,7 +43,7 @@ import org.sireum.Random.Gen64
 
     def next_B(): B = {
       var r = gen.nextB()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_B.filter(r)) {
           return r
         }
@@ -65,7 +65,7 @@ import org.sireum.Random.Gen64
 
     def next_C(): C = {
       var r = gen.nextC()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_C.filter(r)) {
           return r
         }
@@ -87,7 +87,7 @@ import org.sireum.Random.Gen64
 
     def next_R(): R = {
       var r = gen.nextR()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_R.filter(r)) {
           return r
         }
@@ -109,7 +109,7 @@ import org.sireum.Random.Gen64
 
     def next_F32(): F32 = {
       var r = gen.nextF32()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_F32.filter(r)) {
           return r
         }
@@ -131,7 +131,7 @@ import org.sireum.Random.Gen64
 
     def next_F64(): F64 = {
       var r = gen.nextF64()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_F64.filter(r)) {
           return r
         }
@@ -153,7 +153,7 @@ import org.sireum.Random.Gen64
 
     def next_S8(): S8 = {
       var r = gen.nextS8()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_S8.filter(r)) {
           return r
         }
@@ -175,7 +175,7 @@ import org.sireum.Random.Gen64
 
     def next_S16(): S16 = {
       var r = gen.nextS16()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_S16.filter(r)) {
           return r
         }
@@ -197,7 +197,7 @@ import org.sireum.Random.Gen64
 
     def next_S32(): S32 = {
       var r = gen.nextS32()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_S32.filter(r)) {
           return r
         }
@@ -219,7 +219,7 @@ import org.sireum.Random.Gen64
 
     def next_S64(): S64 = {
       var r = gen.nextS64()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_S64.filter(r)) {
           return r
         }
@@ -241,7 +241,7 @@ import org.sireum.Random.Gen64
 
     def next_U8(): U8 = {
       var r = gen.nextU8()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_U8.filter(r)) {
           return r
         }
@@ -263,7 +263,7 @@ import org.sireum.Random.Gen64
 
     def next_U16(): U16 = {
       var r = gen.nextU16()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_U16.filter(r)) {
           return r
         }
@@ -285,7 +285,7 @@ import org.sireum.Random.Gen64
 
     def next_U32(): U32 = {
       var r = gen.nextU32()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_U32.filter(r)) {
           return r
         }
@@ -307,7 +307,7 @@ import org.sireum.Random.Gen64
 
     def next_U64(): U64 = {
       var r = gen.nextU64()
-      for (i <- 0 to 100 /* num retries */ ) {
+      while (true) {
         if (get_Config_U64.filter(r)) {
           return r
         }
@@ -338,7 +338,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Boolean_Payload = Base_Types.Boolean_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesBoolean_Payload.filter(v)) {
          return v
        }
@@ -366,7 +366,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Integer_Payload = Base_Types.Integer_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesInteger_Payload.filter(v)) {
          return v
        }
@@ -394,7 +394,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Integer_8_Payload = Base_Types.Integer_8_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesInteger_8_Payload.filter(v)) {
          return v
        }
@@ -422,7 +422,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Integer_16_Payload = Base_Types.Integer_16_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesInteger_16_Payload.filter(v)) {
          return v
        }
@@ -450,7 +450,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Integer_32_Payload = Base_Types.Integer_32_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesInteger_32_Payload.filter(v)) {
          return v
        }
@@ -478,7 +478,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Integer_64_Payload = Base_Types.Integer_64_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesInteger_64_Payload.filter(v)) {
          return v
        }
@@ -506,7 +506,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Unsigned_8_Payload = Base_Types.Unsigned_8_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesUnsigned_8_Payload.filter(v)) {
          return v
        }
@@ -534,7 +534,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Unsigned_16_Payload = Base_Types.Unsigned_16_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesUnsigned_16_Payload.filter(v)) {
          return v
        }
@@ -562,7 +562,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Unsigned_32_Payload = Base_Types.Unsigned_32_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesUnsigned_32_Payload.filter(v)) {
          return v
        }
@@ -590,7 +590,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Unsigned_64_Payload = Base_Types.Unsigned_64_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesUnsigned_64_Payload.filter(v)) {
          return v
        }
@@ -618,7 +618,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Float_Payload = Base_Types.Float_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesFloat_Payload.filter(v)) {
          return v
        }
@@ -646,7 +646,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Float_32_Payload = Base_Types.Float_32_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesFloat_32_Payload.filter(v)) {
          return v
        }
@@ -674,7 +674,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Float_64_Payload = Base_Types.Float_64_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesFloat_64_Payload.filter(v)) {
          return v
        }
@@ -702,7 +702,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Character_Payload = Base_Types.Character_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesCharacter_Payload.filter(v)) {
          return v
        }
@@ -730,7 +730,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.String_Payload = Base_Types.String_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesString_Payload.filter(v)) {
          return v
        }
@@ -758,7 +758,7 @@ import org.sireum.Random.Gen64
 
     var v: Base_Types.Bits_Payload = Base_Types.Bits_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Base_TypesBits_Payload.filter(v)) {
          return v
        }
@@ -782,7 +782,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Environment.Heat.Type = isolette.Isolette_Environment.Heat.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_EnvironmentHeatType.filter(v)) {
          return v
        }
@@ -809,7 +809,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Environment.Heat_Payload = Isolette_Environment.Heat_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_EnvironmentHeat_Payload.filter(v)) {
          return v
        }
@@ -833,7 +833,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.On_Off.Type = isolette.Isolette_Data_Model.On_Off.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelOn_OffType.filter(v)) {
          return v
        }
@@ -856,7 +856,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Status.Type = isolette.Isolette_Data_Model.Status.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelStatusType.filter(v)) {
          return v
        }
@@ -883,7 +883,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.On_Off_Payload = Isolette_Data_Model.On_Off_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelOn_Off_Payload.filter(v)) {
          return v
        }
@@ -911,7 +911,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Status_Payload = Isolette_Data_Model.Status_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelStatus_Payload.filter(v)) {
          return v
        }
@@ -939,7 +939,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Temp_impl = Isolette_Data_Model.Temp_impl(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelTemp_impl.filter(v)) {
          return v
        }
@@ -967,7 +967,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Temp_impl_Payload = Isolette_Data_Model.Temp_impl_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelTemp_impl_Payload.filter(v)) {
          return v
        }
@@ -991,7 +991,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.ValueStatus.Type = isolette.Isolette_Data_Model.ValueStatus.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelValueStatusType.filter(v)) {
          return v
        }
@@ -1018,7 +1018,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.ValueStatus_Payload = Isolette_Data_Model.ValueStatus_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelValueStatus_Payload.filter(v)) {
          return v
        }
@@ -1042,7 +1042,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Monitor_Mode.Type = isolette.Isolette_Data_Model.Monitor_Mode.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelMonitor_ModeType.filter(v)) {
          return v
        }
@@ -1069,7 +1069,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Monitor_Mode_Payload = Isolette_Data_Model.Monitor_Mode_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelMonitor_Mode_Payload.filter(v)) {
          return v
        }
@@ -1093,7 +1093,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Regulator_Mode.Type = isolette.Isolette_Data_Model.Regulator_Mode.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelRegulator_ModeType.filter(v)) {
          return v
        }
@@ -1120,7 +1120,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Regulator_Mode_Payload = Isolette_Data_Model.Regulator_Mode_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelRegulator_Mode_Payload.filter(v)) {
          return v
        }
@@ -1149,7 +1149,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(value, status)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelTempWstatus_impl.filter(v)) {
          return v
        }
@@ -1178,7 +1178,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.TempWstatus_impl_Payload = Isolette_Data_Model.TempWstatus_impl_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelTempWstatus_impl_Payload.filter(v)) {
          return v
        }
@@ -1206,7 +1206,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Failure_Flag_impl = Isolette_Data_Model.Failure_Flag_impl(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelFailure_Flag_impl.filter(v)) {
          return v
        }
@@ -1234,7 +1234,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.PhysicalTemp_impl = Isolette_Data_Model.PhysicalTemp_impl(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelPhysicalTemp_impl.filter(v)) {
          return v
        }
@@ -1262,7 +1262,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.Failure_Flag_impl_Payload = Isolette_Data_Model.Failure_Flag_impl_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelFailure_Flag_impl_Payload.filter(v)) {
          return v
        }
@@ -1290,7 +1290,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Data_Model.PhysicalTemp_impl_Payload = Isolette_Data_Model.PhysicalTemp_impl_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_Data_ModelPhysicalTemp_impl_Payload.filter(v)) {
          return v
        }
@@ -1314,7 +1314,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Environment.Interface_Interaction.Type = isolette.Isolette_Environment.Interface_Interaction.byOrdinal(ordinal).get
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_EnvironmentInterface_InteractionType.filter(v)) {
          return v
        }
@@ -1341,7 +1341,7 @@ import org.sireum.Random.Gen64
 
     var v: Isolette_Environment.Interface_Interaction_Payload = Isolette_Environment.Interface_Interaction_Payload(value)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_Isolette_EnvironmentInterface_Interaction_Payload.filter(v)) {
          return v
        }
@@ -1372,7 +1372,7 @@ import org.sireum.Random.Gen64
 
     var v: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.filter(v)) {
          return v
        }
@@ -1405,7 +1405,7 @@ import org.sireum.Random.Gen64
 
     var v: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.filter(v)) {
          return v
        }
@@ -1438,7 +1438,7 @@ import org.sireum.Random.Gen64
 
     var v: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.filter(v)) {
          return v
        }
@@ -1471,7 +1471,7 @@ import org.sireum.Random.Gen64
 
     var v: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.filter(v)) {
          return v
        }
@@ -1504,7 +1504,7 @@ import org.sireum.Random.Gen64
 
     var v: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.filter(v)) {
          return v
        }
@@ -1538,7 +1538,7 @@ import org.sireum.Random.Gen64
 
     var v: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
 
-    for(i <- 0 to 100) {
+    while (true) {
        if(get_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.filter(v)) {
          return v
        }
