@@ -8,7 +8,8 @@ import isolette.RandomLib
 import org.sireum.Random.Impl.Xoshiro256
 
 // This file was auto-generated.  Do not edit
-class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_Tests extends Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestHarness {
+class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_Tests extends
+  Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_ScalaTest {
 
   {
     val seedGen = new Random.Gen64Impl(Xoshiro256.create)
