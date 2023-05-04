@@ -1,13 +1,13 @@
-package isolette.Regulate
+package isolette.Monitor
 
 import org.scalatest.{BeforeAndAfterEach, OneInstancePerTest}
 import org.scalatest.funsuite.AnyFunSuite
 import org.sireum.$internal.MutableMarker
 
 // This file was auto-generated.  Do not edit
-abstract class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_ScalaTest extends
+abstract class Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_ScalaTest extends
   AnyFunSuite with OneInstancePerTest with BeforeAndAfterEach with
-  Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_TestApi {
+  Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_TestApi {
 
   var clonable: Boolean = true
   var owned: Boolean = false

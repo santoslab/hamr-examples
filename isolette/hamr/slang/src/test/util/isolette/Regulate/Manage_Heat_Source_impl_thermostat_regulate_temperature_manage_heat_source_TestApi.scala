@@ -1,18 +1,19 @@
 // #Sireum
+
 package isolette.Regulate
 
 import org.sireum._
-import art.{Art, ArtNative, ArtNative_Ext, Empty}
+import art.{Art, ArtNative, Empty}
 import isolette._
 
 // This file was auto-generated.  Do not edit
 @msig trait Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_TestApi {
 
-  def isoletteBeforeEach(): Unit = {
+  def BeforeEach(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source)
   }
 
-  def isoletteAfterEach(): Unit = {
+  def AfterEach(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_heat_source)
   }
 
@@ -57,10 +58,6 @@ import isolette._
     }
 
     assert(testFailures.isEmpty, st"${(testFailures, "\n")}".render)
-  }
-
-  def check_concrete_outputH(): Unit = {
-    check_concrete_output( _ => T )
   }
 
 

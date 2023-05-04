@@ -8,7 +8,7 @@ import isolette.RandomLib
 import org.sireum.Random.Impl.Xoshiro256
 
 // This file was auto-generated.  Do not edit
-class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness {
+class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness_ScalaTest {
 
   {
     val seedGen = new Random.Gen64Impl(Xoshiro256.create)

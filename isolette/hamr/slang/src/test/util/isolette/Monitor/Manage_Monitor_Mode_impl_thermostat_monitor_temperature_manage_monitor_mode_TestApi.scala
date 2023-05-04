@@ -1,11 +1,31 @@
+// #Sireum
+
 package isolette.Monitor
 
 import org.sireum._
-import art.{ArtNative_Ext, Empty}
+import art.{Art, ArtNative, Empty}
 import isolette._
 
 // This file was auto-generated.  Do not edit
-abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_TestApi extends BridgeTestSuite[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Bridge](Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode) {
+@msig trait Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_TestApi {
+
+  def BeforeEach(): Unit = {
+    Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode)
+  }
+
+  def AfterEach(): Unit = {
+    Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode)
+  }
+
+  def testCompute(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testCompute(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode)
+  }
+
+  def testInitialise(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testInitialise(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode)
+  }
 
   /** helper function to set the values of all input ports.
    * @param current_tempWstatus payload for data port current_tempWstatus
@@ -26,7 +46,7 @@ abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_mo
    * @param monitor_mode method that will be called with the value of the outgoing data
    *        port 'monitor_mode'.
    */
-  def check_concrete_output(monitor_mode: Isolette_Data_Model.Monitor_Mode.Type => B = monitor_modeParam => {T}): Unit = {
+  def check_concrete_output(monitor_mode: Isolette_Data_Model.Monitor_Mode.Type => B): Unit = {
     var testFailures: ISZ[ST] = ISZ()
 
     val monitor_modeValue: Isolette_Data_Model.Monitor_Mode.Type = get_monitor_mode().get
@@ -40,24 +60,24 @@ abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_mo
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_interface_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_internal_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // getter for out DataPort
   def get_monitor_mode(): Option[Isolette_Data_Model.Monitor_Mode.Type] = {
     val value: Option[Isolette_Data_Model.Monitor_Mode.Type] = get_monitor_mode_payload() match {
       case Some(Isolette_Data_Model.Monitor_Mode_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port monitor_mode.  Expecting 'Isolette_Data_Model.Monitor_Mode_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port monitor_mode.  Expecting 'Isolette_Data_Model.Monitor_Mode_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.Monitor_Mode.Type]()
     }
     return value
@@ -65,7 +85,7 @@ abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_mo
 
   // payload getter for out DataPort
   def get_monitor_mode_payload(): Option[Isolette_Data_Model.Monitor_Mode_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.monitor_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Monitor_Mode_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.initialization_api.monitor_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Monitor_Mode_Payload]]
   }
 
 }

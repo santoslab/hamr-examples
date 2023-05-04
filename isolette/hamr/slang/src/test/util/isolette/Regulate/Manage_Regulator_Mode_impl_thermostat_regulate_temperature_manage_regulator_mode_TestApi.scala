@@ -1,11 +1,31 @@
+// #Sireum
+
 package isolette.Regulate
 
 import org.sireum._
-import art.{ArtNative_Ext, Empty}
+import art.{Art, ArtNative, Empty}
 import isolette._
 
 // This file was auto-generated.  Do not edit
-abstract class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_TestApi extends BridgeTestSuite[Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Bridge](Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode) {
+@msig trait Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_TestApi {
+
+  def BeforeEach(): Unit = {
+    Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode)
+  }
+
+  def AfterEach(): Unit = {
+    Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode)
+  }
+
+  def testCompute(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testCompute(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode)
+  }
+
+  def testInitialise(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testInitialise(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode)
+  }
 
   /** helper function to set the values of all input ports.
    * @param current_tempWstatus payload for data port current_tempWstatus
@@ -26,7 +46,7 @@ abstract class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage
    * @param regulator_mode method that will be called with the value of the outgoing data
    *        port 'regulator_mode'.
    */
-  def check_concrete_output(regulator_mode: Isolette_Data_Model.Regulator_Mode.Type => B = regulator_modeParam => {T}): Unit = {
+  def check_concrete_output(regulator_mode: Isolette_Data_Model.Regulator_Mode.Type => B): Unit = {
     var testFailures: ISZ[ST] = ISZ()
 
     val regulator_modeValue: Isolette_Data_Model.Regulator_Mode.Type = get_regulator_mode().get
@@ -40,24 +60,24 @@ abstract class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_interface_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_internal_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // getter for out DataPort
   def get_regulator_mode(): Option[Isolette_Data_Model.Regulator_Mode.Type] = {
     val value: Option[Isolette_Data_Model.Regulator_Mode.Type] = get_regulator_mode_payload() match {
       case Some(Isolette_Data_Model.Regulator_Mode_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port regulator_mode.  Expecting 'Isolette_Data_Model.Regulator_Mode_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port regulator_mode.  Expecting 'Isolette_Data_Model.Regulator_Mode_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.Regulator_Mode.Type]()
     }
     return value
@@ -65,7 +85,7 @@ abstract class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage
 
   // payload getter for out DataPort
   def get_regulator_mode_payload(): Option[Isolette_Data_Model.Regulator_Mode_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.regulator_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Regulator_Mode_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_mode.initialization_api.regulator_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Regulator_Mode_Payload]]
   }
 
 }

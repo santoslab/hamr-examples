@@ -1,11 +1,31 @@
+// #Sireum
+
 package isolette.Monitor
 
 import org.sireum._
-import art.{ArtNative_Ext, Empty}
+import art.{Art, ArtNative, Empty}
 import isolette._
 
 // This file was auto-generated.  Do not edit
-abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_TestApi extends BridgeTestSuite[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge](Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm) {
+@msig trait Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_TestApi {
+
+  def BeforeEach(): Unit = {
+    Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
+  }
+
+  def AfterEach(): Unit = {
+    Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
+  }
+
+  def testCompute(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testCompute(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
+  }
+
+  def testInitialise(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testInitialise(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
+  }
 
   /** helper function to set the values of all input ports.
    * @param current_tempWstatus payload for data port current_tempWstatus
@@ -29,7 +49,7 @@ abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Tes
    * @param alarm_control method that will be called with the value of the outgoing data
    *        port 'alarm_control'.
    */
-  def check_concrete_output(alarm_control: Isolette_Data_Model.On_Off.Type => B = alarm_controlParam => {T}): Unit = {
+  def check_concrete_output(alarm_control: Isolette_Data_Model.On_Off.Type => B): Unit = {
     var testFailures: ISZ[ST] = ISZ()
 
     val alarm_controlValue: Isolette_Data_Model.On_Off.Type = get_alarm_control().get
@@ -43,29 +63,29 @@ abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Tes
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_lower_alarm_temp(value : Isolette_Data_Model.Temp_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.lower_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.lower_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_upper_alarm_temp(value : Isolette_Data_Model.Temp_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.upper_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.upper_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_monitor_mode(value : Isolette_Data_Model.Monitor_Mode.Type): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.monitor_mode_Id, Isolette_Data_Model.Monitor_Mode_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.monitor_mode_Id, Isolette_Data_Model.Monitor_Mode_Payload(value))
   }
 
   // getter for out DataPort
   def get_alarm_control(): Option[Isolette_Data_Model.On_Off.Type] = {
     val value: Option[Isolette_Data_Model.On_Off.Type] = get_alarm_control_payload() match {
       case Some(Isolette_Data_Model.On_Off_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port alarm_control.  Expecting 'Isolette_Data_Model.On_Off_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port alarm_control.  Expecting 'Isolette_Data_Model.On_Off_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.On_Off.Type]()
     }
     return value
@@ -73,7 +93,7 @@ abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Tes
 
   // payload getter for out DataPort
   def get_alarm_control_payload(): Option[Isolette_Data_Model.On_Off_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.alarm_control_Id).asInstanceOf[Option[Isolette_Data_Model.On_Off_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.initialization_api.alarm_control_Id).asInstanceOf[Option[Isolette_Data_Model.On_Off_Payload]]
   }
 
 }

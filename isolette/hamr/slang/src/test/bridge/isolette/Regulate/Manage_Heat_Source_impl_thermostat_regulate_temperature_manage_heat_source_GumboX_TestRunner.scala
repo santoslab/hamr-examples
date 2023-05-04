@@ -39,13 +39,13 @@ import org.sireum.Random.Impl.Xoshiro256
   }
 
   override def test(o: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): B = {
-    isoletteBeforeEach()
+    BeforeEach()
     val r: B = testComputeCB(o.api_current_tempWstatus, o.api_lower_desired_temp, o.api_regulator_mode, o.api_upper_desired_temp) match {
       case GumboXResult.Pre_Condition_Unsat => T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T
     }
-    isoletteAfterEach()
+    AfterEach()
     return r
   }
 }

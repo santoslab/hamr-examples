@@ -1,4 +1,5 @@
 // #Sireum
+
 package isolette.Regulate
 
 import org.sireum._
@@ -6,8 +7,7 @@ import isolette._
 import isolette.GumboXUtil.GumboXResult
 
 // This file was auto-generated.  Do not edit
-@msig trait Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestHarness extends
-  Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_TestApi {
+@msig trait Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestHarness extends Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_TestApi {
   def testComputeCB(
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_desired_temp: Isolette_Data_Model.Temp_impl,

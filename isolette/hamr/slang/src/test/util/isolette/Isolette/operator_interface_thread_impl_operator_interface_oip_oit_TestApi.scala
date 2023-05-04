@@ -1,11 +1,31 @@
+// #Sireum
+
 package isolette.Isolette
 
 import org.sireum._
-import art.{ArtNative_Ext, Empty}
+import art.{Art, ArtNative, Empty}
 import isolette._
 
 // This file was auto-generated.  Do not edit
-abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi extends BridgeTestSuite[operator_interface_thread_impl_operator_interface_oip_oit_Bridge](Arch.isolette_single_sensor_Instance_operator_interface_oip_oit) {
+@msig trait operator_interface_thread_impl_operator_interface_oip_oit_TestApi {
+
+  def BeforeEach(): Unit = {
+    Art.initTest(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
+  }
+
+  def AfterEach(): Unit = {
+    Art.finalizeTest(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
+  }
+
+  def testCompute(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testCompute(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
+  }
+
+  def testInitialise(): Unit = {
+    Art.manuallyClearOutput()
+    Art.testInitialise(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
+  }
 
   /** helper function to set the values of all input ports.
    * @param regulator_status payload for data port regulator_status
@@ -35,10 +55,10 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
    * @param upper_alarm_tempWstatus method that will be called with the value of the outgoing data
    *        port 'upper_alarm_tempWstatus'.
    */
-  def check_concrete_output(lower_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B = lower_desired_tempWstatusParam => {T},
-                            upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B = upper_desired_tempWstatusParam => {T},
-                            lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B = lower_alarm_tempWstatusParam => {T},
-                            upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B = upper_alarm_tempWstatusParam => {T}): Unit = {
+  def check_concrete_output(lower_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B,
+                            upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B,
+                            lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B,
+                            upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl => B): Unit = {
     var testFailures: ISZ[ST] = ISZ()
 
     val lower_desired_tempWstatusValue: Isolette_Data_Model.TempWstatus_impl = get_lower_desired_tempWstatus().get
@@ -64,29 +84,29 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
 
   // setter for in DataPort
   def put_regulator_status(value : Isolette_Data_Model.Status.Type): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.regulator_status_Id, Isolette_Data_Model.Status_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.operational_api.regulator_status_Id, Isolette_Data_Model.Status_Payload(value))
   }
 
   // setter for in DataPort
   def put_monitor_status(value : Isolette_Data_Model.Status.Type): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.monitor_status_Id, Isolette_Data_Model.Status_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.operational_api.monitor_status_Id, Isolette_Data_Model.Status_Payload(value))
   }
 
   // setter for in DataPort
   def put_display_temperature(value : Isolette_Data_Model.Temp_impl): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.display_temperature_Id, Isolette_Data_Model.Temp_impl_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.operational_api.display_temperature_Id, Isolette_Data_Model.Temp_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_alarm_control(value : Isolette_Data_Model.On_Off.Type): Unit = {
-    ArtNative_Ext.insertInPortValue(bridge.operational_api.alarm_control_Id, Isolette_Data_Model.On_Off_Payload(value))
+    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.operational_api.alarm_control_Id, Isolette_Data_Model.On_Off_Payload(value))
   }
 
   // getter for out DataPort
   def get_lower_desired_tempWstatus(): Option[Isolette_Data_Model.TempWstatus_impl] = {
     val value: Option[Isolette_Data_Model.TempWstatus_impl] = get_lower_desired_tempWstatus_payload() match {
       case Some(Isolette_Data_Model.TempWstatus_impl_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port lower_desired_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port lower_desired_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.TempWstatus_impl]()
     }
     return value
@@ -94,14 +114,14 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
 
   // payload getter for out DataPort
   def get_lower_desired_tempWstatus_payload(): Option[Isolette_Data_Model.TempWstatus_impl_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.lower_desired_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.initialization_api.lower_desired_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
   }
 
   // getter for out DataPort
   def get_upper_desired_tempWstatus(): Option[Isolette_Data_Model.TempWstatus_impl] = {
     val value: Option[Isolette_Data_Model.TempWstatus_impl] = get_upper_desired_tempWstatus_payload() match {
       case Some(Isolette_Data_Model.TempWstatus_impl_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port upper_desired_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port upper_desired_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.TempWstatus_impl]()
     }
     return value
@@ -109,14 +129,14 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
 
   // payload getter for out DataPort
   def get_upper_desired_tempWstatus_payload(): Option[Isolette_Data_Model.TempWstatus_impl_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.upper_desired_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.initialization_api.upper_desired_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
   }
 
   // getter for out DataPort
   def get_lower_alarm_tempWstatus(): Option[Isolette_Data_Model.TempWstatus_impl] = {
     val value: Option[Isolette_Data_Model.TempWstatus_impl] = get_lower_alarm_tempWstatus_payload() match {
       case Some(Isolette_Data_Model.TempWstatus_impl_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port lower_alarm_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port lower_alarm_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.TempWstatus_impl]()
     }
     return value
@@ -124,14 +144,14 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
 
   // payload getter for out DataPort
   def get_lower_alarm_tempWstatus_payload(): Option[Isolette_Data_Model.TempWstatus_impl_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.lower_alarm_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.initialization_api.lower_alarm_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
   }
 
   // getter for out DataPort
   def get_upper_alarm_tempWstatus(): Option[Isolette_Data_Model.TempWstatus_impl] = {
     val value: Option[Isolette_Data_Model.TempWstatus_impl] = get_upper_alarm_tempWstatus_payload() match {
       case Some(Isolette_Data_Model.TempWstatus_impl_Payload(v)) => Some(v)
-      case Some(v) => fail(s"Unexpected payload on port upper_alarm_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
+      case Some(v) => halt(s"Unexpected payload on port upper_alarm_tempWstatus.  Expecting 'Isolette_Data_Model.TempWstatus_impl_Payload' but received ${v}")
       case _ => None[Isolette_Data_Model.TempWstatus_impl]()
     }
     return value
@@ -139,7 +159,7 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_TestApi
 
   // payload getter for out DataPort
   def get_upper_alarm_tempWstatus_payload(): Option[Isolette_Data_Model.TempWstatus_impl_Payload] = {
-    return ArtNative_Ext.observeOutPortValue(bridge.initialization_api.upper_alarm_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
+    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit.initialization_api.upper_alarm_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
   }
 
 }

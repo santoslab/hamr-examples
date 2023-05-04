@@ -1,3 +1,5 @@
+// #Sireum
+
 package isolette.Monitor
 
 import org.sireum._
@@ -5,7 +7,7 @@ import isolette._
 import isolette.GumboXUtil.GumboXResult
 
 // This file was auto-generated.  Do not edit
-abstract class Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX_TestHarness extends Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_TestApi {
+@msig trait Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX_TestHarness extends Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_TestApi {
   def testComputeCB(
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
