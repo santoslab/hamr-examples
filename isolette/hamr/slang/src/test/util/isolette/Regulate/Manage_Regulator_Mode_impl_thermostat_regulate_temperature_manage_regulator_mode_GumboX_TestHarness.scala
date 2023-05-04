@@ -13,7 +13,7 @@ abstract class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage
     // Step 1 [SaveInLocal]: retrieve and save the current (input) values of GUMBO-declared local state variables as retrieved from the component state
     val In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type = isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode.lastRegulatorMode
 
-    // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
+    // Step 2 [CheckPre]: check/filter based on pre-condition.
     //   manage_regulator_mode's compute entry point does not have top level assume clauses
 
     // Step 3 [PutInPorts]: put values on the input ports

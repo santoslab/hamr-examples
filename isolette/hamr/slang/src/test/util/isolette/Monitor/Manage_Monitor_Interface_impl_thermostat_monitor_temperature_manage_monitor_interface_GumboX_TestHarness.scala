@@ -14,7 +14,7 @@ abstract class Manage_Monitor_Interface_impl_thermostat_monitor_temperature_mana
     // Step 1 [SaveInLocal]: retrieve and save the current (input) values of GUMBO-declared local state variables as retrieved from the component state
     val In_lastCmd: Isolette_Data_Model.On_Off.Type = isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface.lastCmd
 
-    // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
+    // Step 2 [CheckPre]: check/filter based on pre-condition.
     //   manage_monitor_interface's compute entry point does not have top level assume clauses
 
     // Step 3 [PutInPorts]: put values on the input ports

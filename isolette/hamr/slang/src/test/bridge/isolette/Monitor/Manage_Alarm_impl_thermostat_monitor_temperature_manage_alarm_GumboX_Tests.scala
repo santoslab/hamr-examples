@@ -11,10 +11,11 @@ import org.sireum.Random.Impl.Xoshiro256
 class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness {
 
   {
-    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
-    val ranLiblower_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
-    val ranLibmonitor_mode = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
-    val ranLibupper_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+    val seedGen = new Random.Gen64Impl(Xoshiro256.create)
+    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLiblower_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibmonitor_mode = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibupper_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
     for (i <- 0 to 100) {
       this.registerTest(i.toString) {

@@ -5,6 +5,46 @@ package isolette
 import org.sireum._
 import org.sireum.Random.Gen64
 
+/*
+GENERATED FROM
+
+Heat.scala
+
+Interface_Interaction.scala
+
+PhysicalTemp_impl.scala
+
+ValueStatus.scala
+
+TempWstatus_impl.scala
+
+On_Off.scala
+
+Status.scala
+
+Temp_impl.scala
+
+Regulator_Mode.scala
+
+Failure_Flag_impl.scala
+
+Monitor_Mode.scala
+
+Base_Types.scala
+
+Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.scala
+
+Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.scala
+
+Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.scala
+
+Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.scala
+
+Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.scala
+
+Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.scala
+
+*/
 
 @datatype class Config_Z(filter: Z => B) {}
 
@@ -112,9 +152,9 @@ import org.sireum.Random.Gen64
 
 @datatype class Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(filter: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container => B) {}
 
-@datatype class Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(filter: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container => B) {}
-
 @datatype class Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(filter: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container => B) {}
+
+@datatype class Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(filter: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container => B) {}
 
 @datatype class Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(filter: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container => B) {}
 

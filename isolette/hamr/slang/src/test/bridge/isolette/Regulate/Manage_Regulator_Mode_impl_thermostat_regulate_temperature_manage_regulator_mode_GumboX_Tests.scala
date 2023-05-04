@@ -11,9 +11,10 @@ import org.sireum.Random.Impl.Xoshiro256
 class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX_Tests extends Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX_TestHarness {
 
   {
-    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
-    val ranLibinterface_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
-    val ranLibinternal_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.create))
+    val seedGen = new Random.Gen64Impl(Xoshiro256.create)
+    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibinterface_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibinternal_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
     for (i <- 0 to 100) {
       this.registerTest(i.toString) {

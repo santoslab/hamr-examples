@@ -14,7 +14,7 @@ abstract class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_m
     // Step 1 [SaveInLocal]: retrieve and save the current (input) values of GUMBO-declared local state variables as retrieved from the component state
     //   manage_regulator_interface does not have incoming ports or state variables
 
-    // Step 2 [CheckPre]: check/filter based on pre-condition (exiting with true if the pre-condition is not satisfied).
+    // Step 2 [CheckPre]: check/filter based on pre-condition.
     val CEP_Pre_Result: B = isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Pre (api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
     if (!CEP_Pre_Result) {
       return GumboXResult.Pre_Condition_Unsat
