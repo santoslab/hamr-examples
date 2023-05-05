@@ -40,10 +40,10 @@ abstract class Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

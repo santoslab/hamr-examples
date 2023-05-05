@@ -40,10 +40,10 @@ abstract class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Gum
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

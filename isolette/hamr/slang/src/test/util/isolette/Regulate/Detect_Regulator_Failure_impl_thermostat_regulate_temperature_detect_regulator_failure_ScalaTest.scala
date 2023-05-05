@@ -40,10 +40,10 @@ abstract class Detect_Regulator_Failure_impl_thermostat_regulate_temperature_det
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

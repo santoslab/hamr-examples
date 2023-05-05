@@ -1,21 +1,23 @@
 // #Sireum
+
 package isolette.Regulate
 
 import org.sireum._
 import isolette.GumboXUtil.GumboXResult
 import isolette.RandomLib
-import org.sireum.Random.{Gen64, setSeed}
+import org.sireum.Random.Gen64
 import org.sireum.Random.Impl.Xoshiro256
 
-@record class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestRunner
+// This file was auto-generated.  Do not edit
+@record class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_SlangCheck_TestRunner
   extends Random.Gen.TestRunner[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container]
   with Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestHarness {
 
-  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
-  var ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-  var ranLiblower_desired_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-  var ranLibregulator_mode: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-  var ranLibupper_desired_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+  val ranLiblower_desired_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+  val ranLibregulator_mode: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+  val ranLibupper_desired_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
   override def next(): Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {
     val api_current_tempWstatus = ranLibcurrent_tempWstatus.next_Isolette_Data_ModelTempWstatus_impl()
@@ -39,13 +41,13 @@ import org.sireum.Random.Impl.Xoshiro256
   }
 
   override def test(o: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): B = {
-    BeforeEach()
+    BeforeEntrypoint()
     val r: B = testComputeCB(o.api_current_tempWstatus, o.api_lower_desired_temp, o.api_regulator_mode, o.api_upper_desired_temp) match {
       case GumboXResult.Pre_Condition_Unsat => T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T
     }
-    AfterEach()
+    AfterEntrypoint()
     return r
   }
 }

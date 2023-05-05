@@ -40,10 +40,10 @@ abstract class Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_ScalaTe
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

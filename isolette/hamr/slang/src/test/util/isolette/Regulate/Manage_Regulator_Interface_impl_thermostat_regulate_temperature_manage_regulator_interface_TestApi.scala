@@ -9,11 +9,11 @@ import isolette._
 // This file was auto-generated.  Do not edit
 @msig trait Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_TestApi {
 
-  def BeforeEach(): Unit = {
+  def BeforeEntrypoint(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface)
   }
 
-  def AfterEach(): Unit = {
+  def AfterEntrypoint(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface)
   }
 

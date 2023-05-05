@@ -9,11 +9,11 @@ import isolette._
 // This file was auto-generated.  Do not edit
 @msig trait Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_TestApi {
 
-  def BeforeEach(): Unit = {
+  def BeforeEntrypoint(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat)
   }
 
-  def AfterEach(): Unit = {
+  def AfterEntrypoint(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat)
   }
 

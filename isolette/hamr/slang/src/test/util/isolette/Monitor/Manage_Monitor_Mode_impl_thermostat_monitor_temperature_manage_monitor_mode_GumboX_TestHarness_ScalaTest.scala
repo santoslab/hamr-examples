@@ -40,10 +40,10 @@ abstract class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_mo
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

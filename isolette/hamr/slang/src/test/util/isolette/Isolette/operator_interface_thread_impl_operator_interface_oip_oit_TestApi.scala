@@ -9,11 +9,11 @@ import isolette._
 // This file was auto-generated.  Do not edit
 @msig trait operator_interface_thread_impl_operator_interface_oip_oit_TestApi {
 
-  def BeforeEach(): Unit = {
+  def BeforeEntrypoint(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
   }
 
-  def AfterEach(): Unit = {
+  def AfterEntrypoint(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_operator_interface_oip_oit)
   }
 

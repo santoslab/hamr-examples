@@ -40,10 +40,10 @@ abstract class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_he
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

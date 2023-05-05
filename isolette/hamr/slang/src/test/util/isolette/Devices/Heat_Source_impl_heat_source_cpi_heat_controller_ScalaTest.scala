@@ -40,10 +40,10 @@ abstract class Heat_Source_impl_heat_source_cpi_heat_controller_ScalaTest extend
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

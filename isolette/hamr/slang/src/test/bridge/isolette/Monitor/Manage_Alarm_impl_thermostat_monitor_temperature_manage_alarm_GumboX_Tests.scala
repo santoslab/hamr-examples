@@ -5,17 +5,18 @@ import isolette.Monitor._
 import isolette.GumboXUtil
 import isolette.GumboXUtil.GumboXResult
 import isolette.RandomLib
+import org.sireum.Random.Gen64
 import org.sireum.Random.Impl.Xoshiro256
 
 // This file was auto-generated.  Do not edit
 class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness_ScalaTest {
 
   {
-    val seedGen = new Random.Gen64Impl(Xoshiro256.create)
-    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-    val ranLiblower_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-    val ranLibmonitor_mode = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-    val ranLibupper_alarm_temp = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+    val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLiblower_alarm_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibmonitor_mode: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibupper_alarm_temp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
     for (i <- 0 to 100) {
       this.registerTest(i.toString) {

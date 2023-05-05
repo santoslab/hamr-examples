@@ -5,16 +5,17 @@ import isolette.Regulate._
 import isolette.GumboXUtil
 import isolette.GumboXUtil.GumboXResult
 import isolette.RandomLib
+import org.sireum.Random.Gen64
 import org.sireum.Random.Impl.Xoshiro256
 
 // This file was auto-generated.  Do not edit
 class Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX_Tests extends Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX_TestHarness_ScalaTest {
 
   {
-    val seedGen = new Random.Gen64Impl(Xoshiro256.create)
-    val ranLibcurrent_tempWstatus = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-    val ranLibinterface_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
-    val ranLibinternal_failure = new RandomLib(new Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+    val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibinterface_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+    val ranLibinternal_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
     for (i <- 0 to 100) {
       this.registerTest(i.toString) {

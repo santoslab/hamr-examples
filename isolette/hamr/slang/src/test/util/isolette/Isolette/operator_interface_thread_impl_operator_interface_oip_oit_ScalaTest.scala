@@ -40,10 +40,10 @@ abstract class operator_interface_thread_impl_operator_interface_oip_oit_ScalaTe
   }
 
   override def beforeEach(): Unit = {
-    BeforeEach()
+    BeforeEntrypoint()
   }
 
   override def afterEach(): Unit = {
-    AfterEach()
+    AfterEntrypoint()
   }
 }

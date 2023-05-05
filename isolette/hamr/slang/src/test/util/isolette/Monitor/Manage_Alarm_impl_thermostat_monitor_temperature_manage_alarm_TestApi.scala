@@ -9,11 +9,11 @@ import isolette._
 // This file was auto-generated.  Do not edit
 @msig trait Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_TestApi {
 
-  def BeforeEach(): Unit = {
+  def BeforeEntrypoint(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
   }
 
-  def AfterEach(): Unit = {
+  def AfterEntrypoint(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm)
   }
 

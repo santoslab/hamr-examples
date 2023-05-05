@@ -9,11 +9,11 @@ import isolette._
 // This file was auto-generated.  Do not edit
 @msig trait Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_TestApi {
 
-  def BeforeEach(): Unit = {
+  def BeforeEntrypoint(): Unit = {
     Art.initTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_detect_regulator_failure)
   }
 
-  def AfterEach(): Unit = {
+  def AfterEntrypoint(): Unit = {
     Art.finalizeTest(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_detect_regulator_failure)
   }
 
