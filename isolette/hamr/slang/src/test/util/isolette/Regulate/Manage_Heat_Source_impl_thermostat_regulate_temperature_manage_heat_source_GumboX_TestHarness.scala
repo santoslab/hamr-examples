@@ -36,7 +36,7 @@ import isolette.GumboXUtil.GumboXResult
     val lastCmd: Isolette_Data_Model.On_Off.Type = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source.lastCmd
 
     // Step 6 [CheckPost]: invoke the oracle function
-    val postResult = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_current_tempWstatus, api_heat_control, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+    val postResult = isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp, api_heat_control)
     if (!postResult) {
       return GumboXResult.Post_Condition_Fail
     }

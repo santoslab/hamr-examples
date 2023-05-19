@@ -51,8 +51,12 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         // assume alarmRange
         //   Assume the lower alarm is at least 1.0f less than the upper alarm
         //   to account for the 0.5f tolerance
-        api.upper_alarm_temp.value - api.lower_alarm_temp.value >
-          1.0f
+        api.upper_alarm_temp.value - api.lower_alarm_temp.value > 1.0f,
+        // assume boundedValue
+        //   Appears to help SMT avoid inconsistent context. Interestingly a
+        //   range like (0.0f, 150.0f) doesn't help'
+        -500.0f > api.upper_alarm_temp.value &&
+          api.upper_alarm_temp.value < 500.0f
         // END COMPUTE REQUIRES timeTriggered
       ),
       Modifies(lastCmd, api),
@@ -80,10 +84,8 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   not be changed.
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
            (api.current_tempWstatus.value >= api.lower_alarm_temp.value &&
-             api.current_tempWstatus.value <
-               api.lower_alarm_temp.value + 0.5f ||
-             api.current_tempWstatus.value >
-               api.upper_alarm_temp.value - 0.5f &&
+             api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f ||
+             api.current_tempWstatus.value > api.upper_alarm_temp.value - 0.5f &&
                api.current_tempWstatus.value <= api.upper_alarm_temp.value)) -->: (api.alarm_control == In(lastCmd) &
           lastCmd == In(lastCmd)),
         // case REQ_MRM_4
@@ -92,10 +94,8 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   +0.5 degrees and less than or equal to the Upper Alarm Temperature
         //   -0.5 degrees, the Alarm Control shall be set to Off.
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-           api.current_tempWstatus.value >=
-             api.lower_alarm_temp.value + 0.5f &
-           api.current_tempWstatus.value <=
-             api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
+           api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f &
+           api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
           lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQ_MRM_5
         //   If the Monitor Mode is FAILED, the Alarm Control shall be
@@ -151,7 +151,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
     lastCmd = currentCmd
     api.put_alarm_control(currentCmd)
 
-    api.logInfo(s"Sent on alarm_control: $lastCmd")
+    //api.logInfo(s"Sent on alarm_control: $lastCmd")
   }
 
   def activate(api: Manage_Alarm_impl_Operational_Api): Unit = { }

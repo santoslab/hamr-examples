@@ -20,7 +20,20 @@ import org.sireum._
 
 val sireum = Os.path(Os.env("SIREUM_HOME").get) / "bin" / (if (Os.isWin) "sireum.bat" else "sireum")
 
-// create serializers/deserializers for the Slang types used in the project
+// create SlangCheck generators for the types used in the project
+
+val slangCheckJar: Os.Path = {
+  Os.env("SLANG_CHECK_JAR") match {
+    case Some(p) =>
+      val cand = Os.path(p)
+      if (!cand.exists) {
+        halt(s"SLANG_CHECK_JAR is not a file: $p")
+      } else {
+        cand
+      }
+    case _ => halt(s"SLANG_CHECK_JAR is not defined")
+  }
+}
 
 val files: ISZ[String] = ISZ("../src/main/data/isolette/Isolette_Environment/Heat.scala",
                              "../src/main/data/isolette/Isolette_Environment/Interface_Interaction.scala",
@@ -34,14 +47,8 @@ val files: ISZ[String] = ISZ("../src/main/data/isolette/Isolette_Environment/Hea
                              "../src/main/data/isolette/Isolette_Data_Model/Failure_Flag_impl.scala",
                              "../src/main/data/isolette/Isolette_Data_Model/Monitor_Mode.scala",
                              "../src/main/data/isolette/Base_Types.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer.scala",
                              "../src/main/art/art/DataContent.scala")
 
 val toolargs: String = st"${(files, " ")}".render
 
-proc"$sireum tools sergen -p isolette -m json,msgpack -o ${Os.slashDir.up}/src/main/data/isolette $toolargs".at(Os.slashDir).console.runCheck()
+proc"java -jar $slangCheckJar tools slangcheck -p isolette -o ../src/main/data $toolargs".at(Os.slashDir).console.runCheck()

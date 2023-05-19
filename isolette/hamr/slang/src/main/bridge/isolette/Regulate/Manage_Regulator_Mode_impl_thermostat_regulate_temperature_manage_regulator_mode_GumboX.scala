@@ -11,7 +11,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *
     * guarantees REQ_MRM_1
     *   The initial mode of the regular is INIT
-    * @param api_regulator_mode port variable
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def initialize_REQ_MRM_1 (
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
@@ -20,7 +20,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
   /** IEP-Guar: Initialize Entrypoint Contracts for manage_regulator_mode
     *
     * @param lastRegulatorMode post-state state variable
-    * @param api_regulator_mode port variable
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def initialize_IEP_Guar (
       lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -30,7 +30,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
     * @param lastRegulatorMode post-state state variable
-    * @param api_regulator_mode port variable
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def inititialize_IEP_Post (
       lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -46,10 +46,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *        AND Current Temperature.Status = Valid
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_2(
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -75,10 +75,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *          )
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_Maintain_Normal(
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -102,10 +102,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *          OR NOT(Current Temperature.Status = Valid)
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_3(
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -129,10 +129,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *          OR NOT(Current Temperature.Status = Valid)
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_4(
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -153,7 +153,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *   the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_regulator_mode port variable
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_MaintainFailed(
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -167,10 +167,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_CEP_T_Case (
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
@@ -189,10 +189,10 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     *
     * @param In_lastRegulatorMode pre-state state variable
     * @param lastRegulatorMode post-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_interface_failure port variable
-    * @param api_internal_failure port variable
-    * @param api_regulator_mode port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_interface_failure incoming data port
+    * @param api_internal_failure incoming data port
+    * @param api_regulator_mode outgoing data port
     */
   @strictpure def compute_CEP_Post (
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,

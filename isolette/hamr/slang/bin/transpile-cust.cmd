@@ -51,10 +51,11 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
         "--sequence", s"MS[Z,Option[art.Bridge]]=11;IS[Z,String]=3;IS[Z,art.Art.PortId]=5;IS[Z,art.UPort]=5",
         "--constants", s"art.Art.numComponents=11;art.Art.numPorts=61;art.Art.numConnections=27",
         "--forward", "art.ArtNative=isolette.ArtNix,isolette.Platform=isolette.PlatformNix",
-        "--stack-size", "217088",
+        "--stack-size", "16777216",
         "--stable-type-id",
         "--exts", s"${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc",
-        "--exclude-build", "isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface,isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source,isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode,isolette.Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure,isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface,isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm,isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode,isolette.Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure,isolette.Isolette.operator_interface_thread_impl_operator_interface_oip_oit,isolette.Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat,isolette.Devices.Heat_Source_impl_heat_source_cpi_heat_controller")
+        "--exclude-build", "isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface,isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source,isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode,isolette.Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure,isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface,isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm,isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode,isolette.Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure,isolette.Isolette.operator_interface_thread_impl_operator_interface_oip_oit,isolette.Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat,isolette.Devices.Heat_Source_impl_heat_source_cpi_heat_controller",
+        "--verbose")
       main
     } else {
       val main: ISZ[String] = ISZ(
@@ -69,10 +70,11 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
         "--sequence", s"MS[Z,Option[art.Bridge]]=11;IS[Z,String]=3;IS[Z,art.Art.PortId]=5;IS[Z,art.UPort]=5;IS[Z,(Z, art.ArtSlangMessage)]=61;IS[Z,art.Art.BridgeId]=11;IS[Z,art.scheduling.static.Schedule.Slot]=11",
         "--constants", s"art.Art.numComponents=11;art.Art.numPorts=61;art.Art.numConnections=27",
         "--forward", "art.ArtNative=art.ArtNativeSlang",
-        "--stack-size", "217088",
+        "--stack-size", "16777216",
         "--stable-type-id",
         "--exts", s"${SCRIPT_HOME}/../../c/ext-schedule${PATH_SEP}${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc",
-        "--exclude-build", "isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface,isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source,isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode,isolette.Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure,isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface,isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm,isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode,isolette.Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure,isolette.Isolette.operator_interface_thread_impl_operator_interface_oip_oit,isolette.Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat,isolette.Devices.Heat_Source_impl_heat_source_cpi_heat_controller")
+        "--exclude-build", "isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface,isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source,isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode,isolette.Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure,isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface,isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm,isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode,isolette.Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure,isolette.Isolette.operator_interface_thread_impl_operator_interface_oip_oit,isolette.Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat,isolette.Devices.Heat_Source_impl_heat_source_cpi_heat_controller",
+        "--verbose")
       main
     }
   case Some(o: Cli.HelpOption) =>

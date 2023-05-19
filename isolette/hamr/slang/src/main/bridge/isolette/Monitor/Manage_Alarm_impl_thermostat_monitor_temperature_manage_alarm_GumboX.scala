@@ -10,7 +10,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
   /** Initialize Entrypoint Contract
     *
     * guarantees alarmcontrolIsInitiallyOff
-    * @param api_alarm_control port variable
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def initialize_alarmcontrolIsInitiallyOff (
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
@@ -28,7 +28,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
   /** IEP-Guar: Initialize Entrypoint Contracts for manage_alarm
     *
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def initialize_IEP_Guar (
       lastCmd: Isolette_Data_Model.On_Off.Type,
@@ -39,7 +39,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def inititialize_IEP_Post (
       lastCmd: Isolette_Data_Model.On_Off.Type,
@@ -51,9 +51,9 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *
     * assumes NanAssumes
     *   Assume the port values are valid F32s
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_upper_alarm_temp incoming data port
     */
   @strictpure def compute_spec_NanAssumes_assume(
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
@@ -68,35 +68,47 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     * assumes alarmRange
     *   Assume the lower alarm is at least 1.0f less than the upper alarm
     *   to account for the 0.5f tolerance
-    * @param api_lower_alarm_temp port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_upper_alarm_temp incoming data port
     */
   @strictpure def compute_spec_alarmRange_assume(
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
-    api_upper_alarm_temp.value - api_lower_alarm_temp.value >
-      1.0f
+    api_upper_alarm_temp.value - api_lower_alarm_temp.value > 1.0f
+
+  /** Compute Entrypoint Contract
+    *
+    * assumes boundedValue
+    *   Appears to help SMT avoid inconsistent context. Interestingly a
+    *   range like (0.0f, 150.0f) doesn't help'
+    * @param api_upper_alarm_temp incoming data port
+    */
+  @strictpure def compute_spec_boundedValue_assume(
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+    -500.0f > api_upper_alarm_temp.value &&
+      api_upper_alarm_temp.value < 500.0f
 
   /** CEP-T-Assm: Top-level assume contracts for manage_alarm's compute entrypoint
     *
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_upper_alarm_temp incoming data port
     */
   @strictpure def compute_CEP_T_Assm (
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     compute_spec_NanAssumes_assume(api_current_tempWstatus, api_lower_alarm_temp, api_upper_alarm_temp) &
-    compute_spec_alarmRange_assume(api_lower_alarm_temp, api_upper_alarm_temp)
+    compute_spec_alarmRange_assume(api_lower_alarm_temp, api_upper_alarm_temp) &
+    compute_spec_boundedValue_assume(api_upper_alarm_temp)
 
   /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_alarm
     *
     * @param In_lastCmd pre-state state variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
     */
   @strictpure def compute_CEP_Pre (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
@@ -111,13 +123,13 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *   If the Monitor Mode is INIT, the Alarm Control shall be set
     *   to Off.
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_monitor_mode port variable
+    * @param api_monitor_mode incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_1(
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
-      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
+      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
@@ -127,19 +139,19 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *   less than the Lower Alarm Temperature or greater than the Upper Alarm
     *   Temperature, the Alarm Control shall be set to On.
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_2(
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
        (api_current_tempWstatus.value < api_lower_alarm_temp.value ||
          api_current_tempWstatus.value > api_upper_alarm_temp.value)) -->:
@@ -155,26 +167,24 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *   not be changed.
     * @param In_lastCmd pre-state state variable
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_3(
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
        (api_current_tempWstatus.value >= api_lower_alarm_temp.value &&
-         api_current_tempWstatus.value <
-           api_lower_alarm_temp.value + 0.5f ||
-         api_current_tempWstatus.value >
-           api_upper_alarm_temp.value - 0.5f &&
+         api_current_tempWstatus.value < api_lower_alarm_temp.value + 0.5f ||
+         api_current_tempWstatus.value > api_upper_alarm_temp.value - 0.5f &&
            api_current_tempWstatus.value <= api_upper_alarm_temp.value)) -->:
       (api_alarm_control == In_lastCmd &
          lastCmd == In_lastCmd)
@@ -185,24 +195,22 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *   +0.5 degrees and less than or equal to the Upper Alarm Temperature
     *   -0.5 degrees, the Alarm Control shall be set to Off.
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_4(
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-       api_current_tempWstatus.value >=
-         api_lower_alarm_temp.value + 0.5f &
-       api_current_tempWstatus.value <=
-         api_upper_alarm_temp.value - 0.5f) -->:
+       api_current_tempWstatus.value >= api_lower_alarm_temp.value + 0.5f &
+       api_current_tempWstatus.value <= api_upper_alarm_temp.value - 0.5f) -->:
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
 
@@ -210,13 +218,13 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *   If the Monitor Mode is FAILED, the Alarm Control shall be
     *   set to On.
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_monitor_mode port variable
+    * @param api_monitor_mode incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_case_REQ_MRM_5(
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
-      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
+      api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
       (api_alarm_control == Isolette_Data_Model.On_Off.Onn &
          lastCmd == Isolette_Data_Model.On_Off.Onn)
@@ -225,44 +233,44 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     *
     * @param In_lastCmd pre-state state variable
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_CEP_T_Case (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
-    compute_case_REQ_MRM_1(lastCmd, api_alarm_control, api_monitor_mode) &
-    compute_case_REQ_MRM_2(lastCmd, api_alarm_control, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp) &
-    compute_case_REQ_MRM_3(In_lastCmd, lastCmd, api_alarm_control, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp) &
-    compute_case_REQ_MRM_4(lastCmd, api_alarm_control, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp) &
-    compute_case_REQ_MRM_5(lastCmd, api_alarm_control, api_monitor_mode)
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
+    compute_case_REQ_MRM_1(lastCmd, api_monitor_mode, api_alarm_control) &
+    compute_case_REQ_MRM_2(lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control) &
+    compute_case_REQ_MRM_3(In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control) &
+    compute_case_REQ_MRM_4(lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control) &
+    compute_case_REQ_MRM_5(lastCmd, api_monitor_mode, api_alarm_control)
 
   /** CEP-Post: Compute Entrypoint Post-Condition for manage_alarm
     *
     * @param In_lastCmd pre-state state variable
     * @param lastCmd post-state state variable
-    * @param api_alarm_control port variable
-    * @param api_current_tempWstatus port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_mode port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_current_tempWstatus incoming data port
+    * @param api_lower_alarm_temp incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_temp incoming data port
+    * @param api_alarm_control outgoing data port
     */
   @strictpure def compute_CEP_Post (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_alarm_control: Isolette_Data_Model.On_Off.Type,
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
+      api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (// CEP-T-Case: case clauses of manage_alarm's compute entrypoint
-     compute_CEP_T_Case (In_lastCmd, lastCmd, api_alarm_control, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp))
+     compute_CEP_T_Case (In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control))
 }

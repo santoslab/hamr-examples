@@ -101,9 +101,8 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
            api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
         // case REQ_MRI_8
         //   If the Regulator Interface Failure is False
-        (T) -->: (!(api.interface_failure.value) ->:
-          (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value &
-            api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)),
+        (T) -->: (!(api.interface_failure.value) ->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value &
+           api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)),
         // case REQ_MRI_9
         //   If the Regulator Interface Failure is True,
         //   the Desired Range is UNSPECIFIED.

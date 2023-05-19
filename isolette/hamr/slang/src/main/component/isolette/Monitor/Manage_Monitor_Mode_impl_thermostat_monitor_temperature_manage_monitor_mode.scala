@@ -64,8 +64,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         //   the mode is set to Failed iff the time during
         //   which the thread has been in Init mode exceeds the
         //   Monitor Init Timeout value.
-        (In(lastMonitorMode) == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() ==
-          (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
+        (In(lastMonitorMode) == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
         // END COMPUTE ENSURES timeTriggered
       )
     )

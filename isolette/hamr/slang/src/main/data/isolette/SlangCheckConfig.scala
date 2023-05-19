@@ -32,17 +32,7 @@ Monitor_Mode.scala
 
 Base_Types.scala
 
-Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.scala
-
-Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.scala
-
-Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.scala
-
-Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.scala
-
-Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.scala
-
-Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.scala
+DataContent.scala
 
 */
 
@@ -73,6 +63,8 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
 @datatype class Config_U32(filter: U32 => B) {}
 
 @datatype class Config_U64(filter: U64 => B) {}
+
+@datatype class Config_artEmpty(filter: art.Empty => B) {}
 
 @datatype class Config_Base_TypesBoolean_Payload(filter: Base_Types.Boolean_Payload => B) {}
 
@@ -149,17 +141,5 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
 @datatype class Config_Isolette_EnvironmentInterface_InteractionType(filter: Isolette_Environment.Interface_Interaction.Type => B) {}
 
 @datatype class Config_Isolette_EnvironmentInterface_Interaction_Payload(filter: Isolette_Environment.Interface_Interaction_Payload => B) {}
-
-@datatype class Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(filter: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container => B) {}
-
-@datatype class Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(filter: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container => B) {}
-
-@datatype class Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(filter: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container => B) {}
-
-@datatype class Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(filter: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container => B) {}
-
-@datatype class Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(filter: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container => B) {}
-
-@datatype class Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(filter: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container => B) {}
 
 

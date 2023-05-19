@@ -337,7 +337,11 @@ public
 				assume alarmRange "Assume the lower alarm is at least 1.0f less than the upper alarm
 									|to account for the 0.5f tolerance": 
 					upper_alarm_temp.value - lower_alarm_temp.value > 1.0f;
-	
+					
+				assume boundedValue "Appears to help SMT avoid inconsistent context. Interestingly a
+									|range like (0.0f, 150.0f) doesn't help'":
+					(-500.0f) > upper_alarm_temp.value && upper_alarm_temp.value < 500.0f;
+					 
 				cases
 			
 					case REQ_MRM_1 "If the Monitor Mode is INIT, the Alarm Control shall be set

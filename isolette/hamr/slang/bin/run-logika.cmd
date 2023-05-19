@@ -43,7 +43,7 @@ val emptyMap = Map.empty[String, ExpectedReport] + (initialisePrefix ~> emptyRep
 @datatype class LogikaOpt (val timeout: Z,
                            val rlimit: Z)
 
-val defaultOpts = LogikaOpt(timeout = (if(isCi) 10000 else 2000), rlimit = 2000000)
+val defaultOpts = LogikaOpt(timeout = (if(isCi) 20 else 10), rlimit = 2000000)
 
 @datatype class C(val file: Os.Path,
                   val logikaOpts: LogikaOpt,

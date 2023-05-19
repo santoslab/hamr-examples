@@ -32,17 +32,7 @@ Monitor_Mode.scala
 
 Base_Types.scala
 
-Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.scala
-
-Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.scala
-
-Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.scala
-
-Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.scala
-
-Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.scala
-
-Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.scala
+DataContent.scala
 
 */
 
@@ -360,6 +350,32 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
   def next_String(): String = {
    assert(F, "Requirements to strict to generate")
    halt("Requirements to strict to generate")
+  }
+
+  // ============= art.Empty ===================
+
+  def get_Config_artEmpty: Config_artEmpty
+  def set_Config_artEmpty(config: Config_artEmpty): Unit
+
+  def next_ISZ_artEmpty(): ISZ[art.Empty] = {
+     assert(F, "Requirements to strict to generate")
+     halt("Requirements to strict to generate")
+    }
+
+  def next_artEmpty(): art.Empty = {
+
+    var v: art.Empty = art.Empty()
+
+    for(i <- 0 to 100) {
+       if(get_Config_artEmpty.filter(v)) {
+         return v
+       }
+       println(s"Retrying for failing value: $v")
+       v = art.Empty()
+    }
+
+    assert(F, "Requirements to strict to generate")
+    halt("Requirements to strict to generate")
   }
 
   // ============= Base_Types.Boolean_Payload ===================
@@ -1392,206 +1408,6 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
     assert(F, "Requirements to strict to generate")
     halt("Requirements to strict to generate")
   }
-
-  // ============= Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container ===================
-
-  def get_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container: Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container
-  def set_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(config: Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container): Unit
-
-  def next_ISZ_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(): ISZ[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_lower_alarm_temp: Isolette_Data_Model.Temp_impl = next_Isolette_Data_ModelTemp_impl()
-    var api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type = next_Isolette_Data_ModelMonitor_ModeType()
-    var api_upper_alarm_temp: Isolette_Data_Model.Temp_impl = next_Isolette_Data_ModelTemp_impl()
-
-    var v: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
-
-    for(i <- 0 to 100) {
-       if(get_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_lower_alarm_temp = next_Isolette_Data_ModelTemp_impl()
-       api_monitor_mode = next_Isolette_Data_ModelMonitor_ModeType()
-       api_upper_alarm_temp = next_Isolette_Data_ModelTemp_impl()
-       v = Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
-
-  // ============= Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container ===================
-
-  def get_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container: Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container
-  def set_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(config: Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): Unit
-
-  def next_ISZ_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(): ISZ[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_lower_desired_temp: Isolette_Data_Model.Temp_impl = next_Isolette_Data_ModelTemp_impl()
-    var api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type = next_Isolette_Data_ModelRegulator_ModeType()
-    var api_upper_desired_temp: Isolette_Data_Model.Temp_impl = next_Isolette_Data_ModelTemp_impl()
-
-    var v: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
-
-    for(i <- 0 to 100) {
-       if(get_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_lower_desired_temp = next_Isolette_Data_ModelTemp_impl()
-       api_regulator_mode = next_Isolette_Data_ModelRegulator_ModeType()
-       api_upper_desired_temp = next_Isolette_Data_ModelTemp_impl()
-       v = Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
-
-  // ============= Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container ===================
-
-  def get_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container: Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container
-  def set_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(config: Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container): Unit
-
-  def next_ISZ_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(): ISZ[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_interface_failure: Isolette_Data_Model.Failure_Flag_impl = next_Isolette_Data_ModelFailure_Flag_impl()
-    var api_internal_failure: Isolette_Data_Model.Failure_Flag_impl = next_Isolette_Data_ModelFailure_Flag_impl()
-
-    var v: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
-
-    for(i <- 0 to 100) {
-       if(get_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_interface_failure = next_Isolette_Data_ModelFailure_Flag_impl()
-       api_internal_failure = next_Isolette_Data_ModelFailure_Flag_impl()
-       v = Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
-
-  // ============= Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container ===================
-
-  def get_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container: Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container
-  def set_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(config: Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container): Unit
-
-  def next_ISZ_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(): ISZ[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_interface_failure: Isolette_Data_Model.Failure_Flag_impl = next_Isolette_Data_ModelFailure_Flag_impl()
-    var api_internal_failure: Isolette_Data_Model.Failure_Flag_impl = next_Isolette_Data_ModelFailure_Flag_impl()
-
-    var v: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
-
-    for(i <- 0 to 100) {
-       if(get_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_interface_failure = next_Isolette_Data_ModelFailure_Flag_impl()
-       api_internal_failure = next_Isolette_Data_ModelFailure_Flag_impl()
-       v = Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
-
-  // ============= Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container ===================
-
-  def get_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container: Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container
-  def set_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(config: Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container): Unit
-
-  def next_ISZ_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(): ISZ[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type = next_Isolette_Data_ModelMonitor_ModeType()
-    var api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-
-    var v: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
-
-    for(i <- 0 to 100) {
-       if(get_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_lower_alarm_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_monitor_mode = next_Isolette_Data_ModelMonitor_ModeType()
-       api_upper_alarm_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       v = Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
-
-  // ============= Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container ===================
-
-  def get_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container: Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container
-  def set_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(config: Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container): Unit
-
-  def next_ISZ_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(): ISZ[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container] = {
-     assert(F, "Requirements to strict to generate")
-     halt("Requirements to strict to generate")
-    }
-
-  def next_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = {
-    var api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_lower_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-    var api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type = next_Isolette_Data_ModelRegulator_ModeType()
-    var api_upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl = next_Isolette_Data_ModelTempWstatus_impl()
-
-    var v: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
-
-    for(i <- 0 to 100) {
-       if(get_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.filter(v)) {
-         return v
-       }
-       println(s"Retrying for failing value: $v")
-       api_current_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_lower_desired_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       api_regulator_mode = next_Isolette_Data_ModelRegulator_ModeType()
-       api_upper_desired_tempWstatus = next_Isolette_Data_ModelTempWstatus_impl()
-       v = Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
-    }
-
-    assert(F, "Requirements to strict to generate")
-    halt("Requirements to strict to generate")
-  }
 }
 
 @record class RandomLib(val gen: org.sireum.Random.Gen) extends RandomLibI {
@@ -1735,6 +1551,17 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
 
   def set_Config_U64(config: Config_U64): Unit ={
     config_U64 = config
+  }
+
+  // ============= art.Empty ===================
+  def alwaysTrue_artEmpty(v: art.Empty): B = {return T}
+
+  var config_artEmpty: Config_artEmpty = Config_artEmpty(alwaysTrue_artEmpty _)
+
+  def get_Config_artEmpty: Config_artEmpty = {return config_artEmpty}
+
+  def set_Config_artEmpty(config: Config_artEmpty): Unit ={
+    config_artEmpty = config
   }
 
   // ============= Base_Types.Boolean_Payload ===================
@@ -2153,72 +1980,6 @@ Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Cont
 
   def set_Config_Isolette_EnvironmentInterface_Interaction_Payload(config: Config_Isolette_EnvironmentInterface_Interaction_Payload): Unit ={
     config_Isolette_EnvironmentInterface_Interaction_Payload = config
-  }
-
-  // ============= Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container ===================
-  def alwaysTrue_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(v: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container): B = {return T}
-
-  var config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container: Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(alwaysTrue_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container _)
-
-  def get_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container: Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = {return config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container}
-
-  def set_Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(config: Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container): Unit ={
-    config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = config
-  }
-
-  // ============= Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container ===================
-  def alwaysTrue_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(v: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): B = {return T}
-
-  var config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container: Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(alwaysTrue_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container _)
-
-  def get_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container: Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {return config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container}
-
-  def set_Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(config: Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): Unit ={
-    config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = config
-  }
-
-  // ============= Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container ===================
-  def alwaysTrue_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(v: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container): B = {return T}
-
-  var config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container: Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(alwaysTrue_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container _)
-
-  def get_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container: Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = {return config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container}
-
-  def set_Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(config: Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container): Unit ={
-    config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = config
-  }
-
-  // ============= Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container ===================
-  def alwaysTrue_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(v: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container): B = {return T}
-
-  var config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container: Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(alwaysTrue_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container _)
-
-  def get_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container: Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = {return config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container}
-
-  def set_Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(config: Config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container): Unit ={
-    config_RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = config
-  }
-
-  // ============= Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container ===================
-  def alwaysTrue_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(v: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container): B = {return T}
-
-  var config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container: Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(alwaysTrue_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container _)
-
-  def get_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container: Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = {return config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container}
-
-  def set_Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(config: Config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container): Unit ={
-    config_MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = config
-  }
-
-  // ============= Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container ===================
-  def alwaysTrue_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(v: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container): B = {return T}
-
-  var config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container: Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(alwaysTrue_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container _)
-
-  def get_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container: Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = {return config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container}
-
-  def set_Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(config: Config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container): Unit ={
-    config_RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = config
   }
 }
 

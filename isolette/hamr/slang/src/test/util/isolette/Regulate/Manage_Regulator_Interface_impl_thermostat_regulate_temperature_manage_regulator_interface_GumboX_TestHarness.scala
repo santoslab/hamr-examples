@@ -39,7 +39,7 @@ import isolette.GumboXUtil.GumboXResult
     val api_upper_desired_temp: Isolette_Data_Model.Temp_impl = get_upper_desired_temp().get
 
     // Step 6 [CheckPost]: invoke the oracle function
-    val postResult = isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Post(api_current_tempWstatus, api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_lower_desired_tempWstatus, api_regulator_mode, api_regulator_status, api_upper_desired_temp, api_upper_desired_tempWstatus)
+    val postResult = isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Post(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus, api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_regulator_status, api_upper_desired_temp)
     if (!postResult) {
       return GumboXResult.Post_Condition_Fail
     }

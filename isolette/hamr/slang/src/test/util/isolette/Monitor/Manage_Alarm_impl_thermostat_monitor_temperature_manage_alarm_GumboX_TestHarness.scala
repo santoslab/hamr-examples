@@ -36,7 +36,7 @@ import isolette.GumboXUtil.GumboXResult
     val lastCmd: Isolette_Data_Model.On_Off.Type = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm.lastCmd
 
     // Step 6 [CheckPost]: invoke the oracle function
-    val postResult = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_alarm_control, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+    val postResult = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control)
     if (!postResult) {
       return GumboXResult.Post_Condition_Fail
     }

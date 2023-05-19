@@ -10,7 +10,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** Initialize Entrypoint Contract
     *
     * guarantees monitorStatusInitiallyInit
-    * @param api_monitor_status port variable
+    * @param api_monitor_status outgoing data port
     */
   @strictpure def initialize_monitorStatusInitiallyInit (
       api_monitor_status: Isolette_Data_Model.Status.Type): B =
@@ -19,10 +19,10 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** IEP-Guar: Initialize Entrypoint Contracts for manage_monitor_interface
     *
     * @param lastCmd post-state state variable
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_status port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_interface_failure outgoing data port
+    * @param api_lower_alarm_temp outgoing data port
+    * @param api_monitor_status outgoing data port
+    * @param api_upper_alarm_temp outgoing data port
     */
   @strictpure def initialize_IEP_Guar (
       lastCmd: Isolette_Data_Model.On_Off.Type,
@@ -35,10 +35,10 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** IEP-Post: Initialize Entrypoint Post-Condition
     *
     * @param lastCmd post-state state variable
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_monitor_status port variable
-    * @param api_upper_alarm_temp port variable
+    * @param api_interface_failure outgoing data port
+    * @param api_lower_alarm_temp outgoing data port
+    * @param api_monitor_status outgoing data port
+    * @param api_upper_alarm_temp outgoing data port
     */
   @strictpure def inititialize_IEP_Post (
       lastCmd: Isolette_Data_Model.On_Off.Type,
@@ -52,8 +52,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** guarantees REQ_MMI_1
     *   If the Manage Monitor Interface mode is INIT,
     *   the Monitor Status shall be set to Init.
-    * @param api_monitor_mode port variable
-    * @param api_monitor_status port variable
+    * @param api_monitor_mode incoming data port
+    * @param api_monitor_status outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_1(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
@@ -64,8 +64,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** guarantees REQ_MMI_2
     *   If the Manage Monitor Interface mode is NORMAL,
     *   the Monitor Status shall be set to On
-    * @param api_monitor_mode port variable
-    * @param api_monitor_status port variable
+    * @param api_monitor_mode incoming data port
+    * @param api_monitor_status outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_2(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
@@ -78,8 +78,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     *   the Monitor Status shall be set to Failed.
     *   Latency: < Max Operator Response Time
     *   Tolerance: N/A
-    * @param api_monitor_mode port variable
-    * @param api_monitor_status port variable
+    * @param api_monitor_mode incoming data port
+    * @param api_monitor_status outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_3(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
@@ -91,14 +91,14 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     *   If the Status attribute of the Lower Alarm Temperature
     *   or the Upper Alarm Temperature is Invalid,
     *   the Monitor Interface Failure shall be set to True
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_tempWstatus port variable
-    * @param api_upper_alarm_tempWstatus port variable
+    * @param api_lower_alarm_tempWstatus incoming data port
+    * @param api_upper_alarm_tempWstatus incoming data port
+    * @param api_interface_failure outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_4(
-      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
-      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
+      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid |
        api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->:
       (api_interface_failure.value)
@@ -107,14 +107,14 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     *   If the Status attribute of the Lower Alarm Temperature
     *   and the Upper Alarm Temperature is Valid,
     *   the Monitor Interface Failure shall be set to False
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_tempWstatus port variable
-    * @param api_upper_alarm_tempWstatus port variable
+    * @param api_lower_alarm_tempWstatus incoming data port
+    * @param api_upper_alarm_tempWstatus incoming data port
+    * @param api_interface_failure outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_5(
-      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
-      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
+      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
        api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
       (!(api_interface_failure.value))
@@ -122,18 +122,18 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** guarantees REQ_MMI_6
     *   If the Monitor Interface Failure is False,
     *   the Alarm Range variable shall be set to the Desired Temperature Range
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_lower_alarm_tempWstatus port variable
-    * @param api_upper_alarm_temp port variable
-    * @param api_upper_alarm_tempWstatus port variable
+    * @param api_lower_alarm_tempWstatus incoming data port
+    * @param api_upper_alarm_tempWstatus incoming data port
+    * @param api_interface_failure outgoing data port
+    * @param api_lower_alarm_temp outgoing data port
+    * @param api_upper_alarm_temp outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_6(
+      api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
+      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
-      api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
-      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     (T) -->:
       (!(api_interface_failure.value) -->:
          (api_lower_alarm_temp.value == api_lower_alarm_tempWstatus.value &
@@ -142,7 +142,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   /** guarantees REQ_MMI_7
     *   If the Monitor Interface Failure is True,
     *   the Alarm Range variable is UNSPECIFIED
-    * @param api_interface_failure port variable
+    * @param api_interface_failure outgoing data port
     */
   @strictpure def compute_case_REQ_MMI_7(
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
@@ -151,52 +151,52 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
   /** CEP-T-Case: Top-Level case contracts for manage_monitor_interface's compute entrypoint
     *
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_lower_alarm_tempWstatus port variable
-    * @param api_monitor_mode port variable
-    * @param api_monitor_status port variable
-    * @param api_upper_alarm_temp port variable
-    * @param api_upper_alarm_tempWstatus port variable
+    * @param api_lower_alarm_tempWstatus incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_tempWstatus incoming data port
+    * @param api_interface_failure outgoing data port
+    * @param api_lower_alarm_temp outgoing data port
+    * @param api_monitor_status outgoing data port
+    * @param api_upper_alarm_temp outgoing data port
     */
   @strictpure def compute_CEP_T_Case (
-      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
-      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
+      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
+      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_status: Isolette_Data_Model.Status.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
-      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     compute_case_REQ_MMI_1(api_monitor_mode, api_monitor_status) &
     compute_case_REQ_MMI_2(api_monitor_mode, api_monitor_status) &
     compute_case_REQ_MMI_3(api_monitor_mode, api_monitor_status) &
-    compute_case_REQ_MMI_4(api_interface_failure, api_lower_alarm_tempWstatus, api_upper_alarm_tempWstatus) &
-    compute_case_REQ_MMI_5(api_interface_failure, api_lower_alarm_tempWstatus, api_upper_alarm_tempWstatus) &
-    compute_case_REQ_MMI_6(api_interface_failure, api_lower_alarm_temp, api_lower_alarm_tempWstatus, api_upper_alarm_temp, api_upper_alarm_tempWstatus) &
+    compute_case_REQ_MMI_4(api_lower_alarm_tempWstatus, api_upper_alarm_tempWstatus, api_interface_failure) &
+    compute_case_REQ_MMI_5(api_lower_alarm_tempWstatus, api_upper_alarm_tempWstatus, api_interface_failure) &
+    compute_case_REQ_MMI_6(api_lower_alarm_tempWstatus, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_upper_alarm_temp) &
     compute_case_REQ_MMI_7(api_interface_failure)
 
   /** CEP-Post: Compute Entrypoint Post-Condition for manage_monitor_interface
     *
     * @param In_lastCmd pre-state state variable
     * @param lastCmd post-state state variable
-    * @param api_interface_failure port variable
-    * @param api_lower_alarm_temp port variable
-    * @param api_lower_alarm_tempWstatus port variable
-    * @param api_monitor_mode port variable
-    * @param api_monitor_status port variable
-    * @param api_upper_alarm_temp port variable
-    * @param api_upper_alarm_tempWstatus port variable
+    * @param api_lower_alarm_tempWstatus incoming data port
+    * @param api_monitor_mode incoming data port
+    * @param api_upper_alarm_tempWstatus incoming data port
+    * @param api_interface_failure outgoing data port
+    * @param api_lower_alarm_temp outgoing data port
+    * @param api_monitor_status outgoing data port
+    * @param api_upper_alarm_temp outgoing data port
     */
   @strictpure def compute_CEP_Post (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
       lastCmd: Isolette_Data_Model.On_Off.Type,
-      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
-      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
+      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
+      api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
+      api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_monitor_status: Isolette_Data_Model.Status.Type,
-      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl,
-      api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
+      api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-T-Case: case clauses of manage_monitor_interface's compute entrypoint
-     compute_CEP_T_Case (api_interface_failure, api_lower_alarm_temp, api_lower_alarm_tempWstatus, api_monitor_mode, api_monitor_status, api_upper_alarm_temp, api_upper_alarm_tempWstatus))
+     compute_CEP_T_Case (api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp))
 }

@@ -16,8 +16,6 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.byOrdinal(0).get
   // END STATE VARS
 
-  val unspecified: Isolette_Data_Model.Temp_impl = Isolette_Data_Model.Temp_impl(0f)
-
   def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {
     Contract(
       Modifies(
@@ -173,7 +171,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     }
 
     // create the appropriately typed value to send on the output port and set the port value
-    var interface_failure_flag = Isolette_Data_Model.Failure_Flag_impl(interface_failure)
+    val interface_failure_flag = Isolette_Data_Model.Failure_Flag_impl(interface_failure)
     api.put_interface_failure(interface_failure_flag)
 
     api.logInfo(s"Sent on interface_failure: $interface_failure_flag")
@@ -194,13 +192,14 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     } else {
       //  REQ-MMI-7: If the Monitor Interface Failure is True,
       //  the Alarm Range variable is UNSPECIFIED.
-      //  [RP] Values from initialization should be maintained here, but are not. Putting default values to skirt error
-      //       while running unit test - should really be putting an "UNSPECIFIED" value.
-      api.put_lower_alarm_temp(unspecified)
-      api.put_upper_alarm_temp(unspecified)
 
-      api.logInfo(s"Sent on lower_alarm_temp: ${Isolette_Data_Model.Temp_impl(lower.value)}")
-      api.logInfo(s"Sent on upper_alarm_temp: ${Isolette_Data_Model.Temp_impl(upper.value)}")
+      //  Generated tests require the outgoing data ports to be populated.  Note
+      //  the actual values placed on the ports does not matter
+      api.put_lower_alarm_temp(Isolette_Data_Model.Temp_impl(lower.value))
+      api.put_upper_alarm_temp(Isolette_Data_Model.Temp_impl(upper.value))
+
+      //api.logInfo(s"Sent on lower_alarm_temp: ${Isolette_Data_Model.Temp_impl(lower.value)}")
+      //api.logInfo(s"Sent on upper_alarm_temp: ${Isolette_Data_Model.Temp_impl(upper.value)}")
     }
   }
 

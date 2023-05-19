@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from DataContent.scala, Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer.scala, DataContent.scala
 
 package isolette
 
@@ -11,81 +11,81 @@ object MsgPack {
 
   object Constants {
 
-    val _artEmpty: Z = -32
+    val Isolette_EnvironmentHeat_Payload: Z = -32
 
-    val Isolette_EnvironmentHeat_Payload: Z = -31
+    val Isolette_EnvironmentInterface_Interaction_Payload: Z = -31
 
-    val Isolette_EnvironmentInterface_Interaction_Payload: Z = -30
+    val Isolette_Data_ModelPhysicalTemp_impl: Z = -30
 
-    val Isolette_Data_ModelPhysicalTemp_impl: Z = -29
+    val Isolette_Data_ModelPhysicalTemp_impl_Payload: Z = -29
 
-    val Isolette_Data_ModelPhysicalTemp_impl_Payload: Z = -28
+    val Isolette_Data_ModelValueStatus_Payload: Z = -28
 
-    val Isolette_Data_ModelValueStatus_Payload: Z = -27
+    val Isolette_Data_ModelTempWstatus_impl: Z = -27
 
-    val Isolette_Data_ModelTempWstatus_impl: Z = -26
+    val Isolette_Data_ModelTempWstatus_impl_Payload: Z = -26
 
-    val Isolette_Data_ModelTempWstatus_impl_Payload: Z = -25
+    val Isolette_Data_ModelOn_Off_Payload: Z = -25
 
-    val Isolette_Data_ModelOn_Off_Payload: Z = -24
+    val Isolette_Data_ModelStatus_Payload: Z = -24
 
-    val Isolette_Data_ModelStatus_Payload: Z = -23
+    val Isolette_Data_ModelTemp_impl: Z = -23
 
-    val Isolette_Data_ModelTemp_impl: Z = -22
+    val Isolette_Data_ModelTemp_impl_Payload: Z = -22
 
-    val Isolette_Data_ModelTemp_impl_Payload: Z = -21
+    val Isolette_Data_ModelRegulator_Mode_Payload: Z = -21
 
-    val Isolette_Data_ModelRegulator_Mode_Payload: Z = -20
+    val Isolette_Data_ModelFailure_Flag_impl: Z = -20
 
-    val Isolette_Data_ModelFailure_Flag_impl: Z = -19
+    val Isolette_Data_ModelFailure_Flag_impl_Payload: Z = -19
 
-    val Isolette_Data_ModelFailure_Flag_impl_Payload: Z = -18
+    val Isolette_Data_ModelMonitor_Mode_Payload: Z = -18
 
-    val Isolette_Data_ModelMonitor_Mode_Payload: Z = -17
+    val Base_TypesBoolean_Payload: Z = -17
 
-    val Base_TypesBoolean_Payload: Z = -16
+    val Base_TypesInteger_Payload: Z = -16
 
-    val Base_TypesInteger_Payload: Z = -15
+    val Base_TypesInteger_8_Payload: Z = -15
 
-    val Base_TypesInteger_8_Payload: Z = -14
+    val Base_TypesInteger_16_Payload: Z = -14
 
-    val Base_TypesInteger_16_Payload: Z = -13
+    val Base_TypesInteger_32_Payload: Z = -13
 
-    val Base_TypesInteger_32_Payload: Z = -12
+    val Base_TypesInteger_64_Payload: Z = -12
 
-    val Base_TypesInteger_64_Payload: Z = -11
+    val Base_TypesUnsigned_8_Payload: Z = -11
 
-    val Base_TypesUnsigned_8_Payload: Z = -10
+    val Base_TypesUnsigned_16_Payload: Z = -10
 
-    val Base_TypesUnsigned_16_Payload: Z = -9
+    val Base_TypesUnsigned_32_Payload: Z = -9
 
-    val Base_TypesUnsigned_32_Payload: Z = -8
+    val Base_TypesUnsigned_64_Payload: Z = -8
 
-    val Base_TypesUnsigned_64_Payload: Z = -7
+    val Base_TypesFloat_Payload: Z = -7
 
-    val Base_TypesFloat_Payload: Z = -6
+    val Base_TypesFloat_32_Payload: Z = -6
 
-    val Base_TypesFloat_32_Payload: Z = -5
+    val Base_TypesFloat_64_Payload: Z = -5
 
-    val Base_TypesFloat_64_Payload: Z = -4
+    val Base_TypesCharacter_Payload: Z = -4
 
-    val Base_TypesCharacter_Payload: Z = -3
+    val Base_TypesString_Payload: Z = -3
 
-    val Base_TypesString_Payload: Z = -2
+    val Base_TypesBits_Payload: Z = -2
 
-    val Base_TypesBits_Payload: Z = -1
+    val RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer: Z = -1
 
-    val RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container: Z = 0
+    val RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer: Z = 0
 
-    val RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container: Z = 1
+    val RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer: Z = 1
 
-    val RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container: Z = 2
+    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer: Z = 2
 
-    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container: Z = 3
+    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer: Z = 3
 
-    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container: Z = 4
+    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer: Z = 4
 
-    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container: Z = 5
+    val _artEmpty: Z = 5
 
   }
 
@@ -98,43 +98,6 @@ object MsgPack {
   @msig trait Writer {
 
     def writer: MessagePack.Writer
-
-    def write_artDataContent(o: art.DataContent): Unit = {
-      o match {
-        case o: art.Empty => write_artEmpty(o)
-        case o: Base_Types.Boolean_Payload => writeBase_TypesBoolean_Payload(o)
-        case o: Base_Types.Integer_Payload => writeBase_TypesInteger_Payload(o)
-        case o: Base_Types.Integer_8_Payload => writeBase_TypesInteger_8_Payload(o)
-        case o: Base_Types.Integer_16_Payload => writeBase_TypesInteger_16_Payload(o)
-        case o: Base_Types.Integer_32_Payload => writeBase_TypesInteger_32_Payload(o)
-        case o: Base_Types.Integer_64_Payload => writeBase_TypesInteger_64_Payload(o)
-        case o: Base_Types.Unsigned_8_Payload => writeBase_TypesUnsigned_8_Payload(o)
-        case o: Base_Types.Unsigned_16_Payload => writeBase_TypesUnsigned_16_Payload(o)
-        case o: Base_Types.Unsigned_32_Payload => writeBase_TypesUnsigned_32_Payload(o)
-        case o: Base_Types.Unsigned_64_Payload => writeBase_TypesUnsigned_64_Payload(o)
-        case o: Base_Types.Float_Payload => writeBase_TypesFloat_Payload(o)
-        case o: Base_Types.Float_32_Payload => writeBase_TypesFloat_32_Payload(o)
-        case o: Base_Types.Float_64_Payload => writeBase_TypesFloat_64_Payload(o)
-        case o: Base_Types.Character_Payload => writeBase_TypesCharacter_Payload(o)
-        case o: Base_Types.String_Payload => writeBase_TypesString_Payload(o)
-        case o: Base_Types.Bits_Payload => writeBase_TypesBits_Payload(o)
-        case o: Isolette_Environment.Heat_Payload => writeIsolette_EnvironmentHeat_Payload(o)
-        case o: Isolette_Data_Model.On_Off_Payload => writeIsolette_Data_ModelOn_Off_Payload(o)
-        case o: Isolette_Data_Model.Status_Payload => writeIsolette_Data_ModelStatus_Payload(o)
-        case o: Isolette_Data_Model.Temp_impl_Payload => writeIsolette_Data_ModelTemp_impl_Payload(o)
-        case o: Isolette_Data_Model.ValueStatus_Payload => writeIsolette_Data_ModelValueStatus_Payload(o)
-        case o: Isolette_Data_Model.Monitor_Mode_Payload => writeIsolette_Data_ModelMonitor_Mode_Payload(o)
-        case o: Isolette_Data_Model.Regulator_Mode_Payload => writeIsolette_Data_ModelRegulator_Mode_Payload(o)
-        case o: Isolette_Data_Model.TempWstatus_impl_Payload => writeIsolette_Data_ModelTempWstatus_impl_Payload(o)
-        case o: Isolette_Data_Model.Failure_Flag_impl_Payload => writeIsolette_Data_ModelFailure_Flag_impl_Payload(o)
-        case o: Isolette_Data_Model.PhysicalTemp_impl_Payload => writeIsolette_Data_ModelPhysicalTemp_impl_Payload(o)
-        case o: Isolette_Environment.Interface_Interaction_Payload => writeIsolette_EnvironmentInterface_Interaction_Payload(o)
-      }
-    }
-
-    def write_artEmpty(o: art.Empty): Unit = {
-      writer.writeZ(Constants._artEmpty)
-    }
 
     def writeIsolette_EnvironmentHeatType(o: Isolette_Environment.Heat.Type): Unit = {
       writer.writeZ(o.ordinal)
@@ -320,50 +283,87 @@ object MsgPack {
       writer.writeISZ(o.value, writer.writeB _)
     }
 
-    def writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container): Unit = {
-      writer.writeZ(Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container)
+    def writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)
       writeIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_desired_tempWstatus)
     }
 
-    def writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container): Unit = {
-      writer.writeZ(Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container)
+    def writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)
       writeIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)
       writeIsolette_Data_ModelTemp_impl(o.api_upper_desired_temp)
     }
 
-    def writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container): Unit = {
-      writer.writeZ(Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container)
+    def writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)
       writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
     }
 
-    def writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container): Unit = {
-      writer.writeZ(Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container)
+    def writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)
       writeIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_alarm_tempWstatus)
     }
 
-    def writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container): Unit = {
-      writer.writeZ(Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container)
+    def writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)
       writeIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)
       writeIsolette_Data_ModelTemp_impl(o.api_upper_alarm_temp)
     }
 
-    def writeMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container): Unit = {
-      writer.writeZ(Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container)
+    def writeMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer): Unit = {
+      writer.writeZ(Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer)
       writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
       writeIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)
       writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
+    }
+
+    def write_artDataContent(o: art.DataContent): Unit = {
+      o match {
+        case o: art.Empty => write_artEmpty(o)
+        case o: Base_Types.Boolean_Payload => writeBase_TypesBoolean_Payload(o)
+        case o: Base_Types.Integer_Payload => writeBase_TypesInteger_Payload(o)
+        case o: Base_Types.Integer_8_Payload => writeBase_TypesInteger_8_Payload(o)
+        case o: Base_Types.Integer_16_Payload => writeBase_TypesInteger_16_Payload(o)
+        case o: Base_Types.Integer_32_Payload => writeBase_TypesInteger_32_Payload(o)
+        case o: Base_Types.Integer_64_Payload => writeBase_TypesInteger_64_Payload(o)
+        case o: Base_Types.Unsigned_8_Payload => writeBase_TypesUnsigned_8_Payload(o)
+        case o: Base_Types.Unsigned_16_Payload => writeBase_TypesUnsigned_16_Payload(o)
+        case o: Base_Types.Unsigned_32_Payload => writeBase_TypesUnsigned_32_Payload(o)
+        case o: Base_Types.Unsigned_64_Payload => writeBase_TypesUnsigned_64_Payload(o)
+        case o: Base_Types.Float_Payload => writeBase_TypesFloat_Payload(o)
+        case o: Base_Types.Float_32_Payload => writeBase_TypesFloat_32_Payload(o)
+        case o: Base_Types.Float_64_Payload => writeBase_TypesFloat_64_Payload(o)
+        case o: Base_Types.Character_Payload => writeBase_TypesCharacter_Payload(o)
+        case o: Base_Types.String_Payload => writeBase_TypesString_Payload(o)
+        case o: Base_Types.Bits_Payload => writeBase_TypesBits_Payload(o)
+        case o: Isolette_Environment.Heat_Payload => writeIsolette_EnvironmentHeat_Payload(o)
+        case o: Isolette_Data_Model.On_Off_Payload => writeIsolette_Data_ModelOn_Off_Payload(o)
+        case o: Isolette_Data_Model.Status_Payload => writeIsolette_Data_ModelStatus_Payload(o)
+        case o: Isolette_Data_Model.Temp_impl_Payload => writeIsolette_Data_ModelTemp_impl_Payload(o)
+        case o: Isolette_Data_Model.ValueStatus_Payload => writeIsolette_Data_ModelValueStatus_Payload(o)
+        case o: Isolette_Data_Model.Monitor_Mode_Payload => writeIsolette_Data_ModelMonitor_Mode_Payload(o)
+        case o: Isolette_Data_Model.Regulator_Mode_Payload => writeIsolette_Data_ModelRegulator_Mode_Payload(o)
+        case o: Isolette_Data_Model.TempWstatus_impl_Payload => writeIsolette_Data_ModelTempWstatus_impl_Payload(o)
+        case o: Isolette_Data_Model.Failure_Flag_impl_Payload => writeIsolette_Data_ModelFailure_Flag_impl_Payload(o)
+        case o: Isolette_Data_Model.PhysicalTemp_impl_Payload => writeIsolette_Data_ModelPhysicalTemp_impl_Payload(o)
+        case o: Isolette_Environment.Interface_Interaction_Payload => writeIsolette_EnvironmentInterface_Interaction_Payload(o)
+      }
+    }
+
+    def write_artEmpty(o: art.Empty): Unit = {
+      writer.writeZ(Constants._artEmpty)
     }
 
     def result: ISZ[U8] = {
@@ -385,57 +385,6 @@ object MsgPack {
   @msig trait Reader {
 
     def reader: MessagePack.Reader
-
-    def read_artDataContent(): art.DataContent = {
-      val i = reader.curr
-      val t = reader.readZ()
-      t match {
-        case Constants._artEmpty => val r = read_artEmptyT(T); return r
-        case Constants.Base_TypesBoolean_Payload => val r = readBase_TypesBoolean_PayloadT(T); return r
-        case Constants.Base_TypesInteger_Payload => val r = readBase_TypesInteger_PayloadT(T); return r
-        case Constants.Base_TypesInteger_8_Payload => val r = readBase_TypesInteger_8_PayloadT(T); return r
-        case Constants.Base_TypesInteger_16_Payload => val r = readBase_TypesInteger_16_PayloadT(T); return r
-        case Constants.Base_TypesInteger_32_Payload => val r = readBase_TypesInteger_32_PayloadT(T); return r
-        case Constants.Base_TypesInteger_64_Payload => val r = readBase_TypesInteger_64_PayloadT(T); return r
-        case Constants.Base_TypesUnsigned_8_Payload => val r = readBase_TypesUnsigned_8_PayloadT(T); return r
-        case Constants.Base_TypesUnsigned_16_Payload => val r = readBase_TypesUnsigned_16_PayloadT(T); return r
-        case Constants.Base_TypesUnsigned_32_Payload => val r = readBase_TypesUnsigned_32_PayloadT(T); return r
-        case Constants.Base_TypesUnsigned_64_Payload => val r = readBase_TypesUnsigned_64_PayloadT(T); return r
-        case Constants.Base_TypesFloat_Payload => val r = readBase_TypesFloat_PayloadT(T); return r
-        case Constants.Base_TypesFloat_32_Payload => val r = readBase_TypesFloat_32_PayloadT(T); return r
-        case Constants.Base_TypesFloat_64_Payload => val r = readBase_TypesFloat_64_PayloadT(T); return r
-        case Constants.Base_TypesCharacter_Payload => val r = readBase_TypesCharacter_PayloadT(T); return r
-        case Constants.Base_TypesString_Payload => val r = readBase_TypesString_PayloadT(T); return r
-        case Constants.Base_TypesBits_Payload => val r = readBase_TypesBits_PayloadT(T); return r
-        case Constants.Isolette_EnvironmentHeat_Payload => val r = readIsolette_EnvironmentHeat_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelOn_Off_Payload => val r = readIsolette_Data_ModelOn_Off_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelStatus_Payload => val r = readIsolette_Data_ModelStatus_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelTemp_impl_Payload => val r = readIsolette_Data_ModelTemp_impl_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelValueStatus_Payload => val r = readIsolette_Data_ModelValueStatus_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelMonitor_Mode_Payload => val r = readIsolette_Data_ModelMonitor_Mode_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelRegulator_Mode_Payload => val r = readIsolette_Data_ModelRegulator_Mode_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelTempWstatus_impl_Payload => val r = readIsolette_Data_ModelTempWstatus_impl_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelFailure_Flag_impl_Payload => val r = readIsolette_Data_ModelFailure_Flag_impl_PayloadT(T); return r
-        case Constants.Isolette_Data_ModelPhysicalTemp_impl_Payload => val r = readIsolette_Data_ModelPhysicalTemp_impl_PayloadT(T); return r
-        case Constants.Isolette_EnvironmentInterface_Interaction_Payload => val r = readIsolette_EnvironmentInterface_Interaction_PayloadT(T); return r
-        case _ =>
-          reader.error(i, s"$t is not a valid type of art.DataContent.")
-          val r = readIsolette_EnvironmentInterface_Interaction_PayloadT(T)
-          return r
-      }
-    }
-
-    def read_artEmpty(): art.Empty = {
-      val r = read_artEmptyT(F)
-      return r
-    }
-
-    def read_artEmptyT(typeParsed: B): art.Empty = {
-      if (!typeParsed) {
-        reader.expectZ(Constants._artEmpty)
-      }
-      return art.Empty()
-    }
 
     def readIsolette_EnvironmentHeatType(): Isolette_Environment.Heat.Type = {
       val r = reader.readZ()
@@ -876,98 +825,149 @@ object MsgPack {
       return Base_Types.Bits_Payload(value)
     }
 
-    def readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = {
-      val r = readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_ContainerT(F)
+    def readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
+      val r = readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainerT(F)
       return r
     }
 
-    def readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_ContainerT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = {
+    def readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container)
+        reader.expectZ(Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_lower_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_regulator_mode = readIsolette_Data_ModelRegulator_ModeType()
       val api_upper_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
-      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
     }
 
-    def readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {
-      val r = readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_ContainerT(F)
+    def readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
+      val r = readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainerT(F)
       return r
     }
 
-    def readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_ContainerT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {
+    def readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container)
+        reader.expectZ(Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_lower_desired_temp = readIsolette_Data_ModelTemp_impl()
       val api_regulator_mode = readIsolette_Data_ModelRegulator_ModeType()
       val api_upper_desired_temp = readIsolette_Data_ModelTemp_impl()
-      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
     }
 
-    def readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = {
-      val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_ContainerT(F)
+    def readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
+      val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainerT(F)
       return r
     }
 
-    def readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_ContainerT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = {
+    def readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container)
+        reader.expectZ(Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_interface_failure = readIsolette_Data_ModelFailure_Flag_impl()
       val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
-      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
-    def readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = {
-      val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_ContainerT(F)
+    def readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
+      val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainerT(F)
       return r
     }
 
-    def readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_ContainerT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = {
+    def readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container)
+        reader.expectZ(Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_lower_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_monitor_mode = readIsolette_Data_ModelMonitor_ModeType()
       val api_upper_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
-      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
     }
 
-    def readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = {
-      val r = readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_ContainerT(F)
+    def readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
+      val r = readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainerT(F)
       return r
     }
 
-    def readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_ContainerT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = {
+    def readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container)
+        reader.expectZ(Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_lower_alarm_temp = readIsolette_Data_ModelTemp_impl()
       val api_monitor_mode = readIsolette_Data_ModelMonitor_ModeType()
       val api_upper_alarm_temp = readIsolette_Data_ModelTemp_impl()
-      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
     }
 
-    def readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = {
-      val r = readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_ContainerT(F)
+    def readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
+      val r = readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainerT(F)
       return r
     }
 
-    def readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_ContainerT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = {
+    def readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
       if (!typeParsed) {
-        reader.expectZ(Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container)
+        reader.expectZ(Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer)
       }
       val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
       val api_interface_failure = readIsolette_Data_ModelFailure_Flag_impl()
       val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
-      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+    }
+
+    def read_artDataContent(): art.DataContent = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants._artEmpty => val r = read_artEmptyT(T); return r
+        case Constants.Base_TypesBoolean_Payload => val r = readBase_TypesBoolean_PayloadT(T); return r
+        case Constants.Base_TypesInteger_Payload => val r = readBase_TypesInteger_PayloadT(T); return r
+        case Constants.Base_TypesInteger_8_Payload => val r = readBase_TypesInteger_8_PayloadT(T); return r
+        case Constants.Base_TypesInteger_16_Payload => val r = readBase_TypesInteger_16_PayloadT(T); return r
+        case Constants.Base_TypesInteger_32_Payload => val r = readBase_TypesInteger_32_PayloadT(T); return r
+        case Constants.Base_TypesInteger_64_Payload => val r = readBase_TypesInteger_64_PayloadT(T); return r
+        case Constants.Base_TypesUnsigned_8_Payload => val r = readBase_TypesUnsigned_8_PayloadT(T); return r
+        case Constants.Base_TypesUnsigned_16_Payload => val r = readBase_TypesUnsigned_16_PayloadT(T); return r
+        case Constants.Base_TypesUnsigned_32_Payload => val r = readBase_TypesUnsigned_32_PayloadT(T); return r
+        case Constants.Base_TypesUnsigned_64_Payload => val r = readBase_TypesUnsigned_64_PayloadT(T); return r
+        case Constants.Base_TypesFloat_Payload => val r = readBase_TypesFloat_PayloadT(T); return r
+        case Constants.Base_TypesFloat_32_Payload => val r = readBase_TypesFloat_32_PayloadT(T); return r
+        case Constants.Base_TypesFloat_64_Payload => val r = readBase_TypesFloat_64_PayloadT(T); return r
+        case Constants.Base_TypesCharacter_Payload => val r = readBase_TypesCharacter_PayloadT(T); return r
+        case Constants.Base_TypesString_Payload => val r = readBase_TypesString_PayloadT(T); return r
+        case Constants.Base_TypesBits_Payload => val r = readBase_TypesBits_PayloadT(T); return r
+        case Constants.Isolette_EnvironmentHeat_Payload => val r = readIsolette_EnvironmentHeat_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelOn_Off_Payload => val r = readIsolette_Data_ModelOn_Off_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelStatus_Payload => val r = readIsolette_Data_ModelStatus_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelTemp_impl_Payload => val r = readIsolette_Data_ModelTemp_impl_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelValueStatus_Payload => val r = readIsolette_Data_ModelValueStatus_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelMonitor_Mode_Payload => val r = readIsolette_Data_ModelMonitor_Mode_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelRegulator_Mode_Payload => val r = readIsolette_Data_ModelRegulator_Mode_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelTempWstatus_impl_Payload => val r = readIsolette_Data_ModelTempWstatus_impl_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelFailure_Flag_impl_Payload => val r = readIsolette_Data_ModelFailure_Flag_impl_PayloadT(T); return r
+        case Constants.Isolette_Data_ModelPhysicalTemp_impl_Payload => val r = readIsolette_Data_ModelPhysicalTemp_impl_PayloadT(T); return r
+        case Constants.Isolette_EnvironmentInterface_Interaction_Payload => val r = readIsolette_EnvironmentInterface_Interaction_PayloadT(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of art.DataContent.")
+          val r = readIsolette_EnvironmentInterface_Interaction_PayloadT(T)
+          return r
+      }
+    }
+
+    def read_artEmpty(): art.Empty = {
+      val r = read_artEmptyT(F)
+      return r
+    }
+
+    def read_artEmptyT(typeParsed: B): art.Empty = {
+      if (!typeParsed) {
+        reader.expectZ(Constants._artEmpty)
+      }
+      return art.Empty()
     }
 
   }
@@ -980,36 +980,6 @@ object MsgPack {
       case Some(e) => return Either.Right(e)
       case _ => return Either.Left(r)
     }
-  }
-
-  def from_artDataContent(o: art.DataContent, pooling: B): ISZ[U8] = {
-    val w = Writer.Default(MessagePack.writer(pooling))
-    w.write_artDataContent(o)
-    return w.result
-  }
-
-  def to_artDataContent(data: ISZ[U8]): Either[art.DataContent, MessagePack.ErrorMsg] = {
-    def f_artDataContent(reader: Reader): art.DataContent = {
-      val r = reader.read_artDataContent()
-      return r
-    }
-    val r = to(data, f_artDataContent _)
-    return r
-  }
-
-  def from_artEmpty(o: art.Empty, pooling: B): ISZ[U8] = {
-    val w = Writer.Default(MessagePack.writer(pooling))
-    w.write_artEmpty(o)
-    return w.result
-  }
-
-  def to_artEmpty(data: ISZ[U8]): Either[art.Empty, MessagePack.ErrorMsg] = {
-    def f_artEmpty(reader: Reader): art.Empty = {
-      val r = reader.read_artEmpty()
-      return r
-    }
-    val r = to(data, f_artEmpty _)
-    return r
   }
 
   def fromIsolette_EnvironmentHeat_Payload(o: Isolette_Environment.Heat_Payload, pooling: B): ISZ[U8] = {
@@ -1477,93 +1447,123 @@ object MsgPack {
     return r
   }
 
-  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container, pooling: B): ISZ[U8] = {
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(o)
+    w.writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o)
     return w.result
   }
 
-  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(data: ISZ[U8]): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container, MessagePack.ErrorMsg] = {
-    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container(reader: Reader): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container = {
-      val r = reader.readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(data: ISZ[U8]): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(reader: Reader): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
+      val r = reader.readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer()
       return r
     }
-    val r = to(data, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Container _)
+    val r = to(data, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer _)
     return r
   }
 
-  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container, pooling: B): ISZ[U8] = {
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(o)
+    w.writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o)
     return w.result
   }
 
-  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(data: ISZ[U8]): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container, MessagePack.ErrorMsg] = {
-    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container(reader: Reader): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container = {
-      val r = reader.readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(data: ISZ[U8]): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(reader: Reader): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
+      val r = reader.readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer()
       return r
     }
-    val r = to(data, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Container _)
+    val r = to(data, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer _)
     return r
   }
 
-  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container, pooling: B): ISZ[U8] = {
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(o)
+    w.writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o)
     return w.result
   }
 
-  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(data: ISZ[U8]): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container, MessagePack.ErrorMsg] = {
-    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container(reader: Reader): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container = {
-      val r = reader.readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container()
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(data: ISZ[U8]): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(reader: Reader): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
+      val r = reader.readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer()
       return r
     }
-    val r = to(data, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Container _)
+    val r = to(data, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container, pooling: B): ISZ[U8] = {
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(o)
+    w.writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o)
     return w.result
   }
 
-  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(data: ISZ[U8]): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container, MessagePack.ErrorMsg] = {
-    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container(reader: Reader): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container = {
-      val r = reader.readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container()
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(data: ISZ[U8]): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(reader: Reader): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
+      val r = reader.readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer()
       return r
     }
-    val r = to(data, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Container _)
+    val r = to(data, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer _)
     return r
   }
 
-  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container, pooling: B): ISZ[U8] = {
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(o)
+    w.writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o)
     return w.result
   }
 
-  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(data: ISZ[U8]): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container, MessagePack.ErrorMsg] = {
-    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container(reader: Reader): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container = {
-      val r = reader.readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container()
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(data: ISZ[U8]): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(reader: Reader): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
+      val r = reader.readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer()
       return r
     }
-    val r = to(data, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Container _)
+    val r = to(data, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container, pooling: B): ISZ[U8] = {
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(o)
+    w.writeMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o)
     return w.result
   }
 
-  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(data: ISZ[U8]): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container, MessagePack.ErrorMsg] = {
-    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container(reader: Reader): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container = {
-      val r = reader.readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container()
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(data: ISZ[U8]): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer, MessagePack.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(reader: Reader): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
+      val r = reader.readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer()
       return r
     }
-    val r = to(data, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Container _)
+    val r = to(data, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer _)
+    return r
+  }
+
+  def from_artDataContent(o: art.DataContent, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.write_artDataContent(o)
+    return w.result
+  }
+
+  def to_artDataContent(data: ISZ[U8]): Either[art.DataContent, MessagePack.ErrorMsg] = {
+    def f_artDataContent(reader: Reader): art.DataContent = {
+      val r = reader.read_artDataContent()
+      return r
+    }
+    val r = to(data, f_artDataContent _)
+    return r
+  }
+
+  def from_artEmpty(o: art.Empty, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.write_artEmpty(o)
+    return w.result
+  }
+
+  def to_artEmpty(data: ISZ[U8]): Either[art.Empty, MessagePack.ErrorMsg] = {
+    def f_artEmpty(reader: Reader): art.Empty = {
+      val r = reader.read_artEmpty()
+      return r
+    }
+    val r = to(data, f_artEmpty _)
     return r
   }
 
