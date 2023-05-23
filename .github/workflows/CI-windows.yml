@@ -114,7 +114,7 @@ jobs:
           call %SIREUM_HOME%\hamr\codegen\bin\build.cmd install-slang-check || goto :error
           set SLANG_CHECK_JAR=%SIREUM_HOME%\hamr\codegen\bin\win\slangcheck.jar
           echo SLANG_CHECK_JAR=%SLANG_CHECK_JAR%
-          call bin\win\java\bin\java.exe -jar %SLANG_CHECK_JAR% || goto :error
+          call %SIREUM_HOME%\bin\win\java\bin\java.exe -jar %SLANG_CHECK_JAR% || goto :error
 
           call .ci\test.cmd || goto :error
                     
