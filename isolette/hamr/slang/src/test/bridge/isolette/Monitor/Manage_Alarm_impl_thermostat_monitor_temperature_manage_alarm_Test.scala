@@ -5,7 +5,7 @@ import isolette.Monitor._
 
 // This file will not be overwritten so is safe to edit
 class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Test extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_ScalaTest {
-
+  /*
   test("Example Unit Test for Initialise Entry Point"){
     // Initialise Entry Point doesn't read input port values, so just proceed with
     // launching the entry point code
