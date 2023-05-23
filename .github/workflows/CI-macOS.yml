@@ -82,7 +82,6 @@ jobs:
           ################################################
           ${SIREUM_HOME}/hamr/codegen/bin/build.cmd install-slang-check
           export SLANG_CHECK_JAR=${SIREUM_HOME}/hamr/codegen/bin/mac/slangcheck.jar
-          export SLANG_CHECK_JAR=${GITHUB_WORKSPACE}/bin/mac/slangcheck.jar
           echo "SLANG_CHECK_JAR=${SLANG_CHECK_JAR}"
           java -jar ${SLANG_CHECK_JAR}
 

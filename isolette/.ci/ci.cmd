@@ -26,11 +26,11 @@ val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
 var result: Z = 0
 
 if(result == 0) {
-    result = proc"$sireum slang run ${Os.slashDir / "clean.cmd"}".console.echo.run().exitCode
+    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "clean.cmd"}".console.echo.run().exitCode
 }
 
 if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"}".console.echo.run().exitCode
+    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux".console.echo.run().exitCode
 }
 
 if(result == 0) {
