@@ -1,10 +1,10 @@
-::#! 2> /dev/null                                   #
-@ 2>/dev/null # 2>nul & echo off & goto BOF         #
-if [ -z ${SIREUM_HOME} ]; then                      #
-  echo "Please set SIREUM_HOME env var"             #
-  exit -1                                           #
-fi                                                  #
-exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@"  #
+::/*#! 2> /dev/null                                   #
+@ 2>/dev/null # 2>nul & echo off & goto BOF           #
+if [ -z ${SIREUM_HOME} ]; then                        #
+  echo "Please set SIREUM_HOME env var"               #
+  exit -1                                             #
+fi                                                    #
+exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@"    #
 :BOF
 setlocal
 if not defined SIREUM_HOME (
@@ -13,12 +13,23 @@ if not defined SIREUM_HOME (
 )
 %SIREUM_HOME%\\bin\\sireum.bat slang run "%0" %*
 exit /B %errorlevel%
-::!#
+::!#*/
 // #Sireum
 
 import org.sireum._
 
 // This file was auto-generated.  Do not edit
+
+// If you want to make changes to this script, make a copy of it and edit that version
+
+// Origin of custom sequence sizes
+//   MS[Z,Option[art.Bridge]]=15 - Needed for Art.bridges
+//   IS[Z,String]=3 - Needed for the CLI arguments to the Demo Slang app
+//   IS[Z,art.Art.PortId]=24 - Needed for the sending and receiving of messages in ART and the bridges
+//   IS[Z,art.UPort]=24 - Needed for instrumentationMockThread's dataOuts ports
+//   IS[Z,(Z, art.ArtSlangMessage)]=92 - Needed for the backing store of Map[Z, ArgSlangMessage] in ArtNativeSlang
+//   IS[Z,art.Art.BridgeId]=15 - Needed for the example round robin schedule in Schedulers
+//   IS[Z,art.scheduling.static.Schedule.Slot]=15 - Needed for the example static schedule in Schedulers
 
 val SCRIPT_HOME: Os.Path = Os.slashDir
 val PATH_SEP: String = Os.pathSep
@@ -36,14 +47,13 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
         "--fingerprint", "3",
         "--bits", "32",
         "--string-size", "256",
-        "--sequence-size", "92",
-        "--sequence", s"IS[Z,art.Bridge]=15;MS[Z,Option[art.Bridge]]=15;IS[Z,art.UPort]=24;IS[Z,art.UConnection]=38",
-        "--constants", s"art.Art.maxComponents=15;art.Art.maxPorts=92",
+        "--sequence-size", "1",
+        "--sequence", s"MS[Z,Option[art.Bridge]]=15;IS[Z,String]=3;IS[Z,art.Art.PortId]=24;IS[Z,art.UPort]=24",
+        "--constants", s"art.Art.numComponents=15;art.Art.numPorts=92;art.Art.numConnections=38",
         "--forward", "art.ArtNative=RTS.ArtNix,RTS.Platform=RTS.PlatformNix",
         "--stack-size", "16*1024*1024",
         "--stable-type-id",
-        "--exts", s"${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc",
-        "--verbose")
+        "--exts", s"${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc")
       main
     } else {
       val main: ISZ[String] = ISZ(
@@ -54,14 +64,13 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
         "--fingerprint", "3",
         "--bits", "32",
         "--string-size", "256",
-        "--sequence-size", "92",
-        "--sequence", s"IS[Z,art.Bridge]=15;MS[Z,Option[art.Bridge]]=15;IS[Z,art.UPort]=24;IS[Z,art.UConnection]=38",
-        "--constants", s"art.Art.maxComponents=15;art.Art.maxPorts=92",
+        "--sequence-size", "1",
+        "--sequence", s"MS[Z,Option[art.Bridge]]=15;IS[Z,String]=3;IS[Z,art.Art.PortId]=24;IS[Z,art.UPort]=24;IS[Z,(Z, art.ArtSlangMessage)]=92;IS[Z,art.Art.BridgeId]=15;IS[Z,art.scheduling.static.Schedule.Slot]=15",
+        "--constants", s"art.Art.numComponents=15;art.Art.numPorts=92;art.Art.numConnections=38",
         "--forward", "art.ArtNative=art.ArtNativeSlang",
         "--stack-size", "16*1024*1024",
         "--stable-type-id",
-        "--exts", s"${SCRIPT_HOME}/../../c/ext-schedule${PATH_SEP}${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc",
-        "--verbose")
+        "--exts", s"${SCRIPT_HOME}/../../c/ext-schedule${PATH_SEP}${SCRIPT_HOME}/../../c/ext-c${PATH_SEP}${SCRIPT_HOME}/../../c/etc")
       main
     }
   case Some(o: Cli.HelpOption) =>
@@ -76,7 +85,9 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
 println("Initializing runtime library ...")
 Sireum.initRuntimeLibrary()
 
-Sireum.run(ISZ[String]("slang", "transpilers", "c") ++ project)
+val result = Sireum.run(ISZ[String]("slang", "transpilers", "c") ++ project)
+
+Os.exit(result)
 
 import org.sireum._
 
@@ -175,7 +186,7 @@ import Cli._
       case Some(sargs) =>
         var r = ISZ[Z]()
         for (arg <- sargs) {
-          parseNumH(arg, minOpt, maxOpt) match {
+          parseNumH(F, arg, minOpt, maxOpt)._2 match {
             case Some(n) => r = r :+ n
             case _ => return None()
           }
@@ -243,17 +254,27 @@ import Cli._
       eprintln(s"Expecting an integer, but none found.")
       return None()
     }
-    return parseNumH(args(i), minOpt, maxOpt)
+    return parseNumH(F, args(i), minOpt, maxOpt)._2
   }
 
-  def parseNumH(arg: String, minOpt: Option[Z], maxOpt: Option[Z]): Option[Z] = {
+  def parseNumFlag(args: ISZ[String], i: Z, minOpt: Option[Z], maxOpt: Option[Z]): Option[Option[Z]] = {
+    if (i >= args.size) {
+      return Some(None())
+    }
+    parseNumH(T, args(i), minOpt, maxOpt) match {
+      case (T, vOpt) => return Some(vOpt)
+      case _ => return None()
+    }
+  }
+
+  def parseNumH(optArg: B, arg: String, minOpt: Option[Z], maxOpt: Option[Z]): (B, Option[Z]) = {
     Z(arg) match {
       case Some(n) =>
         minOpt match {
           case Some(min) =>
             if (n < min) {
               eprintln(s"Expecting an integer at least $min, but found $n.")
-              return None()
+              return (F, None())
             }
           case _ =>
         }
@@ -261,15 +282,18 @@ import Cli._
           case Some(max) =>
             if (n > max) {
               eprintln(s"Expecting an integer at most $max, but found $n.")
-              return None()
+              return (F, None())
             }
-            return Some(n)
           case _ =>
         }
-        return Some(n)
+        return (T, Some(n))
       case _ =>
-        eprintln(s"Expecting an integer, but found '$arg'.")
-        return None()
+        if (!optArg) {
+          eprintln(s"Expecting an integer, but found '$arg'.")
+          return (F, None())
+        } else {
+          return (T, None())
+       }
     }
   }
 

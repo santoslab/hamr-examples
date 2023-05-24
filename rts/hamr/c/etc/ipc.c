@@ -53,7 +53,8 @@ Z RTS_SharedMemory_create(STACK_FRAME Z id) {
     return (Z) shmid;
 }
 
-Unit RTS_SharedMemory_receive(STACK_FRAME Z port, MBox2_1CBFC4 out) {
+// MBox2_43CC67=MBox2[art.Art.PortId, art.DataContent]
+Unit RTS_SharedMemory_receive(STACK_FRAME Z port, MBox2_43CC67 out) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -62,7 +63,7 @@ Unit RTS_SharedMemory_receive(STACK_FRAME Z port, MBox2_1CBFC4 out) {
 
     Option_8E9F45 p = (Option_8E9F45) shmat(shmid, (void *) 0, 0);
 
-    while (p->type != TSome_D29615) { // wait until there is a data
+    while (p->type != TSome_D29615) { // wait until there is data
         unlock(sid);
         usleep((useconds_t) 10 * 1000);
         lock(sid);
@@ -76,7 +77,8 @@ Unit RTS_SharedMemory_receive(STACK_FRAME Z port, MBox2_1CBFC4 out) {
     unlock(sid);
 }
 
-Unit RTS_SharedMemory_receiveAsync(STACK_FRAME Z port, MBox2_1029D1 out) {
+// MBox2_37E193=MBox2[art.Art.PortId, Option[art.DataContent]]
+Unit RTS_SharedMemory_receiveAsync(STACK_FRAME Z port, MBox2_37E193 out) {
     int sid = semget((key_t) port, 1, 0666);
 
     lock(sid);
@@ -97,12 +99,12 @@ Unit RTS_SharedMemory_receiveAsync(STACK_FRAME Z port, MBox2_1029D1 out) {
     unlock(sid);
 }
 
-Unit RTS_SharedMemory_send(STACK_FRAME Z destid, Z port, art_DataContent d) {
-    int sid = semget((key_t) port, 1, 0666);
+Unit RTS_SharedMemory_send(STACK_FRAME Z appPortId, Z componentPortId, art_DataContent d) {
+    int sid = semget((key_t) componentPortId, 1, 0666);
 
     lock(sid);
 
-    int shmid = shmget((key_t) port, sizeof(union Option_8E9F45), 0666);
+    int shmid = shmget((key_t) componentPortId, sizeof(union Option_8E9F45), 0666);
 
     Option_8E9F45 p = (Option_8E9F45) shmat(shmid, (void *) 0, 0);
 
@@ -120,12 +122,12 @@ Unit RTS_SharedMemory_send(STACK_FRAME Z destid, Z port, art_DataContent d) {
     unlock(sid);
 }
 
-B RTS_SharedMemory_sendAsync(STACK_FRAME Z destid, Z port, art_DataContent d) {
-    int sid = semget((key_t) port, 1, 0666);
+B RTS_SharedMemory_sendAsync(STACK_FRAME Z appPortId, Z componentPortId, art_DataContent d) {
+    int sid = semget((key_t) componentPortId, 1, 0666);
 
     lock(sid);
 
-    int shmid = shmget((key_t) port, sizeof(union Option_8E9F45), 0666);
+    int shmid = shmget((key_t) componentPortId, sizeof(union Option_8E9F45), 0666);
 
     Option_8E9F45 p = (Option_8E9F45) shmat(shmid, (void *) 0, 0);
     p->type = TSome_D29615;

@@ -6,7 +6,7 @@
 // Transpiled signature of the Slang variable RTS.Schedulers.roundRobinSchedule
 // in architecture/RTS/Schedulers.scala.  This weak function declaration allows
 // RTS_ScheduleProviderI_getRoundRobinOrder to detect whether the Slang variable was deleted
-__attribute__((weak)) IS_7E8796 RTS_Schedulers_roundRobinSchedule(STACK_FRAME_ONLY);
+__attribute__((weak)) IS_FDDCB6 RTS_Schedulers_roundRobinSchedule(STACK_FRAME_ONLY);
 
 volatile sig_atomic_t shouldStop = 0;
 
@@ -15,9 +15,9 @@ volatile sig_atomic_t shouldStop = 0;
  * defined in architecture/RTS/Schedulers.scala
  *
  * @param result an empty schedule.  Add components in the order you want them to be dispatched.
- *               IS_7E8796=ISZ[art.Bridge], i.e. an immutable sequence of art.Bridge
+ *               IS_FDDCB6=ISZ[art.Art.BridgeId], i.e. an immutable sequence of art.Bridge
  */
-void RTS_ScheduleProviderI_getRoundRobinOrder(STACK_FRAME IS_7E8796 result) {
+void RTS_ScheduleProviderI_getRoundRobinOrder(STACK_FRAME IS_FDDCB6 result) {
   DeclNewStackFrame(caller, "round_robin.c", "", "RTS_ScheduleProviderI_getRoundRobinOrder", 0);
 
   if(RTS_Schedulers_roundRobinSchedule) {
@@ -25,8 +25,8 @@ void RTS_ScheduleProviderI_getRoundRobinOrder(STACK_FRAME IS_7E8796 result) {
     printf("  RTS_ScheduleProviderI_getRoundRobinOrder located in round_robin.c\n");
     printf("to supply your own\n");
 
-    IS_7E8796 order = RTS_Schedulers_roundRobinSchedule(SF_LAST);
-    memcpy(result->value, order->value, sizeof(union art_Bridge) * order->size);
+    IS_FDDCB6 order = RTS_Schedulers_roundRobinSchedule(SF_LAST);
+    memcpy(result->value, order->value, sizeof(art_Art_BridgeId) * order->size);
     result->size = order->size;
 
   } else {
@@ -35,21 +35,21 @@ void RTS_ScheduleProviderI_getRoundRobinOrder(STACK_FRAME IS_7E8796 result) {
 
     // example schedule
     int i = 0;
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_instrumentationMock_instrumentationMockThread(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_eventControlMock_eventControlMockThread(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuatorsMock_actuatorsMockThread(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic(SF_LAST));
-    IS_7E8796_up(result, i++, (art_Bridge) RTS_Arch_RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator(SF_LAST));
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_instrumentationMock_instrumentationMockThread(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_eventControlMock_eventControlMockThread(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuatorsMock_actuatorsMockThread(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic(SF_LAST)->id);
+    IS_FDDCB6_up(result, i++, (art_Art_BridgeId) RTS_Arch_RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator(SF_LAST)->id);
 
     result->size = i;
   }

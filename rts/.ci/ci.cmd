@@ -29,13 +29,20 @@ if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "clean.cmd"}".console.echo.run().exitCode
 }
 
+// need to run both Linux and seL4 to ensure results contain both the c and camkes codegen artifacts
+if(result == 0) {
+    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux".console.echo.run().exitCode
+}
+
 if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} seL4".console.echo.run().exitCode
 }
 
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-linux.cmd"}".console.echo.run().exitCode
-}
+
+// TODO: add run-demo-jvm, run-demo-linux and perhaps run-demo-sel4 scripts
+//if(result == 0) {
+//    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-linux.cmd"}".console.echo.run().exitCode
+//}
 
 if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}".console.echo.run().exitCode

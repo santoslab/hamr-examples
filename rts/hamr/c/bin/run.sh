@@ -79,7 +79,10 @@ function launch() {
     done
   elif [[ "$(uname)" == "Darwin" ]]; then
     for APP in $1; do
-      echo "${SCRIPT_HOME}/slang-build/${APP}${SCHEDULER_ARG}${PREVENT_CLOSE} ; rm /tmp/tmp.sh" > /tmp/tmp.sh ; chmod +x /tmp/tmp.sh ; open -a Terminal /tmp/tmp.sh &
+      # workaround to launch the applications via separate Terminals. Create a shell script in the
+      # /tmp directory that launches the application. Then delete the shell script when the
+      # application exits
+      echo "${SCRIPT_HOME}/slang-build/${APP}${SCHEDULER_ARG}${PREVENT_CLOSE} ; rm /tmp/${APP}.sh" > /tmp/${APP}.sh ; chmod +x /tmp/${APP}.sh ; open -a Terminal /tmp/${APP}.sh &
     done
   elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     for APP in $1; do

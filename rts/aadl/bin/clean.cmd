@@ -26,7 +26,8 @@ val toKeep = ops.ISZOps(ISZ(
   (slangDir / "bin" / "build.cmd"), // customized transpiler script
   (slangDir / "bin" / "run-logika.cmd"), // customized transpiler script
   (slangDir / "bin" / "transpile-sel4-cust.cmd"), // customized transpiler script
-  (slangDir / "src" / "main" / "component") // contains user code
+  (slangDir / ".idea"),
+  (slangDir / "src" / "main" / "component"), // contains user code
   (slangDir / "src" / "test" / "bridge") // contains user code
 ))
 

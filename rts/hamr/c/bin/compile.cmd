@@ -1,10 +1,10 @@
-::#! 2> /dev/null                                   #
-@ 2>/dev/null # 2>nul & echo off & goto BOF         #
-if [ -z ${SIREUM_HOME} ]; then                      #
-  echo "Please set SIREUM_HOME env var"             #
-  exit -1                                           #
-fi                                                  #
-exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@"  #
+::/*#! 2> /dev/null                                   #
+@ 2>/dev/null # 2>nul & echo off & goto BOF           #
+if [ -z ${SIREUM_HOME} ]; then                       #
+  echo "Please set SIREUM_HOME env var"               #
+  exit -1                                             #
+fi                                                    #
+exec ${SIREUM_HOME}/bin/sireum slang run "$0" "$@" #
 :BOF
 setlocal
 if not defined SIREUM_HOME (
@@ -13,7 +13,7 @@ if not defined SIREUM_HOME (
 )
 %SIREUM_HOME%\\bin\\sireum.bat slang run "%0" %*
 exit /B %errorlevel%
-::!#
+::!#*/
 // #Sireum
 
 import org.sireum._
@@ -41,7 +41,9 @@ Cli(Os.pathSepChar).parseCompile(Os.cliArgs, 0) match {
     if(o.noPrint) { cmake = cmake :+ "-D" :+ "NO_PRINT=ON" }
     if(o.rangeCheck) { cmake = cmake :+ "-D" :+ "RANGE_CHECK=ON" }
     if(o.withLoc) { cmake = cmake :+ "-D" :+ "WITH_LOC=ON" }
-    cmake = (cmake :+ "-D" :+ "CMAKE_BUILD_TYPE=Release") :+ ".."
+    cmake = (cmake :+ "-D" :+ s"CMAKE_BUILD_TYPE=${o.build}") :+ ".."
+
+    if(o.verbose) { println(st"${(cmake, " ")}".render) }
 
     Os.proc(cmake).at(nixDir).console.runCheck()
 
@@ -89,6 +91,11 @@ object Cli {
 
   @datatype class HelpOption extends CompileTopOption
 
+  @enum object CompileChoice {
+    'Release
+    'Debug
+  }
+
   @datatype class CompileOption(
     val help: String,
     val args: ISZ[String],
@@ -96,13 +103,34 @@ object Cli {
     val noPrint: B,
     val rangeCheck: B,
     val withLoc: B,
-    val jobs: Z
+    val jobs: Z,
+    val build: CompileChoice.Type,
+    val verbose: B
   ) extends CompileTopOption
 }
 
 import Cli._
 
 @record class Cli(val pathSep: C) {
+
+  def parseCompileChoiceH(arg: String): Option[CompileChoice.Type] = {
+    arg.native match {
+      case "release" => return Some(CompileChoice.Release)
+      case "debug" => return Some(CompileChoice.Debug)
+      case s =>
+        eprintln(s"Expecting one of the following: { release, debug }, but found '$s'.")
+        return None()
+    }
+  }
+
+  def parseCompileChoice(args: ISZ[String], i: Z): Option[CompileChoice.Type] = {
+    if (i >= args.size) {
+      eprintln("Expecting one of the following: { release, debug }, but none found.")
+      return None()
+    }
+    val r = parseCompileChoiceH(args(i))
+    return r
+  }
 
   def parseCompile(args: ISZ[String], i: Z): Option[CompileTopOption] = {
     val help =
@@ -116,7 +144,10 @@ import Cli._
           |-r, --range-check        Build the program with range checking
           |-l, --with-loc           Build the program with Slang location info
           |-j, --jobs               Number of make jobs to run in parallel (expects an
-          |                           integer; default is 4)
+          |                           integer; min is 1; default is 4)
+          |-t, --build-type         Build type (expects one of { release, debug };
+          |                           default: release)
+          |-v, --verbose            Echo cmake command
           |-h, --help               Display this information""".render
 
     var boundCheck: B = false
@@ -124,6 +155,8 @@ import Cli._
     var rangeCheck: B = false
     var withLoc: B = false
     var jobs: Z = 4
+    var build: CompileChoice.Type = CompileChoice.Release
+    var verbose: B = false
     var j = i
     var isOption = T
     while (j < args.size && isOption) {
@@ -162,6 +195,18 @@ import Cli._
              case Some(v) => jobs = v
              case _ => return None()
            }
+         } else if (arg == "-t" || arg == "--build-type") {
+           val o: Option[CompileChoice.Type] = parseCompileChoice(args, j + 1)
+           o match {
+             case Some(v) => build = v
+             case _ => return None()
+           }
+         } else if (arg == "-v" || arg == "--verbose") {
+           val o: Option[B] = { j = j - 1; Some(!verbose) }
+           o match {
+             case Some(v) => verbose = v
+             case _ => return None()
+           }
          } else {
           eprintln(s"Unrecognized option '$arg'.")
           return None()
@@ -171,7 +216,7 @@ import Cli._
         isOption = F
       }
     }
-    return Some(CompileOption(help, parseArguments(args, j), boundCheck, noPrint, rangeCheck, withLoc, jobs))
+    return Some(CompileOption(help, parseArguments(args, j), boundCheck, noPrint, rangeCheck, withLoc, jobs, build, verbose))
   }
 
   def parseArguments(args: ISZ[String], i: Z): ISZ[String] = {
@@ -215,7 +260,7 @@ import Cli._
       case Some(sargs) =>
         var r = ISZ[Z]()
         for (arg <- sargs) {
-          parseNumH(arg, minOpt, maxOpt) match {
+          parseNumH(F, arg, minOpt, maxOpt)._2 match {
             case Some(n) => r = r :+ n
             case _ => return None()
           }
@@ -283,17 +328,27 @@ import Cli._
       eprintln(s"Expecting an integer, but none found.")
       return None()
     }
-    return parseNumH(args(i), minOpt, maxOpt)
+    return parseNumH(F, args(i), minOpt, maxOpt)._2
   }
 
-  def parseNumH(arg: String, minOpt: Option[Z], maxOpt: Option[Z]): Option[Z] = {
+  def parseNumFlag(args: ISZ[String], i: Z, minOpt: Option[Z], maxOpt: Option[Z]): Option[Option[Z]] = {
+    if (i >= args.size) {
+      return Some(None())
+    }
+    parseNumH(T, args(i), minOpt, maxOpt) match {
+      case (T, vOpt) => return Some(vOpt)
+      case _ => return None()
+    }
+  }
+
+  def parseNumH(optArg: B, arg: String, minOpt: Option[Z], maxOpt: Option[Z]): (B, Option[Z]) = {
     Z(arg) match {
       case Some(n) =>
         minOpt match {
           case Some(min) =>
             if (n < min) {
               eprintln(s"Expecting an integer at least $min, but found $n.")
-              return None()
+              return (F, None())
             }
           case _ =>
         }
@@ -301,15 +356,18 @@ import Cli._
           case Some(max) =>
             if (n > max) {
               eprintln(s"Expecting an integer at most $max, but found $n.")
-              return None()
+              return (F, None())
             }
-            return Some(n)
           case _ =>
         }
-        return Some(n)
+        return (T, Some(n))
       case _ =>
-        eprintln(s"Expecting an integer, but found '$arg'.")
-        return None()
+        if (!optArg) {
+          eprintln(s"Expecting an integer, but found '$arg'.")
+          return (F, None())
+        } else {
+          return (T, None())
+       }
     }
   }
 
