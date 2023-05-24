@@ -30,7 +30,7 @@ if(result == 0) {
 }
 
 if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Jvm".console.echo.run().exitCode
+    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"}".console.echo.run().exitCode
 }
 
 // TODO: add run-demo-jvm
