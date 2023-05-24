@@ -170,9 +170,11 @@ object TempControl_s_tcproc_tempControl_GumboX {
       In_currentFanState: CoolingFan.FanCmd.Type,
       currentFanState: CoolingFan.FanCmd.Type,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
-    (In_currentFanState != currentFanState) ->: (api_fanCmd.nonEmpty &&
-       api_fanCmd.get == currentFanState) &&
-      (currentFanState == In_currentFanState) ->: api_fanCmd.isEmpty
+    (In_currentFanState != currentFanState) -->:
+      (api_fanCmd.nonEmpty &&
+        api_fanCmd.get == currentFanState) &&
+      (currentFanState == In_currentFanState) -->:
+        api_fanCmd.isEmpty
 
   /** CEP-T-Guar: Top-level guarantee contracts for tempControl's compute entrypoint
     *

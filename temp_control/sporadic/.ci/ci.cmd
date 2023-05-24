@@ -38,8 +38,8 @@ if(result == 0) {
 //    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-linux.cmd"}".console.echo.run().exitCode
 //}
 
-//if(result == 0) {
-//    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}".console.echo.run().exitCode
-//}
+if(result == 0) {
+    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}".console.echo.run().exitCode
+}
 
 Os.exit(result)

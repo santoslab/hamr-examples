@@ -115,9 +115,11 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated,
         //   then send a fan command event with this updated value.
-        (In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        (In(currentFanState) != currentFanState) -->:
+          (api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState) &&
+          (currentFanState == In(currentFanState)) -->:
+            api.fanCmd.isEmpty,
         // guarantees setPointNotModified
         currentSetPoint == In(currentSetPoint),
         // guarantees lastTempNotModified
@@ -181,9 +183,11 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated,
         //   then send a fan command event with this updated value.
-        (In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        (In(currentFanState) != currentFanState) -->:
+          (api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState) &&
+          (currentFanState == In(currentFanState)) -->:
+            api.fanCmd.isEmpty,
         // guarantees setPointChanged
         currentSetPoint == api.setPoint,
         // guarantees latestTempNotModified
@@ -238,9 +242,11 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated,
         //   then send a fan command event with this updated value.
-        (In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        (In(currentFanState) != currentFanState) -->:
+          (api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState) &&
+          (currentFanState == In(currentFanState)) -->:
+            api.fanCmd.isEmpty,
         // guarantees tempChanged
         latestTemp == api.currentTemp,
         // guarantees setPointNotModified
