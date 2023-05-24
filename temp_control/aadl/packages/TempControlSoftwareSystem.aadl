@@ -1,0 +1,279 @@
+-- ===========================================================================================================
+--
+--    T e m p e r a t u r e    C o n t r o l    S y s t e m
+--
+--       SimpleTemp - illustrate a temperature data type with only degrees (not unit) as a field
+--       Mixed - with mixed port catagories (event, data, event data)
+--       UI - with a simple UI for an operator interface   
+--
+--       Platform - Slang/JVM -- this example is designed for the HAMR Slang/JVM platform.  
+--         Other versions of this example illustrate Linux and seL4 platforms.
+--
+--       The package structure reflects a conceptual business ecosystem in which stakeholders exchange AADL
+--       modeling elements to manage distributed development:
+--         - temperature sensor and cooling fan components are acquired from suppliers other than the 
+--            system integrator (thus, these components are located in separate packages delivered by those suppliers).
+--         - the system integrator designs the temperature controller and operator interface for the system
+--            (thus, those components are in this package) and integrates all components into a system.
+--
+--    Author: SAnToS Lab Team
+--    Last modified: August 15, 2020
+--
+-- ===========================================================================================================
+package TempControlSoftwareSystem
+public
+  with Data_Model; -- import modeling support libraries
+  with TempSensor, CoolingFan; -- import packages of supplier components to be integrated 
+
+  -- ===========================================================================================================
+  --   T e m p C o n t r o l S y s t e m
+  -- 
+  --   Top-level component of the model representing the software system boundary.
+  -- 
+  -- ===========================================================================================================
+  system TempControlSoftwareSystem
+    features
+      -- since this is the "top level" of the architecture representing the system
+      -- boundary there are no ports/features declared to interact with other components 
+      none;
+  end TempControlSoftwareSystem;
+
+  -- ===========================================================================================================
+  --   T e m p C o n t r o l P r o c e s s 
+  --   
+  --   Process incorporating all the software of the system.
+  -- 
+  -- ===========================================================================================================
+  process TempControlProcess
+    features
+      -- since this is the main process at the top level of the architecture and there are no other processes, 
+      -- there are no ports/features declared to interact with other components.
+      none;
+  end TempControlProcess;
+
+
+  -- ===========================================================================================================
+  --
+  --   P E R I O D I C   I M P L E M E N T A T I O N
+  --
+  -- ===========================================================================================================
+  system implementation TempControlSoftwareSystem.p
+    -- ==== S u b - c o m p o n e n t s ==== 
+    subcomponents
+      tcproc: process TempControlProcess.p; -- use implementation of the process with periodic subcomponents
+
+  end TempControlSoftwareSystem.p;
+
+-- ==========================================================================
+--  T e m p C o n t r o l P r o c e s s    (Periodic)
+--
+--    An alternate version of the process above that 
+--     - changes TempControl and Fan threads to have Periodic dispatch protocol
+--     - drops the tempChange event notification from TempSensor
+--        (we will interpret the currentTemp value as always being an "up-to-date"
+--        reading from the TempSensor
+-- ==========================================================================
+  process implementation TempControlProcess.p -- use "p" for periodic implementation
+  -- ==== S u b - c o m p o n e n t s ====  
+    subcomponents
+      tempSensor: thread TempSensor::TempSensorPeriodic.p; -- use qualified name to refer to element in different package 
+      fan: thread CoolingFan::FanPeriodic.p;
+      tempControl: thread TempControlPeriodic.p;
+      operatorInterface: thread OperatorInterfacePeriodic.p;
+    -- ==== C o n n e c t i o n s  ==== 
+    connections
+      ctTStoTC: port tempSensor.currentTemp -> tempControl.currentTemp;
+      ctTStoOI: port tempSensor.currentTemp -> operatorInterface.currentTemp;
+      fcTCtoF: port tempControl.fanCmd -> fan.fanCmd;
+      faFtoTC: port fan.fanAck -> tempControl.fanAck;
+      spOItoTC: port operatorInterface.setPoint -> tempControl.setPoint;
+    flows
+      -- The intent for the end-to-end flow below is to capture the control loop from the 
+      -- temp sensor (sensing the environment) to the fan actuation (acting on the environment).
+      -- This can be augmented with a latency constraint -- capturing constraints on the time
+      -- from when temperature is sensed to the time when is it evaluated. 
+      fanActuation: end to end flow tempSensor.cto -> ctTStoTC -> tempControl.ct2fc -> fcTCtoF -> fan.fc2sink;
+      -- Capture the control loop from the setPoint expressed by the operator through the
+      -- Operator Interface to the impact of a changed set point on environment actions
+      -- (i.e., actuation of the fan).    
+      setPointEffect: end to end flow operatorInterface.source2sp -> spOItoTC -> tempControl.sp2fc -> fcTCtoF -> fan.fc2sink;
+  end TempControlProcess.p;
+
+-- ===========================================================================================================
+  --
+  --   T e m p C o n t r o l   ** Periodic **  Thread
+  --
+  --   A variant of the component above that has a Periodic dispatch protocol.
+  --   The purpose of these variants to to illustrate different styles of Compute Entry Point contracts
+  --   as well as trade-offs in end-to-end verification.
+  -- 
+  -- ===========================================================================================================
+  thread TempControlPeriodic
+    features
+      -- ==== INPUTS ==== 
+      currentTemp: in data port TempSensor::Temperature.i;
+      fanAck: in data port CoolingFan::FanAck;
+      setPoint: in data port SetPoint.i;
+      -- ==== OUTPUTS ==== 
+      fanCmd: out data port CoolingFan::FanCmd;
+    flows
+      -- currentTemp, tempChanged, and setPoint all influence the value/action of the fanCmd, so there
+      -- is a flow path from each to fanCmd.
+      ct2fc: flow path currentTemp -> fanCmd; -- data flow from currentTemp to fanCmd
+      sp2fc: flow path setPoint -> fanCmd; -- data flow - setPoint value influences value of fanCmd
+      -- fanAck is processed internally for the moment (through logging) -- there is no feedback to the UI.
+      -- So the TempControl component acts as an information sink for the fanAck.
+      fa2sink: flow sink fanAck;
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 1 sec;
+
+    annex GUMBO {**       
+
+      -- Doc: discuss why since we read/write values directly to data ports that we don't need
+      --  all the state variables used in the sporadic version.
+      state
+        latestFanCmd: CoolingFan::FanCmd;  -- Doc: explain why this is used in case where we maintain state of fan
+    
+      -- Doc: discuss that since integration constraints are invariants on values flowing across ports,
+      --  that even though dispatch protocol has changed, we can leave integration constraints the same.             
+      integration   
+        assume currentTempRange:
+          (currentTemp.degrees >= f32"-70.0") & (currentTemp.degrees <= f32"80.0");
+          
+      initialize
+         modifies (latestFanCmd);
+         guarantee initLatestFanCmd "Initialize state variable":
+          -- provide initial value for state variable and out data port
+          latestFanCmd == CoolingFan::FanCmd.Off;
+        
+         guarantee initFanCmd "Initial fan command":
+           -- provide initial value for state variable and out data port
+           fanCmd == CoolingFan::FanCmd.Off;
+     
+     -- illustrate cases syntax     
+      compute  
+        modifies (latestFanCmd); 
+
+          guarantee altCurrentTempLTSetPoint "If current temperature is less than
+                                             |the current low set point, then the fan state shall be Off" : 
+            (currentTemp.degrees < setPoint.low.degrees) ->:  
+               ((latestFanCmd == CoolingFan::FanCmd.Off) && (fanCmd == CoolingFan::FanCmd.Off));
+
+          guarantee altCurrentTempGTSetPoint "If current temperature is greater than
+                                             |the current high set point, then the fan state shall be On":
+             (currentTemp.degrees > setPoint.high.degrees) ->:
+               ((latestFanCmd == CoolingFan::FanCmd.On) & (fanCmd == CoolingFan::FanCmd.On));
+
+          guarantee altCurrentTempInRange "If current temperature is greater than or equal to the 
+                                          |current low set point and less than or equal to the current high set point, 
+                                          |then the current fan state is maintained." :
+            ((currentTemp.degrees >= setPoint.low.degrees) & (currentTemp.degrees <= setPoint.high.degrees)) ~~>:
+              ((latestFanCmd == In(latestFanCmd)) & (fanCmd == latestFanCmd));
+
+        -- alternative style using cases
+                           
+        cases
+          case currentTempLTSetPoint "If current temperature is less than
+                                     |the current low set point, then the fan state shall be Off":
+            assume currentTemp.degrees < setPoint.low.degrees; 
+            guarantee (latestFanCmd == CoolingFan::FanCmd.Off) & (fanCmd == CoolingFan::FanCmd.Off);
+
+          case currentTempGTSetPoint "If current temperature is greater than
+                                     |the current high set point, then the fan state shall be On":
+            assume currentTemp.degrees > setPoint.high.degrees; 
+            guarantee (latestFanCmd == CoolingFan::FanCmd.On) & (fanCmd == CoolingFan::FanCmd.On);
+
+          case currentTempInRange "If current temperature is greater than or equal to the 
+                                  |current low set point and less than or equal to the current high set point, 
+                                  |then the current fan state is maintained.":
+            assume (currentTemp.degrees >= setPoint.low.degrees) & (currentTemp.degrees <= setPoint.high.degrees);
+            guarantee 
+              (latestFanCmd == In(latestFanCmd)) & 
+              (fanCmd == latestFanCmd);
+     **};     
+  end TempControlPeriodic;
+
+  thread implementation TempControlPeriodic.p
+  end TempControlPeriodic.p;
+
+  -- ===========================================================================================================
+  --
+  --   O p e r a t o r   I n t e r f a c e   Thread  (for Periodic system context)
+  --
+  --     Alternate version that 
+  --       - eliminates the tempChanged port
+  --       - changes setPoint port from event data to data 
+  -- 
+  -- ===========================================================================================================
+  thread OperatorInterfacePeriodic
+    features
+      -- ==== INPUTS ==== 
+      currentTemp: in data port TempSensor::Temperature.i; -- current temperature as detected by temp sensor
+      -- ==== OUTPUTS ====       
+      setPoint: out data port SetPoint.i;
+    -- TODO: consider if this should be removed and added later in an exercise
+    -- clearAlarm: out event port;
+    flows
+      -- OperatorInterface acts as a sink to temperature info because that info is simply
+      -- presented on the interface (not sent to other components).  If we added component features
+      -- to model interactions with the environment, we could change the sinks to be flow paths -- flowing
+      -- temperature info into the environment (e.g., to an entity modeling an operator).
+      ct2sink: flow sink currentTemp;
+      -- OperatorInterface acts as a source for setPoint information.
+      -- If we added component features to model interactions with the environment, we could
+      -- change the sinks to be flow paths -- flowing setPoint info from the environment 
+      -- (e.g., from an entity modeling an operator) into the system.
+      source2sp: flow source setPoint;
+    properties
+      Dispatch_Protocol => Periodic;
+      Period => 1 sec;
+  end OperatorInterfacePeriodic;
+
+  thread implementation OperatorInterfacePeriodic.p
+  end OperatorInterfacePeriodic.p;
+
+
+    -- ===========================================================================================================
+  --
+  --   D a t a    T y p e s   for Temp Control System
+  --
+  --   The system integrator introduces these types to specify format of data communicated between
+  --   components that they author.
+  --
+  --   Other data types used in the system are provided by suppliers of components such as the 
+  --   TempSensor and CoolingFan.  These are included in the corresponding included packages.
+  --
+  --   NOTE: Each data type in HAMR model must conform to the AADL Data Modeling Annex.  See HAMR
+  --   documentation chapter on Data Types for details.
+  -- 
+  -- ===========================================================================================================
+  -- ----------------------------------------------------------------------------------
+  --
+  --   S e t  P o i n t   Data Type   
+  --
+  --   Define the structure of set point information (desired temperature range)
+  -- ----------------------------------------------------------------------------------
+  data SetPoint
+    -- Indicate that the set point info will be a struct (record)
+    -- For structs, use of the type must refer to the data component implementation (SetPoint.i),
+    --  which defines the fields and associated types of the struct.
+    properties
+      Data_Model::Data_Representation => Struct;
+  end SetPoint;
+
+  data implementation SetPoint.i
+    subcomponents
+      low: data TempSensor::Temperature.i;
+      high: data TempSensor::Temperature.i;
+    annex GUMBO {**
+      invariants
+        inv SetPoint_Data_Invariant:
+          (low.degrees >= f32"50.0") &
+          (high.degrees <= f32"110.0") &
+          (low.degrees <= high.degrees);
+    **};
+  end SetPoint.i;
+  
+
+end TempControlSoftwareSystem;

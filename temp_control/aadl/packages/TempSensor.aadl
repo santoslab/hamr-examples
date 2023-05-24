@@ -1,0 +1,119 @@
+-- ===========================================================================================================
+--
+--   T e m p  S e n s o r     Package
+--
+--   The TempSensor package structure reflects a multi-vendor workflow/distribution concept
+--   in which a manufacture provides model and software drivers for their hardware component(s).
+--
+--   For simplicity, the sensor hardware is not modeled in this tutorial example.  Thus, only
+--   a thread corresponding to the driver and data types of info coming from the driver are modeled.
+--
+-- ===========================================================================================================
+package TempSensor
+public
+  with Data_Model, Base_Types, GUMBO_Definitions;
+
+  -- ===========================================================================================================
+  --
+  --   Specification   D e f i n i t i o n s 
+  --
+  --   Specification definitions are constants, predicates, or functions defined for the current scope (in this case package)
+  --   that can be used in ACL contracts.
+  -- ===========================================================================================================
+
+  annex GUMBO {**
+    functions 
+      def inRange(temp: TempSensor::Temperature.i): Base_Types::Boolean := 
+        temp.degrees >= f32"-50.0" && temp.degrees <= f32"150.0";
+              
+  **};
+  
+  -- ===========================================================================================================
+  --
+  --   T e m p S e n s o r    Thread
+  --
+  --   The TempSensor thread models the software (e.g., the driver) used to interact with the
+  --   sensor hardware.   
+  -- 
+  --   For simplicity, the sensor hardware is not modeled in this tutorial example.
+  --
+  --  Acquisition of temperature sensor values will be simulated in the software for this 
+  --  component.
+  -- 
+  -- ===========================================================================================================
+
+  thread TempSensorPeriodic
+    features
+      -- ==== OUTPUTS ====
+      currentTemp: out data port Temperature.i;
+
+    -- In HAMR, flows are optional and do not impact code generation.
+    -- However, they are useful documentation and can be visualized in the HAMR Awas tool.
+    -- They also support information flow analysis and other security analyses in Awas.      
+    flows
+      -- indicate that the information flowing out (o) the current temp port (ct) originates
+      -- within the component (i.e., the component is an information *source* for current temp)
+      cto: flow source currentTemp;
+    properties
+      Dispatch_Protocol => Periodic; -- AADL dispatch protocol is set to periodic
+      Period => 1 sec;
+    annex GUMBO {**
+      integration
+        guarantee Sensor_Temperature_Range:
+          TempSensor::inRange(currentTemp);
+        
+        initialize
+          guarantee initializes:
+            currentTemp.degrees == f32"72.0";
+    **};
+  end TempSensorPeriodic;
+
+  thread implementation TempSensorPeriodic.p
+    -- typically, HAMR thread components have no information specified in their implementation, 
+    -- which indicates (a) no further architecture model (the thread is a leaf node in the architecture)
+    -- and (b) the thread implementation will be realized at the programming language level.
+  end TempSensorPeriodic.p;
+
+  -- ===========================================================================================================
+  --
+  --   D a t a    T y p e s   for TempSensor
+  --
+  --   It is expected that a manufacturer delivers a specification of the data types / messages
+  --   used to communicate with their provided components.  These types will be imported along
+  --   with other components by the system integrator when creating a system model.
+  --
+  --   NOTE: Each data type in HAMR model must conform to the AADL Data Modeling Annex.  See HAMR
+  --   documentation chapter on Data Types for details.
+  -- 
+  -- ===========================================================================================================
+  -- ----------------------------------------------------------------------------------
+  --
+  --   T e m p e r a t u r e    Data Type   
+  --
+  --   Define data/message provided by the sensor.
+  -- ----------------------------------------------------------------------------------
+  data Temperature
+    properties
+      -- Indicate that the temperature info will be a struct (record)
+      -- For structs, use of the type must refer to the data component implementation (Temperature.i),
+      --  which defines the fields and associated types of the struct.
+      Data_Model::Data_Representation => Struct;
+  end Temperature;
+
+  data implementation Temperature.i
+    subcomponents
+      -- temperature message contains degrees, which is represented using an AADL Base Type
+      -- defined in the AADL Data Modeling annex.
+      degrees: data Base_Types::Float_32;
+
+    annex GUMBO {**
+      -- data invariant
+      --  data invariants are assumed whenever value of the datatype is consumed
+      --                  and must be proved whenever a value of the data type is constructed
+      invariants
+        inv AbsZero:
+          degrees >= GUMBO_Definitions::absoluteZero();
+    **};
+  end Temperature.i;
+
+end TempSensor;

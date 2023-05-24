@@ -1,0 +1,31 @@
+# TODO: what should the test name be?
+testName = simple_temp_aadl-behavior-periodic
+
+# ignore is optional, false by default.
+ignore = F
+
+# testModes is an optional comma separated list of enum values from the following:
+#   https://github.com/sireum/hamr-codegen-test/blob/master/scala/org/sireum/hamr/codegen/test/util/TestMode.scala
+# these will be combined with anything set via the environment variable testmodes
+#   e.g. export testmodes=phantom,logika
+testModes = phantom,generated_unit_tests, logika
+
+# airFile is optional and optional String. Test will be ignored if not provided and phantom is not used
+# or if phantom is unable to generate AIR
+airFile = .slang/TempControlSoftwareSystem_TempControlSoftwareSystem_p_Instance.json
+
+# logikaOptions is an optional String, uses logika's defaults for all options if not provided
+logikaOptions = --rlimit 1700000 \
+                --timeout 3000
+
+# phantomOptions is an optional String. This project has multiple system implementations so
+# we need to help phantom out by telling it what we want to process.  All paths
+# are relative to this file
+phantomOptions = --main-package ./packages/TempControlSoftwareSystem.aadl \
+                 --sys-impl TempControlSoftwareSystem.p \
+                 --projects .
+
+# same options as 'sireum hamr codegen', paths should be relative to the .hamrtest file
+hamrArgs = --package-name tc \
+           --no-proyek-ive \
+           --output-dir ../hamr-gen-periodic/slang

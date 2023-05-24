@@ -1,0 +1,22 @@
+package GUMBO_Definitions
+public
+  
+  with Base_Types, TempSensor;
+  
+  -- ===========================================================================================================
+  --
+  --   Specification   D e f i n i t i o n s 
+  --
+  --   Specification definitions are constants, predicates, or functions defined for the current scope (in this case package)
+  --   that can be used in ACL contracts.
+  -- ===========================================================================================================
+
+  annex GUMBO {**
+    
+    functions
+
+      def absoluteZero(): Base_Types::Float_32 := f32"-459.67";
+
+  **};
+    
+end GUMBO_Definitions;

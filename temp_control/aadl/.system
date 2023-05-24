@@ -1,0 +1,3 @@
+projects=.
+system_impl_file=./packages/TempControlSoftwareSystem.aadl
+system_impl=TempControlSoftwareSystem.p

@@ -1,0 +1,97 @@
+-- ===========================================================================================================
+--
+--   C o o l i n g  F a n   Package
+--
+--   The Fan package structure reflects a multi-vendor workflow/distribution concept
+--   in which a manufacture provides model and software drivers for their hardware component(s).
+--
+--   The product being delivered in this case is a "fan" used for lowering the temperature.
+--
+--   For simplicity, the fan hardware is not modeled in this tutorial example.  Thus, only
+--   a thread corresponding to the driver and data types of info coming to and from the driver are modeled.
+--
+-- ===========================================================================================================
+package CoolingFan
+public
+  with Data_Model; -- data model properties used in data type modeling
+
+  -- ===========================================================================================================
+  --
+  --   F a n    Thread
+  --
+  --   The Fan thread models the software (e.g., the driver) used to interact with the
+  --   fan hardware.   
+  -- 
+  --   For simplicity, the sensor hardware is not modeled in this tutorial example.
+  --
+  --   Actuation of the fan will be simulated in the software for this 
+  --   component.
+  -- 
+  -- ===========================================================================================================
+
+  thread FanPeriodic
+    features
+      -- ==== INPUTS ====
+      fanCmd: in data port FanCmd; -- incoming commands to turn fan on or off
+      -- ==== OUTPUTS ====
+      fanAck: out data port FanAck; -- output status of fan (reporting on success or failure of actuation)
+    flows
+      -- control-flow path from FanCmd to FanAck - indicate that the information flowing in 
+      -- through the FanCmd will trigger a response action of sending an event out of the fanAck.
+      -- Note that there is no data dependence: the value of the Ack is independent of the Cmd, i.e., 
+      -- actuation could fail for a On command as well as an off command.  The acknowledgement value
+      -- actually depends on the success/failure of the actuation (represented internally).  
+      -- However, our convention in this example is to model control flow paths as well as data flow, 
+      -- and a control-flow path exists because execution of code that processes a first command
+      -- will always lead to doing the actuation (internal) followed by sending a messaging acknowledging
+      -- the status of the actuation.
+      fc2fa: flow path fanCmd -> fanAck;
+      -- model the flow from the fan command to the actual actuation (which is internal to this component), i.e., 
+      -- the instructing of the fan hardware to turn on or off.
+      fc2sink: flow sink fanCmd;
+    properties
+      -- execution of the fan thread is activated by the arrival of messages on the event data port
+      Dispatch_Protocol => Periodic;
+      Period => 1 sec;
+  end FanPeriodic;
+
+  thread implementation FanPeriodic.p
+  end FanPeriodic.p;
+
+  -- ===========================================================================================================
+  --
+  --   D a t a    T y p e s   for fan
+  --
+  --   It is expected that a manufacturer delivers a specification of the data types / messages
+  --   used to communicate with their provided components.  These types will be imported along
+  --   with other components by the system integrator when creating a system model.
+  --
+  --   NOTE: Each data type in HAMR model must conform to the AADL Data Modeling Annex.  See HAMR
+  --   documentation chapter on Data Types for details.
+  -- 
+  -- ===========================================================================================================
+  -- ----------------------------------------------------------------------------------
+  --
+  --   F a n  C m d    Data Type   
+  --
+  --   Define control commands accepted by the fan.
+  -- ----------------------------------------------------------------------------------
+  data FanCmd
+    properties
+      Data_Model::Data_Representation => Enum;
+      Data_Model::Enumerators => ("On", "Off");
+  end FanCmd;
+
+  -- ----------------------------------------------------------------------------------
+  --
+  --   F a n  A c k    Data Type   
+  --
+  --   Define acknowledgement / error messages sent from fan to controller.
+  -- ----------------------------------------------------------------------------------
+  data FanAck
+    properties
+      Data_Model::Data_Representation => Enum;
+      Data_Model::Enumerators => ("Ok", "Error");
+  end FanAck;
+
+end CoolingFan;
