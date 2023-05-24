@@ -1,4 +1,5 @@
 // #Sireum #Logika
+//@Logika: --timeout 6 --sat --par --par-branch --use-real
 
 package isolette.Monitor
 
