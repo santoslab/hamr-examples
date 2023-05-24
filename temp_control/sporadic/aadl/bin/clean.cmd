@@ -18,16 +18,16 @@ exit /B %errorlevel%
 
 import org.sireum._
 
-val hamrDir: Os.Path =
-  if (Os.cliArgs(0) == "simple_temp_aadl-sporadic") Os.slashDir.up / "hamr-gen"
-  else Os.slashDir.up / "hamr-gen-periodic"
-
+val hamrDir = Os.slashDir.up.up / "hamr"
 val slangDir = hamrDir / "slang"
 
 val toKeep = ops.ISZOps(ISZ(
-  (slangDir / "src" / "main" / "component"),
-  (slangDir / "src" / "test" / "bridge"),
+  (slangDir / "bin" / "run-logika.cmd"), // customized transpiler script
+  (slangDir / ".idea"),
+  (slangDir / "src" / "main" / "component"), // contains user code
+  (slangDir / "src" / "test" / "bridge") // contains user code
 ))
+
 
 def rec(p: Os.Path, onlyDelAutoGen: B): Unit = {
   if(p.isFile) {
@@ -46,3 +46,4 @@ def rec(p: Os.Path, onlyDelAutoGen: B): Unit = {
   }
 }
 rec(hamrDir, F)
+
