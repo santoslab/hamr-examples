@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Base_Types.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer.scala, OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer.scala, OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer.scala, OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer.scala, Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer.scala, OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer.scala, Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer.scala, DataContent.scala
+// This file is auto-generated from Base_Types.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVectors.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVectors.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVectors.scala, OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVectors.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVectors.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVectors.scala, CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVectors.scala, OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVectors.scala, OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVectors.scala, Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVectors.scala, OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVectors.scala, Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVectors.scala, DataContent.scala
 
 package RTS
 
@@ -124,9 +124,9 @@ object JSON {
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -134,9 +134,9 @@ object JSON {
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -144,9 +144,9 @@ object JSON {
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -154,17 +154,17 @@ object JSON {
       ))
     }
 
-    @pure def printActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer): ST = {
+    @pure def printActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2))
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -172,9 +172,9 @@ object JSON {
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -182,9 +182,9 @@ object JSON {
       ))
     }
 
-    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer): ST = {
+    @pure def printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2)),
         ("api_channel3", printB(o.api_channel3)),
@@ -192,41 +192,41 @@ object JSON {
       ))
     }
 
-    @pure def printActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer): ST = {
+    @pure def printActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2))
       ))
     }
 
-    @pure def printActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer): ST = {
+    @pure def printActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2))
       ))
     }
 
-    @pure def printActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(o: Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer): ST = {
+    @pure def printActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(o: Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer""""),
+        ("type", st""""Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector""""),
         ("api_input", printB(o.api_input)),
         ("api_manualActuatorInput", printB(o.api_manualActuatorInput))
       ))
     }
 
-    @pure def printActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer): ST = {
+    @pure def printActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer""""),
+        ("type", st""""Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector""""),
         ("api_channel1", printB(o.api_channel1)),
         ("api_channel2", printB(o.api_channel2))
       ))
     }
 
-    @pure def printActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(o: Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer): ST = {
+    @pure def printActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(o: Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer""""),
+        ("type", st""""Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector""""),
         ("api_input", printB(o.api_input)),
         ("api_manualActuatorInput", printB(o.api_manualActuatorInput))
       ))
@@ -509,14 +509,14 @@ object JSON {
       return Base_Types.Bits_Payload(value)
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -530,17 +530,17 @@ object JSON {
       parser.parseObjectKey("api_channel4")
       val api_channel4 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -554,17 +554,17 @@ object JSON {
       parser.parseObjectKey("api_channel4")
       val api_channel4 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -578,17 +578,17 @@ object JSON {
       parser.parseObjectKey("api_channel4")
       val api_channel4 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer = {
-      val r = parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainerT(F)
+    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector = {
+      val r = parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainerT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer = {
+    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVectorT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -596,41 +596,17 @@ object JSON {
       parser.parseObjectKey("api_channel2")
       val api_channel2 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(api_channel1, api_channel2)
+      return Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(api_channel1, api_channel2)
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer")
-      }
-      parser.parseObjectKey("api_channel1")
-      val api_channel1 = parser.parseB()
-      parser.parseObjectNext()
-      parser.parseObjectKey("api_channel2")
-      val api_channel2 = parser.parseB()
-      parser.parseObjectNext()
-      parser.parseObjectKey("api_channel3")
-      val api_channel3 = parser.parseB()
-      parser.parseObjectNext()
-      parser.parseObjectKey("api_channel4")
-      val api_channel4 = parser.parseB()
-      parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
-    }
-
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainerT(F)
-      return r
-    }
-
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer = {
-      if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -644,17 +620,17 @@ object JSON {
       parser.parseObjectKey("api_channel4")
       val api_channel4 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainerT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -668,17 +644,17 @@ object JSON {
       parser.parseObjectKey("api_channel4")
       val api_channel4 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(api_channel1, api_channel2, api_channel3, api_channel4)
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer = {
-      val r = parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainerT(F)
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainerT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer = {
+    def parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVectorT(typeParsed: B): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -686,17 +662,23 @@ object JSON {
       parser.parseObjectKey("api_channel2")
       val api_channel2 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(api_channel1, api_channel2)
+      parser.parseObjectKey("api_channel3")
+      val api_channel3 = parser.parseB()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_channel4")
+      val api_channel4 = parser.parseB()
+      parser.parseObjectNext()
+      return Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(api_channel1, api_channel2, api_channel3, api_channel4)
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer = {
-      val r = parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainerT(F)
+    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector = {
+      val r = parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainerT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer = {
+    def parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVectorT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -704,17 +686,35 @@ object JSON {
       parser.parseObjectKey("api_channel2")
       val api_channel2 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(api_channel1, api_channel2)
+      return Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(api_channel1, api_channel2)
     }
 
-    def parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer = {
-      val r = parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainerT(F)
+    def parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector = {
+      val r = parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainerT(typeParsed: B): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer = {
+    def parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVectorT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer")
+        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector")
+      }
+      parser.parseObjectKey("api_channel1")
+      val api_channel1 = parser.parseB()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_channel2")
+      val api_channel2 = parser.parseB()
+      parser.parseObjectNext()
+      return Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(api_channel1, api_channel2)
+    }
+
+    def parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector = {
+      val r = parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVectorT(F)
+      return r
+    }
+
+    def parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVectorT(typeParsed: B): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector = {
+      if (!typeParsed) {
+        parser.parseObjectType("Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector")
       }
       parser.parseObjectKey("api_input")
       val api_input = parser.parseB()
@@ -722,17 +722,17 @@ object JSON {
       parser.parseObjectKey("api_manualActuatorInput")
       val api_manualActuatorInput = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(api_input, api_manualActuatorInput)
+      return Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(api_input, api_manualActuatorInput)
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer = {
-      val r = parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainerT(F)
+    def parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector = {
+      val r = parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainerT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer = {
+    def parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVectorT(typeParsed: B): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer")
+        parser.parseObjectType("Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector")
       }
       parser.parseObjectKey("api_channel1")
       val api_channel1 = parser.parseB()
@@ -740,17 +740,17 @@ object JSON {
       parser.parseObjectKey("api_channel2")
       val api_channel2 = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(api_channel1, api_channel2)
+      return Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(api_channel1, api_channel2)
     }
 
-    def parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer = {
-      val r = parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainerT(F)
+    def parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector = {
+      val r = parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVectorT(F)
       return r
     }
 
-    def parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainerT(typeParsed: B): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer = {
+    def parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVectorT(typeParsed: B): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer")
+        parser.parseObjectType("Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector")
       }
       parser.parseObjectKey("api_input")
       val api_input = parser.parseB()
@@ -758,7 +758,7 @@ object JSON {
       parser.parseObjectKey("api_manualActuatorInput")
       val api_manualActuatorInput = parser.parseB()
       parser.parseObjectNext()
-      return Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(api_input, api_manualActuatorInput)
+      return Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(api_input, api_manualActuatorInput)
     }
 
     def parse_artDataContent(): art.DataContent = {
@@ -1102,8 +1102,8 @@ object JSON {
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1111,17 +1111,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1129,17 +1129,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1147,17 +1147,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(o)
+  def fromActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1165,17 +1165,17 @@ object JSON {
     }
   }
 
-  def toActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer = {
-      val r = parser.parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer()
+  def toActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector = {
+      val r = parser.parseActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_SlangCheckContainer _)
+    val r = to(s, fActuationOrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1183,17 +1183,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1201,17 +1201,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(o)
+  def fromActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(o: Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1219,17 +1219,17 @@ object JSON {
     }
   }
 
-  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer = {
-      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer()
+  def toActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(s: String): Either[Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector(parser: Parser): Actuation.CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector = {
+      val r = parser.parseActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_SlangCheckContainer _)
+    val r = to(s, fActuationCoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(o)
+  def fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1237,17 +1237,17 @@ object JSON {
     }
   }
 
-  def toActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer = {
-      val r = parser.parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer()
+  def toActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector = {
+      val r = parser.parseActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_SlangCheckContainer _)
+    val r = to(s, fActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(o)
+  def fromActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1255,17 +1255,17 @@ object JSON {
     }
   }
 
-  def toActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer = {
-      val r = parser.parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer()
+  def toActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector = {
+      val r = parser.parseActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_SlangCheckContainer _)
+    val r = to(s, fActuationOrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(o: Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(o)
+  def fromActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(o: Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1273,17 +1273,17 @@ object JSON {
     }
   }
 
-  def toActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(s: String): Either[Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer(parser: Parser): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer = {
-      val r = parser.parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer()
+  def toActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(s: String): Either[Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector(parser: Parser): Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector = {
+      val r = parser.parseActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_SlangCheckContainer _)
+    val r = to(s, fActuationActuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVector _)
     return r
   }
 
-  def fromActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(o: Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(o)
+  def fromActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(o: Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1291,17 +1291,17 @@ object JSON {
     }
   }
 
-  def toActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer = {
-      val r = parser.parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer()
+  def toActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(s: String): Either[Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector(parser: Parser): Actuation.OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector = {
+      val r = parser.parseActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_SlangCheckContainer _)
+    val r = to(s, fActuationOrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVector _)
     return r
   }
 
-  def fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(o: Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(o)
+  def fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(o: Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1309,12 +1309,12 @@ object JSON {
     }
   }
 
-  def toActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(s: String): Either[Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer, Json.ErrorMsg] = {
-    def fActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer(parser: Parser): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer = {
-      val r = parser.parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer()
+  def toActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(s: String): Either[Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector, Json.ErrorMsg] = {
+    def fActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(parser: Parser): Actuation.Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector = {
+      val r = parser.parseActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector()
       return r
     }
-    val r = to(s, fActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_SlangCheckContainer _)
+    val r = to(s, fActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector _)
     return r
   }
 

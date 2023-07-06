@@ -139,8 +139,6 @@ public
       Period => 1 sec;
 
     annex GUMBO {**
-      -- state variables are not needed in periodic version since we will base all control logic
-      --  directly off of data port values 
       state
         currentSetPoint: SetPoint.i;
         currentFanState: CoolingFan::FanCmd;
@@ -153,7 +151,7 @@ public
       initialize
         modifies currentSetPoint, currentFanState, latestTemp;
         
-        guarantee defautSetPoint:
+        guarantee defaultSetPoint:
           (currentSetPoint.low.degrees == f32"70.0") && (currentSetPoint.high.degrees == f32"80.0");
           
         guarantee defaultFanStates:
@@ -231,7 +229,6 @@ public
             
             
         handle fanAck:
-        
           guarantee setPointNotModified:
             currentSetPoint == In(currentSetPoint);
         

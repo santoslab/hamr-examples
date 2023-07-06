@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer.scala, DataContent.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectors.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectors.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectors.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectors.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectors.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectors.scala, DataContent.scala
 
 package isolette
 
@@ -308,9 +308,9 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer): ST = {
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer""""),
+        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_desired_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)),
         ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
@@ -318,9 +318,9 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer): ST = {
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer""""),
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
         ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
@@ -328,18 +328,39 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer): ST = {
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer""""),
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL""""),
+        ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
+        ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
+        ("api_upper_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_desired_temp))
+      ))
+    }
+
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
         ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer): ST = {
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer""""),
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL""""),
+        ("In_lastRegulatorMode", printIsolette_Data_ModelRegulator_ModeType(o.In_lastRegulatorMode)),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)),
         ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
@@ -347,9 +368,20 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer): ST = {
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer""""),
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL""""),
+        ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_lower_alarm_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)),
+        ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
+        ("api_upper_alarm_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_upper_alarm_tempWstatus))
+      ))
+    }
+
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
         ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
@@ -357,9 +389,30 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer): ST = {
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer""""),
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL""""),
+        ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
+        ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
+        ("api_upper_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_alarm_temp))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector""""),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL""""),
+        ("In_lastMonitorMode", printIsolette_Data_ModelMonitor_ModeType(o.In_lastMonitorMode)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
         ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
@@ -1029,14 +1082,14 @@ object JSON {
       return Base_Types.Bits_Payload(value)
     }
 
-    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
-      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainerT(F)
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
+      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectorT(F)
       return r
     }
 
-    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer")
+        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1050,17 +1103,17 @@ object JSON {
       parser.parseObjectKey("api_upper_desired_tempWstatus")
       val api_upper_desired_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
-      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainerT(F)
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorT(F)
       return r
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer")
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1074,17 +1127,44 @@ object JSON {
       parser.parseObjectKey("api_upper_desired_temp")
       val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
-      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainerT(F)
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwLT(F)
       return r
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainerT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwLT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer")
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL")
+      }
+      parser.parseObjectKey("In_lastCmd")
+      val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_desired_temp")
+      val api_lower_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_regulator_mode")
+      val api_regulator_mode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_desired_temp")
+      val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorT(F)
+      return r
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1095,17 +1175,41 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
-      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainerT(F)
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwLT(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwLT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer")
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL")
+      }
+      parser.parseObjectKey("In_lastRegulatorMode")
+      val In_lastRegulatorMode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_internal_failure")
+      val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(In_lastRegulatorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1119,17 +1223,44 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_tempWstatus")
       val api_upper_alarm_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
-      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainerT(F)
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwLT(F)
       return r
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer")
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL")
+      }
+      parser.parseObjectKey("In_lastCmd")
+      val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_alarm_tempWstatus")
+      val api_lower_alarm_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_monitor_mode")
+      val api_monitor_mode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_alarm_tempWstatus")
+      val api_upper_alarm_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorT(F)
+      return r
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1143,17 +1274,44 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_temp")
       val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
-      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainerT(F)
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwLT(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainerT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer")
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL")
+      }
+      parser.parseObjectKey("In_lastCmd")
+      val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_alarm_temp")
+      val api_lower_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_monitor_mode")
+      val api_monitor_mode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_alarm_temp")
+      val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1164,7 +1322,31 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwLT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL")
+      }
+      parser.parseObjectKey("In_lastMonitorMode")
+      val In_lastMonitorMode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_internal_failure")
+      val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
     def parse_artDataContent(): art.DataContent = {
@@ -1789,8 +1971,8 @@ object JSON {
     return r
   }
 
-  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1798,17 +1980,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer, Json.ErrorMsg] = {
-    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer = {
-      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector()
       return r
     }
-    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_SlangCheckContainer _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector _)
     return r
   }
 
-  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1816,17 +1998,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer, Json.ErrorMsg] = {
-    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer = {
-      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector()
       return r
     }
-    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_SlangCheckContainer _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector _)
     return r
   }
 
-  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1834,17 +2016,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer, Json.ErrorMsg] = {
-    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer = {
-      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL()
       return r
     }
-    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_SlangCheckContainer _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(o)
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1852,17 +2034,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer = {
-      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer()
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_SlangCheckContainer _)
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector _)
     return r
   }
 
-  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(o)
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1870,17 +2052,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer, Json.ErrorMsg] = {
-    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer = {
-      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer()
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL()
       return r
     }
-    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_SlangCheckContainer _)
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(o)
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1888,12 +2070,102 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer = {
-      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer()
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_SlangCheckContainer _)
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL _)
     return r
   }
 

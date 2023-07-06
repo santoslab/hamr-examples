@@ -74,15 +74,4 @@ jobs:
 
           $SIREUM_HOME/bin/install/fmide.cmd --verbose
 
-          
-          ################################################
-          # Install SlangCheck
-          #   remove the following once SlangCheck is 
-          #   integrated with kekinian
-          ################################################
-          ${SIREUM_HOME}/hamr/codegen/bin/build.cmd install-slang-check
-          export SLANG_CHECK_JAR=${SIREUM_HOME}/hamr/codegen/bin/mac/slangcheck.jar
-          echo "SLANG_CHECK_JAR=${SLANG_CHECK_JAR}"
-          java -jar ${SLANG_CHECK_JAR}
-
           .ci/test.cmd

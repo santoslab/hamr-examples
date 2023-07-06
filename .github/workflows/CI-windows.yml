@@ -108,14 +108,6 @@ jobs:
       
           call %SIREUM_HOME%\bin\install\fmide.cmd --verbose || goto :error
 
-          REM Install SlangCheck
-          REM   remove the following once SlangCheck is 
-          REM   integrated with kekinian
-          call %SIREUM_HOME%\hamr\codegen\bin\build.cmd install-slang-check || goto :error
-          set SLANG_CHECK_JAR=%SIREUM_HOME%\hamr\codegen\bin\win\slangcheck.jar
-          echo SLANG_CHECK_JAR=%SLANG_CHECK_JAR%
-          call %SIREUM_HOME%\bin\win\java\bin\java.exe -jar %SLANG_CHECK_JAR% || goto :error
-
           call .ci\test.cmd || goto :error
                     
           goto :EOF

@@ -4,34 +4,78 @@ package isolette.Isolette
 
 import org.sireum._
 import isolette._
+import isolette.Isolette.UserInterface.Interface
 
 // This file will not be overwritten so is safe to edit
 object operator_interface_thread_impl_operator_interface_oip_oit {
 
+  // Define initial values here because they are used in both
+  val initLowerDesiredTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_LOWER_DESIRED_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  val initUpperDesiredTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_UPPER_DESIRED_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  val initLowerAlarmTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  val initUpperAlarmTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+
+  // Set values for "previous state" based on default values in InitialValues system configuration file
+  var lastLowerDesiredTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_LOWER_DESIRED_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  var lastUpperDesiredTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_UPPER_DESIRED_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  var lastLowerAlarmTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_LOWER_ALARM_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+  var lastUpperAlarmTempWstatus: Isolette_Data_Model.TempWstatus_impl = Isolette_Data_Model.TempWstatus_impl(InitialValues.DEFAULT_UPPER_ALARM_TEMPERATURE, Isolette_Data_Model.ValueStatus.Valid)
+
+  var firstInvocation: B = T
+
   def initialise(api: operator_interface_thread_impl_Initialization_Api): Unit = {
-    // example api usage
-
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
-    api.put_lower_desired_tempWstatus(Isolette_Data_Model.TempWstatus_impl.example())
-    api.put_upper_desired_tempWstatus(Isolette_Data_Model.TempWstatus_impl.example())
-    api.put_lower_alarm_tempWstatus(Isolette_Data_Model.TempWstatus_impl.example())
-    api.put_upper_alarm_tempWstatus(Isolette_Data_Model.TempWstatus_impl.example())
+    api.put_lower_desired_tempWstatus(initLowerDesiredTempWstatus)
+    api.put_upper_desired_tempWstatus(initUpperDesiredTempWstatus)
+    api.put_lower_alarm_tempWstatus(initLowerAlarmTempWstatus)
+    api.put_upper_alarm_tempWstatus(initUpperAlarmTempWstatus)
   }
 
   def timeTriggered(api: operator_interface_thread_impl_Operational_Api): Unit = {
-    // example api usage
+    if (firstInvocation) {
+      Interface.initialise(
+        lastLowerDesiredTempWstatus, lastUpperDesiredTempWstatus,
+        lastLowerAlarmTempWstatus, lastUpperAlarmTempWstatus)
+      firstInvocation = F
+    }
 
-    val apiUsage_regulator_status: Option[Isolette_Data_Model.Status.Type] = api.get_regulator_status()
-    api.logInfo(s"Received on regulator_status: ${apiUsage_regulator_status}")
-    val apiUsage_monitor_status: Option[Isolette_Data_Model.Status.Type] = api.get_monitor_status()
-    api.logInfo(s"Received on monitor_status: ${apiUsage_monitor_status}")
-    val apiUsage_display_temperature: Option[Isolette_Data_Model.Temp_impl] = api.get_display_temperature()
-    api.logInfo(s"Received on display_temperature: ${apiUsage_display_temperature}")
-    val apiUsage_alarm_control: Option[Isolette_Data_Model.On_Off.Type] = api.get_alarm_control()
-    api.logInfo(s"Received on alarm_control: ${apiUsage_alarm_control}")
+    // send to interface
+    Interface.setRegulatorStatus(api.get_regulator_status())
+
+    Interface.setMonitorStatus(api.get_monitor_status())
+
+    Interface.setDispayTemperature(api.get_display_temperature())
+
+    Interface.setAlarmControl(api.get_alarm_control())
+
+
+    // fetch from interface
+    val ldt = Interface.getLowerDesiredTempWstatus()
+    if (ldt != lastLowerDesiredTempWstatus) {
+      api.put_lower_desired_tempWstatus(ldt)
+      lastLowerDesiredTempWstatus = ldt
+      api.logInfo(s"Sent lower desired temp: ${lastLowerDesiredTempWstatus}")
+    }
+
+    val udt = Interface.getUpperDesiredTempWstatus()
+    if (udt != lastUpperDesiredTempWstatus) {
+      api.put_upper_desired_tempWstatus(udt)
+      lastUpperDesiredTempWstatus = udt
+      api.logInfo(s"Sent upper desired temp: ${lastUpperDesiredTempWstatus}")
+    }
+
+    val lat = Interface.getLowerAlarmTempWstatus()
+    if (lat != lastLowerAlarmTempWstatus) {
+      api.put_lower_alarm_tempWstatus(lat)
+      lastLowerAlarmTempWstatus = lat
+      api.logInfo(s"Sent lower alarm temp: ${lastLowerAlarmTempWstatus}")
+    }
+
+    val uat = Interface.getUpperAlarmTempWstatus()
+    if (uat != lastUpperAlarmTempWstatus) {
+      api.put_upper_alarm_tempWstatus(uat)
+      lastUpperAlarmTempWstatus = uat
+      api.logInfo(s"Sent upper alarm temp: ${lastUpperAlarmTempWstatus}")
+    }
   }
 
   def activate(api: operator_interface_thread_impl_Operational_Api): Unit = { }

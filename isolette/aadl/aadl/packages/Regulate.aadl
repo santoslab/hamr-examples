@@ -9,6 +9,7 @@ public
 -- @description process that holds threads that regulate air temperature
 -- A.5.1 REGULATE TEMPERATURE FUNCTION
 -- 
+-- http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=105
 -- ===========================================================================================================
 	process Regulate_Temperature
 		features
@@ -27,21 +28,6 @@ public
 			-- actuation command to heater
 			heat_control: out data port Isolette_Data_Model::On_Off;
 
-		-- defs // propositional and first order predicates
-		--         -- these would probably be in a library somewhere associated with the system data
-		--         -- model or the subsystem/process data model. Alternately, we should allow
-		--         -- such predicates to be attached to types.
-		--         -- Many such predicates need to be shared between Alisa and Slang 
-		--         -- see Table A-3 in FAA REMH
-		--         current_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.0
-		--         -- see Table A-5 in FAA          
-		--         lower_desired_temp_range(temp: Temp) = temp >= 97.0 and temp <= 99.0;
-		--         upper_desired_temp_range(temp: Temp) = temp >= 98.0 and temp <= 100.0;
-		--         -- see Table A-5 in FAA 
-		--         lower_alarm_temp_range(temp: Temp) = temp >= 93.0 and temp <= 98.0;
-		--         upper_alarm_temp_range(temp: Temp) = temp >= 98.0 and temp <= 103.0;
-		--         -- see Table A-6 in FAA REMH
-		--         displayed_temp_range(temp: Temp) = temp >= 68.0 and temp <= 105.00;
 	end Regulate_Temperature;
 
 --@description process implementation that holds threads that regulate air temperature
@@ -109,11 +95,13 @@ public
 --   M a n a g e    R e g u l a t o r   I n t e r f a c e   T h r e a d
 --
 --  
---  AR-08-32 A.5.1.1 Manage Regulator Interface Function
+--   AR-08-32 A.5.1.1 Manage Regulator Interface Function
 -- 
---  "The Manage Regulator Interface Function defines the interaction with the Operator Interface external entity. 
---   These include obtaining the Desired Range, reporting back the status of the Regulate Temperature Function, 
---   and reporting back the Display Temperature."
+--   "The Manage Regulator Interface Function defines the interaction with the Operator Interface external entity. 
+--    These include obtaining the Desired Range, reporting back the status of the Regulate Temperature Function, 
+--    and reporting back the Display Temperature."
+-- 
+--   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107
 -- ===========================================================================================================
 	thread Manage_Regulator_Interface
 		features
@@ -140,8 +128,6 @@ public
 		-- AADL flows indicate data flows between input and output ports that we would like the thread implementation
 		-- to realize.
 		flows
-			-- JMH: would like the following syntax (stuff in comment) with the name being optional 
-			-- manage_heat_source_function: flow path current_tempWstatus, lower_desired_temp, upper_desired_temp -> regulator_mode;	
 			-- ==== desired temps function flows ====
 			--   summary: this is a pair-wise propagation of data that just strips
 			--     of the status tag
@@ -158,9 +144,6 @@ public
 			-- control dependence
 			--    in modes other than normal mode, the displayed value is unspecified
 			mri_dspt2: flow path regulator_mode -> displayed_temp;
-			-- uncaptured at the moment is the notion (from reqs) that if
-			-- regulator mode is init or failed, then the display_temp is
-			-- unspecified.
 			-- ==== regulator status function ====
 			--   summary: regulator mode is just propagated (essentially renamed)
 			--            to regulator status
@@ -203,17 +186,20 @@ public
 					-- ====== Regulator Status ======    
 			
 					case REQ_MRI_1 "If the Regulator Mode is INIT,
-									|the Regulator Status shall be set to Init.":
+									|the Regulator Status shall be set to Init.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 ":
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
 						guarantee regulator_status == Isolette_Data_Model::Status.Init_Status;
 			
 					case REQ_MRI_2 "If the Regulator Mode is NORMAL,
-									|the Regulator Status shall be set to On":
+									|the Regulator Status shall be set to On
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 ":
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
 						guarantee regulator_status == Isolette_Data_Model::Status.On_Status;
 			
 					case REQ_MRI_3 "If the Regulator Mode is FAILED,
-									|the Regulator Status shall be set to Failed.":
+									|the Regulator Status shall be set to Failed.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 ":
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
 						guarantee regulator_status == Isolette_Data_Model::Status.Failed_Status;
 			
@@ -221,12 +207,14 @@ public
 			
 					case REQ_MRI_4 "If the Regulator Mode is NORMAL, the
 									|Display Temperature shall be set to the value of the
-									|Current Temperature rounded to the nearest integer.":
+									|Current Temperature rounded to the nearest integer.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ":
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
 						guarantee displayed_temp.value == ROUND(current_tempWstatus.value);
 			
 					case REQ_MRI_5 "If the Regulator Mode is not NORMAL,
-									|the value of the Display Temperature is UNSPECIFIED.": 
+									|the value of the Display Temperature is UNSPECIFIED.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ": 
 						assume T;
 						guarantee T;
 
@@ -234,19 +222,22 @@ public
 			
 					case REQ_MRI_6 "If the Status attribute of the Lower Desired Temperature
 									|or the Upper Desired Temperature is Invalid,
-									|the Regulator Interface Failure shall be set to True.":
+									|the Regulator Interface Failure shall be set to True.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ":
 						assume ((upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid) | (upper_desired_tempWstatus.status != Isolette_Data_Model::ValueStatus.Valid));
 						guarantee interface_failure.value;
 			
 					case REQ_MRI_7 "If the Status attribute of the Lower Desired Temperature
 									|and the Upper Desired Temperature is Valid,
-									|the Regulator Interface Failure shall be set to False.":
+									|the Regulator Interface Failure shall be set to False.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ":
 						assume T;
 						guarantee (interface_failure.value == (!((upper_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid) & (lower_desired_tempWstatus.status == Isolette_Data_Model::ValueStatus.Valid))));
 			
 					-- ===== Desired Range =====
 			
-					case REQ_MRI_8 "If the Regulator Interface Failure is False":
+					case REQ_MRI_8 "If the Regulator Interface Failure is False
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ":
 					    assume T;
 						guarantee 
 							(!interface_failure.value) ->: 
@@ -255,7 +246,7 @@ public
 					case REQ_MRI_9 "If the Regulator Interface Failure is True,
 									|the Desired Range is UNSPECIFIED.
 									|the Desired Range shall be set to the Desired Temperature Range.
-									|(** currently omitted due to the 'UNSPECIFIED' **)" : 
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 ":
 						assume T;
 						guarantee T;
 		**};
@@ -272,8 +263,9 @@ public
 --  
 --   AR-08-32  A.5.1.2 Manage Regulator Mode Function
 -- 
---  "The Manage Regulator Mode Function determines the mode of the Regulate Temperature Function."
+--   "The Manage Regulator Mode Function determines the mode of the Regulate Temperature Function."
 --
+--   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109
 -- ===========================================================================================================
 	thread Manage_Regulator_Mode
 		features
@@ -312,11 +304,10 @@ public
 			
 			--  ======= I n i t i a l i z e    E n t r y    P o i n t    Behavior Constraints  ======
 			initialize
-				guarantee REQ_MRM_1 "The initial mode of the regular is INIT" :
+				guarantee REQ_MRM_1 "The initial mode of the regular is INIT
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 " :
 					regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode; 
-				
-				-- TBD: add a constraint for the state variable lastRegulatorMode
-			
+
 			--  ======= C o m p u t e   E n t r y    P o i n t    Behavior Constraints  ======
 			compute
 				cases
@@ -325,7 +316,8 @@ public
 									|If the current regulator mode is Init, then
 									|the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
 									|  if NOT (Regulator Interface Failure OR Regulator Internal Failure)
-									|     AND Current Temperature.Status = Valid":
+									|     AND Current Temperature.Status = Valid
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 ":
 						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
 						guarantee 
 							((!(interface_failure.value || internal_failure.value)) && 
@@ -340,7 +332,8 @@ public
 												|       if NOT(
 												|           (Regulator Interface Failure OR Regulator Internal Failure)
 												|           OR NOT(Current Temperature.Status = Valid)
-												|       )":
+												|       )
+												|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 ":
 						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
 						guarantee 
 							((!(interface_failure.value || internal_failure.value)) && 
@@ -353,7 +346,8 @@ public
 									|the regulator mode is set to Failed iff
 									|the regulator status is false, i.e.,
 									|   if  (Regulator Interface Failure OR Regulator Internal Failure)
-									|       OR NOT(Current Temperature.Status = Valid)":
+									|       OR NOT(Current Temperature.Status = Valid)
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 ":
 						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode;
 						guarantee 
 							((interface_failure.value || internal_failure.value) &&
@@ -366,7 +360,8 @@ public
 									|the regulator mode and lastRegulatorMode state value is set to Failed iff
 									|the regulator status is false, i.e.,
 									|       if  (Regulator Interface Failure OR Regulator Internal Failure)
-									|       OR NOT(Current Temperature.Status = Valid)":
+									|       OR NOT(Current Temperature.Status = Valid)
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109":
 						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
 						guarantee 
 							((interface_failure.value || internal_failure.value) && 
@@ -376,7 +371,8 @@ public
 			
 					case REQ_MRM_MaintainFailed "'maintaining FAIL, FAIL to FAIL'
 												|If the current regulator mode is Failed, then
-												|the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed":
+												|the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed
+												|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109":
 						assume lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
 						guarantee (regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode &&
 							lastRegulatorMode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode);
@@ -392,11 +388,12 @@ public
 --   M a n a g e    H e a t    S o u r c e     T h r e a d
 --
 --  
---  AR-08-32  A.5.1.3 Manage Heat Source Function
+--   AR-08-32  A.5.1.3 Manage Heat Source Function
 -- 
---  "The Manage Heat Source Function turns the Heat Source on and off to maintain the Current Temperature 
---   of the Isolette within the Desired Temperature Range."
+--   "The Manage Heat Source Function turns the Heat Source on and off to maintain the Current Temperature 
+--    of the Isolette within the Desired Temperature Range."
 --
+--   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110
 -- ===========================================================================================================
 	thread Manage_Heat_Source
 		features
@@ -436,7 +433,8 @@ public
 				guarantee
 					initlastCmd: lastCmd == Isolette_Data_Model::On_Off.Off;
 				guarantee REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
-									|set to Off":
+									|set to Off
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 ":
 					heat_control == Isolette_Data_Model::On_Off.Off;
 			
 			--  ====== C o m p u t e    E n t r y    P o i n t   Behavior Constraints =====      
@@ -451,18 +449,21 @@ public
 				cases
 			
 					case REQ_MHS_1 "If the Regulator Mode is INIT, the Heat Control shall be
-									|set to Off.": 
+									|set to Off.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 ": 
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Init_Regulator_Mode;
 						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
 			
 					case REQ_MHS_2 "If the Regulator Mode is NORMAL and the Current Temperature is less than
-									|the Lower Desired Temperature, the Heat Control shall be set to On.":
+									|the Lower Desired Temperature, the Heat Control shall be set to On.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 ":
 						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
 							& (current_tempWstatus.value < lower_desired_temp.value);
 						guarantee heat_control == Isolette_Data_Model::On_Off.Onn;
 			
 					case REQ_MHS_3 "If the Regulator Mode is NORMAL and the Current Temperature is greater than
-									|the Upper Desired Temperature, the Heat Control shall be set to Off.":
+									|the Upper Desired Temperature, the Heat Control shall be set to Off.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 ":
 						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
 							& (current_tempWstatus.value > upper_desired_temp.value);
 						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
@@ -470,14 +471,16 @@ public
 					case REQ_MHS_4 "If the Regulator Mode is NORMAL and the Current
 								|Temperature is greater than or equal to the Lower Desired Temperature
 								|and less than or equal to the Upper Desired Temperature, the value of
-								|the Heat Control shall not be changed.":
+								|the Heat Control shall not be changed.
+								|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 ":
 						assume (regulator_mode == Isolette_Data_Model::Regulator_Mode.Normal_Regulator_Mode)
 							& (current_tempWstatus.value >= lower_desired_temp.value
 							& current_tempWstatus.value <= upper_desired_temp.value); 
 						guarantee heat_control == In(lastCmd);
 			
 					case REQ_MHS_5 "If the Regulator Mode is FAILED, the Heat Control shall be
-									|set to Off.":
+									|set to Off.
+									|http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=111 ":
 						assume regulator_mode == Isolette_Data_Model::Regulator_Mode.Failed_Regulator_Mode;
 						guarantee heat_control == Isolette_Data_Model::On_Off.Off;
 		**};
@@ -486,6 +489,20 @@ public
 	thread implementation Manage_Heat_Source.impl
 	end Manage_Heat_Source.impl;
 
+
+-- ===========================================================================================================
+--
+--   D e t e c t     R e g u l a t o r      F a i l u r e     T h r e a d
+--
+--  
+--  AR-08-32  A.5.1.4 Detect Regulator Failure Function
+-- 
+--  "The Detect Regulator Failure Function identifies internal failures, (e.g., a memory check failure)
+--   in the Regulate Temperature Function. It defines a single Boolean-valued internal variable,
+--   Regulator Internal Failure, which is set to True if an internal failure is detected."
+--
+-- http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=111
+-- ===========================================================================================================
 	thread Detect_Regulator_Failure
 		features
 			-- ==== OUTPUTS ========		

@@ -36,7 +36,7 @@ object TempControl_s_tcproc_tempControl {
       ),
       Ensures(
         // BEGIN INITIALIZES ENSURES
-        // guarantee defautSetPoint
+        // guarantee defaultSetPoint
         currentSetPoint.low.degrees == 70.0f &&
           currentSetPoint.high.degrees == 80.0f,
         // guarantee defaultFanStates
@@ -46,27 +46,11 @@ object TempControl_s_tcproc_tempControl {
         // END INITIALIZES ENSURES
       )
     )
-    // belt: couldn't figure out what deduce is needed for the following
-    //       way of constructing a setpoint, and using logika's default
-    //       rlimit and timeout
-    // Deduce ( |- ((70.0f > -459.67f & 80.0f > -459.67f) & (70.0f > 50.0f & 80.0f < 110.0f)))
-
     // The Initialize Entry Point must initialize all component local state and all output data ports.
-    //currentSetPoint = SetPoint_i(Temperature_i(70.0f), Temperature_i(80.0f))
-
-    // but the following works using the default logika options, but
-    // other post coditional fail to prove so still bumping rlimit and timeout
-    Deduce ( |- (70.0f >= -459.67f))
-    val low = Temperature_i(70.0f)
-
-    val eighty = 80.0f // assigning to a var seems to help
-    Deduce ( |- (eighty >= -459.67f))
-    val high = Temperature_i(eighty)
-
-    currentSetPoint = SetPoint_i(low, high)
-
+    currentSetPoint = SetPoint_i(Temperature_i(70.0f),
+      Temperature_i(80.0f))
     currentFanState = CoolingFan.FanCmd.Off
-    latestTemp = Temperature_i(72f)
+    latestTemp = Temperature_i(72.0f)
 
     // initialize output data ports
     //  (no output data ports to initialize)

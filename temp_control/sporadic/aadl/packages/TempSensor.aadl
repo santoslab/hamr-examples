@@ -120,7 +120,7 @@ public
       --                  and must be proved whenever a value of the data type is constructed
       invariants
         inv AbsZero:
-          degrees >= GUMBO_Definitions::absoluteZero();
+          GUMBO_Definitions::aboveAbsoluteZero(degrees);
     **};
   end Temperature.i;
 

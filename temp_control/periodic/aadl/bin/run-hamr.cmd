@@ -24,18 +24,23 @@ val aadlDir = Os.slashDir.up
 val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin" 
 val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
 
-val fmide : Os.Path = 
+
+var osate : Os.Path = 
   if(Os.isWin) sireumBin / "win" / "fmide" / "fmide.exe"
   else if(Os.isLinux) sireumBin / "linux" / "fmide" / "fmide"
   else if(Os.isMac) sireumBin / "mac" / "fmide.app" / "Contents" / "MacOS" / "osate"
   else sireum / "unsupported-OS"
 
-if(!fmide.exists) {
-  println(s"Please install FMIDE by running ${ (sireumBin / "install" / "fmide.cmd").canon.string }");
-  Os.exit(-1);
+if(!osate.exists) {
+  Os.env("OSATE") match {
+    case Some(p) if Os.path(p).exists => osate = Os.path(p)
+    case _ =>
+      println(s"Please install FMIDE by running ${ (sireumBin / "install" / "fmide.cmd").canon.string }");
+      Os.exit(-1);
+  }
 }
 
-val osireum = ISZ(fmide.string, "-nosplash", "--launcher.suppressErrors", "-data", "@user.home/.sireum", "-application", "org.sireum.aadl.osate.cli")
+val osireum = ISZ(osate.string, "-nosplash", "--launcher.suppressErrors", "-data", "@user.home/.sireum", "-application", "org.sireum.aadl.osate.cli")
 
 if(Os.cliArgs.size > 1) {
   eprintln("Only expecting a single argument")

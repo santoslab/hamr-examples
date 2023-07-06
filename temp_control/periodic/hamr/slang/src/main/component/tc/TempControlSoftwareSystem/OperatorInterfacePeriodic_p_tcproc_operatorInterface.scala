@@ -9,12 +9,6 @@ import tc._
 object OperatorInterfacePeriodic_p_tcproc_operatorInterface {
 
   def initialise(api: OperatorInterfacePeriodic_p_Initialization_Api): Unit = {
-    // example api usage
-
-    api.logInfo("Example info logging")
-    api.logDebug("Example debug logging")
-    api.logError("Example error logging")
-
     api.put_setPoint(DefaultValues.defaultSetPoint)
   }
 

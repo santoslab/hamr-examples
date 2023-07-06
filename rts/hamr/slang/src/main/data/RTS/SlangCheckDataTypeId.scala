@@ -1,0 +1,60 @@
+// #Sireum
+
+package RTS
+
+import org.sireum._
+import org.sireum.Random.Gen64
+
+/*
+GENERATED FROM
+
+Base_Types.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_DSC_TestVectors.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit1_pressureLogic_coincidenceLogic_DSC_TestVectors.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit1_saturationLogic_coincidenceLogic_DSC_TestVectors.scala
+
+OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_DSC_TestVectors.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit2_temperatureLogic_coincidenceLogic_DSC_TestVectors.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_DSC_TestVectors.scala
+
+CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_DSC_TestVectors.scala
+
+OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVectors.scala
+
+OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_DSC_TestVectors.scala
+
+Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_DSC_TestVectors.scala
+
+OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_DSC_TestVectors.scala
+
+Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVectors.scala
+
+DataContent.scala
+
+*/
+
+@enum object _artDataContent_DataTypeId {
+   "Base_TypesBits_Payload_Id"
+   "Base_TypesBoolean_Payload_Id"
+   "Base_TypesCharacter_Payload_Id"
+   "Base_TypesFloat_32_Payload_Id"
+   "Base_TypesFloat_64_Payload_Id"
+   "Base_TypesFloat_Payload_Id"
+   "Base_TypesInteger_16_Payload_Id"
+   "Base_TypesInteger_32_Payload_Id"
+   "Base_TypesInteger_64_Payload_Id"
+   "Base_TypesInteger_8_Payload_Id"
+   "Base_TypesInteger_Payload_Id"
+   "Base_TypesString_Payload_Id"
+   "Base_TypesUnsigned_16_Payload_Id"
+   "Base_TypesUnsigned_32_Payload_Id"
+   "Base_TypesUnsigned_64_Payload_Id"
+   "Base_TypesUnsigned_8_Payload_Id"
+   "_artEmpty_Id"
+}
+
