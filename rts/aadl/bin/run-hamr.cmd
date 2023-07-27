@@ -50,20 +50,31 @@ val platform: String =
   if(Os.cliArgs.nonEmpty) Os.cliArgs(0)
   else "JVM"
 
-val codegenArgs = ISZ("hamr", "codegen",
+val packageName = "RTS"
+val excludeComponentImpl = F
+
+var codegenArgs = ISZ("hamr", "codegen",
   "--platform", platform,
-  "--package-name", "RTS",
+  "--package-name", packageName,
   "--output-dir", (aadlDir.up / "hamr" / "slang").string,
   "--output-c-dir", (aadlDir.up / "hamr" / "c").string,
   "--camkes-output-dir", (aadlDir.up / "hamr" / "camkes").string,  
-  "--verbose",
-  //"--no-proyek-ive",
   "--run-transpiler",
-  "--bit-width", "32", 
+  "--bit-width", "32",
   "--max-string-size", "256",
   "--max-array-size", "1",
-  "--aadl-root-dir", aadlDir.string,
-  (aadlDir / ".system").string)
+  "--verbose",
+  "--aadl-root-dir", aadlDir.string)
+
+if (excludeComponentImpl) {
+  codegenArgs = codegenArgs :+ "--exclude-component-impl"
+}
+
+if ((aadlDir.up / "hamr" / "slang" / ".idea").exists) {
+  codegenArgs = codegenArgs :+ "--no-proyek-ive"
+}
+
+codegenArgs = codegenArgs :+ (aadlDir / ".system").string
 
 val results = Os.proc(osireum ++ codegenArgs).echo.console.run()
 

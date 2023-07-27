@@ -9,7 +9,7 @@ import isolette._
 object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees REQ_MA_1
+    * guarantee REQ_MA_1
     *   If the Monitor Mode is INIT, the Alarm Control shall be set
     *   to Off.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
@@ -111,7 +111,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     (// CEP-Assm: assume clauses of manage_alarm's compute entrypoint
      compute_CEP_T_Assm (api_lower_alarm_temp, api_upper_alarm_temp))
 
-  /** guarantees REQ_MA_1
+  /** guarantee REQ_MA_1
     *   If the Monitor Mode is INIT, the Alarm Control shall be set
     *   to Off.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
@@ -127,7 +127,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
 
-  /** guarantees REQ_MA_2
+  /** guarantee REQ_MA_2
     *   If the Monitor Mode is NORMAL and the Current Temperature is
     *   less than the Lower Alarm Temperature or greater than the Upper Alarm
     *   Temperature, the Alarm Control shall be set to On.
@@ -152,7 +152,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       (api_alarm_control == Isolette_Data_Model.On_Off.Onn &
          lastCmd == Isolette_Data_Model.On_Off.Onn)
 
-  /** guarantees REQ_MA_3
+  /** guarantee REQ_MA_3
     *   If the Monitor Mode is NORMAL and the Current Temperature
     *   is greater than or equal to the Lower Alarm Temperature and less than
     *   the Lower Alarm Temperature +0.5 degrees, or the Current Temperature is
@@ -184,7 +184,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       (api_alarm_control == In_lastCmd &
          lastCmd == In_lastCmd)
 
-  /** guarantees REQ_MA_4
+  /** guarantee REQ_MA_4
     *   If the Monitor Mode is NORMAL and the value of the Current
     *   Temperature is greater than or equal to the Lower Alarm Temperature
     *   +0.5 degrees and less than or equal to the Upper Alarm Temperature
@@ -210,7 +210,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
 
-  /** guarantees REQ_MA_5
+  /** guarantee REQ_MA_5
     *   If the Monitor Mode is FAILED, the Alarm Control shall be
     *   set to On.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=116 

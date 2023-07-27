@@ -17,7 +17,7 @@ object TempSensor_s_tcproc_tempSensor {
       Requires(
         // BEGIN INITIALIZES REQUIRES
         // assume AADL_Requirement
-        //   All outgoing event data ports must be empty
+        //   All outgoing event ports must be empty
         api.tempChanged.isEmpty
         // END INITIALIZES REQUIRES
       ),

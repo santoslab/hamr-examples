@@ -52,12 +52,12 @@ import tc._
   val fanAck_Id : Art.PortId) extends Fan_s_Api {
 
   // Logika spec var representing port state for incoming event data port
-  @spec var fanCmd: CoolingFan.FanCmd.Type = $
+  @spec var fanCmd: Option[CoolingFan.FanCmd.Type] = $
 
   def get_fanCmd() : Option[CoolingFan.FanCmd.Type] = {
     Contract(
       Ensures(
-        Res == Some(fanCmd)
+        Res == fanCmd
       )
     )
     val value : Option[CoolingFan.FanCmd.Type] = Art.getValue(fanCmd_Id) match {

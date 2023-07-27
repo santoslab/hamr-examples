@@ -9,7 +9,7 @@ import isolette._
 object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees initlastCmd
+    * guarantee initlastCmd
     * @param lastCmd post-state state variable
     */
   @strictpure def initialize_initlastCmd (
@@ -18,7 +18,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** Initialize Entrypoint Contract
     *
-    * guarantees REQ_MHS_1
+    * guarantee REQ_MHS_1
     *   If the Regulator Mode is INIT, the Heat Control shall be
     *   set to Off
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 
@@ -90,7 +90,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** Compute Entrypoint Contract
     *
-    * guarantees lastCmd
+    * guarantee lastCmd
     *   Set lastCmd to value of output Cmd port
     * @param lastCmd post-state state variable
     * @param api_heat_control outgoing data port
@@ -110,7 +110,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     compute_spec_lastCmd_guarantee(lastCmd, api_heat_control)
 
-  /** guarantees REQ_MHS_1
+  /** guarantee REQ_MHS_1
     *   If the Regulator Mode is INIT, the Heat Control shall be
     *   set to Off.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 
@@ -123,7 +123,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
-  /** guarantees REQ_MHS_2
+  /** guarantee REQ_MHS_2
     *   If the Regulator Mode is NORMAL and the Current Temperature is less than
     *   the Lower Desired Temperature, the Heat Control shall be set to On.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 
@@ -141,7 +141,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
        api_current_tempWstatus.value < api_lower_desired_temp.value) -->:
       (api_heat_control == Isolette_Data_Model.On_Off.Onn)
 
-  /** guarantees REQ_MHS_3
+  /** guarantee REQ_MHS_3
     *   If the Regulator Mode is NORMAL and the Current Temperature is greater than
     *   the Upper Desired Temperature, the Heat Control shall be set to Off.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=110 
@@ -159,7 +159,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
        api_current_tempWstatus.value > api_upper_desired_temp.value) -->:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
-  /** guarantees REQ_MHS_4
+  /** guarantee REQ_MHS_4
     *   If the Regulator Mode is NORMAL and the Current
     *   Temperature is greater than or equal to the Lower Desired Temperature
     *   and less than or equal to the Upper Desired Temperature, the value of
@@ -184,7 +184,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
          api_current_tempWstatus.value <= api_upper_desired_temp.value)) -->:
       (api_heat_control == In_lastCmd)
 
-  /** guarantees REQ_MHS_5
+  /** guarantee REQ_MHS_5
     *   If the Regulator Mode is FAILED, the Heat Control shall be
     *   set to Off.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=111 

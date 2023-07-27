@@ -44,7 +44,9 @@ import tc.GumboXUtil.GumboXResult
     }
 
     // [PutInPorts]: put values on the input ports
-    put_tempChanged()
+    if (api_tempChanged.nonEmpty) {
+      put_tempChanged()
+    }
     put_currentTemp(api_currentTemp)
 
     // [InvokeEntryPoint]: invoke the entry point test method

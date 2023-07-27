@@ -9,7 +9,7 @@ import isolette._
 object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees RegulatorStatusIsInitiallyInit
+    * guarantee RegulatorStatusIsInitiallyInit
     * @param api_regulator_status outgoing data port
     */
   @strictpure def initialize_RegulatorStatusIsInitiallyInit (
@@ -85,7 +85,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (// CEP-Assm: assume clauses of manage_regulator_interface's compute entrypoint
      compute_CEP_T_Assm (api_lower_desired_tempWstatus, api_upper_desired_tempWstatus))
 
-  /** guarantees REQ_MRI_1
+  /** guarantee REQ_MRI_1
     *   If the Regulator Mode is INIT,
     *   the Regulator Status shall be set to Init.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
@@ -98,7 +98,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
       (api_regulator_status == Isolette_Data_Model.Status.Init_Status)
 
-  /** guarantees REQ_MRI_2
+  /** guarantee REQ_MRI_2
     *   If the Regulator Mode is NORMAL,
     *   the Regulator Status shall be set to On
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
@@ -111,7 +111,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
       (api_regulator_status == Isolette_Data_Model.Status.On_Status)
 
-  /** guarantees REQ_MRI_3
+  /** guarantee REQ_MRI_3
     *   If the Regulator Mode is FAILED,
     *   the Regulator Status shall be set to Failed.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
@@ -124,7 +124,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->:
       (api_regulator_status == Isolette_Data_Model.Status.Failed_Status)
 
-  /** guarantees REQ_MRI_4
+  /** guarantee REQ_MRI_4
     *   If the Regulator Mode is NORMAL, the
     *   Display Temperature shall be set to the value of the
     *   Current Temperature rounded to the nearest integer.
@@ -140,7 +140,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
       (api_displayed_temp.value == Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.ROUND(api_current_tempWstatus.value))
 
-  /** guarantees REQ_MRI_5
+  /** guarantee REQ_MRI_5
     *   If the Regulator Mode is not NORMAL,
     *   the value of the Display Temperature is UNSPECIFIED.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
@@ -150,7 +150,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (T) -->:
       (T)
 
-  /** guarantees REQ_MRI_6
+  /** guarantee REQ_MRI_6
     *   If the Status attribute of the Lower Desired Temperature
     *   or the Upper Desired Temperature is Invalid,
     *   the Regulator Interface Failure shall be set to True.
@@ -165,7 +165,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
        api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
       (api_interface_failure.value)
 
-  /** guarantees REQ_MRI_7
+  /** guarantee REQ_MRI_7
     *   If the Status attribute of the Lower Desired Temperature
     *   and the Upper Desired Temperature is Valid,
     *   the Regulator Interface Failure shall be set to False.
@@ -182,7 +182,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       (api_interface_failure.value == !(api_upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
           api_lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid))
 
-  /** guarantees REQ_MRI_8
+  /** guarantee REQ_MRI_8
     *   If the Regulator Interface Failure is False
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
     * @param api_lower_desired_tempWstatus incoming data port
@@ -201,7 +201,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       (!(api_interface_failure.value) ->: (api_lower_desired_temp.value == api_lower_desired_tempWstatus.value &
           api_upper_desired_temp.value == api_upper_desired_tempWstatus.value))
 
-  /** guarantees REQ_MRI_9
+  /** guarantee REQ_MRI_9
     *   If the Regulator Interface Failure is True,
     *   the Desired Range is UNSPECIFIED.
     *   the Desired Range shall be set to the Desired Temperature Range.

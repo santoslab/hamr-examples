@@ -21,7 +21,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
 
   /** Initialize Entrypoint Contract
     *
-    * guarantees initLatestFanCmd
+    * guarantee initLatestFanCmd
     *   Initialize state variable
     * @param latestFanCmd post-state state variable
     */
@@ -31,7 +31,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
 
   /** Initialize Entrypoint Contract
     *
-    * guarantees initFanCmd
+    * guarantee initFanCmd
     *   Initial fan command
     * @param api_fanCmd outgoing data port
     */
@@ -82,7 +82,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
 
   /** Compute Entrypoint Contract
     *
-    * guarantees altCurrentTempLTSetPoint
+    * guarantee altCurrentTempLTSetPoint
     *   If current temperature is less than
     *   the current low set point, then the fan state shall be Off
     * @param latestFanCmd post-state state variable
@@ -100,7 +100,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
 
   /** Compute Entrypoint Contract
     *
-    * guarantees altCurrentTempGTSetPoint
+    * guarantee altCurrentTempGTSetPoint
     *   If current temperature is greater than
     *   the current high set point, then the fan state shall be On
     * @param latestFanCmd post-state state variable
@@ -118,7 +118,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
 
   /** Compute Entrypoint Contract
     *
-    * guarantees altCurrentTempInRange
+    * guarantee altCurrentTempInRange
     *   If current temperature is greater than or equal to the 
     *   current low set point and less than or equal to the current high set point, 
     *   then the current fan state is maintained.
@@ -157,7 +157,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
     compute_spec_altCurrentTempGTSetPoint_guarantee(latestFanCmd, api_currentTemp, api_setPoint, api_fanCmd) &
     compute_spec_altCurrentTempInRange_guarantee(In_latestFanCmd, latestFanCmd, api_currentTemp, api_setPoint, api_fanCmd)
 
-  /** guarantees currentTempLTSetPoint
+  /** guarantee currentTempLTSetPoint
     *   If current temperature is less than
     *   the current low set point, then the fan state shall be Off
     * @param latestFanCmd post-state state variable
@@ -174,7 +174,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       (latestFanCmd == CoolingFan.FanCmd.Off &
          api_fanCmd == CoolingFan.FanCmd.Off)
 
-  /** guarantees currentTempGTSetPoint
+  /** guarantee currentTempGTSetPoint
     *   If current temperature is greater than
     *   the current high set point, then the fan state shall be On
     * @param latestFanCmd post-state state variable
@@ -191,7 +191,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       (latestFanCmd == CoolingFan.FanCmd.On &
          api_fanCmd == CoolingFan.FanCmd.On)
 
-  /** guarantees currentTempInRange
+  /** guarantee currentTempInRange
     *   If current temperature is greater than or equal to the 
     *   current low set point and less than or equal to the current high set point, 
     *   then the current fan state is maintained.

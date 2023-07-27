@@ -191,6 +191,7 @@ public
             guarantee 
               (latestFanCmd == In(latestFanCmd)) & 
               (fanCmd == latestFanCmd);
+         
      **};     
   end TempControlPeriodic;
 

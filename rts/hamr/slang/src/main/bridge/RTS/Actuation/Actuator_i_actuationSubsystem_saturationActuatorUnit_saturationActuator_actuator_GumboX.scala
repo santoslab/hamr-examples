@@ -9,7 +9,7 @@ import RTS._
 object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees initOutputDataPort
+    * guarantee initOutputDataPort
     *   The Initialize Entry Point must initialize all component 
     *   local state and all output data ports.
     * @param api_output outgoing data port
@@ -37,7 +37,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
 
   /** Compute Entrypoint Contract
     *
-    * guarantees actuatorOutput
+    * guarantee actuatorOutput
     * @param api_input incoming data port
     * @param api_manualActuatorInput incoming data port
     * @param api_output outgoing data port

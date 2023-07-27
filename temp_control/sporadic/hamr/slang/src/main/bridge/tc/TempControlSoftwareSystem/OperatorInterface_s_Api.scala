@@ -74,12 +74,12 @@ import tc._
   }
 
   // Logika spec var representing port state for incoming event port
-  @spec var tempChanged: art.Empty = $
+  @spec var tempChanged: Option[art.Empty] = $
 
   def get_tempChanged() : Option[art.Empty] = {
     Contract(
       Ensures(
-        Res == Some(Empty())
+        Res == tempChanged
       )
     )
     val value : Option[art.Empty] = Art.getValue(tempChanged_Id) match {

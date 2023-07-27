@@ -20,7 +20,7 @@ object TempSensorPeriodic_p_tcproc_tempSensor_GumboX {
 
   /** Initialize Entrypoint Contract
     *
-    * guarantees initializes
+    * guarantee initializes
     * @param api_currentTemp outgoing data port
     */
   @strictpure def initialize_initializes (

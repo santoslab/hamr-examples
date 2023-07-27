@@ -9,7 +9,7 @@ import isolette._
 object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees REQ_MRM_1
+    * guarantee REQ_MRM_1
     *   The initial mode of the regular is INIT
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 
     * @param api_regulator_mode outgoing data port
@@ -39,7 +39,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     (// IEP-Guar: Initialize Entrypoint contract for manage_regulator_mode
      initialize_IEP_Guar(lastRegulatorMode, api_regulator_mode))
 
-  /** guarantees REQ_MRM_2
+  /** guarantee REQ_MRM_2
     *   'transition from Init to Normal'
     *   If the current regulator mode is Init, then
     *   the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
@@ -66,7 +66,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
          (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
            lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode))
 
-  /** guarantees REQ_MRM_Maintain_Normal
+  /** guarantee REQ_MRM_Maintain_Normal
     *   'maintaining NORMAL, NORMAL to NORMAL'
     *   If the current regulator mode is Normal, then
     *   the regulator mode is stays normal iff
@@ -96,7 +96,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
          (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
            lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode))
 
-  /** guarantees REQ_MRM_3
+  /** guarantee REQ_MRM_3
     *   'transition for NORMAL to FAILED'
     *   If the current regulator mode is Normal, then
     *   the regulator mode is set to Failed iff
@@ -124,7 +124,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
          (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
            lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
 
-  /** guarantees REQ_MRM_4
+  /** guarantee REQ_MRM_4
     *   'transition from INIT to FAILED' 
     *   If the current regulator mode is Init, then
     *   the regulator mode and lastRegulatorMode state value is set to Failed iff
@@ -152,7 +152,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
          (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
            lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
 
-  /** guarantees REQ_MRM_MaintainFailed
+  /** guarantee REQ_MRM_MaintainFailed
     *   'maintaining FAIL, FAIL to FAIL'
     *   If the current regulator mode is Failed, then
     *   the regulator mode remains in the Failed state and the LastRegulator mode remains Failed.REQ-MRM-Maintain-Failed

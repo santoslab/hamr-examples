@@ -9,7 +9,7 @@ import RTS._
 object OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_GumboX {
   /** Compute Entrypoint Contract
     *
-    * guarantees orOutput
+    * guarantee orOutput
     * @param api_channel1 incoming data port
     * @param api_channel2 incoming data port
     * @param api_actuate outgoing data port

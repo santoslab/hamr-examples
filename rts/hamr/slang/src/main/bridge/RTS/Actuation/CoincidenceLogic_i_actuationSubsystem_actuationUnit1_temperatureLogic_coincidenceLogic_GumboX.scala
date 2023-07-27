@@ -9,7 +9,7 @@ import RTS._
 object CoincidenceLogic_i_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic_GumboX {
   /** Compute Entrypoint Contract
     *
-    * guarantees coincidenceOutput
+    * guarantee coincidenceOutput
     *   from actuationUnit.cry
     *   Coincidence_2_4 : [4]TripPort -> Bit
     *   Coincidence_2_4 x =

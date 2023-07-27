@@ -58,15 +58,17 @@ class Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monito
 
   {
     for (i <- 0 to GumboXUtil.numTests) {
-      testInitialiseCB() match {
-        case GumboXResult.Pre_Condition_Unsat =>
-          halt("Infeasible as initialize entry points cannot contain assume clauses and cannot access incoming ports or state variables")
-        case GumboXResult.Post_Condition_Fail =>
-          fail ("Post condition did not hold")
-        case GumboXResult.Post_Condition_Pass =>
-          if (verbose) {
-            println ("Success!")
-          }
+      this.registerTest(s"testInitialiseCB_$i") {
+        testInitialiseCB() match {
+          case GumboXResult.Pre_Condition_Unsat =>
+            halt("Infeasible as initialize entry points cannot contain assume clauses and cannot access incoming ports or state variables")
+          case GumboXResult.Post_Condition_Fail =>
+            fail ("Post condition did not hold")
+          case GumboXResult.Post_Condition_Pass =>
+            if (verbose) {
+              println ("Success!")
+            }
+        }
       }
     }
   }

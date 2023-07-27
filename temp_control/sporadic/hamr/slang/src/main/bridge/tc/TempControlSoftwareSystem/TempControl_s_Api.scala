@@ -7,6 +7,7 @@ import art._
 import tc._
 
 object TempControl_s_Api {
+  // assume currentTempRange
   @strictpure def currentTempRange(currentTemp: TempSensor.Temperature_i): B =
     currentTemp.degrees >= -70.0f &
       currentTemp.degrees <= 180.0f
@@ -92,12 +93,12 @@ import TempControl_s_Api._
   }
 
   // Logika spec var representing port state for incoming event data port
-  @spec var fanAck: CoolingFan.FanAck.Type = $
+  @spec var fanAck: Option[CoolingFan.FanAck.Type] = $
 
   def get_fanAck() : Option[CoolingFan.FanAck.Type] = {
     Contract(
       Ensures(
-        Res == Some(fanAck)
+        Res == fanAck
       )
     )
     val value : Option[CoolingFan.FanAck.Type] = Art.getValue(fanAck_Id) match {
@@ -111,12 +112,12 @@ import TempControl_s_Api._
   }
 
   // Logika spec var representing port state for incoming event data port
-  @spec var setPoint: TempControlSoftwareSystem.SetPoint_i = $
+  @spec var setPoint: Option[TempControlSoftwareSystem.SetPoint_i] = $
 
   def get_setPoint() : Option[TempControlSoftwareSystem.SetPoint_i] = {
     Contract(
       Ensures(
-        Res == Some(setPoint)
+        Res == setPoint
       )
     )
     val value : Option[TempControlSoftwareSystem.SetPoint_i] = Art.getValue(setPoint_Id) match {
@@ -130,12 +131,12 @@ import TempControl_s_Api._
   }
 
   // Logika spec var representing port state for incoming event port
-  @spec var tempChanged: art.Empty = $
+  @spec var tempChanged: Option[art.Empty] = $
 
   def get_tempChanged() : Option[art.Empty] = {
     Contract(
       Ensures(
-        Res == Some(Empty())
+        Res == tempChanged
       )
     )
     val value : Option[art.Empty] = Art.getValue(tempChanged_Id) match {

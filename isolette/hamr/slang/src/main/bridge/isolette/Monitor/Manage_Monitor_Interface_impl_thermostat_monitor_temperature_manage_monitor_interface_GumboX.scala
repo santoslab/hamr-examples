@@ -9,7 +9,7 @@ import isolette._
 object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX {
   /** Initialize Entrypoint Contract
     *
-    * guarantees monitorStatusInitiallyInit
+    * guarantee monitorStatusInitiallyInit
     * @param api_monitor_status outgoing data port
     */
   @strictpure def initialize_monitorStatusInitiallyInit (
@@ -49,7 +49,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     (// IEP-Guar: Initialize Entrypoint contract for manage_monitor_interface
      initialize_IEP_Guar(lastCmd, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp))
 
-  /** guarantees REQ_MMI_1
+  /** guarantee REQ_MMI_1
     *   If the Manage Monitor Interface mode is INIT,
     *   the Monitor Status shall be set to Init.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
@@ -62,7 +62,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
       (api_monitor_status == Isolette_Data_Model.Status.Init_Status)
 
-  /** guarantees REQ_MMI_2
+  /** guarantee REQ_MMI_2
     *   If the Manage Monitor Interface mode is NORMAL,
     *   the Monitor Status shall be set to On
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
@@ -75,7 +75,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->:
       (api_monitor_status == Isolette_Data_Model.Status.On_Status)
 
-  /** guarantees REQ_MMI_3
+  /** guarantee REQ_MMI_3
     *   If the Manage Monitor Interface mode is FAILED,
     *   the Monitor Status shall be set to Failed.
     *   Latency: < Max Operator Response Time
@@ -90,7 +90,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
       (api_monitor_status == Isolette_Data_Model.Status.Failed_Status)
 
-  /** guarantees REQ_MMI_4
+  /** guarantee REQ_MMI_4
     *   If the Status attribute of the Lower Alarm Temperature
     *   or the Upper Alarm Temperature is Invalid,
     *   the Monitor Interface Failure shall be set to True
@@ -107,7 +107,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
        api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->:
       (api_interface_failure.value)
 
-  /** guarantees REQ_MMI_5
+  /** guarantee REQ_MMI_5
     *   If the Status attribute of the Lower Alarm Temperature
     *   and the Upper Alarm Temperature is Valid,
     *   the Monitor Interface Failure shall be set to False
@@ -124,7 +124,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
        api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
       (!(api_interface_failure.value))
 
-  /** guarantees REQ_MMI_6
+  /** guarantee REQ_MMI_6
     *   If the Monitor Interface Failure is False,
     *   the Alarm Range variable shall be set to the Desired Temperature Range
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
@@ -145,7 +145,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
          (api_lower_alarm_temp.value == api_lower_alarm_tempWstatus.value &
            api_upper_alarm_temp.value == api_upper_alarm_tempWstatus.value))
 
-  /** guarantees REQ_MMI_7
+  /** guarantee REQ_MMI_7
     *   If the Monitor Interface Failure is True,
     *   the Alarm Range variable is UNSPECIFIED
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
