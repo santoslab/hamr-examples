@@ -16,6 +16,8 @@ import org.sireum.Random.Impl.Xoshiro256
   extends Random.Gen.TestRunner[OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector]
   with OperatorInterface_s_tcproc_operatorInterface_GumboX_TestHarness {
 
+  val verbose: B = F
+
   val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibtempChanged: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibcurrentTemp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
@@ -41,7 +43,7 @@ import org.sireum.Random.Impl.Xoshiro256
 
   override def test(o: OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_tempChanged, o.api_currentTemp) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
         tc.DSC_RecordUnsatPre.report(tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o, T))
         T

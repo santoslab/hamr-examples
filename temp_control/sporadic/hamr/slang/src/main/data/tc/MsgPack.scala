@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, GUMBO__Library.scala, GUMBO__Library.scala, TempSensor_s_tcproc_tempSensor_DSC_TestVectors.scala, OperatorInterface_s_tcproc_operatorInterface_DSC_TestVectors.scala, DataContent.scala
+// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, GUMBO__Library.scala, GUMBO__Library.scala, TempSensor_s_tcproc_tempSensor_DSC_TestVectors.scala, OperatorInterface_s_tcproc_operatorInterface_DSC_TestVectors.scala, DataContent.scala, Aux_Types.scala
 
 package tc
 

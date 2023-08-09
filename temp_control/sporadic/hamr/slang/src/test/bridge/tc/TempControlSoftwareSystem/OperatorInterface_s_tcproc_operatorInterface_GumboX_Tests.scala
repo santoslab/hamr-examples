@@ -14,15 +14,15 @@ class OperatorInterface_s_tcproc_operatorInterface_GumboX_Tests extends Operator
   // set failOnUnsatPreconditions to T if the unit tests should fail when either
   // SlangCheck is never able to satisfy a datatype's filter or the generated
   // test vectors are never able to satisfy an entry point's assume pre-condition
-  val failOnUnsatPreconditions: B = F
+  var failOnUnsatPreconditions: B = F
 
-  val verbose: B = F
+  var verbose: B = F
 
   val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibtempChanged: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibcurrentTemp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  def getTestVector(): Option[OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector] = {
+  def next(): Option[OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector] = {
     try {
       val api_tempChanged = ranLibtempChanged.nextOption_artEmpty()
       val api_currentTemp = ranLibcurrentTemp.nextTempSensorTemperature_i()
@@ -53,23 +53,32 @@ class OperatorInterface_s_tcproc_operatorInterface_GumboX_Tests extends Operator
   }
 
   {
-
     for (i <- 0 to GumboXUtil.numTests) {
       this.registerTest(s"testComputeCB_$i") {
         var retry: B = T
 
         var j: Z = 0
         while (j < GumboXUtil.numTestVectorGenRetries && retry) {
-          getTestVector() match {
+          next() match {
             case Some(o) =>
 
-              if (verbose) {
-                println(st"""${if (j > 0) s"Retry $j: " else ""}Testing with
-                            |    tempChanged = $o.api_tempChanged
-                            |    currentTemp = $o.api_currentTemp""".render)
+              if (verbose && j > 0) {
+                println(s"Retry $j:")
               }
 
-              testComputeCB(o.api_tempChanged, o.api_currentTemp) match {
+              val results = testComputeCBV(o)
+
+              if (verbose) {
+                val tq = "\"\"\""
+                println(st"""Replay Unit Test:
+                            |  test("Replay testComputeCB_$i") {
+                            |    val json = st${tq}${tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o, T)}${tq}.render
+                            |    val testVector = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(json).left
+                            |    assert (testComputeCBV(testVector) == tc.GumboXUtil.GumboXResult.$results)
+                            |  }""".render)
+              }
+
+              results match {
                 case GumboXResult.Pre_Condition_Unsat =>
                 case GumboXResult.Post_Condition_Fail =>
                   fail ("Post condition did not hold")

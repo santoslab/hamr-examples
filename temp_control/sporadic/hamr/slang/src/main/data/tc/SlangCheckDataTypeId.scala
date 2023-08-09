@@ -28,6 +28,8 @@ OperatorInterface_s_tcproc_operatorInterface_DSC_TestVectors.scala
 
 DataContent.scala
 
+Aux_Types.scala
+
 */
 
 @enum object _artDataContent_DataTypeId {
