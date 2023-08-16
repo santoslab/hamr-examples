@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, TempSensor_s_tcproc_tempSensor__Containers.scala, GUMBO__Library.scala, GUMBO__Library.scala, Fan_s_tcproc_fan__Containers.scala, TempControl_s_tcproc_tempControl__Containers.scala, OperatorInterface_s_tcproc_operatorInterface__Containers.scala, CaptureKind.scala, DataContent.scala, Aux_Types.scala
+// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, TempSensor_s_tcproc_tempSensor__Containers.scala, GUMBO__Library.scala, GUMBO__Library.scala, Fan_s_tcproc_fan__Containers.scala, TempControl_s_tcproc_tempControl__Containers.scala, OperatorInterface_s_tcproc_operatorInterface__Containers.scala, ObservationKind.scala, DataContent.scala, Aux_Types.scala
 
 package tc
 
@@ -315,23 +315,23 @@ object JSON {
       ))
     }
 
-    @pure def printruntimemonitorCaptureKindType(o: runtimemonitor.CaptureKind.Type): ST = {
+    @pure def printruntimemonitorObservationKindType(o: runtimemonitor.ObservationKind.Type): ST = {
       val value: String = o match {
-        case runtimemonitor.CaptureKind.tempSensor_postInit => "tempSensor_postInit"
-        case runtimemonitor.CaptureKind.tempSensor_preCompute => "tempSensor_preCompute"
-        case runtimemonitor.CaptureKind.tempSensor_postCompute => "tempSensor_postCompute"
-        case runtimemonitor.CaptureKind.fan_postInit => "fan_postInit"
-        case runtimemonitor.CaptureKind.fan_preCompute => "fan_preCompute"
-        case runtimemonitor.CaptureKind.fan_postCompute => "fan_postCompute"
-        case runtimemonitor.CaptureKind.tempControl_postInit => "tempControl_postInit"
-        case runtimemonitor.CaptureKind.tempControl_preCompute => "tempControl_preCompute"
-        case runtimemonitor.CaptureKind.tempControl_postCompute => "tempControl_postCompute"
-        case runtimemonitor.CaptureKind.operatorInterface_postInit => "operatorInterface_postInit"
-        case runtimemonitor.CaptureKind.operatorInterface_preCompute => "operatorInterface_preCompute"
-        case runtimemonitor.CaptureKind.operatorInterface_postCompute => "operatorInterface_postCompute"
+        case runtimemonitor.ObservationKind.tempSensor_postInit => "tempSensor_postInit"
+        case runtimemonitor.ObservationKind.tempSensor_preCompute => "tempSensor_preCompute"
+        case runtimemonitor.ObservationKind.tempSensor_postCompute => "tempSensor_postCompute"
+        case runtimemonitor.ObservationKind.fan_postInit => "fan_postInit"
+        case runtimemonitor.ObservationKind.fan_preCompute => "fan_preCompute"
+        case runtimemonitor.ObservationKind.fan_postCompute => "fan_postCompute"
+        case runtimemonitor.ObservationKind.tempControl_postInit => "tempControl_postInit"
+        case runtimemonitor.ObservationKind.tempControl_preCompute => "tempControl_preCompute"
+        case runtimemonitor.ObservationKind.tempControl_postCompute => "tempControl_postCompute"
+        case runtimemonitor.ObservationKind.operatorInterface_postInit => "operatorInterface_postInit"
+        case runtimemonitor.ObservationKind.operatorInterface_preCompute => "operatorInterface_preCompute"
+        case runtimemonitor.ObservationKind.operatorInterface_postCompute => "operatorInterface_postCompute"
       }
       return printObject(ISZ(
-        ("type", printString("runtimemonitor.CaptureKind")),
+        ("type", printString("runtimemonitor.ObservationKind")),
         ("value", printString(value))
       ))
     }
@@ -1050,24 +1050,24 @@ object JSON {
       return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(api_setPoint)
     }
 
-    def parseruntimemonitorCaptureKindType(): runtimemonitor.CaptureKind.Type = {
-      val r = parseruntimemonitorCaptureKindT(F)
+    def parseruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
+      val r = parseruntimemonitorObservationKindT(F)
       return r
     }
 
-    def parseruntimemonitorCaptureKindT(typeParsed: B): runtimemonitor.CaptureKind.Type = {
+    def parseruntimemonitorObservationKindT(typeParsed: B): runtimemonitor.ObservationKind.Type = {
       if (!typeParsed) {
-        parser.parseObjectType("runtimemonitor.CaptureKind")
+        parser.parseObjectType("runtimemonitor.ObservationKind")
       }
       parser.parseObjectKey("value")
       var i = parser.offset
       val s = parser.parseString()
       parser.parseObjectNext()
-      runtimemonitor.CaptureKind.byName(s) match {
+      runtimemonitor.ObservationKind.byName(s) match {
         case Some(r) => return r
         case _ =>
-          parser.parseException(i, s"Invalid element name '$s' for runtimemonitor.CaptureKind.")
-          return runtimemonitor.CaptureKind.byOrdinal(0).get
+          parser.parseException(i, s"Invalid element name '$s' for runtimemonitor.ObservationKind.")
+          return runtimemonitor.ObservationKind.byOrdinal(0).get
       }
     }
 

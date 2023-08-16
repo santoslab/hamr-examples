@@ -30,7 +30,7 @@ TempControl_s_tcproc_tempControl__Containers.scala
 
 OperatorInterface_s_tcproc_operatorInterface__Containers.scala
 
-CaptureKind.scala
+ObservationKind.scala
 
 DataContent.scala
 

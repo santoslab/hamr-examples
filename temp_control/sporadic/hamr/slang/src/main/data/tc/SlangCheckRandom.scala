@@ -30,7 +30,7 @@ TempControl_s_tcproc_tempControl__Containers.scala
 
 OperatorInterface_s_tcproc_operatorInterface__Containers.scala
 
-CaptureKind.scala
+ObservationKind.scala
 
 DataContent.scala
 
@@ -884,37 +884,37 @@ Aux_Types.scala
     return str
   }
 
-  // ============= runtimemonitor.CaptureKind.Type ===================
+  // ============= runtimemonitor.ObservationKind.Type ===================
 
-  def get_Config_runtimemonitorCaptureKindType: Config_runtimemonitorCaptureKindType
-  def set_Config_runtimemonitorCaptureKindType(config: Config_runtimemonitorCaptureKindType): Unit
+  def get_Config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType
+  def set_Config_runtimemonitorObservationKindType(config: Config_runtimemonitorObservationKindType): Unit
 
-  def nextruntimemonitorCaptureKindType(): runtimemonitor.CaptureKind.Type = {
+  def nextruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
 
-    var ordinal: Z = gen.nextZBetween(0, tc.runtimemonitor.CaptureKind.numOfElements-1)
+    var ordinal: Z = gen.nextZBetween(0, tc.runtimemonitor.ObservationKind.numOfElements-1)
 
-    var v: runtimemonitor.CaptureKind.Type = tc.runtimemonitor.CaptureKind.byOrdinal(ordinal).get
-    if(get_Config_runtimemonitorCaptureKindType.attempts >= 0) {
-     for(i <- 0 to get_Config_runtimemonitorCaptureKindType.attempts) {
-       if(get_Config_runtimemonitorCaptureKindType.filter(v)) {
+    var v: runtimemonitor.ObservationKind.Type = tc.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
+    if(get_Config_runtimemonitorObservationKindType.attempts >= 0) {
+     for(i <- 0 to get_Config_runtimemonitorObservationKindType.attempts) {
+       if(get_Config_runtimemonitorObservationKindType.filter(v)) {
         return v
        }
-       if (get_Config_runtimemonitorCaptureKindType.verbose) {
+       if (get_Config_runtimemonitorObservationKindType.verbose) {
          println(s"Retrying for failing value: $v")
        }
-       ordinal= gen.nextZBetween(0, tc.runtimemonitor.CaptureKind.numOfElements-1)
-       v = tc.runtimemonitor.CaptureKind.byOrdinal(ordinal).get
+       ordinal= gen.nextZBetween(0, tc.runtimemonitor.ObservationKind.numOfElements-1)
+       v = tc.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
      }
     } else {
      while(T){
-       if(get_Config_runtimemonitorCaptureKindType.filter(v)) {
+       if(get_Config_runtimemonitorObservationKindType.filter(v)) {
         return v
        }
-       if (get_Config_runtimemonitorCaptureKindType.verbose) {
+       if (get_Config_runtimemonitorObservationKindType.verbose) {
          println(s"Retrying for failing value: $v")
        }
-       ordinal= gen.nextZBetween(0, tc.runtimemonitor.CaptureKind.numOfElements-1)
-       v = tc.runtimemonitor.CaptureKind.byOrdinal(ordinal).get
+       ordinal= gen.nextZBetween(0, tc.runtimemonitor.ObservationKind.numOfElements-1)
+       v = tc.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
      }
     }
     assert(F, "Requirements too strict to generate")
@@ -2895,15 +2895,15 @@ Aux_Types.scala
     config_U64 = config
   }
 
-  // ============= runtimemonitor.CaptureKind.Type ===================
-  def alwaysTrue_runtimemonitorCaptureKindType(v: runtimemonitor.CaptureKind.Type): B = {return T}
+  // ============= runtimemonitor.ObservationKind.Type ===================
+  def alwaysTrue_runtimemonitorObservationKindType(v: runtimemonitor.ObservationKind.Type): B = {return T}
 
-  var config_runtimemonitorCaptureKindType: Config_runtimemonitorCaptureKindType = Config_runtimemonitorCaptureKindType(100, _verbose, alwaysTrue_runtimemonitorCaptureKindType _)
+  var config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType = Config_runtimemonitorObservationKindType(100, _verbose, alwaysTrue_runtimemonitorObservationKindType _)
 
-  def get_Config_runtimemonitorCaptureKindType: Config_runtimemonitorCaptureKindType = {return config_runtimemonitorCaptureKindType}
+  def get_Config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType = {return config_runtimemonitorObservationKindType}
 
-  def set_Config_runtimemonitorCaptureKindType(config: Config_runtimemonitorCaptureKindType): Unit ={
-    config_runtimemonitorCaptureKindType = config
+  def set_Config_runtimemonitorObservationKindType(config: Config_runtimemonitorObservationKindType): Unit ={
+    config_runtimemonitorObservationKindType = config
   }
 
   // ============= art.DataContent ===================

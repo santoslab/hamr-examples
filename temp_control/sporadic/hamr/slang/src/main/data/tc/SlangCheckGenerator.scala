@@ -30,7 +30,7 @@ TempControl_s_tcproc_tempControl__Containers.scala
 
 OperatorInterface_s_tcproc_operatorInterface__Containers.scala
 
-CaptureKind.scala
+ObservationKind.scala
 
 DataContent.scala
 
@@ -305,12 +305,12 @@ Aux_Types.scala
 }
 
 
-@record class Gen_runtimemonitorCaptureKindType(param: RandomLibI) extends MJen[runtimemonitor.CaptureKind.Type] {
-  override def generate(f: runtimemonitor.CaptureKind.Type => Jen.Action): Jen.Action = {
+@record class Gen_runtimemonitorObservationKindType(param: RandomLibI) extends MJen[runtimemonitor.ObservationKind.Type] {
+  override def generate(f: runtimemonitor.ObservationKind.Type => Jen.Action): Jen.Action = {
     var continue = Jen.Continue
     while (T) {
 
-      continue = f(param.nextruntimemonitorCaptureKindType())
+      continue = f(param.nextruntimemonitorObservationKindType())
 
       if (!continue) {
         return Jen.End

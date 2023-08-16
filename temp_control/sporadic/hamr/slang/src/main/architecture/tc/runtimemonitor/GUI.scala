@@ -32,31 +32,30 @@ class GUI extends JFrame {
     this.setVisible(true)
   }
 
-  def update1(bridge: art.Art.BridgeId, captureKind: CaptureKind.Type, pre: art.DataContent): Unit = {
+  def update1(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent): Unit = {
     SwingUtilities.invokeLater( () => {
       val status : B = {
         // FIXME
-        if(captureKind.string.native.contains("postInit"))
-          GumboXDispatcher.dispatch(captureKind, None(), Some(pre))
+        if(observationKind.string.native.contains("postInit"))
+          GumboXDispatcher.dispatch(observationKind, None(), Some(pre))
         else
-          GumboXDispatcher.dispatch(captureKind, Some(pre), None())
+          GumboXDispatcher.dispatch(observationKind, Some(pre), None())
       }
-      model.addRow(Row(bridge, captureKind, status, JSON.from_artDataContent(pre, T)))
+      model.addRow(Row(bridge, observationKind, status, JSON.from_artDataContent(pre, T)))
     })
   }
 
-  def update2(bridge: art.Art.BridgeId, captureKind: CaptureKind.Type, pre: art.DataContent, post: art.DataContent): Unit = {
+  def update2(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent, post: art.DataContent): Unit = {
     SwingUtilities.invokeLater(() => {
-      val status =
-      model.addRow(Row(bridge, captureKind: CaptureKind.Type,
-        GumboXDispatcher.dispatch(captureKind, Some(pre), Some(post)),
+      model.addRow(Row(bridge, observationKind,
+        GumboXDispatcher.dispatch(observationKind, Some(pre), Some(post)),
         JSON.from_artDataContent(pre, T), JSON.from_artDataContent(post, T)))
     })
 
   }
 }
 
-case class Row(bridgeId: BridgeId, captureKind: CaptureKind.Type, result: Boolean, pre: String, post: String = "")
+case class Row(bridgeId: BridgeId, observationKind: ObservationKind.Type, result: Boolean, pre: String, post: String = "")
 
 class TableModel extends AbstractTableModel {
   val columnNames = Array("BridgeId", "Kind", "Satisified")
@@ -84,7 +83,7 @@ class TableModel extends AbstractTableModel {
   override def getValueAt(rowIndex: Int, columnIndex: Int): Object = {
     return columnIndex match {
       case 0 => data(rowIndex).bridgeId.string.native
-      case 1 => data(rowIndex).captureKind.string.native
+      case 1 => data(rowIndex).observationKind.string.native
       case 2 => data(rowIndex).result.string.native
       case _ => halt("Infeasible")
     }

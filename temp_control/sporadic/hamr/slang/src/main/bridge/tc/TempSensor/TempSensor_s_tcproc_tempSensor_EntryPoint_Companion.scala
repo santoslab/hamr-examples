@@ -33,18 +33,8 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
         api_tempChanged = Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]],
         api_currentTemp = get_api_currentTemp)
 
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.CaptureKind.tempSensor_postInit, postStateContainer_wL)
-
-    // the rest of this could be done in a separate thread
-
-    //val json = JSON.fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(postStateContainer_wL, T)
-    //println(s"tempSensor.initialise: Post-State values: $json")
-
-    /*
-    val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer])
-    println(s"tempSensor.initialise: Post-condition: ${if (result) "" else "un"}satisfied")
-    return result
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postInit, postStateContainer_wL)
   }
 
   def pre_compute(): Unit = {
@@ -52,16 +42,8 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
     preStateContainer_wL = Some(
       TempSensor_s_tcproc_tempSensor_PreState_wLContainer())
 
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.CaptureKind.tempSensor_preCompute, preStateContainer_wL.get)
-
-    // the rest of this could be done in a separate thread
-    /*
-    val json = JSON.fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(preStateContainer_wL.get, T)
-    println(s"tempSensor.timeTriggered: Pre-State values: $json")
-
-    // checking the pre-state values of tempSensor's compute entrypoint is not required
-    return T
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_preCompute, preStateContainer_wL.get)
   }
 
   def post_compute(): Unit = {
@@ -71,17 +53,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
         api_tempChanged = Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]],
         api_currentTemp = get_api_currentTemp)
 
-    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.CaptureKind.tempSensor_postCompute, preStateContainer_wL.get, postStateContainer_wL)
-
-    /*
-    // the rest of this could be done in a separate thread
-
-    val json = JSON.fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(postStateContainer_wL, T)
-    println(s"tempSensor.timeTriggered: Post-State values: $json")
-
-    val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer], postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer])
-    println(s"tempSensor.timeTriggered: Post-condition: ${if (result) "" else "un"}satisfied")
-    return result
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postCompute, preStateContainer_wL.get, postStateContainer_wL)
   }
 }

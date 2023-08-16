@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, TempSensor_s_tcproc_tempSensor__Containers.scala, GUMBO__Library.scala, GUMBO__Library.scala, Fan_s_tcproc_fan__Containers.scala, TempControl_s_tcproc_tempControl__Containers.scala, OperatorInterface_s_tcproc_operatorInterface__Containers.scala, CaptureKind.scala, DataContent.scala, Aux_Types.scala
+// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, TempSensor_s_tcproc_tempSensor__Containers.scala, GUMBO__Library.scala, GUMBO__Library.scala, Fan_s_tcproc_fan__Containers.scala, TempControl_s_tcproc_tempControl__Containers.scala, OperatorInterface_s_tcproc_operatorInterface__Containers.scala, ObservationKind.scala, DataContent.scala, Aux_Types.scala
 
 package tc
 
@@ -314,7 +314,7 @@ object MsgPack {
       writer.writeOption(o.api_setPoint, writeTempControlSoftwareSystemSetPoint_i _)
     }
 
-    def writeruntimemonitorCaptureKindType(o: runtimemonitor.CaptureKind.Type): Unit = {
+    def writeruntimemonitorObservationKindType(o: runtimemonitor.ObservationKind.Type): Unit = {
       writer.writeZ(o.ordinal)
     }
 
@@ -903,9 +903,9 @@ object MsgPack {
       return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(api_setPoint)
     }
 
-    def readruntimemonitorCaptureKindType(): runtimemonitor.CaptureKind.Type = {
+    def readruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
       val r = reader.readZ()
-      return runtimemonitor.CaptureKind.byOrdinal(r).get
+      return runtimemonitor.ObservationKind.byOrdinal(r).get
     }
 
     def read_artDataContent(): art.DataContent = {

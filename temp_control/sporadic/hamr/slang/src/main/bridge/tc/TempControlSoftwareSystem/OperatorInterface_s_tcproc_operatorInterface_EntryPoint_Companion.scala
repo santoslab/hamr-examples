@@ -21,28 +21,13 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
       OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(
-        api_setPoint = // tipe indicates the following is not in slang :(
-        //Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id) match {
-        //  case Some(TempControlSoftwareSystem.SetPoint_i_Payload(value)) => Some(value)
-        //  case _ => None()
-        //}
-        // so instead ...
-        if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
-          Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
-        else None())
+        api_setPoint = 
+          if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
+            Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
+          else None())
 
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.CaptureKind.operatorInterface_postInit, postStateContainer_wL)
-
-    // the rest of this could be done in a separate thread
-
-    //val json = JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(postStateContainer_wL, T)
-    //println(s"operatorInterface.initialise: Post-State values: $json")
-
-    /*
-    val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer])
-    println(s"operatorInterface.initialise: Post-condition: ${if (result) "" else "un"}satisfied")
-    return result
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postInit, postStateContainer_wL)
   }
 
   def pre_compute(): Unit = {
@@ -52,44 +37,20 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
         api_tempChanged = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
         api_currentTemp = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
 
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.CaptureKind.operatorInterface_preCompute, preStateContainer_wL.get)
-
-    // the rest of this could be done in a separate thread
-    /*
-    val json = JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(preStateContainer_wL.get, T)
-    println(s"operatorInterface.timeTriggered: Pre-State values: $json")
-
-    val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Pre_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer])
-    println(s"operatorInterface.timeTriggered: Pre-condition: ${if (result) "" else "un"}satisfied")
-    return result
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_preCompute, preStateContainer_wL.get)
   }
 
   def post_compute(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
       OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(
-        api_setPoint = // tipe indicates the following is not in slang :(
-        //Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id) match {
-        //  case Some(TempControlSoftwareSystem.SetPoint_i_Payload(value)) => Some(value)
-        //  case _ => None()
-        //}
-        // so instead ...
-        if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
-          Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
-        else None())
+        api_setPoint = 
+          if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
+            Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
+          else None())
 
-    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.CaptureKind.operatorInterface_postCompute, preStateContainer_wL.get, postStateContainer_wL)
-
-    /*
-    // the rest of this could be done in a separate thread
-
-    val json = JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(postStateContainer_wL, T)
-    println(s"operatorInterface.timeTriggered: Post-State values: $json")
-
-    val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer], postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer])
-    println(s"operatorInterface.timeTriggered: Post-condition: ${if (result) "" else "un"}satisfied")
-    return result
-    */
+    // the rest can now be performed via a different thread
+    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postCompute, preStateContainer_wL.get, postStateContainer_wL)
   }
 }

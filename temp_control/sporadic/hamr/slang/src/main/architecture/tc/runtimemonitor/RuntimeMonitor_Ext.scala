@@ -12,11 +12,11 @@ object RuntimeMonitor_Ext {
     gui.init()
   }
 
-  def update1(bridgeId: BridgeId, captureKind: CaptureKind.Type, pre: art.DataContent): Unit = {
-    gui.update1(bridgeId, captureKind, pre)
+  def update1(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent): Unit = {
+    gui.update1(bridgeId, observationKind, pre)
   }
 
-  def update2(bridgeId: BridgeId, captureKind: CaptureKind.Type, pre: art.DataContent, post: art.DataContent): Unit = {
-    gui.update2(bridgeId, captureKind, pre, post)
+  def update2(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent, post: art.DataContent): Unit = {
+    gui.update2(bridgeId, observationKind, pre, post)
   }
 }
