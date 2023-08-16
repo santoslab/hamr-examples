@@ -14,18 +14,18 @@ class FanPeriodic_p_tcproc_fan_GumboX_Tests extends FanPeriodic_p_tcproc_fan_Gum
   // set failOnUnsatPreconditions to T if the unit tests should fail when either
   // SlangCheck is never able to satisfy a datatype's filter or the generated
   // test vectors are never able to satisfy an entry point's assume pre-condition
-  val failOnUnsatPreconditions: B = F
+  var failOnUnsatPreconditions: B = F
 
-  val verbose: B = F
+  var verbose: B = F
 
   val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibfanCmd: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  def getTestVector(): Option[FanPeriodic_p_tcproc_fan_DSC_TestVector] = {
+  def next(): Option[FanPeriodic_p_tcproc_fan_PreState_Container] = {
     try {
       val api_fanCmd = ranLibfanCmd.nextCoolingFanFanCmdType()
 
-      return Some(FanPeriodic_p_tcproc_fan_DSC_TestVector(api_fanCmd))
+      return Some(FanPeriodic_p_tcproc_fan_PreState_Container(api_fanCmd))
     } catch {
       case e: AssertionError =>
        // SlangCheck was unable to satisfy a datatype's filter
@@ -34,22 +34,32 @@ class FanPeriodic_p_tcproc_fan_GumboX_Tests extends FanPeriodic_p_tcproc_fan_Gum
   }
 
   {
-
     for (i <- 0 to GumboXUtil.numTests) {
       this.registerTest(s"testComputeCB_$i") {
         var retry: B = T
 
         var j: Z = 0
         while (j < GumboXUtil.numTestVectorGenRetries && retry) {
-          getTestVector() match {
+          next() match {
             case Some(o) =>
 
-              if (verbose) {
-                println(st"""${if (j > 0) s"Retry $j: " else ""}Testing with
-                            |    fanCmd = $o.api_fanCmd""".render)
+              if (verbose && j > 0) {
+                println(s"Retry $j:")
               }
 
-              testComputeCB(o.api_fanCmd) match {
+              val results = testComputeCBV(o)
+
+              if (verbose) {
+                val tq = "\"\"\""
+                println(st"""Replay Unit Test:
+                            |  test("Replay testComputeCB_$i") {
+                            |    val json = st${tq}${tc.JSON.fromCoolingFanFanPeriodic_p_tcproc_fan_PreState_Container(o, T)}${tq}.render
+                            |    val testVector = tc.JSON.toCoolingFanFanPeriodic_p_tcproc_fan_PreState_Container(json).left
+                            |    assert (testComputeCBV(testVector) == tc.GumboXUtil.GumboXResult.$results)
+                            |  }""".render)
+              }
+
+              results match {
                 case GumboXResult.Pre_Condition_Unsat =>
                 case GumboXResult.Post_Condition_Fail =>
                   fail ("Post condition did not hold")

@@ -18,13 +18,19 @@ SetPoint_i.scala
 
 Base_Types.scala
 
-GUMBO__Library.scala
+TempSensor_s_tcproc_tempSensor__Containers.scala
 
 GUMBO__Library.scala
 
-TempSensor_s_tcproc_tempSensor_DSC_TestVectors.scala
+GUMBO__Library.scala
 
-OperatorInterface_s_tcproc_operatorInterface_DSC_TestVectors.scala
+Fan_s_tcproc_fan__Containers.scala
+
+TempControl_s_tcproc_tempControl__Containers.scala
+
+OperatorInterface_s_tcproc_operatorInterface__Containers.scala
+
+CaptureKind.scala
 
 DataContent.scala
 
@@ -52,7 +58,23 @@ Aux_Types.scala
    "Base_TypesUnsigned_8_Payload_Id"
    "CoolingFanFanAck_Payload_Id"
    "CoolingFanFanCmd_Payload_Id"
+   "CoolingFanFan_s_tcproc_fan_PostState_Container_Id"
+   "CoolingFanFan_s_tcproc_fan_PostState_wLContainer_Id"
+   "CoolingFanFan_s_tcproc_fan_PreState_Container_Id"
+   "CoolingFanFan_s_tcproc_fan_PreState_wLContainer_Id"
+   "TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_Id"
+   "TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer_Id"
+   "TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_Id"
+   "TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer_Id"
    "TempControlSoftwareSystemSetPoint_i_Payload_Id"
+   "TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_Id"
+   "TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer_Id"
+   "TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_Id"
+   "TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer_Id"
+   "TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_Id"
+   "TempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer_Id"
+   "TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_Id"
+   "TempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer_Id"
    "TempSensorTemperature_i_Payload_Id"
 }
 

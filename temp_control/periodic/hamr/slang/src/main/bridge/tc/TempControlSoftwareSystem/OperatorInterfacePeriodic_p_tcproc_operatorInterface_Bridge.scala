@@ -66,6 +66,13 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_Bridge {
 
   var c_initialization_api: Option[OperatorInterfacePeriodic_p_Initialization_Api] = None()
   var c_operational_api: Option[OperatorInterfacePeriodic_p_Operational_Api] = None()
+  @ext object OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion {
+    def pre_initialise(): Unit = $
+    def post_initialise(): Unit = $
+
+    def pre_compute(): Unit = $
+    def post_compute(): Unit = $
+  }
 
   @datatype class EntryPoints(
     OperatorInterfacePeriodic_p_tcproc_operatorInterface_BridgeId : Art.BridgeId,
@@ -84,18 +91,26 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: OperatorInterfacePeriodic_p_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
+
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.post_initialise()
     }
 
     def compute(): Unit = {
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.pre_compute()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
 
       // implement the following in 'component':  def timeTriggered(api: OperatorInterfacePeriodic_p_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
+
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.post_compute()
     }
 
     def activate(): Unit = {

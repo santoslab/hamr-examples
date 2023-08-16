@@ -89,16 +89,25 @@ object OperatorInterface_s_tcproc_operatorInterface_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS(setPoint_Id)
 
     def initialise(): Unit = {
+      OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: OperatorInterface_s_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
       Art.receiveInput(eventInPortIds, dataInPortIds)
 
+      OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion.pre_compute()
+
       // implement the following in 'component':  def timeTriggered(api: OperatorInterface_s_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
+
+      OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

@@ -54,6 +54,15 @@ object TempSensor_s_tcproc_tempSensor_GumboX {
      // IEP-Guar: Initialize Entrypoint contract for tempSensor
      initialize_IEP_Guar(api_tempChanged, api_currentTemp))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: TempSensor_s_tcproc_tempSensor_PostState_wLContainer): B =
+    inititialize_IEP_Post (
+      api_tempChanged = post.api_tempChanged,
+      api_currentTemp = post.api_currentTemp)
+
   /** CEP-Post: Compute Entrypoint Post-Condition for tempSensor
     *
     * @param api_tempChanged outgoing event port
@@ -67,4 +76,16 @@ object TempSensor_s_tcproc_tempSensor_GumboX {
 
      // I-Guar-Guard: Integration constraints for tempSensor's outgoing ports
      I_Guar_currentTemp(api_currentTemp))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for tempSensor via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: TempSensor_s_tcproc_tempSensor_PreState_wLContainer,
+      post: TempSensor_s_tcproc_tempSensor_PostState_wLContainer): B =
+    compute_CEP_Post(
+      api_tempChanged = post.api_tempChanged,
+      api_currentTemp = post.api_currentTemp)
 }

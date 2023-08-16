@@ -45,7 +45,8 @@ object TempSensor_s_tcproc_tempSensor {
     //  BUG - unauthorized mod of temperature data
     // val adjDegrees = temp.degrees + 13.0f // adjust temperature upward
     // temp = Temperature_i(adjDegrees)
-    api.put_currentTemp(temp)
+    //api.put_currentTemp(temp)
+    api.put_currentTemp(Temperature_i(333f))
     // put an event on tempChanged out event port to
     // notify subscribers (e.g., tempControl thermostat) that the
     // temperature has changed

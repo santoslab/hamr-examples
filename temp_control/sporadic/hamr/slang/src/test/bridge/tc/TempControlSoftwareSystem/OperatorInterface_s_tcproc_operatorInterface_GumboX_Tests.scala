@@ -22,12 +22,12 @@ class OperatorInterface_s_tcproc_operatorInterface_GumboX_Tests extends Operator
   val ranLibtempChanged: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibcurrentTemp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  def next(): Option[OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector] = {
+  def next(): Option[OperatorInterface_s_tcproc_operatorInterface_PreState_Container] = {
     try {
       val api_tempChanged = ranLibtempChanged.nextOption_artEmpty()
       val api_currentTemp = ranLibcurrentTemp.nextTempSensorTemperature_i()
 
-      return Some(OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(api_tempChanged,api_currentTemp))
+      return Some(OperatorInterface_s_tcproc_operatorInterface_PreState_Container(api_tempChanged,api_currentTemp))
     } catch {
       case e: AssertionError =>
        // SlangCheck was unable to satisfy a datatype's filter
@@ -72,8 +72,8 @@ class OperatorInterface_s_tcproc_operatorInterface_GumboX_Tests extends Operator
                 val tq = "\"\"\""
                 println(st"""Replay Unit Test:
                             |  test("Replay testComputeCB_$i") {
-                            |    val json = st${tq}${tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o, T)}${tq}.render
-                            |    val testVector = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(json).left
+                            |    val json = st${tq}${tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o, T)}${tq}.render
+                            |    val testVector = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(json).left
                             |    assert (testComputeCBV(testVector) == tc.GumboXUtil.GumboXResult.$results)
                             |  }""".render)
               }

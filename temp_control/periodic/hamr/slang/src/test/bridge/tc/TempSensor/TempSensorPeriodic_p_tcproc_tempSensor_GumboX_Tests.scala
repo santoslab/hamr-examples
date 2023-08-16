@@ -14,16 +14,16 @@ class TempSensorPeriodic_p_tcproc_tempSensor_GumboX_Tests extends TempSensorPeri
   // set failOnUnsatPreconditions to T if the unit tests should fail when either
   // SlangCheck is never able to satisfy a datatype's filter or the generated
   // test vectors are never able to satisfy an entry point's assume pre-condition
-  val failOnUnsatPreconditions: B = F
+  var failOnUnsatPreconditions: B = F
 
-  val verbose: B = F
+  var verbose: B = F
 
   val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
 
-  def getTestVector(): Option[TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector] = {
+  def next(): Option[TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container] = {
     try {
 
-      return Some(TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector())
+      return Some(TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container())
     } catch {
       case e: AssertionError =>
        // SlangCheck was unable to satisfy a datatype's filter
@@ -49,21 +49,22 @@ class TempSensorPeriodic_p_tcproc_tempSensor_GumboX_Tests extends TempSensorPeri
   }
 
   {
-
     for (i <- 0 to GumboXUtil.numTests) {
       this.registerTest(s"testComputeCB_$i") {
         var retry: B = T
 
         var j: Z = 0
         while (j < GumboXUtil.numTestVectorGenRetries && retry) {
-          getTestVector() match {
+          next() match {
             case Some(o) =>
 
-              if (verbose) {
-                println(st"""${if (j > 0) s"Retry $j: " else ""}""".render)
+              if (verbose && j > 0) {
+                println(s"Retry $j:")
               }
 
-              testComputeCB() match {
+              val results = testComputeCB()
+
+              results match {
                 case GumboXResult.Pre_Condition_Unsat =>
                 case GumboXResult.Post_Condition_Fail =>
                   fail ("Post condition did not hold")
