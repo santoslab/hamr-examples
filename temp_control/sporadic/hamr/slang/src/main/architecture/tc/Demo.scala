@@ -4,7 +4,6 @@ package tc
 
 import org.sireum._
 import art.scheduling.Scheduler
-import tc.runtimemonitor.RuntimeMonitor
 
 // This file will not be overwritten so is safe to edit
 
@@ -27,16 +26,18 @@ object Demo extends App {
   def main(args: ISZ[String]): Z = {
     Cli(' ').parseRun(args, 0) match {
       case Some(o: Cli.RunOption) =>
-
-        RuntimeMonitor.init()
-
         val scheduler: Scheduler = o.scheduler match {
           case Cli.RunChoice.Default => defaultScheduler()
           case Cli.RunChoice.RoundRobin => Schedulers.getRoundRobinScheduler(None())
           case Cli.RunChoice.Static => Schedulers.getStaticScheduler(None())
           case Cli.RunChoice.Legacy => Schedulers.getLegacyScheduler()
         }
+
+        Platform.setup()
+
         art.Art.run(Arch.ad, scheduler)
+
+        Platform.tearDown()
       case Some(o: Cli.HelpOption) =>
       case _ => return 1
     }

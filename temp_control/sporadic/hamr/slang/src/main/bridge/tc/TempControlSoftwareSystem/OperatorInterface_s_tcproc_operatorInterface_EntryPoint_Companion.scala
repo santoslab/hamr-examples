@@ -27,18 +27,18 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
           else None())
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postInit, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postInit, postStateContainer_wL)
   }
 
   def pre_compute(): Unit = {
     // block the component while its pre-state values are retrieved
     preStateContainer_wL = Some(
       OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(
-        api_tempChanged = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
-        api_currentTemp = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
+        api_tempChanged = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
+        api_currentTemp = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_preCompute, preStateContainer_wL.get)
+    tc.runtimemonitor.RuntimeMonitor.observePreState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_preCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]])
   }
 
   def post_compute(): Unit = {
@@ -51,6 +51,6 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
           else None())
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postCompute, preStateContainer_wL.get, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePrePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id, tc.runtimemonitor.ObservationKind.operatorInterface_postCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]], postStateContainer_wL)
   }
 }

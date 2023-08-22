@@ -34,7 +34,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
         api_currentTemp = get_api_currentTemp)
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postInit, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postInit, postStateContainer_wL)
   }
 
   def pre_compute(): Unit = {
@@ -43,7 +43,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
       TempSensor_s_tcproc_tempSensor_PreState_wLContainer())
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_preCompute, preStateContainer_wL.get)
+    tc.runtimemonitor.RuntimeMonitor.observePreState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_preCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]])
   }
 
   def post_compute(): Unit = {
@@ -54,6 +54,6 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
         api_currentTemp = get_api_currentTemp)
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postCompute, preStateContainer_wL.get, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePrePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_postCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]], postStateContainer_wL)
   }
 }

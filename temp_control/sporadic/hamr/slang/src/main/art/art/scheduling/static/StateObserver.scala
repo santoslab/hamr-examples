@@ -9,7 +9,7 @@ object StateObserver {
 
 
   def observeInPortValue(bridgeId: Art.BridgeId, portId: Art.PortId): Option[DataContent] = {
-    return Art.observeInPortValue(portId)
+    return Art.observeInInfrastructurePort(portId)
   }
 
   def observeOutPortValue(bridgeId: Art.BridgeId, portId: Art.PortId): Option[DataContent] = {
@@ -21,11 +21,11 @@ object StateObserver {
     var portValues: ISZ[(String, Option[DataContent])] = ISZ()
 
     for (port <- bridge.ports.dataIns) {
-      portValues = portValues :+ ((port.name, Art.observeInPortValue(port.id)))
+      portValues = portValues :+ ((port.name, Art.observeInInfrastructurePort(port.id)))
     }
 
     for (port <- bridge.ports.eventIns) {
-      portValues = portValues :+ ((port.name, Art.observeInPortValue(port.id)))
+      portValues = portValues :+ ((port.name, Art.observeInInfrastructurePort(port.id)))
     }
     return portValues
   }

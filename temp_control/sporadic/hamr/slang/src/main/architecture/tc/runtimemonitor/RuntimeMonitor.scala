@@ -1,4 +1,5 @@
 // #Sireum
+
 package tc.runtimemonitor
 
 import org.sireum._
@@ -8,7 +9,9 @@ import art.Art.BridgeId
 
   def init(): Unit = $
 
-  def update1(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent): Unit = $
+  def observePreState(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent]): Unit = $
 
-  def update2(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent, post: art.DataContent): Unit = $
+  def observePostState(bridgeId: BridgeId, observationKind: ObservationKind.Type, post: art.DataContent): Unit = $
+
+  def observePrePostState(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: art.DataContent): Unit = $
 }

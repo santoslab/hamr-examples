@@ -30,7 +30,7 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
           else None())
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_postInit, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_postInit, postStateContainer_wL)
   }
 
   def pre_compute(): Unit = {
@@ -40,19 +40,19 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
         In_currentFanState = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentFanState, 
         In_currentSetPoint = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentSetPoint, 
         In_latestTemp = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.latestTemp, 
-        api_tempChanged = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
+        api_tempChanged = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
         api_fanAck = 
-          if (Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id).nonEmpty)
-            Some(Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id).get.asInstanceOf[CoolingFan.FanAck_Payload].value)
+          if (Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id).nonEmpty)
+            Some(Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id).get.asInstanceOf[CoolingFan.FanAck_Payload].value)
           else None(), 
         api_setPoint = 
-          if (Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id).nonEmpty)
-            Some(Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
+          if (Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id).nonEmpty)
+            Some(Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
           else None(), 
-        api_currentTemp = Art.observeInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
+        api_currentTemp = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update1(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_preCompute, preStateContainer_wL.get)
+    tc.runtimemonitor.RuntimeMonitor.observePreState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_preCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]])
   }
 
   def post_compute(): Unit = {
@@ -68,6 +68,6 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
           else None())
 
     // the rest can now be performed via a different thread
-    tc.runtimemonitor.RuntimeMonitor.update2(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_postCompute, preStateContainer_wL.get, postStateContainer_wL)
+    tc.runtimemonitor.RuntimeMonitor.observePrePostState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id, tc.runtimemonitor.ObservationKind.tempControl_postCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]], postStateContainer_wL)
   }
 }

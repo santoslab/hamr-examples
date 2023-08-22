@@ -65,12 +65,12 @@ import tc._
 
   // setter for in DataPort
   def put_currentTemp(value : TempSensor.Temperature_i): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id, TempSensor.Temperature_i_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id, TempSensor.Temperature_i_Payload(value))
   }
 
   // setter for in EventPort
   def put_tempChanged(): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id, Empty())
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id, Empty())
   }
 
   // getter for out EventDataPort
@@ -85,7 +85,7 @@ import tc._
 
   // payload getter for out EventDataPort
   def get_setPoint_payload(): Option[TempControlSoftwareSystem.SetPoint_i_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.initialization_api.setPoint_Id).asInstanceOf[Option[TempControlSoftwareSystem.SetPoint_i_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.initialization_api.setPoint_Id).asInstanceOf[Option[TempControlSoftwareSystem.SetPoint_i_Payload]]
   }
 
 }
