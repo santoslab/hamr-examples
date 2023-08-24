@@ -19,7 +19,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
       case _ => return last_api_currentTemp.get
     }
   }
-  var preStateContainer_wL: Option[TempSensor_s_tcproc_tempSensor_PreState_wLContainer] = None()
+  var preStateContainer_wL: Option[TempSensor_s_tcproc_tempSensor_PreState_Container_PS] = None()
 
   def pre_initialise(): Unit = {
     // assume/require contracts cannot refer to incoming ports or
@@ -29,7 +29,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
   def post_initialise(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      TempSensor_s_tcproc_tempSensor_PostState_wLContainer(
+      TempSensor_s_tcproc_tempSensor_PostState_Container_PS(
         api_tempChanged = Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]],
         api_currentTemp = get_api_currentTemp)
 
@@ -40,7 +40,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
   def pre_compute(): Unit = {
     // block the component while its pre-state values are retrieved
     preStateContainer_wL = Some(
-      TempSensor_s_tcproc_tempSensor_PreState_wLContainer())
+      TempSensor_s_tcproc_tempSensor_PreState_Container_PS())
 
     // the rest can now be performed via a different thread
     tc.runtimemonitor.RuntimeMonitor.observePreState(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id, tc.runtimemonitor.ObservationKind.tempSensor_preCompute, preStateContainer_wL.asInstanceOf[Option[art.DataContent]])
@@ -49,7 +49,7 @@ object TempSensor_s_tcproc_tempSensor_EntryPoint_Companion {
   def post_compute(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      TempSensor_s_tcproc_tempSensor_PostState_wLContainer(
+      TempSensor_s_tcproc_tempSensor_PostState_Container_PS(
         api_tempChanged = Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]],
         api_currentTemp = get_api_currentTemp)
 

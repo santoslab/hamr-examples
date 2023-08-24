@@ -27,6 +27,22 @@ class GUI extends JFrame {
     js.setVisible(true)
     add(js, BorderLayout.PAGE_START)
 
+    val btnGenTestSuite = new JButton("Generate TestSuite")
+    btnGenTestSuite.addActionListener(e => {
+      if (jtable.getSelectedRows.nonEmpty) {
+        var testCases: Map[Z, ISZ[ST]] = Map.empty
+
+        for (row <- jtable.getSelectedRows) {
+          val data = model.getRow(row)
+          val id = data.bridgeId.toZ
+          testCases = testCases + id ~>
+            (testCases.getOrElse(id, ISZ[ST]()) :+
+              GumboXDispatcher.genTestCase(data.observationKind, data.pre, data.post, None()))
+        }
+        GumboXDispatcher.genTestSuite(testCases.entries)
+      }
+    })
+
     val btnGenTestCase = new JButton("Generate Test Case")
 
     btnGenTestCase.addActionListener(e => {
@@ -35,8 +51,7 @@ class GUI extends JFrame {
         println(testDir.canon)
 
         if (data.observationKind.string.native.contains("post")) {
-          val testCase = GumboXDispatcher.genTestCase(data.observationKind, data.post.get, None())
-          println(testCase.render)
+          val testCase = GumboXDispatcher.genTestCase(data.observationKind, data.pre, data.post, None())
 
           val clip = Toolkit.getDefaultToolkit.getSystemClipboard
           val strse1 = new StringSelection(testCase.render.native)
@@ -89,8 +104,13 @@ class GUI extends JFrame {
     jpbutton.setLayout(new BoxLayout(jpbutton, BoxLayout.LINE_AXIS))
     jpbutton.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10))
     jpbutton.add(Box.createHorizontalGlue())
+
+    jpbutton.add(btnGenTestSuite)
+    jpbutton.add(Box.createRigidArea(new Dimension(10, 0)))
+
     jpbutton.add(btnGenTestCase)
     jpbutton.add(Box.createRigidArea(new Dimension(10, 0)))
+
     jpbutton.add(btnVisualize)
 
     add(jpbutton, BorderLayout.PAGE_END)

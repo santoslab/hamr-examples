@@ -9,26 +9,41 @@ import tc._
 
 // containers for the pre and post state values of ports and state variables
 
-@datatype class TempControl_s_tcproc_tempControl_PreState_Container (
+@sig trait TempControl_s_tcproc_tempControl_PreState_Container extends art.DataContent {
+  def api_tempChanged: Option[art.Empty]
+  def api_fanAck: Option[CoolingFan.FanAck.Type]
+  def api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i]
+  def api_currentTemp: TempSensor.Temperature_i
+}
+
+// container for incoming ports
+@datatype class TempControl_s_tcproc_tempControl_PreState_Container_P (
   val api_tempChanged: Option[art.Empty],
   val api_fanAck: Option[CoolingFan.FanAck.Type],
   val api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i],
-  val api_currentTemp: TempSensor.Temperature_i) extends art.DataContent
+  val api_currentTemp: TempSensor.Temperature_i) extends TempControl_s_tcproc_tempControl_PreState_Container
 
-@datatype class TempControl_s_tcproc_tempControl_PreState_wLContainer (
+// container for incoming ports and state variables
+@datatype class TempControl_s_tcproc_tempControl_PreState_Container_PS (
   val In_currentFanState: CoolingFan.FanCmd.Type,
   val In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
   val In_latestTemp: TempSensor.Temperature_i,
   val api_tempChanged: Option[art.Empty],
   val api_fanAck: Option[CoolingFan.FanAck.Type],
   val api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i],
-  val api_currentTemp: TempSensor.Temperature_i) extends art.DataContent
+  val api_currentTemp: TempSensor.Temperature_i) extends TempControl_s_tcproc_tempControl_PreState_Container
 
-@datatype class TempControl_s_tcproc_tempControl_PostState_Container (
-  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends art.DataContent
+@sig trait TempControl_s_tcproc_tempControl_PostState_Container extends art.DataContent {
+  def api_fanCmd: Option[CoolingFan.FanCmd.Type]
+}
 
-@datatype class TempControl_s_tcproc_tempControl_PostState_wLContainer (
+// container for outgoing ports
+@datatype class TempControl_s_tcproc_tempControl_PostState_Container_P (
+  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends TempControl_s_tcproc_tempControl_PostState_Container
+
+// container for outgoing ports and state variables
+@datatype class TempControl_s_tcproc_tempControl_PostState_Container_PS (
   val currentFanState: CoolingFan.FanCmd.Type,
   val currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
   val latestTemp: TempSensor.Temperature_i,
-  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends art.DataContent
+  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends TempControl_s_tcproc_tempControl_PostState_Container

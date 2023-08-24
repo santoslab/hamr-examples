@@ -20,7 +20,7 @@ object OperatorInterface_s_tcproc_operatorInterface_GumboX {
     *
     * @param post Container holding the value of incoming ports and the pre-state values of state variables
     */
-  @strictpure def inititialize_IEP_Post_Container (post: OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer): B =
+  @strictpure def inititialize_IEP_Post_Container (post: OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS): B =
     inititialize_IEP_Post (
       api_setPoint = post.api_setPoint)
 
@@ -39,7 +39,7 @@ object OperatorInterface_s_tcproc_operatorInterface_GumboX {
     *
     * @param pre Container holding the value of incoming ports and the pre-state values of state variables
     */
-  @strictpure def compute_CEP_Pre_Container(pre: OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer): B =
+  @strictpure def compute_CEP_Pre_Container(pre: OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS): B =
     compute_CEP_Pre(
       api_tempChanged = pre.api_tempChanged,
       api_currentTemp = pre.api_currentTemp)
@@ -59,8 +59,8 @@ object OperatorInterface_s_tcproc_operatorInterface_GumboX {
     * @param post Container holding the values of outgoing ports and the post-state values of state variables
     */
   @strictpure def compute_CEP_Post_Container(
-      pre: OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer,
-      post: OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer): B =
+      pre: OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS,
+      post: OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS): B =
     compute_CEP_Post(
       api_setPoint = post.api_setPoint)
 }

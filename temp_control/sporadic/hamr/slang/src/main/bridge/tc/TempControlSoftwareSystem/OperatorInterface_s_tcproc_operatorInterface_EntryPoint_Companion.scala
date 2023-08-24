@@ -10,7 +10,7 @@ import tc._
 
 object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
 
-  var preStateContainer_wL: Option[OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer] = None()
+  var preStateContainer_wL: Option[OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS] = None()
 
   def pre_initialise(): Unit = {
     // assume/require contracts cannot refer to incoming ports or
@@ -20,7 +20,7 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
   def post_initialise(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(
+      OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(
         api_setPoint = 
           if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
             Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)
@@ -33,7 +33,7 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
   def pre_compute(): Unit = {
     // block the component while its pre-state values are retrieved
     preStateContainer_wL = Some(
-      OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(
+      OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(
         api_tempChanged = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.tempChanged_Id).asInstanceOf[Option[art.Empty]], 
         api_currentTemp = Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.currentTemp_Id).get.asInstanceOf[TempSensor.Temperature_i_Payload].value))
 
@@ -44,7 +44,7 @@ object OperatorInterface_s_tcproc_operatorInterface_EntryPoint_Companion {
   def post_compute(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(
+      OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(
         api_setPoint = 
           if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).nonEmpty)
             Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.operational_api.setPoint_Id).get.asInstanceOf[TempControlSoftwareSystem.SetPoint_i_Payload].value)

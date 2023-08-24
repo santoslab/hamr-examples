@@ -11,14 +11,14 @@ object GumboXDispatcher {
   def checkContract(observationKind: ObservationKind.Type, preContainer: Option[art.DataContent], postContainer: Option[art.DataContent]): B = {
     observationKind match {
       case tc.runtimemonitor.ObservationKind.tempSensor_postInit =>
-        val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer])
+        val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS])
         println(s"tempSensor.initialise: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
       case tc.runtimemonitor.ObservationKind.tempSensor_preCompute =>
         // checking the pre-state values of tempSensor's compute entrypoint is not required
         return T
       case tc.runtimemonitor.ObservationKind.tempSensor_postCompute =>
-        val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer], postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer])
+        val result: B = tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS], postContainer.get.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS])
         println(s"tempSensor.timeTriggered: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
 
@@ -33,28 +33,28 @@ object GumboXDispatcher {
         return T
 
       case tc.runtimemonitor.ObservationKind.tempControl_postInit =>
-        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS])
         println(s"tempControl.initialise: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
       case tc.runtimemonitor.ObservationKind.tempControl_preCompute =>
-        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Pre_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Pre_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS])
         println(s"tempControl.timeTriggered: Pre-condition: ${if (result) "" else "un"}satisfied")
         return result
       case tc.runtimemonitor.ObservationKind.tempControl_postCompute =>
-        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer], postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS], postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS])
         println(s"tempControl.timeTriggered: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
 
       case tc.runtimemonitor.ObservationKind.operatorInterface_postInit =>
-        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.inititialize_IEP_Post_Container(postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS])
         println(s"operatorInterface.initialise: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
       case tc.runtimemonitor.ObservationKind.operatorInterface_preCompute =>
-        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Pre_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Pre_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS])
         println(s"operatorInterface.timeTriggered: Pre-condition: ${if (result) "" else "un"}satisfied")
         return result
       case tc.runtimemonitor.ObservationKind.operatorInterface_postCompute =>
-        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer], postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer])
+        val result: B = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Post_Container(preContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS], postContainer.get.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS])
         println(s"operatorInterface.timeTriggered: Post-condition: ${if (result) "" else "un"}satisfied")
         return result
 
@@ -62,35 +62,211 @@ object GumboXDispatcher {
     }
   }
 
-  def genTestCase(observationKind: ObservationKind.Type, postContainer: String, testCaseName: Option[String]): ST = {
+  def genTestSuite(testCases: ISZ[(Z, ISZ[ST])]): Unit = {
+    val tq = "\"\"\""
+
+    val testRoot = Os.path(".") / "src" / "test" / "bridge"
+
+    val TempSensor_s_tcproc_tempSensor_id = Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor.id
+    val Fan_s_tcproc_fan_id = Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.id
+    val TempControl_s_tcproc_tempControl_id = Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.id
+    val OperatorInterface_s_tcproc_operatorInterface_id = Arch.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface.id
+
+    def genUniqueSuiteName(path: Os.Path, prefix: String): String = {
+      var i = 0
+      while(true) {
+        val cand = path / s"${prefix}_${i}.scala"
+        if (!cand.exists) {
+          return s"${prefix}_${i}"
+        }
+        i = i + 1
+      }
+      halt("Infeasible")
+    }
+
+    for (p <- testCases) {
+      art.Art.BridgeId.fromZ(p._1) match {
+        case TempSensor_s_tcproc_tempSensor_id =>
+          val prefix = "TempSensor_s_tcproc_tempSensor_RM_TestSuite"
+          val path = testRoot /+ ISZ("tc","TempSensor")
+          val suiteName = genUniqueSuiteName(path, prefix)
+
+          val testSuite =
+            st"""package tc.TempSensor
+                |
+                |import org.sireum._
+                |import tc.TempSensor._
+                |
+                |class ${suiteName} extends TempSensor_s_tcproc_tempSensor_GumboX_TestHarness_ScalaTest {
+                |  val verbose: B = false
+                |
+                |  var i = 0 // ensures generated test case names are unique
+                |  def incrementI: Int = {
+                |    i += 1
+                |    return i
+                |  }
+                |
+                |  ${(p._2, "\nincrementI\n\n")}
+                |}"""
+          val filename = path / s"${suiteName}.scala"
+          filename.writeOver(testSuite.render)
+          println(s"Wrote: ${filename.toUri}")
+        case Fan_s_tcproc_fan_id =>
+          val prefix = "Fan_s_tcproc_fan_RM_TestSuite"
+          val path = testRoot /+ ISZ("tc","CoolingFan")
+          val suiteName = genUniqueSuiteName(path, prefix)
+
+          val testSuite =
+            st"""package tc.CoolingFan
+                |
+                |import org.sireum._
+                |import tc.CoolingFan._
+                |
+                |class ${suiteName} extends Fan_s_tcproc_fan_GumboX_TestHarness_ScalaTest {
+                |  val verbose: B = false
+                |
+                |  var i = 0 // ensures generated test case names are unique
+                |  def incrementI: Int = {
+                |    i += 1
+                |    return i
+                |  }
+                |
+                |  ${(p._2, "\nincrementI\n\n")}
+                |}"""
+          val filename = path / s"${suiteName}.scala"
+          filename.writeOver(testSuite.render)
+          println(s"Wrote: ${filename.toUri}")
+        case TempControl_s_tcproc_tempControl_id =>
+          val prefix = "TempControl_s_tcproc_tempControl_RM_TestSuite"
+          val path = testRoot /+ ISZ("tc","TempControlSoftwareSystem")
+          val suiteName = genUniqueSuiteName(path, prefix)
+
+          val testSuite =
+            st"""package tc.TempControlSoftwareSystem
+                |
+                |import org.sireum._
+                |import tc.TempControlSoftwareSystem._
+                |
+                |class ${suiteName} extends TempControl_s_tcproc_tempControl_GumboX_TestHarness_ScalaTest {
+                |  val verbose: B = false
+                |
+                |  var i = 0 // ensures generated test case names are unique
+                |  def incrementI: Int = {
+                |    i += 1
+                |    return i
+                |  }
+                |
+                |  ${(p._2, "\nincrementI\n\n")}
+                |}"""
+          val filename = path / s"${suiteName}.scala"
+          filename.writeOver(testSuite.render)
+          println(s"Wrote: ${filename.toUri}")
+        case OperatorInterface_s_tcproc_operatorInterface_id =>
+          val prefix = "OperatorInterface_s_tcproc_operatorInterface_RM_TestSuite"
+          val path = testRoot /+ ISZ("tc","TempControlSoftwareSystem")
+          val suiteName = genUniqueSuiteName(path, prefix)
+
+          val testSuite =
+            st"""package tc.TempControlSoftwareSystem
+                |
+                |import org.sireum._
+                |import tc.TempControlSoftwareSystem._
+                |
+                |class ${suiteName} extends OperatorInterface_s_tcproc_operatorInterface_GumboX_TestHarness_ScalaTest {
+                |  val verbose: B = false
+                |
+                |  var i = 0 // ensures generated test case names are unique
+                |  def incrementI: Int = {
+                |    i += 1
+                |    return i
+                |  }
+                |
+                |  ${(p._2, "\nincrementI\n\n")}
+                |}"""
+          val filename = path / s"${suiteName}.scala"
+          filename.writeOver(testSuite.render)
+          println(s"Wrote: ${filename.toUri}")
+        case x => halt(s"Infeasible bridge id: $x")
+      }
+    }
+  }
+
+  def genTestCase(observationKind: ObservationKind.Type, preContainer: Option[String], postContainer: Option[String], testCaseName: Option[String]): ST = {
     val tq = "\"\"\""
     observationKind match {
       case tc.runtimemonitor.ObservationKind.tempSensor_postCompute =>
-        return (
-          st"""test("${if (testCaseName.nonEmpty) testCaseName.get else "testPost" }") {
-              |  val json: String = st${tq}$postContainer${tq}.render
-              |  val testVector = tc.JSON.fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(json).left
-              |  assert(testComputeCBV(testVector)
-              |}""")
-
-
+        return (st"""// Begin test cases for tc.runtimemonitor.ObservationKind.tempSensor_postCompute
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Check Post-condition: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val postJson: String = st${tq}${postContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(preJson).left
+                    |  val postContainer = tc.JSON.toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(postJson).left
+                    |  assert(tc.TempSensor.TempSensor_s_tcproc_tempSensor_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
+                    |}
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Run testComputeCBV: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(preJson).left
+                    |  println(testComputeCBV(preContainer))
+                    |}
+                    |// End test cases for tc.runtimemonitor.ObservationKind.tempSensor_postCompute""")
+      case tc.runtimemonitor.ObservationKind.fan_postCompute =>
+        return (st"""// Begin test cases for tc.runtimemonitor.ObservationKind.fan_postCompute
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Run testComputeCBV: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toCoolingFanFan_s_tcproc_fan_PreState_Container_PS(preJson).left
+                    |  println(testComputeCBV(preContainer))
+                    |}
+                    |// End test cases for tc.runtimemonitor.ObservationKind.fan_postCompute""")
       case tc.runtimemonitor.ObservationKind.tempControl_postCompute =>
-        return (
-          st"""test("${if (testCaseName.nonEmpty) testCaseName.get else "testPost" }") {
-              |  val json: String = st${tq}$postContainer${tq}.render
-              |  val testVector = tc.JSON.fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(json).left
-              |  assert(testComputeCBV(testVector)
-              |}""")
-
+        return (st"""// Begin test cases for tc.runtimemonitor.ObservationKind.tempControl_postCompute
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Check Pre-condition: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(preJson).left
+                    |  assert(tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Pre_Container(preContainer))
+                    |}
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Check Post-condition: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val postJson: String = st${tq}${postContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(preJson).left
+                    |  val postContainer = tc.JSON.toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(postJson).left
+                    |  assert(tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
+                    |}
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Run testComputeCB_wLV: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(preJson).left
+                    |  println(testComputeCB_wLV(preContainer))
+                    |}
+                    |// End test cases for tc.runtimemonitor.ObservationKind.tempControl_postCompute""")
       case tc.runtimemonitor.ObservationKind.operatorInterface_postCompute =>
-        return (
-          st"""test("${if (testCaseName.nonEmpty) testCaseName.get else "testPost" }") {
-              |  val json: String = st${tq}$postContainer${tq}.render
-              |  val testVector = tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(json).left
-              |  assert(testComputeCBV(testVector)
-              |}""")
-
-      case _ => halt("Infeasible")
+        return (st"""// Begin test cases for tc.runtimemonitor.ObservationKind.operatorInterface_postCompute
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Check Pre-condition: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(preJson).left
+                    |  assert(tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Pre_Container(preContainer))
+                    |}
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Check Post-condition: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val postJson: String = st${tq}${postContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(preJson).left
+                    |  val postContainer = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(postJson).left
+                    |  assert(tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
+                    |}
+                    |
+                    |test(s"${if (testCaseName.nonEmpty) testCaseName.get else "Run testComputeCBV: $i" }") {
+                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
+                    |  val preContainer = tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(preJson).left
+                    |  println(testComputeCBV(preContainer))
+                    |}
+                    |// End test cases for tc.runtimemonitor.ObservationKind.operatorInterface_postCompute""")
+      case _ => return st"// TODO ${observationKind}"
     }
   }
 }

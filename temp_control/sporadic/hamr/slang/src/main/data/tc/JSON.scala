@@ -190,64 +190,99 @@ object JSON {
     }
 
     @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container): ST = {
+      o match {
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container"""")
+        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P"""")
       ))
     }
 
-    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer): ST = {
+    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer"""")
+        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS"""")
       ))
     }
 
     @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container): ST = {
+      o match {
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container""""),
+        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P""""),
         ("api_tempChanged", printOption(F, o.api_tempChanged, print_artEmpty _)),
         ("api_currentTemp", printTempSensorTemperature_i(o.api_currentTemp))
       ))
     }
 
-    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer): ST = {
+    @pure def printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer""""),
+        ("type", st""""TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS""""),
         ("api_tempChanged", printOption(F, o.api_tempChanged, print_artEmpty _)),
         ("api_currentTemp", printTempSensorTemperature_i(o.api_currentTemp))
       ))
     }
 
     @pure def printCoolingFanFan_s_tcproc_fan_PreState_Container(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container): ST = {
+      o match {
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P => return printCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS => return printCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printCoolingFanFan_s_tcproc_fan_PreState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PreState_Container""""),
+        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PreState_Container_P""""),
         ("api_fanCmd", printOption(F, o.api_fanCmd, printCoolingFanFanCmdType _))
       ))
     }
 
-    @pure def printCoolingFanFan_s_tcproc_fan_PreState_wLContainer(o: CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer): ST = {
+    @pure def printCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer""""),
+        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS""""),
         ("api_fanCmd", printOption(F, o.api_fanCmd, printCoolingFanFanCmdType _))
       ))
     }
 
     @pure def printCoolingFanFan_s_tcproc_fan_PostState_Container(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container): ST = {
+      o match {
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P => return printCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS => return printCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printCoolingFanFan_s_tcproc_fan_PostState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PostState_Container""""),
+        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PostState_Container_P""""),
         ("api_fanAck", printOption(F, o.api_fanAck, printCoolingFanFanAckType _))
       ))
     }
 
-    @pure def printCoolingFanFan_s_tcproc_fan_PostState_wLContainer(o: CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer): ST = {
+    @pure def printCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer""""),
+        ("type", st""""CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS""""),
         ("api_fanAck", printOption(F, o.api_fanAck, printCoolingFanFanAckType _))
       ))
     }
 
     @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container): ST = {
+      o match {
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container""""),
+        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P""""),
         ("api_tempChanged", printOption(F, o.api_tempChanged, print_artEmpty _)),
         ("api_fanAck", printOption(F, o.api_fanAck, printCoolingFanFanAckType _)),
         ("api_setPoint", printOption(F, o.api_setPoint, printTempControlSoftwareSystemSetPoint_i _)),
@@ -255,9 +290,9 @@ object JSON {
       ))
     }
 
-    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer): ST = {
+    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer""""),
+        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS""""),
         ("In_currentFanState", printCoolingFanFanCmdType(o.In_currentFanState)),
         ("In_currentSetPoint", printTempControlSoftwareSystemSetPoint_i(o.In_currentSetPoint)),
         ("In_latestTemp", printTempSensorTemperature_i(o.In_latestTemp)),
@@ -269,15 +304,22 @@ object JSON {
     }
 
     @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container): ST = {
+      o match {
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container""""),
+        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P""""),
         ("api_fanCmd", printOption(F, o.api_fanCmd, printCoolingFanFanCmdType _))
       ))
     }
 
-    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer): ST = {
+    @pure def printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer""""),
+        ("type", st""""TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS""""),
         ("currentFanState", printCoolingFanFanCmdType(o.currentFanState)),
         ("currentSetPoint", printTempControlSoftwareSystemSetPoint_i(o.currentSetPoint)),
         ("latestTemp", printTempSensorTemperature_i(o.latestTemp)),
@@ -286,31 +328,45 @@ object JSON {
     }
 
     @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container): ST = {
+      o match {
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container""""),
+        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P""""),
         ("api_tempChanged", printOption(F, o.api_tempChanged, print_artEmpty _)),
         ("api_currentTemp", printTempSensorTemperature_i(o.api_currentTemp))
       ))
     }
 
-    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer): ST = {
+    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer""""),
+        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS""""),
         ("api_tempChanged", printOption(F, o.api_tempChanged, print_artEmpty _)),
         ("api_currentTemp", printTempSensorTemperature_i(o.api_currentTemp))
       ))
     }
 
     @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container): ST = {
+      o match {
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container""""),
+        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P""""),
         ("api_setPoint", printOption(F, o.api_setPoint, printTempControlSoftwareSystemSetPoint_i _))
       ))
     }
 
-    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer): ST = {
+    @pure def printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer""""),
+        ("type", st""""TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS""""),
         ("api_setPoint", printOption(F, o.api_setPoint, printTempControlSoftwareSystemSetPoint_i _))
       ))
     }
@@ -359,22 +415,22 @@ object JSON {
         case o: CoolingFan.FanAck_Payload => return printCoolingFanFanAck_Payload(o)
         case o: TempSensor.Temperature_i_Payload => return printTempSensorTemperature_i_Payload(o)
         case o: TempControlSoftwareSystem.SetPoint_i_Payload => return printTempControlSoftwareSystemSetPoint_i_Payload(o)
-        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container => return printCoolingFanFan_s_tcproc_fan_PreState_Container(o)
-        case o: CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer => return printCoolingFanFan_s_tcproc_fan_PreState_wLContainer(o)
-        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container => return printCoolingFanFan_s_tcproc_fan_PostState_Container(o)
-        case o: CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer => return printCoolingFanFan_s_tcproc_fan_PostState_wLContainer(o)
-        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(o)
-        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(o)
-        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(o)
-        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(o)
-        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(o)
-        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(o)
-        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(o)
-        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(o)
-        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o)
-        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(o)
-        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(o)
-        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P => return printCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS => return printCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P => return printCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS => return printCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS => return printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS => return printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS => return printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => return printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
       }
     }
 
@@ -769,37 +825,55 @@ object JSON {
     }
 
     def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container = {
-      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P", "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS"))
+      t.native match {
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T); return r
+        case _ => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
+      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(F)
       return r
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_ContainerT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container = {
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container")
+        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P")
       }
-      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container()
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P()
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer = {
-      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainerT(F)
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
+      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(F)
       return r
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainerT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer = {
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer")
+        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS")
       }
-      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer()
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS()
     }
 
     def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container = {
-      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P", "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS"))
+      t.native match {
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T); return r
+        case _ => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
+      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(F)
       return r
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_ContainerT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container = {
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container")
+        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P")
       }
       parser.parseObjectKey("api_tempChanged")
       val api_tempChanged = parser.parseOption(parse_artEmpty _)
@@ -807,17 +881,17 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container(api_tempChanged, api_currentTemp)
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P(api_tempChanged, api_currentTemp)
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer = {
-      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainerT(F)
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
+      val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(F)
       return r
     }
 
-    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainerT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer = {
+    def parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer")
+        parser.parseObjectType("TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS")
       }
       parser.parseObjectKey("api_tempChanged")
       val api_tempChanged = parser.parseOption(parse_artEmpty _)
@@ -825,77 +899,104 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer(api_tempChanged, api_currentTemp)
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS(api_tempChanged, api_currentTemp)
     }
 
     def parseCoolingFanFan_s_tcproc_fan_PreState_Container(): CoolingFan.Fan_s_tcproc_fan_PreState_Container = {
-      val r = parseCoolingFanFan_s_tcproc_fan_PreState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("CoolingFan.Fan_s_tcproc_fan_PreState_Container_P", "CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS"))
+      t.native match {
+        case "CoolingFan.Fan_s_tcproc_fan_PreState_Container_P" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PT(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T); return r
+        case _ => val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseCoolingFanFan_s_tcproc_fan_PreState_Container_P(): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
+      val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PT(F)
       return r
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PreState_ContainerT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_Container = {
+    def parseCoolingFanFan_s_tcproc_fan_PreState_Container_PT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PreState_Container")
+        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PreState_Container_P")
       }
       parser.parseObjectKey("api_fanCmd")
       val api_fanCmd = parser.parseOption(parseCoolingFanFanCmdType _)
       parser.parseObjectNext()
-      return CoolingFan.Fan_s_tcproc_fan_PreState_Container(api_fanCmd)
+      return CoolingFan.Fan_s_tcproc_fan_PreState_Container_P(api_fanCmd)
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PreState_wLContainer(): CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer = {
-      val r = parseCoolingFanFan_s_tcproc_fan_PreState_wLContainerT(F)
+    def parseCoolingFanFan_s_tcproc_fan_PreState_Container_PS(): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
+      val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PST(F)
       return r
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PreState_wLContainerT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer = {
+    def parseCoolingFanFan_s_tcproc_fan_PreState_Container_PST(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer")
+        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS")
       }
       parser.parseObjectKey("api_fanCmd")
       val api_fanCmd = parser.parseOption(parseCoolingFanFanCmdType _)
       parser.parseObjectNext()
-      return CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer(api_fanCmd)
+      return CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS(api_fanCmd)
     }
 
     def parseCoolingFanFan_s_tcproc_fan_PostState_Container(): CoolingFan.Fan_s_tcproc_fan_PostState_Container = {
-      val r = parseCoolingFanFan_s_tcproc_fan_PostState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("CoolingFan.Fan_s_tcproc_fan_PostState_Container_P", "CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS"))
+      t.native match {
+        case "CoolingFan.Fan_s_tcproc_fan_PostState_Container_P" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PT(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T); return r
+        case _ => val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseCoolingFanFan_s_tcproc_fan_PostState_Container_P(): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
+      val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PT(F)
       return r
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PostState_ContainerT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_Container = {
+    def parseCoolingFanFan_s_tcproc_fan_PostState_Container_PT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PostState_Container")
+        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PostState_Container_P")
       }
       parser.parseObjectKey("api_fanAck")
       val api_fanAck = parser.parseOption(parseCoolingFanFanAckType _)
       parser.parseObjectNext()
-      return CoolingFan.Fan_s_tcproc_fan_PostState_Container(api_fanAck)
+      return CoolingFan.Fan_s_tcproc_fan_PostState_Container_P(api_fanAck)
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PostState_wLContainer(): CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer = {
-      val r = parseCoolingFanFan_s_tcproc_fan_PostState_wLContainerT(F)
+    def parseCoolingFanFan_s_tcproc_fan_PostState_Container_PS(): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
+      val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PST(F)
       return r
     }
 
-    def parseCoolingFanFan_s_tcproc_fan_PostState_wLContainerT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer = {
+    def parseCoolingFanFan_s_tcproc_fan_PostState_Container_PST(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer")
+        parser.parseObjectType("CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS")
       }
       parser.parseObjectKey("api_fanAck")
       val api_fanAck = parser.parseOption(parseCoolingFanFanAckType _)
       parser.parseObjectNext()
-      return CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer(api_fanAck)
+      return CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS(api_fanAck)
     }
 
     def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container = {
-      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS"))
+      t.native match {
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T); return r
+        case _ => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
+      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_ContainerT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container = {
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container")
+        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P")
       }
       parser.parseObjectKey("api_tempChanged")
       val api_tempChanged = parser.parseOption(parse_artEmpty _)
@@ -909,17 +1010,17 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container(api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P(api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer = {
-      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainerT(F)
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
+      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainerT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer = {
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer")
+        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS")
       }
       parser.parseObjectKey("In_currentFanState")
       val In_currentFanState = parseCoolingFanFanCmdType()
@@ -942,32 +1043,41 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer(In_currentFanState, In_currentSetPoint, In_latestTemp, api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS(In_currentFanState, In_currentSetPoint, In_latestTemp, api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
     }
 
     def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container = {
-      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS"))
+      t.native match {
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T); return r
+        case _ => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
+      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_ContainerT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container = {
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container")
+        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P")
       }
       parser.parseObjectKey("api_fanCmd")
       val api_fanCmd = parser.parseOption(parseCoolingFanFanCmdType _)
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container(api_fanCmd)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P(api_fanCmd)
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer = {
-      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainerT(F)
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
+      val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainerT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer = {
+    def parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer")
+        parser.parseObjectType("TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS")
       }
       parser.parseObjectKey("currentFanState")
       val currentFanState = parseCoolingFanFanCmdType()
@@ -981,17 +1091,26 @@ object JSON {
       parser.parseObjectKey("api_fanCmd")
       val api_fanCmd = parser.parseOption(parseCoolingFanFanCmdType _)
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer(currentFanState, currentSetPoint, latestTemp, api_fanCmd)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS(currentFanState, currentSetPoint, latestTemp, api_fanCmd)
     }
 
     def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container = {
-      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS"))
+      t.native match {
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T); return r
+        case _ => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_ContainerT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container = {
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container")
+        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P")
       }
       parser.parseObjectKey("api_tempChanged")
       val api_tempChanged = parser.parseOption(parse_artEmpty _)
@@ -999,17 +1118,17 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container(api_tempChanged, api_currentTemp)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(api_tempChanged, api_currentTemp)
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer = {
-      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainerT(F)
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
+      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainerT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer = {
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer")
+        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS")
       }
       parser.parseObjectKey("api_tempChanged")
       val api_tempChanged = parser.parseOption(parse_artEmpty _)
@@ -1017,37 +1136,46 @@ object JSON {
       parser.parseObjectKey("api_currentTemp")
       val api_currentTemp = parseTempSensorTemperature_i()
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(api_tempChanged, api_currentTemp)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(api_tempChanged, api_currentTemp)
     }
 
     def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container = {
-      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_ContainerT(F)
+      val t = parser.parseObjectTypes(ISZ("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS"))
+      t.native match {
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
+        case _ => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
+      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_ContainerT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container = {
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container")
+        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P")
       }
       parser.parseObjectKey("api_setPoint")
       val api_setPoint = parser.parseOption(parseTempControlSoftwareSystemSetPoint_i _)
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container(api_setPoint)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(api_setPoint)
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer = {
-      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainerT(F)
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
+      val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(F)
       return r
     }
 
-    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainerT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer = {
+    def parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer")
+        parser.parseObjectType("TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS")
       }
       parser.parseObjectKey("api_setPoint")
       val api_setPoint = parser.parseOption(parseTempControlSoftwareSystemSetPoint_i _)
       parser.parseObjectNext()
-      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(api_setPoint)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(api_setPoint)
     }
 
     def parseruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
@@ -1072,7 +1200,7 @@ object JSON {
     }
 
     def parse_artDataContent(): art.DataContent = {
-      val t = parser.parseObjectTypes(ISZ("Base_Types.Boolean_Payload", "Base_Types.Integer_Payload", "Base_Types.Integer_8_Payload", "Base_Types.Integer_16_Payload", "Base_Types.Integer_32_Payload", "Base_Types.Integer_64_Payload", "Base_Types.Unsigned_8_Payload", "Base_Types.Unsigned_16_Payload", "Base_Types.Unsigned_32_Payload", "Base_Types.Unsigned_64_Payload", "Base_Types.Float_Payload", "Base_Types.Float_32_Payload", "Base_Types.Float_64_Payload", "Base_Types.Character_Payload", "Base_Types.String_Payload", "Base_Types.Bits_Payload", "art.Empty", "CoolingFan.FanCmd_Payload", "CoolingFan.FanAck_Payload", "TempSensor.Temperature_i_Payload", "TempControlSoftwareSystem.SetPoint_i_Payload", "CoolingFan.Fan_s_tcproc_fan_PreState_Container", "CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer", "CoolingFan.Fan_s_tcproc_fan_PostState_Container", "CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer", "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container", "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer", "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container", "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer"))
+      val t = parser.parseObjectTypes(ISZ("Base_Types.Boolean_Payload", "Base_Types.Integer_Payload", "Base_Types.Integer_8_Payload", "Base_Types.Integer_16_Payload", "Base_Types.Integer_32_Payload", "Base_Types.Integer_64_Payload", "Base_Types.Unsigned_8_Payload", "Base_Types.Unsigned_16_Payload", "Base_Types.Unsigned_32_Payload", "Base_Types.Unsigned_64_Payload", "Base_Types.Float_Payload", "Base_Types.Float_32_Payload", "Base_Types.Float_64_Payload", "Base_Types.Character_Payload", "Base_Types.String_Payload", "Base_Types.Bits_Payload", "art.Empty", "CoolingFan.FanCmd_Payload", "CoolingFan.FanAck_Payload", "TempSensor.Temperature_i_Payload", "TempControlSoftwareSystem.SetPoint_i_Payload", "CoolingFan.Fan_s_tcproc_fan_PreState_Container_P", "CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS", "CoolingFan.Fan_s_tcproc_fan_PostState_Container_P", "CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS", "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P", "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS", "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P", "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P", "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P", "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS"))
       t.native match {
         case "Base_Types.Boolean_Payload" => val r = parseBase_TypesBoolean_PayloadT(T); return r
         case "Base_Types.Integer_Payload" => val r = parseBase_TypesInteger_PayloadT(T); return r
@@ -1095,23 +1223,23 @@ object JSON {
         case "CoolingFan.FanAck_Payload" => val r = parseCoolingFanFanAck_PayloadT(T); return r
         case "TempSensor.Temperature_i_Payload" => val r = parseTempSensorTemperature_i_PayloadT(T); return r
         case "TempControlSoftwareSystem.SetPoint_i_Payload" => val r = parseTempControlSoftwareSystemSetPoint_i_PayloadT(T); return r
-        case "CoolingFan.Fan_s_tcproc_fan_PreState_Container" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_ContainerT(T); return r
-        case "CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_wLContainerT(T); return r
-        case "CoolingFan.Fan_s_tcproc_fan_PostState_Container" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_ContainerT(T); return r
-        case "CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_wLContainerT(T); return r
-        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_ContainerT(T); return r
-        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainerT(T); return r
-        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_ContainerT(T); return r
-        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainerT(T); return r
-        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_ContainerT(T); return r
-        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainerT(T); return r
-        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_ContainerT(T); return r
-        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainerT(T); return r
-        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_ContainerT(T); return r
-        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainerT(T); return r
-        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_ContainerT(T); return r
-        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainerT(T); return r
-        case _ => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainerT(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PreState_Container_P" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PT(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS" => val r = parseCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PostState_Container_P" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PT(T); return r
+        case "CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS" => val r = parseCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(T); return r
+        case "TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS" => val r = parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS" => val r = parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(T); return r
+        case "TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS" => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
+        case _ => val r = parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
       }
     }
 
@@ -1558,8 +1686,8 @@ object JSON {
     return r
   }
 
-  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(o)
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1567,12 +1695,30 @@ object JSON {
     }
   }
 
-  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer, Json.ErrorMsg] = {
-    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_wLContainer = {
-      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer()
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P, Json.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
+      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P()
       return r
     }
-    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_wLContainer _)
+    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS, Json.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
+      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS _)
     return r
   }
 
@@ -1594,8 +1740,8 @@ object JSON {
     return r
   }
 
-  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(o)
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1603,12 +1749,30 @@ object JSON {
     }
   }
 
-  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer, Json.ErrorMsg] = {
-    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_wLContainer = {
-      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer()
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P, Json.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
+      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P()
       return r
     }
-    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_wLContainer _)
+    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(s: String): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS, Json.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(parser: Parser): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
+      val r = parser.parseTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS _)
     return r
   }
 
@@ -1630,8 +1794,8 @@ object JSON {
     return r
   }
 
-  def fromCoolingFanFan_s_tcproc_fan_PreState_wLContainer(o: CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer, isCompact: B): String = {
-    val st = Printer.printCoolingFanFan_s_tcproc_fan_PreState_wLContainer(o)
+  def fromCoolingFanFan_s_tcproc_fan_PreState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1639,12 +1803,30 @@ object JSON {
     }
   }
 
-  def toCoolingFanFan_s_tcproc_fan_PreState_wLContainer(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer, Json.ErrorMsg] = {
-    def fCoolingFanFan_s_tcproc_fan_PreState_wLContainer(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PreState_wLContainer = {
-      val r = parser.parseCoolingFanFan_s_tcproc_fan_PreState_wLContainer()
+  def toCoolingFanFan_s_tcproc_fan_PreState_Container_P(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PreState_Container_P, Json.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PreState_Container_P(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
+      val r = parser.parseCoolingFanFan_s_tcproc_fan_PreState_Container_P()
       return r
     }
-    val r = to(s, fCoolingFanFan_s_tcproc_fan_PreState_wLContainer _)
+    val r = to(s, fCoolingFanFan_s_tcproc_fan_PreState_Container_P _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PreState_Container_PS(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS, Json.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PreState_Container_PS(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
+      val r = parser.parseCoolingFanFan_s_tcproc_fan_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fCoolingFanFan_s_tcproc_fan_PreState_Container_PS _)
     return r
   }
 
@@ -1666,8 +1848,8 @@ object JSON {
     return r
   }
 
-  def fromCoolingFanFan_s_tcproc_fan_PostState_wLContainer(o: CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer, isCompact: B): String = {
-    val st = Printer.printCoolingFanFan_s_tcproc_fan_PostState_wLContainer(o)
+  def fromCoolingFanFan_s_tcproc_fan_PostState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1675,12 +1857,30 @@ object JSON {
     }
   }
 
-  def toCoolingFanFan_s_tcproc_fan_PostState_wLContainer(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer, Json.ErrorMsg] = {
-    def fCoolingFanFan_s_tcproc_fan_PostState_wLContainer(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PostState_wLContainer = {
-      val r = parser.parseCoolingFanFan_s_tcproc_fan_PostState_wLContainer()
+  def toCoolingFanFan_s_tcproc_fan_PostState_Container_P(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PostState_Container_P, Json.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PostState_Container_P(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
+      val r = parser.parseCoolingFanFan_s_tcproc_fan_PostState_Container_P()
       return r
     }
-    val r = to(s, fCoolingFanFan_s_tcproc_fan_PostState_wLContainer _)
+    val r = to(s, fCoolingFanFan_s_tcproc_fan_PostState_Container_P _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PostState_Container_PS(s: String): Either[CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS, Json.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PostState_Container_PS(parser: Parser): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
+      val r = parser.parseCoolingFanFan_s_tcproc_fan_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fCoolingFanFan_s_tcproc_fan_PostState_Container_PS _)
     return r
   }
 
@@ -1702,8 +1902,8 @@ object JSON {
     return r
   }
 
-  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(o)
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1711,12 +1911,30 @@ object JSON {
     }
   }
 
-  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer, Json.ErrorMsg] = {
-    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_wLContainer = {
-      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer()
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
+      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P()
       return r
     }
-    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_wLContainer _)
+    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
+      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS _)
     return r
   }
 
@@ -1738,8 +1956,8 @@ object JSON {
     return r
   }
 
-  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(o)
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1747,12 +1965,30 @@ object JSON {
     }
   }
 
-  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer, Json.ErrorMsg] = {
-    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_wLContainer = {
-      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer()
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
+      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P()
       return r
     }
-    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_wLContainer _)
+    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(s: String): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(parser: Parser): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
+      val r = parser.parseTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS _)
     return r
   }
 
@@ -1774,8 +2010,8 @@ object JSON {
     return r
   }
 
-  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(o)
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1783,12 +2019,30 @@ object JSON {
     }
   }
 
-  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer, Json.ErrorMsg] = {
-    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer = {
-      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer()
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P()
       return r
     }
-    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_wLContainer _)
+    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
+      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS _)
     return r
   }
 
@@ -1810,8 +2064,8 @@ object JSON {
     return r
   }
 
-  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer, isCompact: B): String = {
-    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(o)
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1819,12 +2073,30 @@ object JSON {
     }
   }
 
-  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer, Json.ErrorMsg] = {
-    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer = {
-      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer()
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
+      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P()
       return r
     }
-    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_wLContainer _)
+    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(s: String): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS, Json.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(parser: Parser): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
+      val r = parser.parseTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS _)
     return r
   }
 

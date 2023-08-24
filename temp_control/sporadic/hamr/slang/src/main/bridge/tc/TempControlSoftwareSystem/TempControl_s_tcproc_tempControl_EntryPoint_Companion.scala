@@ -10,7 +10,7 @@ import tc._
 
 object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
 
-  var preStateContainer_wL: Option[TempControl_s_tcproc_tempControl_PreState_wLContainer] = None()
+  var preStateContainer_wL: Option[TempControl_s_tcproc_tempControl_PreState_Container_PS] = None()
 
   def pre_initialise(): Unit = {
     // assume/require contracts cannot refer to incoming ports or
@@ -20,7 +20,7 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
   def post_initialise(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      TempControl_s_tcproc_tempControl_PostState_wLContainer(
+      TempControl_s_tcproc_tempControl_PostState_Container_PS(
         currentFanState = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentFanState,
         currentSetPoint = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentSetPoint,
         latestTemp = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.latestTemp,
@@ -36,7 +36,7 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
   def pre_compute(): Unit = {
     // block the component while its pre-state values are retrieved
     preStateContainer_wL = Some(
-      TempControl_s_tcproc_tempControl_PreState_wLContainer(
+      TempControl_s_tcproc_tempControl_PreState_Container_PS(
         In_currentFanState = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentFanState, 
         In_currentSetPoint = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentSetPoint, 
         In_latestTemp = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.latestTemp, 
@@ -58,7 +58,7 @@ object TempControl_s_tcproc_tempControl_EntryPoint_Companion {
   def post_compute(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      TempControl_s_tcproc_tempControl_PostState_wLContainer(
+      TempControl_s_tcproc_tempControl_PostState_Container_PS(
         currentFanState = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentFanState,
         currentSetPoint = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.currentSetPoint,
         latestTemp = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl.latestTemp,

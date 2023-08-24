@@ -42,6 +42,17 @@ import tc.GumboXUtil.GumboXResult
     return result
   }
 
+  def testComputeCBJ(json: String): GumboXResult.Type = {
+    tc.JSON.toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(json) match {
+      case Either.Left(o) => return testComputeCBV(o)
+      case Either.Right(msg) => halt(msg.string)
+    }
+  }
+
+  def testComputeCBV(o: TempSensor_s_tcproc_tempSensor_PreState_Container): GumboXResult.Type = {
+    return testComputeCB()
+  }
+
   /** Contract-based test harness for the compute entry point
     */
   def testComputeCB(

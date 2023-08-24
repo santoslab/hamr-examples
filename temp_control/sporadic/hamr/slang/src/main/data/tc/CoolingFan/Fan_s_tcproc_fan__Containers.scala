@@ -9,14 +9,26 @@ import tc._
 
 // containers for the pre and post state values of ports and state variables
 
-@datatype class Fan_s_tcproc_fan_PreState_Container (
-  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends art.DataContent
+@sig trait Fan_s_tcproc_fan_PreState_Container extends art.DataContent {
+  def api_fanCmd: Option[CoolingFan.FanCmd.Type]
+}
 
-@datatype class Fan_s_tcproc_fan_PreState_wLContainer (
-  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends art.DataContent
+// container for incoming ports
+@datatype class Fan_s_tcproc_fan_PreState_Container_P (
+  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends Fan_s_tcproc_fan_PreState_Container
 
-@datatype class Fan_s_tcproc_fan_PostState_Container (
-  val api_fanAck: Option[CoolingFan.FanAck.Type]) extends art.DataContent
+// container for incoming ports and state variables
+@datatype class Fan_s_tcproc_fan_PreState_Container_PS (
+  val api_fanCmd: Option[CoolingFan.FanCmd.Type]) extends Fan_s_tcproc_fan_PreState_Container
 
-@datatype class Fan_s_tcproc_fan_PostState_wLContainer (
-  val api_fanAck: Option[CoolingFan.FanAck.Type]) extends art.DataContent
+@sig trait Fan_s_tcproc_fan_PostState_Container extends art.DataContent {
+  def api_fanAck: Option[CoolingFan.FanAck.Type]
+}
+
+// container for outgoing ports
+@datatype class Fan_s_tcproc_fan_PostState_Container_P (
+  val api_fanAck: Option[CoolingFan.FanAck.Type]) extends Fan_s_tcproc_fan_PostState_Container
+
+// container for outgoing ports and state variables
+@datatype class Fan_s_tcproc_fan_PostState_Container_PS (
+  val api_fanAck: Option[CoolingFan.FanAck.Type]) extends Fan_s_tcproc_fan_PostState_Container

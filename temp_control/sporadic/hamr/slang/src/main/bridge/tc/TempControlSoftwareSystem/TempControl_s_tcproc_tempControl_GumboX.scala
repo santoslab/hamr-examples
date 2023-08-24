@@ -86,7 +86,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
     *
     * @param post Container holding the value of incoming ports and the pre-state values of state variables
     */
-  @strictpure def inititialize_IEP_Post_Container (post: TempControl_s_tcproc_tempControl_PostState_wLContainer): B =
+  @strictpure def inititialize_IEP_Post_Container (post: TempControl_s_tcproc_tempControl_PostState_Container_PS): B =
     inititialize_IEP_Post (
       currentFanState = post.currentFanState,
       currentSetPoint = post.currentSetPoint,
@@ -124,7 +124,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
     *
     * @param pre Container holding the value of incoming ports and the pre-state values of state variables
     */
-  @strictpure def compute_CEP_Pre_Container(pre: TempControl_s_tcproc_tempControl_PreState_wLContainer): B =
+  @strictpure def compute_CEP_Pre_Container(pre: TempControl_s_tcproc_tempControl_PreState_Container_PS): B =
     compute_CEP_Pre(
       In_currentFanState = pre.In_currentFanState,
       In_currentSetPoint = pre.In_currentSetPoint,
@@ -253,8 +253,8 @@ object TempControl_s_tcproc_tempControl_GumboX {
     * @param post Container holding the values of outgoing ports and the post-state values of state variables
     */
   @strictpure def compute_CEP_Post_Container(
-      pre: TempControl_s_tcproc_tempControl_PreState_wLContainer,
-      post: TempControl_s_tcproc_tempControl_PostState_wLContainer): B =
+      pre: TempControl_s_tcproc_tempControl_PreState_Container_PS,
+      post: TempControl_s_tcproc_tempControl_PostState_Container_PS): B =
     compute_CEP_Post(
       In_currentFanState = pre.In_currentFanState,
       In_currentSetPoint = pre.In_currentSetPoint,

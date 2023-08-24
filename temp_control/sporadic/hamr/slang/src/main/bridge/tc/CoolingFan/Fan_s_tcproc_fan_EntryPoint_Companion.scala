@@ -10,7 +10,7 @@ import tc._
 
 object Fan_s_tcproc_fan_EntryPoint_Companion {
 
-  var preStateContainer_wL: Option[Fan_s_tcproc_fan_PreState_wLContainer] = None()
+  var preStateContainer_wL: Option[Fan_s_tcproc_fan_PreState_Container_PS] = None()
 
   def pre_initialise(): Unit = {
     // assume/require contracts cannot refer to incoming ports or
@@ -20,7 +20,7 @@ object Fan_s_tcproc_fan_EntryPoint_Companion {
   def post_initialise(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      Fan_s_tcproc_fan_PostState_wLContainer(
+      Fan_s_tcproc_fan_PostState_Container_PS(
         api_fanAck = 
           if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanAck_Id).nonEmpty)
             Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanAck_Id).get.asInstanceOf[CoolingFan.FanAck_Payload].value)
@@ -33,7 +33,7 @@ object Fan_s_tcproc_fan_EntryPoint_Companion {
   def pre_compute(): Unit = {
     // block the component while its pre-state values are retrieved
     preStateContainer_wL = Some(
-      Fan_s_tcproc_fan_PreState_wLContainer(
+      Fan_s_tcproc_fan_PreState_Container_PS(
         api_fanCmd = 
           if (Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanCmd_Id).nonEmpty)
             Some(Art.observeInPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanCmd_Id).get.asInstanceOf[CoolingFan.FanCmd_Payload].value)
@@ -46,7 +46,7 @@ object Fan_s_tcproc_fan_EntryPoint_Companion {
   def post_compute(): Unit = {
     // block the component while its post-state values are retrieved
     val postStateContainer_wL =
-      Fan_s_tcproc_fan_PostState_wLContainer(
+      Fan_s_tcproc_fan_PostState_Container_PS(
         api_fanAck = 
           if (Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanAck_Id).nonEmpty)
             Some(Art.observeOutPortVariable(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanAck_Id).get.asInstanceOf[CoolingFan.FanAck_Payload].value)

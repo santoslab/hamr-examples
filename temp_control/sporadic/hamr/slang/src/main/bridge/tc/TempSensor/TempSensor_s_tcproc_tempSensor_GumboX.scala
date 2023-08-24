@@ -58,7 +58,7 @@ object TempSensor_s_tcproc_tempSensor_GumboX {
     *
     * @param post Container holding the value of incoming ports and the pre-state values of state variables
     */
-  @strictpure def inititialize_IEP_Post_Container (post: TempSensor_s_tcproc_tempSensor_PostState_wLContainer): B =
+  @strictpure def inititialize_IEP_Post_Container (post: TempSensor_s_tcproc_tempSensor_PostState_Container_PS): B =
     inititialize_IEP_Post (
       api_tempChanged = post.api_tempChanged,
       api_currentTemp = post.api_currentTemp)
@@ -83,8 +83,8 @@ object TempSensor_s_tcproc_tempSensor_GumboX {
     * @param post Container holding the values of outgoing ports and the post-state values of state variables
     */
   @strictpure def compute_CEP_Post_Container(
-      pre: TempSensor_s_tcproc_tempSensor_PreState_wLContainer,
-      post: TempSensor_s_tcproc_tempSensor_PostState_wLContainer): B =
+      pre: TempSensor_s_tcproc_tempSensor_PreState_Container_PS,
+      post: TempSensor_s_tcproc_tempSensor_PostState_Container_PS): B =
     compute_CEP_Post(
       api_tempChanged = post.api_tempChanged,
       api_currentTemp = post.api_currentTemp)

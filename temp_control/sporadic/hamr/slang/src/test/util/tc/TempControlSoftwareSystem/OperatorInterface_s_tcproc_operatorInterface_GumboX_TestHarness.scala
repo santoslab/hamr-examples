@@ -48,7 +48,7 @@ import tc.GumboXUtil.GumboXResult
   }
 
   def testComputeCBV(o: OperatorInterface_s_tcproc_operatorInterface_PreState_Container): GumboXResult.Type = {
-    return testComputeCB(o.api_tempChanged,o.api_currentTemp)
+    return testComputeCB(o.api_tempChanged, o.api_currentTemp)
   }
 
   /** Contract-based test harness for the compute entry point
