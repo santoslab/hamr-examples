@@ -37,7 +37,7 @@ class GUI extends JFrame {
           val id = data.bridgeId.toZ
           testCases = testCases + id ~>
             (testCases.getOrElse(id, ISZ[ST]()) :+
-              GumboXDispatcher.genTestCase(data.observationKind, data.pre, data.post, None()))
+              GumboXDispatcher.genTestCase(data.observationKind, data.pre, data.post, Some(": $i")))
         }
         GumboXDispatcher.genTestSuite(testCases.entries)
       }
