@@ -7,7 +7,7 @@ import art.Art.BridgeId
 
 @ext object RuntimeMonitor {
 
-  def init(): Unit = $
+  def init(modelInfo: ModelInfo): Unit = $
 
   def observePreState(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent]): Unit = $
 

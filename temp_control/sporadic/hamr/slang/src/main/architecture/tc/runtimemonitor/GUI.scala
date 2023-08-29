@@ -2,7 +2,8 @@ package tc.runtimemonitor
 
 import org.sireum._
 import art.Art.BridgeId
-import tc.JSON
+import tc.{JSON, runtimemonitor}
+import tc.catgui.{DemoTreeTableModelSC, InputSC, InputsSC, JTreeTableSC, OutputSC, OutputsSC, TreeTableModelSC, compSC}
 
 import java.awt.datatransfer.StringSelection
 import java.awt.{BorderLayout, Dimension, Toolkit}
@@ -15,13 +16,47 @@ class GUI extends JFrame {
 
   var jtable: JTable = _
   var model: TableModel = _
+  var catTreeTable: JTreeTableSC = _
 
-  def init(): Unit = {
+  def modelInfoToCompSC(modelInfo: ModelInfo): DemoTreeTableModelSC = {
+
+    var components: Array[compSC] = new Array[compSC](0)
+
+    for(c <- modelInfo.components) {
+      var inputCompSCs: Array[InputSC] = new Array[InputSC](0)
+      var outputCompSCs: Array[OutputSC] = new Array[OutputSC](0)
+
+      for (state <- c.state) {
+        val kind = state match {
+          case i: Port => s"${if (state.direction == StateDirection.In) "Incoming" else "Outgoing"} Port"
+          case i: StateVariable => s"${if (state.direction == StateDirection.In) "Pre" else "Post"} State Variable"
+        }
+        state.direction match {
+          case StateDirection.In =>
+            inputCompSCs = inputCompSCs :+ new InputSC(Array[Predef.String](state.name.native, kind, ""))
+          case StateDirection.Out =>
+            outputCompSCs = outputCompSCs :+ new OutputSC(Array[Predef.String](state.name.native, kind, ""))
+        }
+      }
+      components = components :+ new compSC(new InputsSC(inputCompSCs), new OutputsSC(outputCompSCs), c.name.native)
+    }
+
+    return new DemoTreeTableModelSC(components)
+  }
+
+  def init(modelInfo: ModelInfo): Unit = {
     this.setTitle("Visualizer")
 
     model = new TableModel()
     jtable = new JTable()
     jtable.setModel(model)
+
+    catTreeTable = new JTreeTableSC(modelInfoToCompSC(modelInfo))
+    val catFrame = new JFrame()
+    val catPane = new JScrollPane((catTreeTable))
+    catFrame.add(catPane, BorderLayout.CENTER)
+    catFrame.pack()
+    catFrame.setVisible(true)
 
     val js = new JScrollPane(jtable)
     js.setVisible(true)

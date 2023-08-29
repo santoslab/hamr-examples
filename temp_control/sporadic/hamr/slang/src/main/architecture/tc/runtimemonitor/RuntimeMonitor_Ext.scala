@@ -7,9 +7,9 @@ object RuntimeMonitor_Ext {
 
   var gui: GUI = _
 
-  def init(): Unit = {
+  def init(modelInfo: ModelInfo): Unit = {
     gui = new GUI()
-    gui.init()
+    gui.init(modelInfo)
   }
 
   def observePreState(bridgeId: BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent]): Unit = {
