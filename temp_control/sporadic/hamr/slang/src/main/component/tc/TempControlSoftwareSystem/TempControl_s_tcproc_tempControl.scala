@@ -249,6 +249,7 @@ object TempControl_s_tcproc_tempControl {
     // get current temp from currentTemp in data port
     latestTemp = api.get_currentTemp().get // since this is a data port, the .get always succeeds
 
+    api.logInfo(s"Received: $latestTemp")
     // compute command to send to fan
     perform_fan_control(api)
   }
@@ -298,10 +299,12 @@ object TempControl_s_tcproc_tempControl {
     if (latestTemp.degrees < currentSetPoint.low.degrees) {
       // if current temp is below low set point,
       currentFanState = CoolingFan.FanCmd.Off
+      api.put_fanCmd(currentFanState)
       api.logInfo("Set fan command: Off")
     } else if (latestTemp.degrees > currentSetPoint.high.degrees) {
       // if current temp exceeds high set point,
       currentFanState = CoolingFan.FanCmd.On
+      api.put_fanCmd(currentFanState)
       api.logInfo("Set fan command: On")
     } else {
       api.logInfo("Fan state unchanged")
@@ -311,7 +314,8 @@ object TempControl_s_tcproc_tempControl {
     }
     if (currentFanState != oldFanState) {
       // if we change the desired fanState, send new command to fan to change its state
-      api.put_fanCmd(currentFanState)
+      // FIXME: this doesn't take into account fan actuation failures
+      //api.put_fanCmd(currentFanState)
     }
   }
   def activate(api: TempControl_s_Operational_Api): Unit = { }

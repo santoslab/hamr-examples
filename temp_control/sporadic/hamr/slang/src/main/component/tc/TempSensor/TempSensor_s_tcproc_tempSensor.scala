@@ -40,7 +40,7 @@ object TempSensor_s_tcproc_tempSensor {
     )
     // read temperature from HARDWARE temperature sensor,
     // via interface realized via Slang Extension "TempSensorNative"
-    var temp = TempSensorDevice.currentTempGet()
+    val temp = TempSensorDevice.currentTempGet()
     // set the out data port currentTemp to hold the read temperature
     //  BUG - unauthorized mod of temperature data
     // val adjDegrees = temp.degrees + 13.0f // adjust temperature upward

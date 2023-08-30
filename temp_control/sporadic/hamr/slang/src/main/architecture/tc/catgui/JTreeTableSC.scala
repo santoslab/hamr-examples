@@ -13,7 +13,11 @@ class JTreeTableSC(treeTableModel: TreeTableModelSC) extends JTable { // Create 
   protected var tree: TreeTableCellRenderer = null
   tree = new TreeTableCellRenderer(treeTableModel)
   // Install a tableModel representing the visible rows in the tree.
-  super.setModel(new TreeTableModelAdapterSC(treeTableModel, tree))
+
+  // FIXME: save the tree model so we can fire data changed
+  val treeModel = new TreeTableModelAdapterSC(treeTableModel, tree)
+  super.setModel(treeModel)
+
   // Force the JTable and JTree to share their row selection models.
   val selectionWrapper = new ListToTreeSelectionModelWrapper
   tree.setSelectionModel(selectionWrapper)
@@ -32,16 +36,18 @@ class JTreeTableSC(treeTableModel: TreeTableModelSC) extends JTable { // Create 
     setRowHeight(18)
   }
 
-  def updatePort(array: Array[_], portName: String, portValue: String, portDesc: String): Unit = {
+  def updatePort(array: Array[_], portName: String, portValue: String): Unit = {
     if (array.isInstanceOf[Array[InputSC]]) {
       val input = array.asInstanceOf[Array[InputSC]]
       for (i <- input.indices) {
         if (input(i).column(0) eq portName) {
-          if (input(i).column(1) ne portValue) {
+          if (input(i).column(2) ne portValue) {
             input(i).setUpdated(true)
             tree.setCellRenderer(new cellColor)
           }
-          input(i).setColumn(Array[String](portName, portValue, portDesc))
+          // FIXME: don't want the description field to update
+          input(i).setColumn(Array[String](portName, input(i).column(1), portValue))
+          SwingUtilities.invokeLater(() => treeModel.fireTableDataChanged())
         }
       }
     }
@@ -49,11 +55,13 @@ class JTreeTableSC(treeTableModel: TreeTableModelSC) extends JTable { // Create 
       val output = array.asInstanceOf[Array[OutputSC]]
       for (i <- output.indices) {
         if (output(i).column(0) eq portName) {
-          if (output(i).column(1) ne portValue) {
+          if (output(i).column(2) ne portValue) {
             output(i).setUpdated(true)
             tree.setCellRenderer(new cellColor)
           }
-          output(i).setColumn(Array[String](portName, portValue, portDesc))
+          // FIXME: don't want the description field to update
+          output(i).setColumn(Array[String](portName, output(i).column(1), portValue))
+          SwingUtilities.invokeLater(() => treeModel.fireTableDataChanged())
         }
       }
     }

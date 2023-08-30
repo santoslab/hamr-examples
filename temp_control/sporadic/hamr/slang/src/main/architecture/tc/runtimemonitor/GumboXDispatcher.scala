@@ -319,4 +319,82 @@ object GumboXDispatcher {
       case _ => return st"// TODO ${observationKind}"
     }
   }
+
+  def getUpdates(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, container: art.DataContent): Map[String, String] = {
+    observationKind match {
+      case tc.runtimemonitor.ObservationKind.tempSensor_postInit =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS]
+        updates = updates + "currentTemp" ~> postContainer.api_currentTemp.string
+        if (postContainer.api_tempChanged.nonEmpty) {
+          updates = updates + "tempChanged" ~> postContainer.api_tempChanged.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.tempControl_postInit =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS]
+        updates = updates + "currentSetPoint" ~> postContainer.currentSetPoint.string
+        updates = updates + "currentFanState" ~> postContainer.currentFanState.string
+        updates = updates + "latestTemp" ~> postContainer.latestTemp.string
+        if (postContainer.api_fanCmd.nonEmpty) {
+          updates = updates + "fanCmd" ~> postContainer.api_fanCmd.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.operatorInterface_postInit =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS]
+        if (postContainer.api_setPoint.nonEmpty) {
+          updates = updates + "setPoint" ~> postContainer.api_setPoint.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.tempControl_preCompute =>
+        var updates: Map[String, String] = Map.empty
+        val preContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS]
+        updates = updates + "currentTemp" ~> preContainer.api_currentTemp.string
+        if (preContainer.api_fanAck.nonEmpty) {
+          updates = updates + "fanAck" ~> preContainer.api_fanAck.get.string
+        }
+        if (preContainer.api_setPoint.nonEmpty) {
+          updates = updates + "setPoint" ~> preContainer.api_setPoint.get.string
+        }
+        if (preContainer.api_tempChanged.nonEmpty) {
+          updates = updates + "tempChanged" ~> preContainer.api_tempChanged.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.operatorInterface_preCompute =>
+        var updates: Map[String, String] = Map.empty
+        val preContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS]
+        updates = updates + "currentTemp" ~> preContainer.api_currentTemp.string
+        if (preContainer.api_tempChanged.nonEmpty) {
+          updates = updates + "tempChanged" ~> preContainer.api_tempChanged.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.tempSensor_postCompute =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS]
+        updates = updates + "currentTemp" ~> postContainer.api_currentTemp.string
+        if (postContainer.api_tempChanged.nonEmpty) {
+          updates = updates + "tempChanged" ~> postContainer.api_tempChanged.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.tempControl_postCompute =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS]
+        updates = updates + "currentSetPoint" ~> postContainer.currentSetPoint.string
+        updates = updates + "currentFanState" ~> postContainer.currentFanState.string
+        updates = updates + "latestTemp" ~> postContainer.latestTemp.string
+        if (postContainer.api_fanCmd.nonEmpty) {
+          updates = updates + "fanCmd" ~> postContainer.api_fanCmd.get.string
+        }
+        return updates
+      case tc.runtimemonitor.ObservationKind.operatorInterface_postCompute =>
+        var updates: Map[String, String] = Map.empty
+        val postContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS]
+        if (postContainer.api_setPoint.nonEmpty) {
+          updates = updates + "setPoint" ~> postContainer.api_setPoint.get.string
+        }
+        return updates
+      case _ => return Map.empty
+    }
+  }
 }

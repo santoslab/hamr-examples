@@ -1,9 +1,9 @@
 package tc.runtimemonitor
 
-import org.sireum._
 import art.Art.BridgeId
-import tc.{JSON, runtimemonitor}
-import tc.catgui.{DemoTreeTableModelSC, InputSC, InputsSC, JTreeTableSC, OutputSC, OutputsSC, TreeTableModelSC, compSC}
+import org.sireum._
+import tc.JSON
+import tc.catgui._
 
 import java.awt.datatransfer.StringSelection
 import java.awt.{BorderLayout, Dimension, Toolkit}
@@ -17,12 +17,14 @@ class GUI extends JFrame {
   var jtable: JTable = _
   var model: TableModel = _
   var catTreeTable: JTreeTableSC = _
+  var catTreeModel: DemoTreeTableModelSC = _
+  var cmModelInfo: Map[Z, compSC] = Map.empty
 
   def modelInfoToCompSC(modelInfo: ModelInfo): DemoTreeTableModelSC = {
 
     var components: Array[compSC] = new Array[compSC](0)
 
-    for(c <- modelInfo.components) {
+    for (c <- modelInfo.components) {
       var inputCompSCs: Array[InputSC] = new Array[InputSC](0)
       var outputCompSCs: Array[OutputSC] = new Array[OutputSC](0)
 
@@ -38,7 +40,9 @@ class GUI extends JFrame {
             outputCompSCs = outputCompSCs :+ new OutputSC(Array[Predef.String](state.name.native, kind, ""))
         }
       }
-      components = components :+ new compSC(new InputsSC(inputCompSCs), new OutputsSC(outputCompSCs), c.name.native)
+      val sc = new compSC(new InputsSC(inputCompSCs), new OutputsSC(outputCompSCs), c.name.native)
+      cmModelInfo = cmModelInfo + (c.id ~> sc)
+      components = components :+ sc
     }
 
     return new DemoTreeTableModelSC(components)
@@ -51,7 +55,8 @@ class GUI extends JFrame {
     jtable = new JTable()
     jtable.setModel(model)
 
-    catTreeTable = new JTreeTableSC(modelInfoToCompSC(modelInfo))
+    catTreeModel = modelInfoToCompSC(modelInfo)
+    catTreeTable = new JTreeTableSC(catTreeModel)
     val catFrame = new JFrame()
     val catPane = new JScrollPane((catTreeTable))
     catFrame.add(catPane, BorderLayout.CENTER)
@@ -157,16 +162,46 @@ class GUI extends JFrame {
     setVisible(true)
   }
 
+  def updateOutPorts(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, post: art.DataContent): Unit = {
+    val cmi = cmModelInfo.get(bridge.toZ).get
+    val outputs = cmi.getOut.getOutputs
+    val m: Map[String, String] = GumboXDispatcher.getUpdates(bridge, observationKind, post)
+    for (entry <- m.entries) {
+      catTreeTable.updatePort(outputs, entry._1.native, entry._2.native)
+    }
+
+  }
+
+  def updateInPorts(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent): Unit = {
+    val cmi = cmModelInfo.get(bridge.toZ).get
+    val inputs = cmi.getIn.getInputs
+    val m: Map[String, String] = GumboXDispatcher.getUpdates(bridge, observationKind, pre)
+    for (entry <- m.entries) {
+      catTreeTable.updatePort(inputs, entry._1.native, entry._2.native)
+    }
+
+  }
+
   def observePreState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent]): Unit = {
-    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, pre, None()))
+    SwingUtilities.invokeLater(
+      () => {
+        updateInPorts(bridge, observationKind, pre.get)
+        dispatch(bridge, observationKind, pre, None())
+    })
   }
 
   def observePostState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, post: art.DataContent): Unit = {
-    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, None(), Some(post)))
+    SwingUtilities.invokeLater(() => {
+      updateOutPorts(bridge, observationKind, post)
+      dispatch(bridge, observationKind, None(), Some(post))
+    })
   }
 
   def observePrePostState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: art.DataContent): Unit = {
-    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, pre, Some(post)))
+    SwingUtilities.invokeLater(() => {
+      updateOutPorts(bridge, observationKind, post)
+      dispatch(bridge, observationKind, pre, Some(post))
+    })
   }
 
   def dispatch(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: Option[art.DataContent]): Unit = {

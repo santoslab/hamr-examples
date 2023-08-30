@@ -3,7 +3,6 @@
 package tc
 
 import org.sireum._
-import tc.runtimemonitor.tcModelInfo
 
 // This file will not be overwritten so is safe to edit
 
@@ -13,7 +12,7 @@ object Platform {
     // BEGIN PLATFORM SETUP
     {
       // Contributions from GumboX Plugin
-      tc.runtimemonitor.RuntimeMonitor.init(tcModelInfo.modelInfo)
+      tc.runtimemonitor.RuntimeMonitor.init(tc.runtimemonitor.ModelInfo.modelInfo)
     }
     // END PLATFORM SETUP
   }
