@@ -74,8 +74,8 @@ class CatRuntimeMonitor extends RuntimeMonitorListener {
   protected implicit val context: ExecutionContextExecutorService = ExecutionContext.fromExecutorService(Executors.newSingleThreadExecutor())
 
   override def observePreState(bridgeId: Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[DataContent]): Unit = {
-    // TODO: really want to run updates in a separate, non-blocking thread. Kucing should not
-    //       the Slang program, nor any other runnning swing GUI -- I don't think SwingUtilities.invokeLater
+    // TODO: really want to run updates in a separate, non-blocking thread. Kucing should not block
+    //       the Slang program, nor any other running swing GUI -- I don't think SwingUtilities.invokeLater
     //       guarantees the latter
     Future(updateInPorts(bridgeId, observationKind, pre.get))
   }
