@@ -3,50 +3,20 @@ package tc.runtimemonitor
 import art.Art.BridgeId
 import org.sireum._
 import tc.JSON
-import tc.catgui._
 
 import java.awt.datatransfer.StringSelection
 import java.awt.{BorderLayout, Dimension, Toolkit}
 import javax.swing._
 import javax.swing.table.AbstractTableModel
 
-class GUI extends JFrame {
+// This file will not be overwritten so is safe to edit
+
+class DefaultRuntimeMonitor extends JFrame with RuntimeMonitorListener {
 
   val testDir = Os.path(".") / "src" / "test" / "bridge" / "tc"
 
   var jtable: JTable = _
   var model: TableModel = _
-  var catTreeTable: JTreeTableSC = _
-  var catTreeModel: DemoTreeTableModelSC = _
-  var cmModelInfo: Map[Z, compSC] = Map.empty
-
-  def modelInfoToCompSC(modelInfo: ModelInfo): DemoTreeTableModelSC = {
-
-    var components: Array[compSC] = new Array[compSC](0)
-
-    for (c <- modelInfo.components) {
-      var inputCompSCs: Array[InputSC] = new Array[InputSC](0)
-      var outputCompSCs: Array[OutputSC] = new Array[OutputSC](0)
-
-      for (state <- c.state) {
-        val kind = state match {
-          case i: Port => s"${if (state.direction == StateDirection.In) "Incoming" else "Outgoing"} Port"
-          case i: StateVariable => s"${if (state.direction == StateDirection.In) "Pre" else "Post"} State Variable"
-        }
-        state.direction match {
-          case StateDirection.In =>
-            inputCompSCs = inputCompSCs :+ new InputSC(Array[Predef.String](state.name.native, kind, ""))
-          case StateDirection.Out =>
-            outputCompSCs = outputCompSCs :+ new OutputSC(Array[Predef.String](state.name.native, kind, ""))
-        }
-      }
-      val sc = new compSC(new InputsSC(inputCompSCs), new OutputsSC(outputCompSCs), c.name.native)
-      cmModelInfo = cmModelInfo + (c.id ~> sc)
-      components = components :+ sc
-    }
-
-    return new DemoTreeTableModelSC(components)
-  }
 
   def init(modelInfo: ModelInfo): Unit = {
     this.setTitle("Visualizer")
@@ -54,14 +24,6 @@ class GUI extends JFrame {
     model = new TableModel()
     jtable = new JTable()
     jtable.setModel(model)
-
-    catTreeModel = modelInfoToCompSC(modelInfo)
-    catTreeTable = new JTreeTableSC(catTreeModel)
-    val catFrame = new JFrame()
-    val catPane = new JScrollPane((catTreeTable))
-    catFrame.add(catPane, BorderLayout.CENTER)
-    catFrame.pack()
-    catFrame.setVisible(true)
 
     val js = new JScrollPane(jtable)
     js.setVisible(true)
@@ -88,7 +50,6 @@ class GUI extends JFrame {
     btnGenTestCase.addActionListener(e => {
       if (jtable.getSelectedRow >= 0) {
         val data = model.getRow(jtable.getSelectedRow)
-        println(testDir.canon)
 
         if (data.observationKind.string.native.contains("post")) {
           val testCase = GumboXDispatcher.genTestCase(data.observationKind, data.pre, data.post, None())
@@ -162,46 +123,16 @@ class GUI extends JFrame {
     setVisible(true)
   }
 
-  def updateOutPorts(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, post: art.DataContent): Unit = {
-    val cmi = cmModelInfo.get(bridge.toZ).get
-    val outputs = cmi.getOut.getOutputs
-    val m: Map[String, String] = GumboXDispatcher.getUpdates(bridge, observationKind, post)
-    for (entry <- m.entries) {
-      catTreeTable.updatePort(outputs, entry._1.native, entry._2.native)
-    }
-
-  }
-
-  def updateInPorts(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: art.DataContent): Unit = {
-    val cmi = cmModelInfo.get(bridge.toZ).get
-    val inputs = cmi.getIn.getInputs
-    val m: Map[String, String] = GumboXDispatcher.getUpdates(bridge, observationKind, pre)
-    for (entry <- m.entries) {
-      catTreeTable.updatePort(inputs, entry._1.native, entry._2.native)
-    }
-
-  }
-
   def observePreState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent]): Unit = {
-    SwingUtilities.invokeLater(
-      () => {
-        updateInPorts(bridge, observationKind, pre.get)
-        dispatch(bridge, observationKind, pre, None())
-    })
+    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, pre, None()))
   }
 
   def observePostState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, post: art.DataContent): Unit = {
-    SwingUtilities.invokeLater(() => {
-      updateOutPorts(bridge, observationKind, post)
-      dispatch(bridge, observationKind, None(), Some(post))
-    })
+    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, None(), Some(post)))
   }
 
   def observePrePostState(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: art.DataContent): Unit = {
-    SwingUtilities.invokeLater(() => {
-      updateOutPorts(bridge, observationKind, post)
-      dispatch(bridge, observationKind, pre, Some(post))
-    })
+    SwingUtilities.invokeLater(() => dispatch(bridge, observationKind, pre, Some(post)))
   }
 
   def dispatch(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: Option[art.DataContent]): Unit = {
