@@ -20,6 +20,10 @@ object FanDevice_Ext_Sim {
         //   true if the received command is On
         //   false if the received command is not On
         isOn = cmd == FanCmd.On
+
+        // having temp sensor check 'isOn' doesn't work when it's tested in
+        // isolation since
+
         // set the acknowledgement value to OK
         FanAck.Ok
       } else

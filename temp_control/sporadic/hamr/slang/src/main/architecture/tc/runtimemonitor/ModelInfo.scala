@@ -52,6 +52,18 @@ object ModelInfo {
       dispatchProtocol = iDispatchProtocol.Sporadic,
       state = ISZ(
         StateVariable(
+          name = "In_currentSetPoint",
+          direction = StateDirection.In,
+          slangType = "TempControlSoftwareSystem.SetPoint_i"),
+        StateVariable(
+          name = "In_currentFanState",
+          direction = StateDirection.In,
+          slangType = "CoolingFan.FanCmd.Type"),
+        StateVariable(
+          name = "In_latestTemp",
+          direction = StateDirection.In,
+          slangType = "TempSensor.Temperature_i"),
+        StateVariable(
           name = "currentSetPoint",
           direction = StateDirection.Out,
           slangType = "TempControlSoftwareSystem.SetPoint_i"),

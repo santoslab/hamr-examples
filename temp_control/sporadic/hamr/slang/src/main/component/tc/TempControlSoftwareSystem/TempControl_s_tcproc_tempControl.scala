@@ -98,7 +98,7 @@ object TempControl_s_tcproc_tempControl {
         (latestTemp.degrees >= currentSetPoint.low.degrees &
            latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
         // guarantee mustSendFanCmd
-        //   If the local record of the fan state was updated,
+        //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
         (In(currentFanState) != currentFanState) -->:
           (api.fanCmd.nonEmpty &&
@@ -167,7 +167,7 @@ object TempControl_s_tcproc_tempControl {
         (latestTemp.degrees >= currentSetPoint.low.degrees &
            latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
         // guarantee mustSendFanCmd
-        //   If the local record of the fan state was updated,
+        //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
         (In(currentFanState) != currentFanState) -->:
           (api.fanCmd.nonEmpty &&
@@ -229,7 +229,7 @@ object TempControl_s_tcproc_tempControl {
         (latestTemp.degrees >= currentSetPoint.low.degrees &
            latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
         // guarantee mustSendFanCmd
-        //   If the local record of the fan state was updated,
+        //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
         (In(currentFanState) != currentFanState) -->:
           (api.fanCmd.nonEmpty &&

@@ -350,6 +350,9 @@ object GumboXDispatcher {
       case tc.runtimemonitor.ObservationKind.tempControl_preCompute =>
         var updates: Map[String, String] = Map.empty
         val preContainer = container.asInstanceOf[tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS]
+        updates = updates + "In_currentSetPoint" ~> preContainer.In_currentSetPoint.string
+        updates = updates + "In_currentFanState" ~> preContainer.In_currentFanState.string
+        updates = updates + "In_latestTemp" ~> preContainer.In_latestTemp.string
         updates = updates + "currentTemp" ~> preContainer.api_currentTemp.string
         if (preContainer.api_fanAck.nonEmpty) {
           updates = updates + "fanAck" ~> preContainer.api_fanAck.get.string

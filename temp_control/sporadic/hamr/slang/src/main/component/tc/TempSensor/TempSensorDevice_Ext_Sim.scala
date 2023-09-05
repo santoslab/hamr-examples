@@ -7,6 +7,10 @@ object TempSensorDevice_Ext_Sim {
   // represents the most recent "sensed" temperature
   var lastTemperature = Defs.defaultTemp
 
+  // TODO: should grab these from gumbo defined constants
+  val upperLimit = 150f
+  val lowerLimit = -50f
+
   // Implement method from extension interface.
   //
   // This method simulates obtaining a sensor reading from a

@@ -19,10 +19,18 @@ trait RuntimeMonitorListener {
 object RuntimeMonitor_Ext {
 
   val registeredListeners: ISZ[RuntimeMonitorListener] = ISZ(
-    // add/remove listeners here
-    new DefaultRuntimeMonitor(),
 
-    new CatRuntimeMonitor() // NOTE: codegen generated everything but this line
+    // add/remove listeners here
+    new CatRuntimeMonitor(),
+
+    // BEGIN DEFAULT RM MARKER
+
+    // if you don't want to use the default runtime monitor then surround this marker block
+    // with a block comment /** .. **/ to prevent codegen from emitting an error if it's rerun
+
+    new DefaultRuntimeMonitor()
+
+    // END DEFAULT RM MARKER
   )
 
   def init(modelInfo: ModelInfo): Unit = {
