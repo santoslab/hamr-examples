@@ -9,16 +9,16 @@ import org.sireum._
 object Platform {
 
   def setup(): Unit = {
-    // BEGIN PLATFORM SETUP
+    // BEGIN MARKER PLATFORM SETUP
     {
       // Contributions from GumboX Plugin
       tc.runtimemonitor.RuntimeMonitor.init(tc.runtimemonitor.ModelInfo.modelInfo)
     }
-    // END PLATFORM SETUP
+    // END MARKER PLATFORM SETUP
   }
 
   def tearDown(): Unit = {
-    // BEGIN PLATFORM TEARDOWN
-    // END PLATFORM TEARDOWN
+    // BEGIN MARKER PLATFORM TEARDOWN
+    // END MARKER PLATFORM TEARDOWN
   }
 }

@@ -23,14 +23,14 @@ object RuntimeMonitor_Ext {
     // add/remove listeners here
     new CatRuntimeMonitor(),
 
-    // BEGIN DEFAULT RM MARKER
+    // BEGIN MARKER RUNTIME MONITORING
 
     // if you don't want to use the default runtime monitor then surround this marker block
     // with a block comment /** .. **/ to prevent codegen from emitting an error if it's rerun
 
     new DefaultRuntimeMonitor()
 
-    // END DEFAULT RM MARKER
+    // END MARKER RUNTIME MONITORING
   )
 
   def init(modelInfo: ModelInfo): Unit = {

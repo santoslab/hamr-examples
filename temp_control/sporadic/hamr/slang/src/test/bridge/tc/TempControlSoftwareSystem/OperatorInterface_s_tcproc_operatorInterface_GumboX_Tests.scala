@@ -18,5 +18,6 @@ class OperatorInterface_s_tcproc_operatorInterface_GumboX_Tests extends Operator
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used to generate the incoming port values
   override def getProfiles_P: ISZ[OperatorInterface_s_tcproc_operatorInterface_Profile_P] = ISZ(getDefaultProfile_P)
 }
