@@ -120,25 +120,37 @@ import art.scheduling.Scheduler
    * @param dstPortId the portId to place the passed [[DataContent]] into
    * @param data the [[DataContent]] which will be placed in the dstPort
    */
-  def insertInPortValue(dstPortId: Art.PortId, data: DataContent): Unit = $
+  def insertInInfrastructurePort(dstPortId: Art.PortId, data: DataContent): Unit = $
 
   /**
-   * Returns the value of an out port.
-   *
-   * @param portId the id of the OUTPUT port to return a value from
-   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
-   */
-  def observeOutPortValue(portId: Art.PortId): Option[DataContent] = $
-
-  // ** Manually added method by JH to support debugging interface
-
-  /**
-   * Returns the value of an in infrastructure port.
+   * Returns the value of an infrastructure in port.
    *
    * @param portId the id of the INPUT infrastructure port to return a value from
    * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
    */
-  def observeInPortValue(portId: Art.PortId): Option[DataContent] = $
+  def observeInInfrastructurePort(portId: Art.PortId): Option[DataContent] = $
 
+  /**
+   * Returns the value of an infrastructure out port.
+   *
+   * @param portId the id of the OUTPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
+  def observeOutInfrastructurePort(portId: Art.PortId): Option[DataContent] = $
+
+  /**
+     * Returns the value of an application in port.
+     *
+     * @param portId the id of the INPUT port to return a value from
+     * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+     */
+  def observeInPortVariable(portId: Art.PortId): Option[DataContent] = $
+
+  /**
+     * Returns the value of an application out port.
+     *
+     * @param portId the id of the OUTPUT port to return a value from
+     * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+     */
   def observeOutPortVariable(portId: Art.PortId): Option[DataContent] = $
 }

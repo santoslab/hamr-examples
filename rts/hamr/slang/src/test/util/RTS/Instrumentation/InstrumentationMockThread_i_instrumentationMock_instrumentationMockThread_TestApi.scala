@@ -217,7 +217,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_temperatureLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -232,7 +232,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_temperatureLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -247,7 +247,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_temperatureLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -262,7 +262,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_temperatureLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_temperatureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -277,7 +277,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_pressureLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -292,7 +292,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_pressureLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -307,7 +307,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_pressureLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -322,7 +322,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_pressureLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_pressureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -337,7 +337,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_saturationLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -352,7 +352,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_saturationLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -367,7 +367,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_saturationLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -382,7 +382,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit1_saturationLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit1_saturationLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -397,7 +397,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_temperatureLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -412,7 +412,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_temperatureLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -427,7 +427,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_temperatureLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -442,7 +442,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_temperatureLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_temperatureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -457,7 +457,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_pressureLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -472,7 +472,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_pressureLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -487,7 +487,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_pressureLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -502,7 +502,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_pressureLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_pressureLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -517,7 +517,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_saturationLogic_channel1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -532,7 +532,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_saturationLogic_channel2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -547,7 +547,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_saturationLogic_channel3_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel3_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -562,7 +562,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_unit2_saturationLogic_channel4_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_instrumentationMock_instrumentationMockThread.initialization_api.unit2_saturationLogic_channel4_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
 }

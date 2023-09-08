@@ -18,7 +18,7 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
   // incoming ports
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -48,11 +48,11 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_App starting ...")
 
@@ -61,7 +61,7 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -127,7 +127,7 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

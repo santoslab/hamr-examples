@@ -25,7 +25,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         // BEGIN INITIALIZES ENSURES
         // guarantee REQ_MRM_1
         //   The initial mode of the regular is INIT
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 
         api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
         // END INITIALIZES ENSURES
       )
@@ -48,7 +48,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         //   the regulator mode is set to NORMAL iff the regulator status is valid (see Table A-10), i.e.,
         //     if NOT (Regulator Interface Failure OR Regulator Internal Failure)
         //        AND Current Temperature.Status = Valid
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 
         (In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) &&
            api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
           (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
@@ -62,7 +62,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         //              (Regulator Interface Failure OR Regulator Internal Failure)
         //              OR NOT(Current Temperature.Status = Valid)
         //          )
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 
         (In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) &&
            api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
           (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
@@ -74,13 +74,13 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         //   the regulator status is false, i.e.,
         //      if  (Regulator Interface Failure OR Regulator Internal Failure)
         //          OR NOT(Current Temperature.Status = Valid)
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=109 
         (In(lastRegulatorMode) == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (((api.interface_failure.value || api.internal_failure.value) &&
            api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
           (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
             lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode)),
         // case REQ_MRM_4
-        //   'transition from INIT to FAILED'
+        //   'transition from INIT to FAILED' 
         //   If the current regulator mode is Init, then
         //   the regulator mode and lastRegulatorMode state value is set to Failed iff
         //   the regulator status is false, i.e.,

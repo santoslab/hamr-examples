@@ -189,6 +189,87 @@ object ArtNativeSlang {
     // could clear outPortVariables for passed in portids but not strictly necessary
   }
 
+  /**
+   * Returns the value of an in infrastructure port.
+   *
+   * @param portId the id of the INPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
+  def observeInInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
+    // right now, with event data port queues limited to size one, there is no difference in the logic
+    // between how data ports are treated, and how event/event data ports are treated.
+    Art.port(portId).mode match {
+      case PortMode.DataIn =>
+        inInfrastructurePorts.get(portId.toZ) match {
+          case Some(value) => return Some(value.data)
+          case _ => return None()
+        }
+      case PortMode.EventIn =>
+        inInfrastructurePorts.get(portId.toZ) match {
+          case Some(value) => return Some(value.data)
+          case _ => return None()
+        }
+      case _ => {
+        assert(false, "expecting in port")
+        return None()
+      }
+    }
+  }
+
+  /**
+   * Returns the value of an infrastructure out port.
+   *
+   * @param portId the id of the OUTPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
+  def observeOutInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
+    // note: would be changed when we refactor to support event queues of size > 1
+    outInfrastructurePorts.get(portId.toZ) match {
+      case Some(value) => return Some(value.data)
+      case _ => return None()
+    }
+  }
+
+  /**
+   * Returns the value of an application in port.
+   *
+   * @param portId the id of the INPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
+  def observeInPortVariable(portId: Art.PortId): Option[DataContent] = {
+    // right now, with event data port queues limited to size one, there is no difference in the logic
+    // between how data ports are treated, and how event/event data ports are treated.
+    Art.port(portId).mode match {
+      case PortMode.DataIn =>
+        inPortVariables.get(portId.toZ) match {
+          case Some(value) => return Some(value.data)
+          case _ => return None()
+        }
+      case PortMode.EventIn =>
+        inPortVariables.get(portId.toZ) match {
+          case Some(value) => return Some(value.data)
+          case _ => return None()
+        }
+      case _ => {
+        assert(false, "expecting in port")
+        return None()
+      }
+    }
+  }
+
+  /**
+     * Returns the value of an application out port.
+     *
+     * @param portId the id of the OUTPUT port to return a value from
+     * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+     */
+  def observeOutPortVariable(portId: Art.PortId): Option[DataContent] = {
+    // note: would be changed when we refactor to support event queues of size > 1
+    outPortVariables.get(portId.toZ) match {
+      case Some(value) => return Some(value.data)
+      case _ => return None()
+    }
+  }
 
   def logInfo(title: String, msg: String): Unit = {
     print(title)

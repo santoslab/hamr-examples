@@ -39,6 +39,15 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
     (// IEP-Guar: Initialize Entrypoint contract for manage_monitor_mode
      initialize_IEP_Guar(lastMonitorMode, api_monitor_mode))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      lastMonitorMode = post.lastMonitorMode,
+      api_monitor_mode = post.api_monitor_mode)
+
   /** guarantee REQ_MMM_2
     *   If the current mode is Init, then
     *   the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
@@ -137,4 +146,20 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
     (// CEP-T-Case: case clauses of manage_monitor_mode's compute entrypoint
      compute_CEP_T_Case (In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure, api_monitor_mode))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_monitor_mode via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS,
+      post: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS): B =
+    compute_CEP_Post(
+      In_lastMonitorMode = pre.In_lastMonitorMode,
+      lastMonitorMode = post.lastMonitorMode,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_interface_failure = pre.api_interface_failure,
+      api_internal_failure = pre.api_internal_failure,
+      api_monitor_mode = post.api_monitor_mode)
 }

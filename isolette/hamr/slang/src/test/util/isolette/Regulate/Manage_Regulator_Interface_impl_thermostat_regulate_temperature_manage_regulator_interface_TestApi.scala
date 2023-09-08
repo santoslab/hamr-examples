@@ -91,22 +91,22 @@ import isolette._
 
   // setter for in DataPort
   def put_upper_desired_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.upper_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.upper_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_lower_desired_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.lower_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.lower_desired_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_regulator_mode(value : Isolette_Data_Model.Regulator_Mode.Type): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.regulator_mode_Id, Isolette_Data_Model.Regulator_Mode_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.operational_api.regulator_mode_Id, Isolette_Data_Model.Regulator_Mode_Payload(value))
   }
 
   // getter for out DataPort
@@ -121,7 +121,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_upper_desired_temp_payload(): Option[Isolette_Data_Model.Temp_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.upper_desired_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.upper_desired_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
   }
 
   // getter for out DataPort
@@ -136,7 +136,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_lower_desired_temp_payload(): Option[Isolette_Data_Model.Temp_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.lower_desired_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.lower_desired_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
   }
 
   // getter for out DataPort
@@ -151,7 +151,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_displayed_temp_payload(): Option[Isolette_Data_Model.Temp_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.displayed_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.displayed_temp_Id).asInstanceOf[Option[Isolette_Data_Model.Temp_impl_Payload]]
   }
 
   // getter for out DataPort
@@ -166,7 +166,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_regulator_status_payload(): Option[Isolette_Data_Model.Status_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.regulator_status_Id).asInstanceOf[Option[Isolette_Data_Model.Status_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.regulator_status_Id).asInstanceOf[Option[Isolette_Data_Model.Status_Payload]]
   }
 
   // getter for out DataPort
@@ -181,7 +181,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_interface_failure_payload(): Option[Isolette_Data_Model.Failure_Flag_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.interface_failure_Id).asInstanceOf[Option[Isolette_Data_Model.Failure_Flag_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_manage_regulator_interface.initialization_api.interface_failure_Id).asInstanceOf[Option[Isolette_Data_Model.Failure_Flag_impl_Payload]]
   }
 
 }

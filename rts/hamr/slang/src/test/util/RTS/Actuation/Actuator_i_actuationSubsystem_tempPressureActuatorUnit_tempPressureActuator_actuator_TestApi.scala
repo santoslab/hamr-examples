@@ -57,12 +57,12 @@ import RTS._
 
   // setter for in DataPort
   def put_input(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.operational_api.input_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.operational_api.input_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_manualActuatorInput(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.operational_api.manualActuatorInput_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.operational_api.manualActuatorInput_Id, Base_Types.Boolean_Payload(value))
   }
 
   // getter for out DataPort
@@ -77,7 +77,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_output_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.initialization_api.output_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator.initialization_api.output_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
 }

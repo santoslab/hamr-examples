@@ -446,7 +446,7 @@ object ArtNative_Ext {
    * @param dstPortId the portId to place the passed [[DataContent]] into
    * @param data the [[DataContent]] which will be placed in the dstPort
    */
-  def insertInPortValue(dstPortId: Art.PortId, data: DataContent): Unit = {
+  def insertInInfrastructurePort(dstPortId: Art.PortId, data: DataContent): Unit = {
     // note: that could would be changed when we refactor to support event queues of size > 1
     val artMessage = ArtMessage(data = data, dstPortId = Some(dstPortId), dstArrivalTimestamp = Art.time())
     // note: right now, there is no difference in the logic between data and event ports, but keep the
@@ -459,28 +459,14 @@ object ArtNative_Ext {
     }
   }
 
-  /**
-   * Returns the value of an out port.
-   *
-   * @param portId the id of the OUTPUT port to return a value from
-   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
-   */
-  def observeOutPortValue(portId: Art.PortId): Option[DataContent] = {
-    // note: would be changed when we refactor to support event queues of size > 1
-    outPortVariables.get(portId.toZ) match {
-      case scala.Some(value: ArtMessage) => org.sireum.Some[DataContent](value.data)
-      case scala.None => org.sireum.None[DataContent]()
-    }
-  }
 
-  // Manually added method to support debugging framework
   /**
-   * Returns the value of an out port.
+   * Returns the value of an in infrastructure port.
    *
    * @param portId the id of the INPUT port to return a value from
    * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
    */
-  def observeInPortValue(portId: Art.PortId): Option[DataContent] = {
+  def observeInInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
     // right now, with event data port queues limited to size one, there is no difference in the logic
     // between how data ports are treated, and how event/event data ports are treated.
     Art.port(portId).mode match {
@@ -501,6 +487,26 @@ object ArtNative_Ext {
     }
   }
 
+  /**
+   * Returns the value of an infrastructure out port.
+   *
+   * @param portId the id of the OUTPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
+  def observeOutInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
+    // note: would be changed when we refactor to support event queues of size > 1
+    outInfrastructurePorts.get(portId.toZ) match {
+      case scala.Some(value: ArtMessage) => org.sireum.Some[DataContent](value.data)
+      case scala.None => org.sireum.None[DataContent]()
+    }
+  }
+
+  /**
+   * Returns the value of an application in port.
+   *
+   * @param portId the id of the INPUT port to return a value from
+   * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+   */
   def observeInPortVariable(portId: Art.PortId): Option[DataContent] = {
     // right now, with event data port queues limited to size one, there is no difference in the logic
     // between how data ports are treated, and how event/event data ports are treated.
@@ -522,6 +528,12 @@ object ArtNative_Ext {
     }
   }
 
+  /**
+     * Returns the value of an application out port.
+     *
+     * @param portId the id of the OUTPUT port to return a value from
+     * @return If the port is non-empty, a [[Some]] of [[DataContent]]. Otherwise [[None]].
+     */
   def observeOutPortVariable(portId: Art.PortId): Option[DataContent] = {
     // note: that could would be changed when we refactor to support event queues of size > 1
     outPortVariables.get(portId.toZ) match {

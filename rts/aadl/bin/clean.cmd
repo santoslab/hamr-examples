@@ -34,7 +34,7 @@ val toKeep = ops.ISZOps(ISZ(
 
 def rec(p: Os.Path, onlyDelAutoGen: B): Unit = {
   if(p.isFile) {
-    if ((!toKeep.contains(p) && !onlyDelAutoGen) || ops.StringOps(p.read).contains("do not edit")) {
+    if ((!toKeep.contains(p) && !onlyDelAutoGen) || ops.StringOps(p.read).contains("Do not edit")) {
       p.remove()
       println(s"Removed file: $p")
     }

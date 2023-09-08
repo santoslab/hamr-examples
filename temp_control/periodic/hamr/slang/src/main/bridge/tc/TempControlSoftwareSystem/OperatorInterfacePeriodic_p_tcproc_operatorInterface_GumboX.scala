@@ -16,6 +16,14 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX {
     (// D-Inv-Guard: Datatype invariants for the types associated with operatorInterface's state variables and outgoing ports
      TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(api_setPoint))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: OperatorInterfacePeriodic_p_tcproc_operatorInterface_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      api_setPoint = post.api_setPoint)
+
   /** CEP-Pre: Compute Entrypoint Pre-Condition for operatorInterface
     *
     * @param api_currentTemp incoming data port
@@ -25,6 +33,14 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX {
     (// D-Inv-Guard: Datatype invariants for the types associated with operatorInterface's state variables and incoming ports
      TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(api_currentTemp))
 
+  /** CEP-Pre: Compute Entrypoint Pre-Condition for operatorInterface via container
+    *
+    * @param pre Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def compute_CEP_Pre_Container(pre: OperatorInterfacePeriodic_p_tcproc_operatorInterface_PreState_Container_PS): B =
+    compute_CEP_Pre(
+      api_currentTemp = pre.api_currentTemp)
+
   /** CEP-Post: Compute Entrypoint Post-Condition for operatorInterface
     *
     * @param api_setPoint outgoing data port
@@ -33,4 +49,15 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX {
       api_setPoint: TempControlSoftwareSystem.SetPoint_i): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with operatorInterface's state variables and outgoing ports
      TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(api_setPoint))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for operatorInterface via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: OperatorInterfacePeriodic_p_tcproc_operatorInterface_PreState_Container_PS,
+      post: OperatorInterfacePeriodic_p_tcproc_operatorInterface_PostState_Container_PS): B =
+    compute_CEP_Post(
+      api_setPoint = post.api_setPoint)
 }

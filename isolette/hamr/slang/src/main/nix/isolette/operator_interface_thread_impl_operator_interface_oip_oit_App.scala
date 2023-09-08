@@ -26,11 +26,11 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
   val alarm_controlPortIdOpt: Option[Art.PortId] = Some(alarm_controlPortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, regulator_statusPortIdOpt)
-    Platform.initialise(seed, monitor_statusPortIdOpt)
-    Platform.initialise(seed, display_temperaturePortIdOpt)
-    Platform.initialise(seed, alarm_controlPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, regulator_statusPortIdOpt)
+    PlatformComm.initialise(seed, monitor_statusPortIdOpt)
+    PlatformComm.initialise(seed, display_temperaturePortIdOpt)
+    PlatformComm.initialise(seed, alarm_controlPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -43,7 +43,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(regulator_statusPortIdOpt, out)
+      PlatformComm.receiveAsync(regulator_statusPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.Status_Payload) => ArtNix.updateData(regulator_statusPortId, v)
         case Some(v) => halt(s"Unexpected payload on port regulator_status.  Expecting something of type Isolette_Data_Model.Status_Payload but received ${v}")
@@ -52,7 +52,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(monitor_statusPortIdOpt, out)
+      PlatformComm.receiveAsync(monitor_statusPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.Status_Payload) => ArtNix.updateData(monitor_statusPortId, v)
         case Some(v) => halt(s"Unexpected payload on port monitor_status.  Expecting something of type Isolette_Data_Model.Status_Payload but received ${v}")
@@ -61,7 +61,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(display_temperaturePortIdOpt, out)
+      PlatformComm.receiveAsync(display_temperaturePortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.Temp_impl_Payload) => ArtNix.updateData(display_temperaturePortId, v)
         case Some(v) => halt(s"Unexpected payload on port display_temperature.  Expecting something of type Isolette_Data_Model.Temp_impl_Payload but received ${v}")
@@ -70,7 +70,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(alarm_controlPortIdOpt, out)
+      PlatformComm.receiveAsync(alarm_controlPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.On_Off_Payload) => ArtNix.updateData(alarm_controlPortId, v)
         case Some(v) => halt(s"Unexpected payload on port alarm_control.  Expecting something of type Isolette_Data_Model.On_Off_Payload but received ${v}")
@@ -96,11 +96,11 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("operator_interface_thread_impl_operator_interface_oip_oit_App starting ...")
 
@@ -109,7 +109,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -185,7 +185,7 @@ object operator_interface_thread_impl_operator_interface_oip_oit_App extends App
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

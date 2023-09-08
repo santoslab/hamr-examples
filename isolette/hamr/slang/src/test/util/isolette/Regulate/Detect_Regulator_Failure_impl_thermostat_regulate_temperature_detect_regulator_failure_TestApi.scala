@@ -56,7 +56,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_internal_failure_payload(): Option[Isolette_Data_Model.Failure_Flag_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_detect_regulator_failure.initialization_api.internal_failure_Id).asInstanceOf[Option[Isolette_Data_Model.Failure_Flag_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_regulate_temperature_detect_regulator_failure.initialization_api.internal_failure_Id).asInstanceOf[Option[Isolette_Data_Model.Failure_Flag_impl_Payload]]
   }
 
 }

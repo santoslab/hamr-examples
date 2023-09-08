@@ -13,37 +13,39 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector]
+  extends Random.Gen.TestRunner[OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P]
   with OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibchannel1: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibchannel2: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector = {
+  override def next(): OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P = {
     val api_channel1 = ranLibchannel1.nextB()
     val api_channel2 = ranLibchannel2.nextB()
-    return OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(
+    return OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P(
       api_channel1, api_channel2
     )
   }
 
-  override def toCompactJson(o: OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector): String = {
-    return RTS.JSON.fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(o, T)
+  override def toCompactJson(o: OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P): String = {
+    return RTS.JSON.fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector = {
-    RTS.JSON.toActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(json) match {
+  override def fromJson(json: String): OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P = {
+    RTS.JSON.toActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector): B = {
+  override def test(o: OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_channel1, o.api_channel2) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        RTS.DSC_RecordUnsatPre.report(RTS.JSON.fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_DSC_TestVector(o, T))
+        RTS.DSC_RecordUnsatPre.report(RTS.JSON.fromActuationOrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T

@@ -22,9 +22,9 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
   val channel2PortIdOpt: Option[Art.PortId] = Some(channel2PortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, channel1PortIdOpt)
-    Platform.initialise(seed, channel2PortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, channel1PortIdOpt)
+    PlatformComm.initialise(seed, channel2PortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -37,7 +37,7 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel1PortIdOpt, out)
+      PlatformComm.receiveAsync(channel1PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel1PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel1.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -46,7 +46,7 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel2PortIdOpt, out)
+      PlatformComm.receiveAsync(channel2PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel2PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel2.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -72,11 +72,11 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_App starting ...")
 
@@ -85,7 +85,7 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -142,7 +142,7 @@ object OrLogic_i_actuationSubsystem_actuationUnit2_tempPressureTripOut_orLogic_A
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

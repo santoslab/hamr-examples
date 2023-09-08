@@ -138,7 +138,7 @@ object ArtNix {
         case Some(d) =>
           outgoing(p) = noData
           for(e <- connection(p)){
-            Platform.sendAsync(e._1, e._2, d)
+            PlatformComm.sendAsync(e._1, e._2, d)
           }
         case _ =>
       }
@@ -149,7 +149,7 @@ object ArtNix {
         case Some(d) =>
           outgoing(p) = noData
           for(e <- connection(p)){
-            Platform.sendAsync(e._1, e._2, d)
+            PlatformComm.sendAsync(e._1, e._2, d)
           }
         case _ =>
       }

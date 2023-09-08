@@ -40,12 +40,12 @@ import RTS._
 
   // setter for in DataPort
   def put_tempPressureActuate(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuatorsMock_actuatorsMockThread.operational_api.tempPressureActuate_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuatorsMock_actuatorsMockThread.operational_api.tempPressureActuate_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_saturationActuate(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuatorsMock_actuatorsMockThread.operational_api.saturationActuate_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuatorsMock_actuatorsMockThread.operational_api.saturationActuate_Id, Base_Types.Boolean_Payload(value))
   }
 
 }

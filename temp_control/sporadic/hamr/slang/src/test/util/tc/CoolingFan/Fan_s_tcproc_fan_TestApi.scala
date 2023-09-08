@@ -62,7 +62,7 @@ import tc._
 
   // setter for in EventDataPort
   def put_fanCmd(value : CoolingFan.FanCmd.Type): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanCmd_Id, CoolingFan.FanCmd_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.operational_api.fanCmd_Id, CoolingFan.FanCmd_Payload(value))
   }
 
   // getter for out EventDataPort
@@ -77,7 +77,7 @@ import tc._
 
   // payload getter for out EventDataPort
   def get_fanAck_payload(): Option[CoolingFan.FanAck_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.initialization_api.fanAck_Id).asInstanceOf[Option[CoolingFan.FanAck_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_fan.initialization_api.fanAck_Id).asInstanceOf[Option[CoolingFan.FanAck_Payload]]
   }
 
 }

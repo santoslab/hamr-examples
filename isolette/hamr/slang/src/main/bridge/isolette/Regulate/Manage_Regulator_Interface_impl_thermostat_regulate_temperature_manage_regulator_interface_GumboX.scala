@@ -49,6 +49,18 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     (// IEP-Guar: Initialize Entrypoint contract for manage_regulator_interface
      initialize_IEP_Guar(api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_regulator_status, api_upper_desired_temp))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      api_displayed_temp = post.api_displayed_temp,
+      api_interface_failure = post.api_interface_failure,
+      api_lower_desired_temp = post.api_lower_desired_temp,
+      api_regulator_status = post.api_regulator_status,
+      api_upper_desired_temp = post.api_upper_desired_temp)
+
   /** Compute Entrypoint Contract
     *
     * assumes lower_is_not_higher_than_upper
@@ -84,6 +96,17 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl): B =
     (// CEP-Assm: assume clauses of manage_regulator_interface's compute entrypoint
      compute_CEP_T_Assm (api_lower_desired_tempWstatus, api_upper_desired_tempWstatus))
+
+  /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_regulator_interface via container
+    *
+    * @param pre Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def compute_CEP_Pre_Container(pre: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS): B =
+    compute_CEP_Pre(
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_desired_tempWstatus = pre.api_lower_desired_tempWstatus,
+      api_regulator_mode = pre.api_regulator_mode,
+      api_upper_desired_tempWstatus = pre.api_upper_desired_tempWstatus)
 
   /** guarantee REQ_MRI_1
     *   If the Regulator Mode is INIT,
@@ -268,4 +291,23 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-T-Case: case clauses of manage_regulator_interface's compute entrypoint
      compute_CEP_T_Case (api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus, api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_regulator_status, api_upper_desired_temp))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_regulator_interface via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS,
+      post: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS): B =
+    compute_CEP_Post(
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_desired_tempWstatus = pre.api_lower_desired_tempWstatus,
+      api_regulator_mode = pre.api_regulator_mode,
+      api_upper_desired_tempWstatus = pre.api_upper_desired_tempWstatus,
+      api_displayed_temp = post.api_displayed_temp,
+      api_interface_failure = post.api_interface_failure,
+      api_lower_desired_temp = post.api_lower_desired_temp,
+      api_regulator_status = post.api_regulator_status,
+      api_upper_desired_temp = post.api_upper_desired_temp)
 }

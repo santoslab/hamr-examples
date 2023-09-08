@@ -27,7 +27,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         // guarantee REQ_MA_1
         //   If the Monitor Mode is INIT, the Alarm Control shall be set
         //   to Off.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         api.alarm_control == Isolette_Data_Model.On_Off.Off &
           lastCmd == Isolette_Data_Model.On_Off.Off
         // END INITIALIZES ENSURES
@@ -49,16 +49,16 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   This is not explicitly stated in the requirements, but a reasonable
         //   assumption is that the lower alarm must be at least 1.0f less than
         //   the upper alarm in order to account for the 0.5f tolerance
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         api.upper_alarm_temp.value - api.lower_alarm_temp.value >= 1.0f,
         // assume Table_A_12_LowerAlarmTemp
         //   Range [96..101]
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=112
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=112 
         96.0f <= api.lower_alarm_temp.value &&
           api.lower_alarm_temp.value <= 101.0f,
         // assume Table_A_12_UpperAlarmTemp
         //   Range [97..102]
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=112
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=112 
         97.0f <= api.upper_alarm_temp.value &&
           api.upper_alarm_temp.value <= 102.0f
         // END COMPUTE REQUIRES timeTriggered
@@ -69,14 +69,14 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         // case REQ_MA_1
         //   If the Monitor Mode is INIT, the Alarm Control shall be set
         //   to Off.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
           lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQ_MA_2
         //   If the Monitor Mode is NORMAL and the Current Temperature is
         //   less than the Lower Alarm Temperature or greater than the Upper Alarm
         //   Temperature, the Alarm Control shall be set to On.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
            (api.current_tempWstatus.value < api.lower_alarm_temp.value ||
              api.current_tempWstatus.value > api.upper_alarm_temp.value)) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Onn &
@@ -88,7 +88,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   greater than the Upper Alarm Temperature -0.5 degrees and less than or equal
         //   to the Upper Alarm Temperature, the value of the Alarm Control shall
         //   not be changed.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
            (api.current_tempWstatus.value >= api.lower_alarm_temp.value &&
              api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f ||
@@ -100,7 +100,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   Temperature is greater than or equal to the Lower Alarm Temperature
         //   +0.5 degrees and less than or equal to the Upper Alarm Temperature
         //   -0.5 degrees, the Alarm Control shall be set to Off.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
            api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f &
            api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
@@ -108,7 +108,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         // case REQ_MA_5
         //   If the Monitor Mode is FAILED, the Alarm Control shall be
         //   set to On.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=116
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=116 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->: (api.alarm_control == Isolette_Data_Model.On_Off.Onn &
           lastCmd == Isolette_Data_Model.On_Off.Onn)
         // END COMPUTE ENSURES timeTriggered

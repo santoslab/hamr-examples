@@ -57,12 +57,12 @@ import RTS._
 
   // setter for in DataPort
   def put_channel1(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.operational_api.channel1_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.operational_api.channel1_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_channel2(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.operational_api.channel2_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.operational_api.channel2_Id, Base_Types.Boolean_Payload(value))
   }
 
   // getter for out DataPort
@@ -77,7 +77,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_actuate_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.initialization_api.actuate_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic.initialization_api.actuate_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
 }

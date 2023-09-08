@@ -44,4 +44,17 @@ object OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActu
       api_actuate: Base_Types.Boolean): B =
     (// CEP-Guar: guarantee clauses of orLogic's compute entrypoint
      compute_CEP_T_Guar (api_channel1, api_channel2, api_actuate))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for orLogic via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_PreState_Container_PS,
+      post: OrLogic_i_actuationSubsystem_saturationActuatorUnit_actuateSaturationActuator_orLogic_PostState_Container_PS): B =
+    compute_CEP_Post(
+      api_channel1 = pre.api_channel1,
+      api_channel2 = pre.api_channel2,
+      api_actuate = post.api_actuate)
 }

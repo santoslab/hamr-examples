@@ -56,7 +56,7 @@ import tc._
 
   // payload getter for out DataPort
   def get_currentTemp_payload(): Option[TempSensor.Temperature_i_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.TempControlSoftwareSystem_p_Instance_tcproc_tempSensor.initialization_api.currentTemp_Id).asInstanceOf[Option[TempSensor.Temperature_i_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.TempControlSoftwareSystem_p_Instance_tcproc_tempSensor.initialization_api.currentTemp_Id).asInstanceOf[Option[TempSensor.Temperature_i_Payload]]
   }
 
 }

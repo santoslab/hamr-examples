@@ -63,7 +63,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_manualActuatorInput1_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_eventControlMock_eventControlMockThread.initialization_api.manualActuatorInput1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_eventControlMock_eventControlMockThread.initialization_api.manualActuatorInput1_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
   // getter for out DataPort
@@ -78,7 +78,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_manualActuatorInput2_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_eventControlMock_eventControlMockThread.initialization_api.manualActuatorInput2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_eventControlMock_eventControlMockThread.initialization_api.manualActuatorInput2_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
 }

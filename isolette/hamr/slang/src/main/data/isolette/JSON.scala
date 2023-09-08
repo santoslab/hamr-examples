@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectors.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectors.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectors.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectors.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectors.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectors.scala, DataContent.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, DataContent.scala, Aux_Types.scala
 
 package isolette
 
@@ -308,9 +308,16 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector): ST = {
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector""""),
+        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_desired_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)),
         ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
@@ -318,9 +325,55 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector): ST = {
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector""""),
+        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS""""),
+        ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
+        ("api_lower_desired_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)),
+        ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
+        ("api_upper_desired_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_upper_desired_tempWstatus))
+      ))
+    }
+
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P""""),
+        ("api_displayed_temp", printIsolette_Data_ModelTemp_impl(o.api_displayed_temp)),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
+        ("api_regulator_status", printIsolette_Data_ModelStatusType(o.api_regulator_status)),
+        ("api_upper_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_desired_temp))
+      ))
+    }
+
+    @pure def printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS""""),
+        ("api_displayed_temp", printIsolette_Data_ModelTemp_impl(o.api_displayed_temp)),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
+        ("api_regulator_status", printIsolette_Data_ModelStatusType(o.api_regulator_status)),
+        ("api_upper_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_desired_temp))
+      ))
+    }
+
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
         ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)),
@@ -328,9 +381,9 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL): ST = {
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL""""),
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS""""),
         ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_desired_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_desired_temp)),
@@ -339,18 +392,47 @@ object JSON {
       ))
     }
 
-    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector): ST = {
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector""""),
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P""""),
+        ("api_heat_control", printIsolette_Data_ModelOn_OffType(o.api_heat_control))
+      ))
+    }
+
+    @pure def printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS""""),
+        ("lastCmd", printIsolette_Data_ModelOn_OffType(o.lastCmd)),
+        ("api_heat_control", printIsolette_Data_ModelOn_OffType(o.api_heat_control))
+      ))
+    }
+
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
         ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
       ))
     }
 
-    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL): ST = {
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL""""),
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS""""),
         ("In_lastRegulatorMode", printIsolette_Data_ModelRegulator_ModeType(o.In_lastRegulatorMode)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
@@ -358,9 +440,38 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector): ST = {
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container): ST = {
+      o match {
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector""""),
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P""""),
+        ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode))
+      ))
+    }
+
+    @pure def printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS""""),
+        ("lastRegulatorMode", printIsolette_Data_ModelRegulator_ModeType(o.lastRegulatorMode)),
+        ("api_regulator_mode", printIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)),
         ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
@@ -368,9 +479,9 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL): ST = {
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL""""),
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS""""),
         ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)),
@@ -379,9 +490,44 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector): ST = {
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector""""),
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P""""),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
+        ("api_monitor_status", printIsolette_Data_ModelStatusType(o.api_monitor_status)),
+        ("api_upper_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_alarm_temp))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS""""),
+        ("lastCmd", printIsolette_Data_ModelOn_OffType(o.lastCmd)),
+        ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
+        ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
+        ("api_monitor_status", printIsolette_Data_ModelStatusType(o.api_monitor_status)),
+        ("api_upper_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_upper_alarm_temp))
+      ))
+    }
+
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
         ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)),
@@ -389,9 +535,9 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL): ST = {
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL""""),
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS""""),
         ("In_lastCmd", printIsolette_Data_ModelOn_OffType(o.In_lastCmd)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_lower_alarm_temp", printIsolette_Data_ModelTemp_impl(o.api_lower_alarm_temp)),
@@ -400,22 +546,73 @@ object JSON {
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector): ST = {
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector""""),
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P""""),
+        ("api_alarm_control", printIsolette_Data_ModelOn_OffType(o.api_alarm_control))
+      ))
+    }
+
+    @pure def printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS""""),
+        ("lastCmd", printIsolette_Data_ModelOn_OffType(o.lastCmd)),
+        ("api_alarm_control", printIsolette_Data_ModelOn_OffType(o.api_alarm_control))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P""""),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
         ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
       ))
     }
 
-    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL): ST = {
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS): ST = {
       return printObject(ISZ(
-        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL""""),
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS""""),
         ("In_lastMonitorMode", printIsolette_Data_ModelMonitor_ModeType(o.In_lastMonitorMode)),
         ("api_current_tempWstatus", printIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)),
         ("api_interface_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_interface_failure)),
         ("api_internal_failure", printIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container): ST = {
+      o match {
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o)
+      }
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P""""),
+        ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode))
+      ))
+    }
+
+    @pure def printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS): ST = {
+      return printObject(ISZ(
+        ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS""""),
+        ("lastMonitorMode", printIsolette_Data_ModelMonitor_ModeType(o.lastMonitorMode)),
+        ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode))
       ))
     }
 
@@ -449,6 +646,30 @@ object JSON {
         case o: Isolette_Data_Model.Failure_Flag_impl_Payload => return printIsolette_Data_ModelFailure_Flag_impl_Payload(o)
         case o: Isolette_Data_Model.PhysicalTemp_impl_Payload => return printIsolette_Data_ModelPhysicalTemp_impl_Payload(o)
         case o: Isolette_Environment.Interface_Interaction_Payload => return printIsolette_EnvironmentInterface_Interaction_Payload(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o)
+        case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS => return printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS => return printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o)
+        case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS => return printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS => return printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o)
+        case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS => return printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o)
+        case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS => return printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(o)
       }
     }
 
@@ -1082,14 +1303,23 @@ object JSON {
       return Base_Types.Bits_Payload(value)
     }
 
-    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
-      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectorT(F)
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P = {
+      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PT(F)
       return r
     }
 
-    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector")
+        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1103,17 +1333,113 @@ object JSON {
       parser.parseObjectKey("api_upper_desired_tempWstatus")
       val api_upper_desired_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
-      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorT(F)
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS = {
+      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(F)
       return r
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector")
+        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS")
+      }
+      parser.parseObjectKey("api_current_tempWstatus")
+      val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_desired_tempWstatus")
+      val api_lower_desired_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_regulator_mode")
+      val api_regulator_mode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_desired_tempWstatus")
+      val api_upper_desired_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus)
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P = {
+      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PT(F)
+      return r
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PT(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_displayed_temp")
+      val api_displayed_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_desired_temp")
+      val api_lower_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_regulator_status")
+      val api_regulator_status = parseIsolette_Data_ModelStatusType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_desired_temp")
+      val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_regulator_status, api_upper_desired_temp)
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS = {
+      val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(typeParsed: B): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS")
+      }
+      parser.parseObjectKey("api_displayed_temp")
+      val api_displayed_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_desired_temp")
+      val api_lower_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_regulator_status")
+      val api_regulator_status = parseIsolette_Data_ModelStatusType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_desired_temp")
+      val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(api_displayed_temp, api_interface_failure, api_lower_desired_temp, api_regulator_status, api_upper_desired_temp)
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PT(F)
+      return r
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1127,17 +1453,17 @@ object JSON {
       parser.parseObjectKey("api_upper_desired_temp")
       val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
-      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwLT(F)
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PST(F)
       return r
     }
 
-    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwLT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PST(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL")
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS")
       }
       parser.parseObjectKey("In_lastCmd")
       val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
@@ -1154,17 +1480,68 @@ object JSON {
       parser.parseObjectKey("api_upper_desired_temp")
       val api_upper_desired_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(In_lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp)
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
-      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorT(F)
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PT(F)
       return r
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PT(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector")
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_heat_control")
+      val api_heat_control = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(api_heat_control)
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS = {
+      val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(typeParsed: B): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS")
+      }
+      parser.parseObjectKey("lastCmd")
+      val lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_heat_control")
+      val api_heat_control = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      return Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(lastCmd, api_heat_control)
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PT(F)
+      return r
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1175,17 +1552,17 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
-      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwLT(F)
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(F)
       return r
     }
 
-    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwLT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL")
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS")
       }
       parser.parseObjectKey("In_lastRegulatorMode")
       val In_lastRegulatorMode = parseIsolette_Data_ModelRegulator_ModeType()
@@ -1199,17 +1576,68 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(In_lastRegulatorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(In_lastRegulatorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
-      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorT(F)
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS"))
+      t.native match {
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PT(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PT(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector")
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_regulator_mode")
+      val api_regulator_mode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(api_regulator_mode)
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS = {
+      val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(typeParsed: B): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS")
+      }
+      parser.parseObjectKey("lastRegulatorMode")
+      val lastRegulatorMode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_regulator_mode")
+      val api_regulator_mode = parseIsolette_Data_ModelRegulator_ModeType()
+      parser.parseObjectNext()
+      return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(lastRegulatorMode, api_regulator_mode)
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1223,17 +1651,17 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_tempWstatus")
       val api_upper_alarm_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
-      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwLT(F)
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL")
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS")
       }
       parser.parseObjectKey("In_lastCmd")
       val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
@@ -1250,17 +1678,86 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_tempWstatus")
       val api_upper_alarm_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(In_lastCmd, api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus)
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
-      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorT(F)
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PT(F)
       return r
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PT(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector")
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_alarm_temp")
+      val api_lower_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_monitor_status")
+      val api_monitor_status = parseIsolette_Data_ModelStatusType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_alarm_temp")
+      val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS = {
+      val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(typeParsed: B): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS")
+      }
+      parser.parseObjectKey("lastCmd")
+      val lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_interface_failure")
+      val api_interface_failure = parseIsolette_Data_ModelFailure_Flag_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_lower_alarm_temp")
+      val api_lower_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_monitor_status")
+      val api_monitor_status = parseIsolette_Data_ModelStatusType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_upper_alarm_temp")
+      val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(lastCmd, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PT(F)
+      return r
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1274,17 +1771,17 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_temp")
       val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
-      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwLT(F)
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(F)
       return r
     }
 
-    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL")
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS")
       }
       parser.parseObjectKey("In_lastCmd")
       val In_lastCmd = parseIsolette_Data_ModelOn_OffType()
@@ -1301,17 +1798,68 @@ object JSON {
       parser.parseObjectKey("api_upper_alarm_temp")
       val api_upper_alarm_temp = parseIsolette_Data_ModelTemp_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(In_lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(In_lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp)
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
-      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorT(F)
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PT(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PT(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector")
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_alarm_control")
+      val api_alarm_control = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(api_alarm_control)
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS = {
+      val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PST(typeParsed: B): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS")
+      }
+      parser.parseObjectKey("lastCmd")
+      val lastCmd = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_alarm_control")
+      val api_alarm_control = parseIsolette_Data_ModelOn_OffType()
+      parser.parseObjectNext()
+      return Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(lastCmd, api_alarm_control)
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P")
       }
       parser.parseObjectKey("api_current_tempWstatus")
       val api_current_tempWstatus = parseIsolette_Data_ModelTempWstatus_impl()
@@ -1322,17 +1870,17 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(api_current_tempWstatus, api_interface_failure, api_internal_failure)
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
-      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwLT(F)
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PST(F)
       return r
     }
 
-    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwLT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PST(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS = {
       if (!typeParsed) {
-        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL")
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS")
       }
       parser.parseObjectKey("In_lastMonitorMode")
       val In_lastMonitorMode = parseIsolette_Data_ModelMonitor_ModeType()
@@ -1346,11 +1894,53 @@ object JSON {
       parser.parseObjectKey("api_internal_failure")
       val api_internal_failure = parseIsolette_Data_ModelFailure_Flag_impl()
       parser.parseObjectNext()
-      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure)
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container = {
+      val t = parser.parseObjectTypes(ISZ("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS"))
+      t.native match {
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(T); return r
+        case _ => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(T); return r
+      }
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PT(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PT(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P")
+      }
+      parser.parseObjectKey("api_monitor_mode")
+      val api_monitor_mode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(api_monitor_mode)
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS = {
+      val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(F)
+      return r
+    }
+
+    def parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(typeParsed: B): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS = {
+      if (!typeParsed) {
+        parser.parseObjectType("Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS")
+      }
+      parser.parseObjectKey("lastMonitorMode")
+      val lastMonitorMode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      parser.parseObjectKey("api_monitor_mode")
+      val api_monitor_mode = parseIsolette_Data_ModelMonitor_ModeType()
+      parser.parseObjectNext()
+      return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(lastMonitorMode, api_monitor_mode)
     }
 
     def parse_artDataContent(): art.DataContent = {
-      val t = parser.parseObjectTypes(ISZ("art.Empty", "Base_Types.Boolean_Payload", "Base_Types.Integer_Payload", "Base_Types.Integer_8_Payload", "Base_Types.Integer_16_Payload", "Base_Types.Integer_32_Payload", "Base_Types.Integer_64_Payload", "Base_Types.Unsigned_8_Payload", "Base_Types.Unsigned_16_Payload", "Base_Types.Unsigned_32_Payload", "Base_Types.Unsigned_64_Payload", "Base_Types.Float_Payload", "Base_Types.Float_32_Payload", "Base_Types.Float_64_Payload", "Base_Types.Character_Payload", "Base_Types.String_Payload", "Base_Types.Bits_Payload", "Isolette_Environment.Heat_Payload", "Isolette_Data_Model.On_Off_Payload", "Isolette_Data_Model.Status_Payload", "Isolette_Data_Model.Temp_impl_Payload", "Isolette_Data_Model.ValueStatus_Payload", "Isolette_Data_Model.Monitor_Mode_Payload", "Isolette_Data_Model.Regulator_Mode_Payload", "Isolette_Data_Model.TempWstatus_impl_Payload", "Isolette_Data_Model.Failure_Flag_impl_Payload", "Isolette_Data_Model.PhysicalTemp_impl_Payload", "Isolette_Environment.Interface_Interaction_Payload"))
+      val t = parser.parseObjectTypes(ISZ("art.Empty", "Base_Types.Boolean_Payload", "Base_Types.Integer_Payload", "Base_Types.Integer_8_Payload", "Base_Types.Integer_16_Payload", "Base_Types.Integer_32_Payload", "Base_Types.Integer_64_Payload", "Base_Types.Unsigned_8_Payload", "Base_Types.Unsigned_16_Payload", "Base_Types.Unsigned_32_Payload", "Base_Types.Unsigned_64_Payload", "Base_Types.Float_Payload", "Base_Types.Float_32_Payload", "Base_Types.Float_64_Payload", "Base_Types.Character_Payload", "Base_Types.String_Payload", "Base_Types.Bits_Payload", "Isolette_Environment.Heat_Payload", "Isolette_Data_Model.On_Off_Payload", "Isolette_Data_Model.Status_Payload", "Isolette_Data_Model.Temp_impl_Payload", "Isolette_Data_Model.ValueStatus_Payload", "Isolette_Data_Model.Monitor_Mode_Payload", "Isolette_Data_Model.Regulator_Mode_Payload", "Isolette_Data_Model.TempWstatus_impl_Payload", "Isolette_Data_Model.Failure_Flag_impl_Payload", "Isolette_Data_Model.PhysicalTemp_impl_Payload", "Isolette_Environment.Interface_Interaction_Payload", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P", "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P", "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS", "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P", "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P", "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P", "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS"))
       t.native match {
         case "art.Empty" => val r = parse_artEmptyT(T); return r
         case "Base_Types.Boolean_Payload" => val r = parseBase_TypesBoolean_PayloadT(T); return r
@@ -1380,7 +1970,31 @@ object JSON {
         case "Isolette_Data_Model.Failure_Flag_impl_Payload" => val r = parseIsolette_Data_ModelFailure_Flag_impl_PayloadT(T); return r
         case "Isolette_Data_Model.PhysicalTemp_impl_Payload" => val r = parseIsolette_Data_ModelPhysicalTemp_impl_PayloadT(T); return r
         case "Isolette_Environment.Interface_Interaction_Payload" => val r = parseIsolette_EnvironmentInterface_Interaction_PayloadT(T); return r
-        case _ => val r = parseIsolette_EnvironmentInterface_Interaction_PayloadT(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS" => val r = parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PST(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PST(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PST(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS" => val r = parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(T); return r
+        case "Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS" => val r = parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS" => val r = parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PT(T); return r
+        case "Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS" => val r = parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PT(T); return r
+        case "Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS" => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(T); return r
+        case _ => val r = parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PST(T); return r
       }
     }
 
@@ -1971,8 +2585,8 @@ object JSON {
     return r
   }
 
-  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1980,17 +2594,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector, Json.ErrorMsg] = {
-    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
-      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container()
       return r
     }
-    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container _)
     return r
   }
 
-  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -1998,17 +2612,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector, Json.ErrorMsg] = {
-    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector = {
-      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P()
       return r
     }
-    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P _)
     return r
   }
 
-  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2016,17 +2630,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL, Json.ErrorMsg] = {
-    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL = {
-      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS()
       return r
     }
-    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectorwL _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS _)
     return r
   }
 
-  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2034,17 +2648,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector, Json.ErrorMsg] = {
-    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector = {
-      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container()
       return r
     }
-    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container _)
     return r
   }
 
-  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL, isCompact: B): String = {
-    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2052,17 +2666,17 @@ object JSON {
     }
   }
 
-  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL, Json.ErrorMsg] = {
-    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL = {
-      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P()
       return r
     }
-    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectorwL _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(o)
+  def fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2070,17 +2684,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector = {
-      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector()
+  def toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(s: String): Either[Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(parser: Parser): Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS = {
+      val r = parser.parseRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2088,17 +2702,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL = {
-      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectorwL _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container _)
     return r
   }
 
-  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2106,17 +2720,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector, Json.ErrorMsg] = {
-    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector = {
-      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P()
       return r
     }
-    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P _)
     return r
   }
 
-  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2124,17 +2738,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL, Json.ErrorMsg] = {
-    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL = {
-      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS()
       return r
     }
-    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectorwL _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2142,17 +2756,17 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
-      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container _)
     return r
   }
 
-  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL, isCompact: B): String = {
-    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o)
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o)
     if (isCompact) {
       return st.renderCompact
     } else {
@@ -2160,12 +2774,462 @@ object JSON {
     }
   }
 
-  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL, Json.ErrorMsg] = {
-    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
-      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL()
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P()
       return r
     }
-    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL _)
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P _)
+    return r
+  }
+
+  def fromRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(s: String): Either[Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(parser: Parser): Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS = {
+      val r = parser.parseRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P _)
+    return r
+  }
+
+  def fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(s: String): Either[Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS, Json.ErrorMsg] = {
+    def fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(parser: Parser): Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS = {
+      val r = parser.parseRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(s: String): Either[Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(parser: Parser): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS = {
+      val r = parser.parseMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(s: String): Either[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(parser: Parser): Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS = {
+      val r = parser.parseMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P _)
+    return r
+  }
+
+  def fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS, isCompact: B): String = {
+    val st = Printer.printMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o)
+    if (isCompact) {
+      return st.renderCompact
+    } else {
+      return st.render
+    }
+  }
+
+  def toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(s: String): Either[Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS, Json.ErrorMsg] = {
+    def fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(parser: Parser): Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS = {
+      val r = parser.parseMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS()
+      return r
+    }
+    val r = to(s, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS _)
     return r
   }
 

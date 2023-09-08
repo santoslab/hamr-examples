@@ -13,37 +13,39 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class OperatorInterface_s_tcproc_operatorInterface_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector]
+  extends Random.Gen.TestRunner[OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P]
   with OperatorInterface_s_tcproc_operatorInterface_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibtempChanged: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibcurrentTemp: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector = {
+  override def next(): OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
     val api_tempChanged = ranLibtempChanged.nextOption_artEmpty()
     val api_currentTemp = ranLibcurrentTemp.nextTempSensorTemperature_i()
-    return OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(
+    return OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(
       api_tempChanged, api_currentTemp
     )
   }
 
-  override def toCompactJson(o: OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector): String = {
-    return tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o, T)
+  override def toCompactJson(o: OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P): String = {
+    return tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector = {
-    tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(json) match {
+  override def fromJson(json: String): OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+    tc.JSON.toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector): B = {
+  override def test(o: OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_tempChanged, o.api_currentTemp) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        tc.DSC_RecordUnsatPre.report(tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o, T))
+        tc.DSC_RecordUnsatPre.report(tc.JSON.fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T

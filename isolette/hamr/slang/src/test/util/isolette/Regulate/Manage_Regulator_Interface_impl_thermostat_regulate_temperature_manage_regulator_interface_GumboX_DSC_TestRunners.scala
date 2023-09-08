@@ -13,41 +13,43 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector]
+  extends Random.Gen.TestRunner[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P]
   with Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLiblower_desired_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibregulator_mode: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibupper_desired_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
+  override def next(): Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P = {
     val api_current_tempWstatus = ranLibcurrent_tempWstatus.nextIsolette_Data_ModelTempWstatus_impl()
     val api_lower_desired_tempWstatus = ranLiblower_desired_tempWstatus.nextIsolette_Data_ModelTempWstatus_impl()
     val api_regulator_mode = ranLibregulator_mode.nextIsolette_Data_ModelRegulator_ModeType()
     val api_upper_desired_tempWstatus = ranLibupper_desired_tempWstatus.nextIsolette_Data_ModelTempWstatus_impl()
-    return Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(
+    return Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(
       api_current_tempWstatus, api_lower_desired_tempWstatus, api_regulator_mode, api_upper_desired_tempWstatus
     )
   }
 
-  override def toCompactJson(o: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector): String = {
-    return isolette.JSON.fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o, T)
+  override def toCompactJson(o: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P): String = {
+    return isolette.JSON.fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector = {
-    isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(json) match {
+  override def fromJson(json: String): Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P = {
+    isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector): B = {
+  override def test(o: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_current_tempWstatus, o.api_lower_desired_tempWstatus, o.api_regulator_mode, o.api_upper_desired_tempWstatus) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVector(o, T))
+        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T

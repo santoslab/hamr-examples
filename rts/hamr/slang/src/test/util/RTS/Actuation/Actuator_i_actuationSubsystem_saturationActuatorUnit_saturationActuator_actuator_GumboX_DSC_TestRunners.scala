@@ -13,37 +13,39 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector]
+  extends Random.Gen.TestRunner[Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P]
   with Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibinput: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibmanualActuatorInput: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector = {
+  override def next(): Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P = {
     val api_input = ranLibinput.nextB()
     val api_manualActuatorInput = ranLibmanualActuatorInput.nextB()
-    return Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(
+    return Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P(
       api_input, api_manualActuatorInput
     )
   }
 
-  override def toCompactJson(o: Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector): String = {
-    return RTS.JSON.fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(o, T)
+  override def toCompactJson(o: Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P): String = {
+    return RTS.JSON.fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector = {
-    RTS.JSON.toActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(json) match {
+  override def fromJson(json: String): Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P = {
+    RTS.JSON.toActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector): B = {
+  override def test(o: Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_input, o.api_manualActuatorInput) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        RTS.DSC_RecordUnsatPre.report(RTS.JSON.fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_DSC_TestVector(o, T))
+        RTS.DSC_RecordUnsatPre.report(RTS.JSON.fromActuationActuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T

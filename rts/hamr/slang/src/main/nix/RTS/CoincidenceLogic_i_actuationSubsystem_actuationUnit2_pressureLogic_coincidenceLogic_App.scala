@@ -26,11 +26,11 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
   val channel4PortIdOpt: Option[Art.PortId] = Some(channel4PortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, channel1PortIdOpt)
-    Platform.initialise(seed, channel2PortIdOpt)
-    Platform.initialise(seed, channel3PortIdOpt)
-    Platform.initialise(seed, channel4PortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, channel1PortIdOpt)
+    PlatformComm.initialise(seed, channel2PortIdOpt)
+    PlatformComm.initialise(seed, channel3PortIdOpt)
+    PlatformComm.initialise(seed, channel4PortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -43,7 +43,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel1PortIdOpt, out)
+      PlatformComm.receiveAsync(channel1PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel1PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel1.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -52,7 +52,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel2PortIdOpt, out)
+      PlatformComm.receiveAsync(channel2PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel2PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel2.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -61,7 +61,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel3PortIdOpt, out)
+      PlatformComm.receiveAsync(channel3PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel3PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel3.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -70,7 +70,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(channel4PortIdOpt, out)
+      PlatformComm.receiveAsync(channel4PortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(channel4PortId, v)
         case Some(v) => halt(s"Unexpected payload on port channel4.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -96,11 +96,11 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coincidenceLogic_App starting ...")
 
@@ -109,7 +109,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -168,7 +168,7 @@ object CoincidenceLogic_i_actuationSubsystem_actuationUnit2_pressureLogic_coinci
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

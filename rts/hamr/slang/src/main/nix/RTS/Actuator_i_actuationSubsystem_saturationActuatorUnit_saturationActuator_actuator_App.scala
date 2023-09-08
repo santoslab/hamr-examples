@@ -22,9 +22,9 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
   val manualActuatorInputPortIdOpt: Option[Art.PortId] = Some(manualActuatorInputPortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, inputPortIdOpt)
-    Platform.initialise(seed, manualActuatorInputPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, inputPortIdOpt)
+    PlatformComm.initialise(seed, manualActuatorInputPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -37,7 +37,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(inputPortIdOpt, out)
+      PlatformComm.receiveAsync(inputPortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(inputPortId, v)
         case Some(v) => halt(s"Unexpected payload on port input.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -46,7 +46,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(manualActuatorInputPortIdOpt, out)
+      PlatformComm.receiveAsync(manualActuatorInputPortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(manualActuatorInputPortId, v)
         case Some(v) => halt(s"Unexpected payload on port manualActuatorInput.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -72,11 +72,11 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_App starting ...")
 
@@ -85,7 +85,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -142,7 +142,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

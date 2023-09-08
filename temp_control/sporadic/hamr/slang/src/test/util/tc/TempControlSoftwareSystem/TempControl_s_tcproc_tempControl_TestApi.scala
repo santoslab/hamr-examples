@@ -79,22 +79,22 @@ import tc._
 
   // setter for in DataPort
   def put_currentTemp(value : TempSensor.Temperature_i): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.currentTemp_Id, TempSensor.Temperature_i_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.currentTemp_Id, TempSensor.Temperature_i_Payload(value))
   }
 
   // setter for in EventDataPort
   def put_fanAck(value : CoolingFan.FanAck.Type): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id, CoolingFan.FanAck_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.fanAck_Id, CoolingFan.FanAck_Payload(value))
   }
 
   // setter for in EventDataPort
   def put_setPoint(value : TempControlSoftwareSystem.SetPoint_i): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id, TempControlSoftwareSystem.SetPoint_i_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.setPoint_Id, TempControlSoftwareSystem.SetPoint_i_Payload(value))
   }
 
   // setter for in EventPort
   def put_tempChanged(): Unit = {
-    ArtNative.insertInPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.tempChanged_Id, Empty())
+    ArtNative.insertInInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.operational_api.tempChanged_Id, Empty())
   }
 
   // getter for out EventDataPort
@@ -109,7 +109,7 @@ import tc._
 
   // payload getter for out EventDataPort
   def get_fanCmd_payload(): Option[CoolingFan.FanCmd_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.initialization_api.fanCmd_Id).asInstanceOf[Option[CoolingFan.FanCmd_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.TempControlSoftwareSystem_s_Instance_tcproc_tempControl.initialization_api.fanCmd_Id).asInstanceOf[Option[CoolingFan.FanCmd_Payload]]
   }
 
 }

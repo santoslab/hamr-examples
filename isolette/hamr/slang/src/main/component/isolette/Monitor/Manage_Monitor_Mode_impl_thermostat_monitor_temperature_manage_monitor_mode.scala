@@ -23,7 +23,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         // BEGIN INITIALIZES ENSURES
         // guarantee REQ_MMM_1
         //   Upon the first dispatch of the thread, the monitor mode is Init.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114 
         api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode
         // END INITIALIZES ENSURES
       )
@@ -48,7 +48,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         //   the mode is set to NORMAL iff the monitor status is true (valid) (see Table A-15), i.e.,
         //   if  NOT (Monitor Interface Failure OR Monitor Internal Failure)
         //   AND Current Temperature.Status = Valid
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114 
         (In(lastMonitorMode) == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: ((!(api.interface_failure.value || api.internal_failure.value) &&
            api.current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
           (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode)),
@@ -58,7 +58,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         //   the Monitor status is false, i.e.,
         //   if  (Monitor Interface Failure OR Monitor Internal Failure)
         //   OR NOT(Current Temperature.Status = Valid)
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114 
         (In(lastMonitorMode) == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->: ((api.interface_failure.value || api.internal_failure.value ||
            api.current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
           (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode)),
@@ -67,7 +67,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         //   the mode is set to Failed iff the time during
         //   which the thread has been in Init mode exceeds the
         //   Monitor Init Timeout value.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=114 
         (In(lastMonitorMode) == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->: (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() == (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
         // END COMPUTE ENSURES timeTriggered
       )

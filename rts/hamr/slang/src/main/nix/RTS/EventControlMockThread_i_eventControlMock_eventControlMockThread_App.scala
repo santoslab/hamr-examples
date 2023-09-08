@@ -18,7 +18,7 @@ object EventControlMockThread_i_eventControlMock_eventControlMockThread_App exte
   // incoming ports
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -48,11 +48,11 @@ object EventControlMockThread_i_eventControlMock_eventControlMockThread_App exte
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("EventControlMockThread_i_eventControlMock_eventControlMockThread_App starting ...")
 
@@ -61,7 +61,7 @@ object EventControlMockThread_i_eventControlMock_eventControlMockThread_App exte
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -118,7 +118,7 @@ object EventControlMockThread_i_eventControlMock_eventControlMockThread_App exte
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

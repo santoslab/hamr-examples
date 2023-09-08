@@ -20,8 +20,8 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_App extends App {
   val heat_controlPortIdOpt: Option[Art.PortId] = Some(heat_controlPortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, heat_controlPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, heat_controlPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -34,7 +34,7 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_App extends App {
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(heat_controlPortIdOpt, out)
+      PlatformComm.receiveAsync(heat_controlPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.On_Off_Payload) => ArtNix.updateData(heat_controlPortId, v)
         case Some(v) => halt(s"Unexpected payload on port heat_control.  Expecting something of type Isolette_Data_Model.On_Off_Payload but received ${v}")
@@ -60,11 +60,11 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_App extends App {
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("Heat_Source_impl_heat_source_cpi_heat_controller_App starting ...")
 
@@ -73,7 +73,7 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_App extends App {
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -140,7 +140,7 @@ object Heat_Source_impl_heat_source_cpi_heat_controller_App extends App {
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

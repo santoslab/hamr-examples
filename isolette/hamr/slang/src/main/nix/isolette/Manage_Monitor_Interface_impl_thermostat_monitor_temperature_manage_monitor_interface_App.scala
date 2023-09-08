@@ -26,11 +26,11 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   val monitor_modePortIdOpt: Option[Art.PortId] = Some(monitor_modePortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, upper_alarm_tempWstatusPortIdOpt)
-    Platform.initialise(seed, lower_alarm_tempWstatusPortIdOpt)
-    Platform.initialise(seed, current_tempWstatusPortIdOpt)
-    Platform.initialise(seed, monitor_modePortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, upper_alarm_tempWstatusPortIdOpt)
+    PlatformComm.initialise(seed, lower_alarm_tempWstatusPortIdOpt)
+    PlatformComm.initialise(seed, current_tempWstatusPortIdOpt)
+    PlatformComm.initialise(seed, monitor_modePortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -43,7 +43,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(upper_alarm_tempWstatusPortIdOpt, out)
+      PlatformComm.receiveAsync(upper_alarm_tempWstatusPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.TempWstatus_impl_Payload) => ArtNix.updateData(upper_alarm_tempWstatusPortId, v)
         case Some(v) => halt(s"Unexpected payload on port upper_alarm_tempWstatus.  Expecting something of type Isolette_Data_Model.TempWstatus_impl_Payload but received ${v}")
@@ -52,7 +52,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(lower_alarm_tempWstatusPortIdOpt, out)
+      PlatformComm.receiveAsync(lower_alarm_tempWstatusPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.TempWstatus_impl_Payload) => ArtNix.updateData(lower_alarm_tempWstatusPortId, v)
         case Some(v) => halt(s"Unexpected payload on port lower_alarm_tempWstatus.  Expecting something of type Isolette_Data_Model.TempWstatus_impl_Payload but received ${v}")
@@ -61,7 +61,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(current_tempWstatusPortIdOpt, out)
+      PlatformComm.receiveAsync(current_tempWstatusPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.TempWstatus_impl_Payload) => ArtNix.updateData(current_tempWstatusPortId, v)
         case Some(v) => halt(s"Unexpected payload on port current_tempWstatus.  Expecting something of type Isolette_Data_Model.TempWstatus_impl_Payload but received ${v}")
@@ -70,7 +70,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(monitor_modePortIdOpt, out)
+      PlatformComm.receiveAsync(monitor_modePortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.Monitor_Mode_Payload) => ArtNix.updateData(monitor_modePortId, v)
         case Some(v) => halt(s"Unexpected payload on port monitor_mode.  Expecting something of type Isolette_Data_Model.Monitor_Mode_Payload but received ${v}")
@@ -96,11 +96,11 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_App starting ...")
 
@@ -109,7 +109,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -185,7 +185,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

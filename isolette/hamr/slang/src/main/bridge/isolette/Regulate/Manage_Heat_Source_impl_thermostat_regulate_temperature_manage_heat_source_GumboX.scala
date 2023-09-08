@@ -50,6 +50,15 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
     (// IEP-Guar: Initialize Entrypoint contract for manage_heat_source
      initialize_IEP_Guar(lastCmd, api_heat_control))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      lastCmd = post.lastCmd,
+      api_heat_control = post.api_heat_control)
+
   /** Compute Entrypoint Contract
     *
     * assumes lower_is_lower_temp
@@ -87,6 +96,18 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-Assm: assume clauses of manage_heat_source's compute entrypoint
      compute_CEP_T_Assm (api_lower_desired_temp, api_upper_desired_temp))
+
+  /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_heat_source via container
+    *
+    * @param pre Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def compute_CEP_Pre_Container(pre: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS): B =
+    compute_CEP_Pre(
+      In_lastCmd = pre.In_lastCmd,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_desired_temp = pre.api_lower_desired_temp,
+      api_regulator_mode = pre.api_regulator_mode,
+      api_upper_desired_temp = pre.api_upper_desired_temp)
 
   /** Compute Entrypoint Contract
     *
@@ -242,4 +263,21 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
      // CEP-T-Case: case clauses of manage_heat_source's compute entrypoint
      compute_CEP_T_Case (In_lastCmd, api_current_tempWstatus, api_lower_desired_temp, api_regulator_mode, api_upper_desired_temp, api_heat_control))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_heat_source via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS,
+      post: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS): B =
+    compute_CEP_Post(
+      In_lastCmd = pre.In_lastCmd,
+      lastCmd = post.lastCmd,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_desired_temp = pre.api_lower_desired_temp,
+      api_regulator_mode = pre.api_regulator_mode,
+      api_upper_desired_temp = pre.api_upper_desired_temp,
+      api_heat_control = post.api_heat_control)
 }

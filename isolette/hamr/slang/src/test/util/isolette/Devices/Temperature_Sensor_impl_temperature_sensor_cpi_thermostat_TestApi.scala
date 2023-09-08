@@ -54,7 +54,7 @@ import isolette._
 
   // setter for in DataPort
   def put_air(value : Isolette_Data_Model.PhysicalTemp_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat.operational_api.air_Id, Isolette_Data_Model.PhysicalTemp_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat.operational_api.air_Id, Isolette_Data_Model.PhysicalTemp_impl_Payload(value))
   }
 
   // getter for out DataPort
@@ -69,7 +69,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_current_tempWstatus_payload(): Option[Isolette_Data_Model.TempWstatus_impl_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat.initialization_api.current_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_temperature_sensor_cpi_thermostat.initialization_api.current_tempWstatus_Id).asInstanceOf[Option[Isolette_Data_Model.TempWstatus_impl_Payload]]
   }
 
 }

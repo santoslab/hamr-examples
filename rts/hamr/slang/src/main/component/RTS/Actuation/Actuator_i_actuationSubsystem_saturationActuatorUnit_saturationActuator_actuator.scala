@@ -19,7 +19,7 @@ object Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_a
       Ensures(
         // BEGIN INITIALIZES ENSURES
         // guarantee initOutputDataPort
-        //   The Initialize Entry Point must initialize all component
+        //   The Initialize Entry Point must initialize all component 
         //   local state and all output data ports.
         api.output == F
         // END INITIALIZES ENSURES

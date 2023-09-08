@@ -36,13 +36,14 @@ val files: ISZ[String] = ISZ("../src/main/data/isolette/Isolette_Environment/Hea
                              "../src/main/data/isolette/Isolette_Data_Model/Failure_Flag_impl.scala",
                              "../src/main/data/isolette/Isolette_Data_Model/Monitor_Mode.scala",
                              "../src/main/data/isolette/Base_Types.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_DSC_TestVectors.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_DSC_TestVectors.scala",
-                             "../src/main/data/isolette/Regulate/Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_DSC_TestVectors.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_DSC_TestVectors.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_DSC_TestVectors.scala",
-                             "../src/main/data/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectors.scala",
-                             "../src/main/art/art/DataContent.scala")
+                             "../src/main/data/isolette/Regulate/Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala",
+                             "../src/main/data/isolette/Regulate/Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala",
+                             "../src/main/data/isolette/Regulate/Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala",
+                             "../src/main/data/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala",
+                             "../src/main/data/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala",
+                             "../src/main/data/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala",
+                             "../src/main/art/art/DataContent.scala",
+                             "../src/main/data/isolette/Aux_Types.scala")
 
 val toolargs: String = st"${(files, " ")}".render
 

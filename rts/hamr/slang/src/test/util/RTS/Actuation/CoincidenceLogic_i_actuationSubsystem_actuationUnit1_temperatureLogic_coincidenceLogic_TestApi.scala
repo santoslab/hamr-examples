@@ -63,22 +63,22 @@ import RTS._
 
   // setter for in DataPort
   def put_channel1(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel1_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel1_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_channel2(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel2_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel2_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_channel3(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel3_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel3_Id, Base_Types.Boolean_Payload(value))
   }
 
   // setter for in DataPort
   def put_channel4(value : Base_Types.Boolean): Unit = {
-    ArtNative.insertInPortValue(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel4_Id, Base_Types.Boolean_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.operational_api.channel4_Id, Base_Types.Boolean_Payload(value))
   }
 
   // getter for out DataPort
@@ -93,7 +93,7 @@ import RTS._
 
   // payload getter for out DataPort
   def get_actuate_payload(): Option[Base_Types.Boolean_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.initialization_api.actuate_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.RTS_i_Instance_actuationSubsystem_actuationUnit1_temperatureLogic_coincidenceLogic.initialization_api.actuate_Id).asInstanceOf[Option[Base_Types.Boolean_Payload]]
   }
 
 }

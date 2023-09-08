@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, GUMBO__Library.scala, GUMBO__Library.scala, TempSensor_s_tcproc_tempSensor_DSC_TestVectors.scala, OperatorInterface_s_tcproc_operatorInterface_DSC_TestVectors.scala, DataContent.scala
+// This file is auto-generated from Temperature_i.scala, FanCmd.scala, FanAck.scala, SetPoint_i.scala, Base_Types.scala, GUMBO__Library.scala, GUMBO__Library.scala, TempSensor_s_tcproc_tempSensor__Containers.scala, Fan_s_tcproc_fan__Containers.scala, TempControl_s_tcproc_tempControl__Containers.scala, OperatorInterface_s_tcproc_operatorInterface__Containers.scala, DataContent.scala, Aux_Types.scala
 
 package tc
 
@@ -55,11 +55,39 @@ object MsgPack {
 
     val Base_TypesBits_Payload: Z = -11
 
-    val TempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector: Z = -10
+    val TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P: Z = -10
 
-    val TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector: Z = -9
+    val TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS: Z = -9
 
-    val _artEmpty: Z = -8
+    val TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P: Z = -8
+
+    val TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS: Z = -7
+
+    val CoolingFanFan_s_tcproc_fan_PreState_Container_P: Z = -6
+
+    val CoolingFanFan_s_tcproc_fan_PreState_Container_PS: Z = -5
+
+    val CoolingFanFan_s_tcproc_fan_PostState_Container_P: Z = -4
+
+    val CoolingFanFan_s_tcproc_fan_PostState_Container_PS: Z = -3
+
+    val TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P: Z = -2
+
+    val TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS: Z = -1
+
+    val TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P: Z = 0
+
+    val TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS: Z = 1
+
+    val TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P: Z = 2
+
+    val TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS: Z = 3
+
+    val TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P: Z = 4
+
+    val TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS: Z = 5
+
+    val _artEmpty: Z = 6
 
   }
 
@@ -192,14 +220,154 @@ object MsgPack {
       writer.writeISZ(o.value, writer.writeB _)
     }
 
-    def writeTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(o: TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector): Unit = {
-      writer.writeZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector)
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container): Unit = {
+      o match {
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P => writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS => writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+      }
     }
 
-    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector): Unit = {
-      writer.writeZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector)
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P)
+    }
+
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS)
+    }
+
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container): Unit = {
+      o match {
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P => writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS => writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+      }
+    }
+
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P)
       writer.writeOption(o.api_tempChanged, write_artEmpty _)
       writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS)
+      writer.writeOption(o.api_tempChanged, write_artEmpty _)
+      writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PreState_Container(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container): Unit = {
+      o match {
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P => writeCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS => writeCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+      }
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PreState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_P)
+      writer.writeOption(o.api_fanCmd, writeCoolingFanFanCmdType _)
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_PS)
+      writer.writeOption(o.api_fanCmd, writeCoolingFanFanCmdType _)
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PostState_Container(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container): Unit = {
+      o match {
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P => writeCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS => writeCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+      }
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PostState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_P)
+      writer.writeOption(o.api_fanAck, writeCoolingFanFanAckType _)
+    }
+
+    def writeCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_PS)
+      writer.writeOption(o.api_fanAck, writeCoolingFanFanAckType _)
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container): Unit = {
+      o match {
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+      }
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P)
+      writer.writeOption(o.api_tempChanged, write_artEmpty _)
+      writer.writeOption(o.api_fanAck, writeCoolingFanFanAckType _)
+      writer.writeOption(o.api_setPoint, writeTempControlSoftwareSystemSetPoint_i _)
+      writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS)
+      writeCoolingFanFanCmdType(o.In_currentFanState)
+      writeTempControlSoftwareSystemSetPoint_i(o.In_currentSetPoint)
+      writeTempSensorTemperature_i(o.In_latestTemp)
+      writer.writeOption(o.api_tempChanged, write_artEmpty _)
+      writer.writeOption(o.api_fanAck, writeCoolingFanFanAckType _)
+      writer.writeOption(o.api_setPoint, writeTempControlSoftwareSystemSetPoint_i _)
+      writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container): Unit = {
+      o match {
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+      }
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P)
+      writer.writeOption(o.api_fanCmd, writeCoolingFanFanCmdType _)
+    }
+
+    def writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS)
+      writeCoolingFanFanCmdType(o.currentFanState)
+      writeTempControlSoftwareSystemSetPoint_i(o.currentSetPoint)
+      writeTempSensorTemperature_i(o.latestTemp)
+      writer.writeOption(o.api_fanCmd, writeCoolingFanFanCmdType _)
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container): Unit = {
+      o match {
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+      }
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P)
+      writer.writeOption(o.api_tempChanged, write_artEmpty _)
+      writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS)
+      writer.writeOption(o.api_tempChanged, write_artEmpty _)
+      writeTempSensorTemperature_i(o.api_currentTemp)
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container): Unit = {
+      o match {
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
+      }
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P)
+      writer.writeOption(o.api_setPoint, writeTempControlSoftwareSystemSetPoint_i _)
+    }
+
+    def writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS)
+      writer.writeOption(o.api_setPoint, writeTempControlSoftwareSystemSetPoint_i _)
     }
 
     def write_artDataContent(o: art.DataContent): Unit = {
@@ -225,6 +393,22 @@ object MsgPack {
         case o: CoolingFan.FanAck_Payload => writeCoolingFanFanAck_Payload(o)
         case o: TempSensor.Temperature_i_Payload => writeTempSensorTemperature_i_Payload(o)
         case o: TempControlSoftwareSystem.SetPoint_i_Payload => writeTempControlSoftwareSystemSetPoint_i_Payload(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P => writeCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS => writeCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P => writeCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
+        case o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS => writeCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P => writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS => writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P => writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
+        case o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS => writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS => writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
+        case o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
       }
     }
 
@@ -549,30 +733,330 @@ object MsgPack {
       return Base_Types.Bits_Payload(value)
     }
 
-    def readTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(): TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector = {
-      val r = readTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVectorT(F)
-      return r
-    }
-
-    def readTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVectorT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector = {
-      if (!typeParsed) {
-        reader.expectZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector)
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container.")
+          val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T)
+          return r
       }
-      return TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector()
     }
 
-    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector = {
-      val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVectorT(F)
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
+      val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(F)
       return r
     }
 
-    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVectorT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector = {
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
       if (!typeParsed) {
-        reader.expectZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector)
+        reader.expectZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P)
+      }
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P()
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
+      val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(F)
+      return r
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS)
+      }
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS()
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container.")
+          val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
+      val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(F)
+      return r
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P)
       }
       val api_tempChanged = reader.readOption(read_artEmpty _)
       val api_currentTemp = readTempSensorTemperature_i()
-      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(api_tempChanged, api_currentTemp)
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P(api_tempChanged, api_currentTemp)
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
+      val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(F)
+      return r
+    }
+
+    def readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(typeParsed: B): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS)
+      }
+      val api_tempChanged = reader.readOption(read_artEmpty _)
+      val api_currentTemp = readTempSensorTemperature_i()
+      return TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS(api_tempChanged, api_currentTemp)
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PreState_Container(): CoolingFan.Fan_s_tcproc_fan_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_P => val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PT(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_PS => val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of CoolingFan.Fan_s_tcproc_fan_PreState_Container.")
+          val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PreState_Container_P(): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
+      val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PT(F)
+      return r
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PreState_Container_PT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_P)
+      }
+      val api_fanCmd = reader.readOption(readCoolingFanFanCmdType _)
+      return CoolingFan.Fan_s_tcproc_fan_PreState_Container_P(api_fanCmd)
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PreState_Container_PS(): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
+      val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PST(F)
+      return r
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PreState_Container_PST(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_PS)
+      }
+      val api_fanCmd = reader.readOption(readCoolingFanFanCmdType _)
+      return CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS(api_fanCmd)
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PostState_Container(): CoolingFan.Fan_s_tcproc_fan_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_P => val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PT(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_PS => val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of CoolingFan.Fan_s_tcproc_fan_PostState_Container.")
+          val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PostState_Container_P(): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
+      val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PT(F)
+      return r
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PostState_Container_PT(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_P)
+      }
+      val api_fanAck = reader.readOption(readCoolingFanFanAckType _)
+      return CoolingFan.Fan_s_tcproc_fan_PostState_Container_P(api_fanAck)
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PostState_Container_PS(): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
+      val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PST(F)
+      return r
+    }
+
+    def readCoolingFanFan_s_tcproc_fan_PostState_Container_PST(typeParsed: B): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_PS)
+      }
+      val api_fanAck = reader.readOption(readCoolingFanFanAckType _)
+      return CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS(api_fanAck)
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container.")
+          val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
+      val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P)
+      }
+      val api_tempChanged = reader.readOption(read_artEmpty _)
+      val api_fanAck = reader.readOption(readCoolingFanFanAckType _)
+      val api_setPoint = reader.readOption(readTempControlSoftwareSystemSetPoint_i _)
+      val api_currentTemp = readTempSensorTemperature_i()
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P(api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
+      val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS)
+      }
+      val In_currentFanState = readCoolingFanFanCmdType()
+      val In_currentSetPoint = readTempControlSoftwareSystemSetPoint_i()
+      val In_latestTemp = readTempSensorTemperature_i()
+      val api_tempChanged = reader.readOption(read_artEmpty _)
+      val api_fanAck = reader.readOption(readCoolingFanFanAckType _)
+      val api_setPoint = reader.readOption(readTempControlSoftwareSystemSetPoint_i _)
+      val api_currentTemp = readTempSensorTemperature_i()
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS(In_currentFanState, In_currentSetPoint, In_latestTemp, api_tempChanged, api_fanAck, api_setPoint, api_currentTemp)
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container.")
+          val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
+      val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P)
+      }
+      val api_fanCmd = reader.readOption(readCoolingFanFanCmdType _)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P(api_fanCmd)
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
+      val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(typeParsed: B): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS)
+      }
+      val currentFanState = readCoolingFanFanCmdType()
+      val currentSetPoint = readTempControlSoftwareSystemSetPoint_i()
+      val latestTemp = readTempSensorTemperature_i()
+      val api_fanCmd = reader.readOption(readCoolingFanFanCmdType _)
+      return TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS(currentFanState, currentSetPoint, latestTemp, api_fanCmd)
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container.")
+          val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+      val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P)
+      }
+      val api_tempChanged = reader.readOption(read_artEmpty _)
+      val api_currentTemp = readTempSensorTemperature_i()
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(api_tempChanged, api_currentTemp)
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
+      val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS)
+      }
+      val api_tempChanged = reader.readOption(read_artEmpty _)
+      val api_currentTemp = readTempSensorTemperature_i()
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(api_tempChanged, api_currentTemp)
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container.")
+          val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
+      val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P)
+      }
+      val api_setPoint = reader.readOption(readTempControlSoftwareSystemSetPoint_i _)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(api_setPoint)
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
+      val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(F)
+      return r
+    }
+
+    def readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(typeParsed: B): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS)
+      }
+      val api_setPoint = reader.readOption(readTempControlSoftwareSystemSetPoint_i _)
+      return TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(api_setPoint)
     }
 
     def read_artDataContent(): art.DataContent = {
@@ -600,9 +1084,25 @@ object MsgPack {
         case Constants.CoolingFanFanAck_Payload => val r = readCoolingFanFanAck_PayloadT(T); return r
         case Constants.TempSensorTemperature_i_Payload => val r = readTempSensorTemperature_i_PayloadT(T); return r
         case Constants.TempControlSoftwareSystemSetPoint_i_Payload => val r = readTempControlSoftwareSystemSetPoint_i_PayloadT(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_P => val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PT(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PreState_Container_PS => val r = readCoolingFanFan_s_tcproc_fan_PreState_Container_PST(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_P => val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PT(T); return r
+        case Constants.CoolingFanFan_s_tcproc_fan_PostState_Container_PS => val r = readCoolingFanFan_s_tcproc_fan_PostState_Container_PST(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PT(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PST(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PT(T); return r
+        case Constants.TempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS => val r = readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PST(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PST(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS => val r = readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PST(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PST(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PT(T); return r
+        case Constants.TempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS => val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T); return r
         case _ =>
           reader.error(i, s"$t is not a valid type of art.DataContent.")
-          val r = readTempControlSoftwareSystemSetPoint_i_PayloadT(T)
+          val r = readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PST(T)
           return r
       }
     }
@@ -961,33 +1461,363 @@ object MsgPack {
     return r
   }
 
-  def fromTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(o: TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector, pooling: B): ISZ[U8] = {
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(o)
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(o)
     return w.result
   }
 
-  def toTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector, MessagePack.ErrorMsg] = {
-    def fTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_DSC_TestVector = {
-      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector()
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container()
       return r
     }
-    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_DSC_TestVector _)
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container _)
     return r
   }
 
-  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector, pooling: B): ISZ[U8] = {
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
-    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(o)
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(o)
     return w.result
   }
 
-  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector, MessagePack.ErrorMsg] = {
-    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_DSC_TestVector = {
-      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector()
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_P = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P()
       return r
     }
-    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_DSC_TestVector _)
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PreState_Container_PS = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PreState_Container_PS _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(o)
+    return w.result
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container()
+      return r
+    }
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_P = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o: TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(data: ISZ[U8]): Either[TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS(reader: Reader): TempSensor.TempSensor_s_tcproc_tempSensor_PostState_Container_PS = {
+      val r = reader.readTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempSensorTempSensor_s_tcproc_tempSensor_PostState_Container_PS _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PreState_Container(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PreState_Container(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PreState_Container(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PreState_Container, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PreState_Container(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PreState_Container = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PreState_Container()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PreState_Container _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PreState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PreState_Container_P(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PreState_Container_P(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PreState_Container_P = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PreState_Container_P _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PreState_Container_PS(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PreState_Container_PS(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PreState_Container_PS = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PreState_Container_PS _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PostState_Container(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PostState_Container(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PostState_Container(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PostState_Container, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PostState_Container(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PostState_Container = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PostState_Container()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PostState_Container _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PostState_Container_P(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PostState_Container_P(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PostState_Container_P(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PostState_Container_P = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PostState_Container_P _)
+    return r
+  }
+
+  def fromCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o: CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeCoolingFanFan_s_tcproc_fan_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toCoolingFanFan_s_tcproc_fan_PostState_Container_PS(data: ISZ[U8]): Either[CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fCoolingFanFan_s_tcproc_fan_PostState_Container_PS(reader: Reader): CoolingFan.Fan_s_tcproc_fan_PostState_Container_PS = {
+      val r = reader.readCoolingFanFan_s_tcproc_fan_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fCoolingFanFan_s_tcproc_fan_PostState_Container_PS _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_P = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PreState_Container_PS = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PreState_Container_PS _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_P = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o: TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(data: ISZ[U8]): Either[TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS(reader: Reader): TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_PostState_Container_PS = {
+      val r = reader.readTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemTempControl_s_tcproc_tempControl_PostState_Container_PS _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_P = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_P = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_P _)
+    return r
+  }
+
+  def fromTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o: TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(data: ISZ[U8]): Either[TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS(reader: Reader): TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS = {
+      val r = reader.readTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fTempControlSoftwareSystemOperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS _)
     return r
   }
 

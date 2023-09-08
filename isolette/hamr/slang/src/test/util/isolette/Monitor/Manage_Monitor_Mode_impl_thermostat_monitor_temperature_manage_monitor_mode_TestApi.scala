@@ -60,17 +60,17 @@ import isolette._
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_interface_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.interface_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_internal_failure(value : Isolette_Data_Model.Failure_Flag_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.operational_api.internal_failure_Id, Isolette_Data_Model.Failure_Flag_impl_Payload(value))
   }
 
   // getter for out DataPort
@@ -85,7 +85,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_monitor_mode_payload(): Option[Isolette_Data_Model.Monitor_Mode_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.initialization_api.monitor_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Monitor_Mode_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_monitor_mode.initialization_api.monitor_mode_Id).asInstanceOf[Option[Isolette_Data_Model.Monitor_Mode_Payload]]
   }
 
 }

@@ -20,8 +20,8 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App extends App
   val airPortIdOpt: Option[Art.PortId] = Some(airPortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, airPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, airPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -34,7 +34,7 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App extends App
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(airPortIdOpt, out)
+      PlatformComm.receiveAsync(airPortIdOpt, out)
       out.value2 match {
         case Some(v: Isolette_Data_Model.PhysicalTemp_impl_Payload) => ArtNix.updateData(airPortId, v)
         case Some(v) => halt(s"Unexpected payload on port air.  Expecting something of type Isolette_Data_Model.PhysicalTemp_impl_Payload but received ${v}")
@@ -60,11 +60,11 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App extends App
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App starting ...")
 
@@ -73,7 +73,7 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App extends App
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -140,7 +140,7 @@ object Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_App extends App
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

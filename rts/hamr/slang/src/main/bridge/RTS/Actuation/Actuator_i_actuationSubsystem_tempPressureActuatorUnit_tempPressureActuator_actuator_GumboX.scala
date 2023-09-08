@@ -35,6 +35,14 @@ object Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuat
     (// IEP-Guar: Initialize Entrypoint contract for actuator
      initialize_IEP_Guar(api_output))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      api_output = post.api_output)
+
   /** Compute Entrypoint Contract
     *
     * guarantee actuatorOutput
@@ -72,4 +80,17 @@ object Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuat
       api_output: Base_Types.Boolean): B =
     (// CEP-Guar: guarantee clauses of actuator's compute entrypoint
      compute_CEP_T_Guar (api_input, api_manualActuatorInput, api_output))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for actuator via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_PreState_Container_PS,
+      post: Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_PostState_Container_PS): B =
+    compute_CEP_Post(
+      api_input = pre.api_input,
+      api_manualActuatorInput = pre.api_manualActuatorInput,
+      api_output = post.api_output)
 }

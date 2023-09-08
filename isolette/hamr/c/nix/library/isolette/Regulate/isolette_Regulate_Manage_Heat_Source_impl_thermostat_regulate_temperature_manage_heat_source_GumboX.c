@@ -3,7 +3,7 @@
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_Pre(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type In_lastCmd, isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_CEP_Pre", 0);
 
-  sfUpdateLoc(89);
+  sfUpdateLoc(98);
   B _r_;
   {
     B t_0 = isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_T_Assm(SF (isolette_Isolette_Data_Model_Temp_impl) api_lower_desired_temp, (isolette_Isolette_Data_Model_Temp_impl) api_upper_desired_temp);
@@ -15,7 +15,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_Post(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type In_lastCmd, isolette_Isolette_Data_Model_On_Off_Type lastCmd, isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_CEP_Post", 0);
 
-  sfUpdateLoc(241);
+  sfUpdateLoc(262);
   B _r_;
   {
     B t_0 = isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_T_Guar(SF lastCmd, api_heat_control);
@@ -28,7 +28,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_T_Assm(STACK_FRAME isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_CEP_T_Assm", 0);
 
-  sfUpdateLoc(72);
+  sfUpdateLoc(81);
   B _r_;
   {
     B t_0 = isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_spec_lower_is_lower_temp_assume(SF (isolette_Isolette_Data_Model_Temp_impl) api_lower_desired_temp, (isolette_Isolette_Data_Model_Temp_impl) api_upper_desired_temp);
@@ -40,7 +40,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_T_Guar(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type lastCmd, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_CEP_T_Guar", 0);
 
-  sfUpdateLoc(111);
+  sfUpdateLoc(132);
   B _r_;
   {
     B t_0 = isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_spec_lastCmd_guarantee(SF lastCmd, api_heat_control);
@@ -52,7 +52,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_CEP_T_Case(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type In_lastCmd, isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_CEP_T_Case", 0);
 
-  sfUpdateLoc(216);
+  sfUpdateLoc(237);
   B _r_;
   {
     B t_0 = isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_1(SF api_regulator_mode, api_heat_control);
@@ -68,7 +68,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_spec_lower_is_lower_temp_assume(STACK_FRAME isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_spec_lower_is_lower_temp_assume", 0);
 
-  sfUpdateLoc(62);
+  sfUpdateLoc(71);
   B _r_;
   {
     _r_ = F32__le(isolette_Isolette_Data_Model_Temp_impl_value_(api_lower_desired_temp), isolette_Isolette_Data_Model_Temp_impl_value_(api_upper_desired_temp));
@@ -79,7 +79,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_spec_lastCmd_guarantee(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type lastCmd, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_spec_lastCmd_guarantee", 0);
 
-  sfUpdateLoc(101);
+  sfUpdateLoc(122);
   B _r_;
   {
     _r_ = isolette_Isolette_Data_Model_On_Off_Type__eq(lastCmd, api_heat_control);
@@ -90,7 +90,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_1(STACK_FRAME isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_case_REQ_MHS_1", 0);
 
-  sfUpdateLoc(123);
+  sfUpdateLoc(144);
   B _r_;
   {
     B t_0 = T;
@@ -105,7 +105,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_2(STACK_FRAME isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_case_REQ_MHS_2", 0);
 
-  sfUpdateLoc(140);
+  sfUpdateLoc(161);
   B _r_;
   {
     B t_0 = T;
@@ -120,7 +120,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_3(STACK_FRAME isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_case_REQ_MHS_3", 0);
 
-  sfUpdateLoc(158);
+  sfUpdateLoc(179);
   B _r_;
   {
     B t_0 = T;
@@ -135,7 +135,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_4(STACK_FRAME isolette_Isolette_Data_Model_On_Off_Type In_lastCmd, isolette_Isolette_Data_Model_TempWstatus_impl api_current_tempWstatus, isolette_Isolette_Data_Model_Temp_impl api_lower_desired_temp, isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_Temp_impl api_upper_desired_temp, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_case_REQ_MHS_4", 0);
 
-  sfUpdateLoc(182);
+  sfUpdateLoc(203);
   B _r_;
   {
     B t_0 = T;
@@ -150,7 +150,7 @@ B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_mana
 B isolette_Regulate_Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_compute_case_REQ_MHS_5(STACK_FRAME isolette_Isolette_Data_Model_Regulator_Mode_Type api_regulator_mode, isolette_Isolette_Data_Model_On_Off_Type api_heat_control) {
   DeclNewStackFrame(caller, "Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.scala", "isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX", "compute_case_REQ_MHS_5", 0);
 
-  sfUpdateLoc(197);
+  sfUpdateLoc(218);
   B _r_;
   {
     B t_0 = T;

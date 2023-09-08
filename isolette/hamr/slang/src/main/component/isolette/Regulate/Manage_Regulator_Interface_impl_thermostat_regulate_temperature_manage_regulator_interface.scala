@@ -51,53 +51,53 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
         // case REQ_MRI_1
         //   If the Regulator Mode is INIT,
         //   the Regulator Status shall be set to Init.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.Init_Status),
         // case REQ_MRI_2
         //   If the Regulator Mode is NORMAL,
         //   the Regulator Status shall be set to On
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.On_Status),
         // case REQ_MRI_3
         //   If the Regulator Mode is FAILED,
         //   the Regulator Status shall be set to Failed.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=107 
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->: (api.regulator_status == Isolette_Data_Model.Status.Failed_Status),
         // case REQ_MRI_4
         //   If the Regulator Mode is NORMAL, the
         //   Display Temperature shall be set to the value of the
         //   Current Temperature rounded to the nearest integer.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (api.regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->: (api.displayed_temp.value == Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.ROUND(api.current_tempWstatus.value)),
         // case REQ_MRI_5
         //   If the Regulator Mode is not NORMAL,
         //   the value of the Display Temperature is UNSPECIFIED.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (T) -->: (T),
         // case REQ_MRI_6
         //   If the Status attribute of the Lower Desired Temperature
         //   or the Upper Desired Temperature is Invalid,
         //   the Regulator Interface Failure shall be set to True.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid |
            api.upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->: (api.interface_failure.value),
         // case REQ_MRI_7
         //   If the Status attribute of the Lower Desired Temperature
         //   and the Upper Desired Temperature is Valid,
         //   the Regulator Interface Failure shall be set to False.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (T) -->: (api.interface_failure.value == !(api.upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
            api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
         // case REQ_MRI_8
         //   If the Regulator Interface Failure is False
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (T) -->: (!(api.interface_failure.value) ->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value &
            api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)),
         // case REQ_MRI_9
         //   If the Regulator Interface Failure is True,
         //   the Desired Range is UNSPECIFIED.
         //   the Desired Range shall be set to the Desired Temperature Range.
-        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108
+        //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (T) -->: (T)
         // END COMPUTE ENSURES timeTriggered
       )

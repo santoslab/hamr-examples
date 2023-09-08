@@ -43,6 +43,15 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
     (// IEP-Guar: Initialize Entrypoint contract for manage_alarm
      initialize_IEP_Guar(lastCmd, api_alarm_control))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      lastCmd = post.lastCmd,
+      api_alarm_control = post.api_alarm_control)
+
   /** Compute Entrypoint Contract
     *
     * assumes Figure_A_7
@@ -110,6 +119,18 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-Assm: assume clauses of manage_alarm's compute entrypoint
      compute_CEP_T_Assm (api_lower_alarm_temp, api_upper_alarm_temp))
+
+  /** CEP-Pre: Compute Entrypoint Pre-Condition for manage_alarm via container
+    *
+    * @param pre Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def compute_CEP_Pre_Container(pre: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS): B =
+    compute_CEP_Pre(
+      In_lastCmd = pre.In_lastCmd,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_alarm_temp = pre.api_lower_alarm_temp,
+      api_monitor_mode = pre.api_monitor_mode,
+      api_upper_alarm_temp = pre.api_upper_alarm_temp)
 
   /** guarantee REQ_MA_1
     *   If the Monitor Mode is INIT, the Alarm Control shall be set
@@ -270,4 +291,21 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (// CEP-T-Case: case clauses of manage_alarm's compute entrypoint
      compute_CEP_T_Case (In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_temp, api_monitor_mode, api_upper_alarm_temp, api_alarm_control))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_alarm via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS,
+      post: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS): B =
+    compute_CEP_Post(
+      In_lastCmd = pre.In_lastCmd,
+      lastCmd = post.lastCmd,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_lower_alarm_temp = pre.api_lower_alarm_temp,
+      api_monitor_mode = pre.api_monitor_mode,
+      api_upper_alarm_temp = pre.api_upper_alarm_temp,
+      api_alarm_control = post.api_alarm_control)
 }

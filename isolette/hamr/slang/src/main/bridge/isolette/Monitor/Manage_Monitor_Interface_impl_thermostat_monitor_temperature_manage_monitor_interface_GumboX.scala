@@ -49,6 +49,18 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     (// IEP-Guar: Initialize Entrypoint contract for manage_monitor_interface
      initialize_IEP_Guar(lastCmd, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      lastCmd = post.lastCmd,
+      api_interface_failure = post.api_interface_failure,
+      api_lower_alarm_temp = post.api_lower_alarm_temp,
+      api_monitor_status = post.api_monitor_status,
+      api_upper_alarm_temp = post.api_upper_alarm_temp)
+
   /** guarantee REQ_MMI_1
     *   If the Manage Monitor Interface mode is INIT,
     *   the Monitor Status shall be set to Init.
@@ -206,4 +218,23 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
     (// CEP-T-Case: case clauses of manage_monitor_interface's compute entrypoint
      compute_CEP_T_Case (api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_monitor_interface via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS,
+      post: Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS): B =
+    compute_CEP_Post(
+      In_lastCmd = pre.In_lastCmd,
+      lastCmd = post.lastCmd,
+      api_lower_alarm_tempWstatus = pre.api_lower_alarm_tempWstatus,
+      api_monitor_mode = pre.api_monitor_mode,
+      api_upper_alarm_tempWstatus = pre.api_upper_alarm_tempWstatus,
+      api_interface_failure = post.api_interface_failure,
+      api_lower_alarm_temp = post.api_lower_alarm_temp,
+      api_monitor_status = post.api_monitor_status,
+      api_upper_alarm_temp = post.api_upper_alarm_temp)
 }

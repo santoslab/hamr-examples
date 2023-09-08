@@ -290,17 +290,20 @@ object Art {
     ArtNative.manuallyClearOutput()
   }
 
-  def insertInPortValue(dstPortId: Art.PortId, data: DataContent): Unit = {
-    ArtNative.insertInPortValue(dstPortId, data)
+  def insertInInfrastructurePort(dstPortId: Art.PortId, data: DataContent): Unit = {
+    ArtNative.insertInInfrastructurePort(dstPortId, data)
   }
 
-  def observeOutPortValue(portId: Art.PortId): Option[DataContent] = {
-    return ArtNative.observeOutPortValue(portId)
+  def observeInInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
+    return ArtNative.observeInInfrastructurePort(portId)
   }
 
-  // JH: Refactored - manually added method to support
-  def observeInPortValue(portId: Art.PortId): Option[DataContent] = {
-    return ArtNative.observeInPortValue(portId)
+  def observeOutInfrastructurePort(portId: Art.PortId): Option[DataContent] = {
+    return ArtNative.observeOutInfrastructurePort(portId)
+  }
+
+  def observeInPortVariable(portId: Art.PortId): Option[DataContent] = {
+    return ArtNative.observeInPortVariable(portId)
   }
 
   def observeOutPortVariable(portId: Art.PortId): Option[DataContent] = {

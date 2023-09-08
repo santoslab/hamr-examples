@@ -63,22 +63,22 @@ import isolette._
 
   // setter for in DataPort
   def put_current_tempWstatus(value : Isolette_Data_Model.TempWstatus_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.current_tempWstatus_Id, Isolette_Data_Model.TempWstatus_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_lower_alarm_temp(value : Isolette_Data_Model.Temp_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.lower_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.lower_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_upper_alarm_temp(value : Isolette_Data_Model.Temp_impl): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.upper_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.upper_alarm_temp_Id, Isolette_Data_Model.Temp_impl_Payload(value))
   }
 
   // setter for in DataPort
   def put_monitor_mode(value : Isolette_Data_Model.Monitor_Mode.Type): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.monitor_mode_Id, Isolette_Data_Model.Monitor_Mode_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.operational_api.monitor_mode_Id, Isolette_Data_Model.Monitor_Mode_Payload(value))
   }
 
   // getter for out DataPort
@@ -93,7 +93,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_alarm_control_payload(): Option[Isolette_Data_Model.On_Off_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.initialization_api.alarm_control_Id).asInstanceOf[Option[Isolette_Data_Model.On_Off_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_thermostat_monitor_temperature_manage_alarm.initialization_api.alarm_control_Id).asInstanceOf[Option[Isolette_Data_Model.On_Off_Payload]]
   }
 
 }

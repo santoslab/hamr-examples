@@ -54,7 +54,7 @@ import isolette._
 
   // setter for in DataPort
   def put_heat_control(value : Isolette_Data_Model.On_Off.Type): Unit = {
-    ArtNative.insertInPortValue(Arch.isolette_single_sensor_Instance_heat_source_cpi_heat_controller.operational_api.heat_control_Id, Isolette_Data_Model.On_Off_Payload(value))
+    ArtNative.insertInInfrastructurePort(Arch.isolette_single_sensor_Instance_heat_source_cpi_heat_controller.operational_api.heat_control_Id, Isolette_Data_Model.On_Off_Payload(value))
   }
 
   // getter for out DataPort
@@ -69,7 +69,7 @@ import isolette._
 
   // payload getter for out DataPort
   def get_heat_out_payload(): Option[Isolette_Environment.Heat_Payload] = {
-    return ArtNative.observeOutPortValue(Arch.isolette_single_sensor_Instance_heat_source_cpi_heat_controller.initialization_api.heat_out_Id).asInstanceOf[Option[Isolette_Environment.Heat_Payload]]
+    return ArtNative.observeOutInfrastructurePort(Arch.isolette_single_sensor_Instance_heat_source_cpi_heat_controller.initialization_api.heat_out_Id).asInstanceOf[Option[Isolette_Environment.Heat_Payload]]
   }
 
 }

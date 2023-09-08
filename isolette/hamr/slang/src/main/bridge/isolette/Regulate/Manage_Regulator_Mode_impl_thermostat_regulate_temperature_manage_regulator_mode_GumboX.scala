@@ -39,6 +39,15 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
     (// IEP-Guar: Initialize Entrypoint contract for manage_regulator_mode
      initialize_IEP_Guar(lastRegulatorMode, api_regulator_mode))
 
+  /** IEP-Post: Initialize Entrypoint Post-Condition via container
+    *
+    * @param post Container holding the value of incoming ports and the pre-state values of state variables
+    */
+  @strictpure def inititialize_IEP_Post_Container (post: Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS): B =
+    inititialize_IEP_Post (
+      lastRegulatorMode = post.lastRegulatorMode,
+      api_regulator_mode = post.api_regulator_mode)
+
   /** guarantee REQ_MRM_2
     *   'transition from Init to Normal'
     *   If the current regulator mode is Init, then
@@ -209,4 +218,20 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
     (// CEP-T-Case: case clauses of manage_regulator_mode's compute entrypoint
      compute_CEP_T_Case (In_lastRegulatorMode, lastRegulatorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure, api_regulator_mode))
+
+  /** CEP-Post: Compute Entrypoint Post-Condition for manage_regulator_mode via containers
+    *
+    * @param pre Container holding the values of incoming ports and the pre-state values of state variables
+    * @param post Container holding the values of outgoing ports and the post-state values of state variables
+    */
+  @strictpure def compute_CEP_Post_Container(
+      pre: Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS,
+      post: Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS): B =
+    compute_CEP_Post(
+      In_lastRegulatorMode = pre.In_lastRegulatorMode,
+      lastRegulatorMode = post.lastRegulatorMode,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
+      api_interface_failure = pre.api_interface_failure,
+      api_internal_failure = pre.api_internal_failure,
+      api_regulator_mode = post.api_regulator_mode)
 }

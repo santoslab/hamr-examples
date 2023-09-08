@@ -22,9 +22,9 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
   val saturationActuatePortIdOpt: Option[Art.PortId] = Some(saturationActuatePortId)
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
-    Platform.initialise(seed, tempPressureActuatePortIdOpt)
-    Platform.initialise(seed, saturationActuatePortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, tempPressureActuatePortIdOpt)
+    PlatformComm.initialise(seed, saturationActuatePortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -37,7 +37,7 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
 
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(tempPressureActuatePortIdOpt, out)
+      PlatformComm.receiveAsync(tempPressureActuatePortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(tempPressureActuatePortId, v)
         case Some(v) => halt(s"Unexpected payload on port tempPressureActuate.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -46,7 +46,7 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
     }
     {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(saturationActuatePortIdOpt, out)
+      PlatformComm.receiveAsync(saturationActuatePortIdOpt, out)
       out.value2 match {
         case Some(v: Base_Types.Boolean_Payload) => ArtNix.updateData(saturationActuatePortId, v)
         case Some(v) => halt(s"Unexpected payload on port saturationActuate.  Expecting something of type Base_Types.Boolean_Payload but received ${v}")
@@ -72,11 +72,11 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App starting ...")
 
@@ -85,7 +85,7 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -140,7 +140,7 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_App extends App {
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

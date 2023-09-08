@@ -60,8 +60,8 @@ object TempControlPeriodic_p_tcproc_tempControl {
         (api.currentTemp.degrees > api.setPoint.high.degrees) ->: (latestFanCmd == CoolingFan.FanCmd.On &
            api.fanCmd == CoolingFan.FanCmd.On),
         // guarantee altCurrentTempInRange
-        //   If current temperature is greater than or equal to the
-        //   current low set point and less than or equal to the current high set point,
+        //   If current temperature is greater than or equal to the 
+        //   current low set point and less than or equal to the current high set point, 
         //   then the current fan state is maintained.
         (api.currentTemp.degrees >= api.setPoint.low.degrees &
            api.currentTemp.degrees <= api.setPoint.high.degrees) -->:
@@ -78,8 +78,8 @@ object TempControlPeriodic_p_tcproc_tempControl {
         (api.currentTemp.degrees > api.setPoint.high.degrees) -->: (latestFanCmd == CoolingFan.FanCmd.On &
           api.fanCmd == CoolingFan.FanCmd.On),
         // case currentTempInRange
-        //   If current temperature is greater than or equal to the
-        //   current low set point and less than or equal to the current high set point,
+        //   If current temperature is greater than or equal to the 
+        //   current low set point and less than or equal to the current high set point, 
         //   then the current fan state is maintained.
         (api.currentTemp.degrees >= api.setPoint.low.degrees &
            api.currentTemp.degrees <= api.setPoint.high.degrees) -->: (latestFanCmd == In(latestFanCmd) &

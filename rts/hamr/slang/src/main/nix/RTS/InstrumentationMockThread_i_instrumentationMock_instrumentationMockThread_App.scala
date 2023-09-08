@@ -18,7 +18,7 @@ object InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread
   // incoming ports
 
   def initialiseArchitecture(seed: Z): Unit = {
-    Platform.initialise(seed, appPortIdOpt)
+    PlatformComm.initialise(seed, appPortIdOpt)
 
     Art.run(Arch.ad, NopScheduler())
   }
@@ -48,11 +48,11 @@ object InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread
 
     initialiseArchitecture(seed)
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after setting up component
 
     initialise()
 
-    Platform.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
+    PlatformComm.receive(appPortIdOpt, IPCPorts.emptyReceiveOut) // pause after component init
 
     println("InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread_App starting ...")
 
@@ -61,7 +61,7 @@ object InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread
     var terminated = F
     while (!terminated) {
       val out = IPCPorts.emptyReceiveAsyncOut
-      Platform.receiveAsync(appPortIdOpt, out)
+      PlatformComm.receiveAsync(appPortIdOpt, out)
       if (out.value2.isEmpty) {
         compute()
       } else {
@@ -162,7 +162,7 @@ object InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread
 
   def exit(): Unit = {
     finalise()
-    Platform.finalise()
+    PlatformComm.finalise()
   }
 
   override def atExit(): Unit = {

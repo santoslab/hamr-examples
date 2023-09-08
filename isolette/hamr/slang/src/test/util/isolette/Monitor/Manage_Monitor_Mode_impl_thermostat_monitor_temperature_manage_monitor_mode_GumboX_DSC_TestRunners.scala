@@ -13,39 +13,41 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector]
+  extends Random.Gen.TestRunner[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P]
   with Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibinterface_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibinternal_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
+  override def next(): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P = {
     val api_current_tempWstatus = ranLibcurrent_tempWstatus.nextIsolette_Data_ModelTempWstatus_impl()
     val api_interface_failure = ranLibinterface_failure.nextIsolette_Data_ModelFailure_Flag_impl()
     val api_internal_failure = ranLibinternal_failure.nextIsolette_Data_ModelFailure_Flag_impl()
-    return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(
+    return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(
       api_current_tempWstatus, api_interface_failure, api_internal_failure
     )
   }
 
-  override def toCompactJson(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector): String = {
-    return isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o, T)
+  override def toCompactJson(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P): String = {
+    return isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector = {
-    isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(json) match {
+  override def fromJson(json: String): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P = {
+    isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector): B = {
+  override def test(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB(o.api_current_tempWstatus, o.api_interface_failure, o.api_internal_failure) match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVector(o, T))
+        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T
@@ -56,41 +58,43 @@ import org.sireum.Random.Impl.Xoshiro256
 }
 
 @record class Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX_DSC_TestRunnerwL
-  extends Random.Gen.TestRunner[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL]
+  extends Random.Gen.TestRunner[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS]
   with Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
+
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
   val ranLiblastMonitorMode: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibcurrent_tempWstatus: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibinterface_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
   val ranLibinternal_failure: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
 
-  override def next(): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
+  override def next(): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS = {
     val In_lastMonitorMode = ranLiblastMonitorMode.nextIsolette_Data_ModelMonitor_ModeType()
     val api_current_tempWstatus = ranLibcurrent_tempWstatus.nextIsolette_Data_ModelTempWstatus_impl()
     val api_interface_failure = ranLibinterface_failure.nextIsolette_Data_ModelFailure_Flag_impl()
     val api_internal_failure = ranLibinternal_failure.nextIsolette_Data_ModelFailure_Flag_impl()
-    return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(
+    return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(
       In_lastMonitorMode, api_current_tempWstatus, api_interface_failure, api_internal_failure
     )
   }
 
-  override def toCompactJson(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL): String = {
-    return isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o, T)
+  override def toCompactJson(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS): String = {
+    return isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o, T)
   }
 
-  override def fromJson(json: String): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL = {
-    isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(json) match {
+  override def fromJson(json: String): Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS = {
+    isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL): B = {
+  override def test(o: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCBwL(o.In_lastMonitorMode, o.api_current_tempWstatus, o.api_interface_failure, o.api_internal_failure) match {
+    val r: B = testComputeCBwLV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_DSC_TestVectorwL(o, T))
+        isolette.DSC_RecordUnsatPre.report(isolette.JSON.fromMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T

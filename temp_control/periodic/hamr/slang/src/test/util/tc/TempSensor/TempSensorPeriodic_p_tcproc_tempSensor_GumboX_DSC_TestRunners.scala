@@ -13,32 +13,34 @@ import org.sireum.Random.Impl.Xoshiro256
 // Distribute SlangCheck test runners
 
 @record class TempSensorPeriodic_p_tcproc_tempSensor_GumboX_DSC_TestRunner
-  extends Random.Gen.TestRunner[TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector]
+  extends Random.Gen.TestRunner[TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P]
   with TempSensorPeriodic_p_tcproc_tempSensor_GumboX_TestHarness {
 
-  val seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+  val verbose: B = F
 
-  override def next(): TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector = {
-    return TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector(
+  var seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
+
+  override def next(): TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P = {
+    return TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P(
     )
   }
 
-  override def toCompactJson(o: TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector): String = {
-    return tc.JSON.fromTempSensorTempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector(o, T)
+  override def toCompactJson(o: TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P): String = {
+    return tc.JSON.fromTempSensorTempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P(o, T)
   }
 
-  override def fromJson(json: String): TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector = {
-    tc.JSON.toTempSensorTempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector(json) match {
+  override def fromJson(json: String): TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P = {
+    tc.JSON.toTempSensorTempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P(json) match {
       case Either.Left(o) => return o
       case Either.Right(msg) => halt(msg.string)
     }
   }
 
-  override def test(o: TempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector): B = {
+  override def test(o: TempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P): B = {
     BeforeEntrypoint()
-    val r: B = testComputeCB() match {
+    val r: B = testComputeCBV(o) match {
       case GumboXResult.Pre_Condition_Unsat =>
-        tc.DSC_RecordUnsatPre.report(tc.JSON.fromTempSensorTempSensorPeriodic_p_tcproc_tempSensor_DSC_TestVector(o, T))
+        tc.DSC_RecordUnsatPre.report(tc.JSON.fromTempSensorTempSensorPeriodic_p_tcproc_tempSensor_PreState_Container_P(o, T))
         T
       case GumboXResult.Post_Condition_Fail => F
       case GumboXResult.Post_Condition_Pass => T
