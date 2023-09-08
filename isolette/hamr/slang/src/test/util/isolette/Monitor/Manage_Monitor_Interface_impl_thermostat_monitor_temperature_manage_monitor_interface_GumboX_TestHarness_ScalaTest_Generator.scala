@@ -114,7 +114,7 @@ trait Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monito
               if (verbose) {
                 val tq = "\"\"\""
                 println(st"""Replay Unit Test:
-                            |  test("Profile \"${profile.name}\": testComputeCB_$i") {
+                            |  test("Replay: Profile \"${profile.name}\": testComputeCB_$i") {
                             |    val json = st${tq}${isolette.JSON.fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o, T)}${tq}.render
                             |    val testVector = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(json).left
                             |    assert (testComputeCBV(testVector) == isolette.GumboXUtil.GumboXResult.$results)
@@ -171,7 +171,7 @@ trait Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monito
               if (verbose) {
                 val tq = "\"\"\""
                 println(st"""Replay Unit Test:
-                            |  test("Profile \"${profile.name}\": testComputeCBwL_$i") {
+                            |  test("Replay: Profile \"${profile.name}\": testComputeCBwL_$i") {
                             |    val json = st${tq}${isolette.JSON.fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o, T)}${tq}.render
                             |    val testVector = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(json).left
                             |    assert (testComputeCBwLV(testVector) == isolette.GumboXUtil.GumboXResult.$results)

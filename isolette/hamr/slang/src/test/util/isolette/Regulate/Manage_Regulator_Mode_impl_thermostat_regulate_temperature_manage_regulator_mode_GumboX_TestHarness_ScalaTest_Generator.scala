@@ -110,7 +110,7 @@ trait Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulato
               if (verbose) {
                 val tq = "\"\"\""
                 println(st"""Replay Unit Test:
-                            |  test("Profile \"${profile.name}\": testComputeCB_$i") {
+                            |  test("Replay: Profile \"${profile.name}\": testComputeCB_$i") {
                             |    val json = st${tq}${isolette.JSON.fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o, T)}${tq}.render
                             |    val testVector = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(json).left
                             |    assert (testComputeCBV(testVector) == isolette.GumboXUtil.GumboXResult.$results)
@@ -167,7 +167,7 @@ trait Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulato
               if (verbose) {
                 val tq = "\"\"\""
                 println(st"""Replay Unit Test:
-                            |  test("Profile \"${profile.name}\": testComputeCBwL_$i") {
+                            |  test("Replay: Profile \"${profile.name}\": testComputeCBwL_$i") {
                             |    val json = st${tq}${isolette.JSON.fromRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o, T)}${tq}.render
                             |    val testVector = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(json).left
                             |    assert (testComputeCBwLV(testVector) == isolette.GumboXUtil.GumboXResult.$results)
