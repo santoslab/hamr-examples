@@ -44,6 +44,8 @@ Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala
@@ -77,6 +79,8 @@ Aux_Types.scala
 @datatype class Config_U32(low: Option[U32], high: Option[U32], attempts: Z, verbose: B, filter: U32 => B) {}
 
 @datatype class Config_U64(low: Option[U64], high: Option[U64], attempts: Z, verbose: B, filter: U64 => B) {}
+
+@datatype class Config_runtimemonitorObservationKindType(attempts: Z, verbose: B, filter: runtimemonitor.ObservationKind.Type => B) {}
 
 @datatype class Config__artDataContent(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[_artDataContent_DataTypeId.Type], filter: art.DataContent => B) {}
 

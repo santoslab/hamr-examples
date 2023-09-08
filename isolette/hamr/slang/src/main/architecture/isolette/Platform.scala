@@ -10,6 +10,10 @@ object Platform {
 
   def setup(): Unit = {
     // BEGIN MARKER PLATFORM SETUP
+    {
+      // Contributions from GumboX Plugin
+      isolette.runtimemonitor.RuntimeMonitor.init(isolette.runtimemonitor.ModelInfo.modelInfo)
+    }
     // END MARKER PLATFORM SETUP
   }
 

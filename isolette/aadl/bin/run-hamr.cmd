@@ -65,7 +65,8 @@ var codegenArgs = ISZ("hamr", "codegen",
   "--max-string-size", "256",
   "--max-array-size", "1",
   "--verbose",
-  "--aadl-root-dir", aadlDir.string)
+  "--aadl-root-dir", aadlDir.string,
+  "--experimental-options", "enableRuntimeMonitoring")
 
 if (excludeComponentImpl) {
   codegenArgs = codegenArgs :+ "--exclude-component-impl"

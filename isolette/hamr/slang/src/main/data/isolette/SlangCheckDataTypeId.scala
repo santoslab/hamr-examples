@@ -44,6 +44,8 @@ Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala

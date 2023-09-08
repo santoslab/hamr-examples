@@ -44,6 +44,8 @@ Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala
@@ -316,6 +318,25 @@ Aux_Types.scala
   }
 }
 
+
+@record class Gen_runtimemonitorObservationKindType(param: RandomLibI) extends MJen[runtimemonitor.ObservationKind.Type] {
+  override def generate(f: runtimemonitor.ObservationKind.Type => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextruntimemonitorObservationKindType())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
 
 @record class Gen__artDataContent(param: RandomLibI) extends MJen[art.DataContent] {
   override def generate(f: art.DataContent => Jen.Action): Jen.Action = {

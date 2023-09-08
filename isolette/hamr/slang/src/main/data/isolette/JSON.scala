@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, DataContent.scala, Aux_Types.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, ObservationKind.scala, DataContent.scala, Aux_Types.scala
 
 package isolette
 
@@ -613,6 +613,33 @@ object JSON {
         ("type", st""""Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS""""),
         ("lastMonitorMode", printIsolette_Data_ModelMonitor_ModeType(o.lastMonitorMode)),
         ("api_monitor_mode", printIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode))
+      ))
+    }
+
+    @pure def printruntimemonitorObservationKindType(o: runtimemonitor.ObservationKind.Type): ST = {
+      val value: String = o match {
+        case runtimemonitor.ObservationKind.manage_regulator_interface_postInit => "manage_regulator_interface_postInit"
+        case runtimemonitor.ObservationKind.manage_regulator_interface_preCompute => "manage_regulator_interface_preCompute"
+        case runtimemonitor.ObservationKind.manage_regulator_interface_postCompute => "manage_regulator_interface_postCompute"
+        case runtimemonitor.ObservationKind.manage_heat_source_postInit => "manage_heat_source_postInit"
+        case runtimemonitor.ObservationKind.manage_heat_source_preCompute => "manage_heat_source_preCompute"
+        case runtimemonitor.ObservationKind.manage_heat_source_postCompute => "manage_heat_source_postCompute"
+        case runtimemonitor.ObservationKind.manage_regulator_mode_postInit => "manage_regulator_mode_postInit"
+        case runtimemonitor.ObservationKind.manage_regulator_mode_preCompute => "manage_regulator_mode_preCompute"
+        case runtimemonitor.ObservationKind.manage_regulator_mode_postCompute => "manage_regulator_mode_postCompute"
+        case runtimemonitor.ObservationKind.manage_monitor_interface_postInit => "manage_monitor_interface_postInit"
+        case runtimemonitor.ObservationKind.manage_monitor_interface_preCompute => "manage_monitor_interface_preCompute"
+        case runtimemonitor.ObservationKind.manage_monitor_interface_postCompute => "manage_monitor_interface_postCompute"
+        case runtimemonitor.ObservationKind.manage_alarm_postInit => "manage_alarm_postInit"
+        case runtimemonitor.ObservationKind.manage_alarm_preCompute => "manage_alarm_preCompute"
+        case runtimemonitor.ObservationKind.manage_alarm_postCompute => "manage_alarm_postCompute"
+        case runtimemonitor.ObservationKind.manage_monitor_mode_postInit => "manage_monitor_mode_postInit"
+        case runtimemonitor.ObservationKind.manage_monitor_mode_preCompute => "manage_monitor_mode_preCompute"
+        case runtimemonitor.ObservationKind.manage_monitor_mode_postCompute => "manage_monitor_mode_postCompute"
+      }
+      return printObject(ISZ(
+        ("type", printString("runtimemonitor.ObservationKind")),
+        ("value", printString(value))
       ))
     }
 
@@ -1937,6 +1964,27 @@ object JSON {
       val api_monitor_mode = parseIsolette_Data_ModelMonitor_ModeType()
       parser.parseObjectNext()
       return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(lastMonitorMode, api_monitor_mode)
+    }
+
+    def parseruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
+      val r = parseruntimemonitorObservationKindT(F)
+      return r
+    }
+
+    def parseruntimemonitorObservationKindT(typeParsed: B): runtimemonitor.ObservationKind.Type = {
+      if (!typeParsed) {
+        parser.parseObjectType("runtimemonitor.ObservationKind")
+      }
+      parser.parseObjectKey("value")
+      var i = parser.offset
+      val s = parser.parseString()
+      parser.parseObjectNext()
+      runtimemonitor.ObservationKind.byName(s) match {
+        case Some(r) => return r
+        case _ =>
+          parser.parseException(i, s"Invalid element name '$s' for runtimemonitor.ObservationKind.")
+          return runtimemonitor.ObservationKind.byOrdinal(0).get
+      }
     }
 
     def parse_artDataContent(): art.DataContent = {

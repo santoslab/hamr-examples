@@ -9,14 +9,14 @@ object Art {
 
   @range(min = 0, max = 10, index = T) class BridgeId
 
-  @range(min = 0, max = 60, index = T) class PortId
+  @range(min = 0, max = 48, index = T) class PortId
 
   @range(min = 0, max = 26, index = T) class ConnectionId
 
   type Time = S64 // Z might be too small after transpiling
 
   val numComponents: Z = 11
-  val numPorts: Z = 61
+  val numPorts: Z = 49
   val numConnections: Z = 27
 
   val logTitle: String = "Art"

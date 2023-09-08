@@ -44,6 +44,8 @@ Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala
@@ -894,6 +896,43 @@ Aux_Types.scala
     }
 
     return str
+  }
+
+  // ============= runtimemonitor.ObservationKind.Type ===================
+
+  def get_Config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType
+  def set_Config_runtimemonitorObservationKindType(config: Config_runtimemonitorObservationKindType): RandomLib
+
+  def nextruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
+
+    var ordinal: Z = gen.nextZBetween(0, isolette.runtimemonitor.ObservationKind.numOfElements-1)
+
+    var v: runtimemonitor.ObservationKind.Type = isolette.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
+    if(get_Config_runtimemonitorObservationKindType.attempts >= 0) {
+     for(i <- 0 to get_Config_runtimemonitorObservationKindType.attempts) {
+       if(get_Config_runtimemonitorObservationKindType.filter(v)) {
+        return v
+       }
+       if (get_Config_runtimemonitorObservationKindType.verbose) {
+         println(s"Retrying for failing value: $v")
+       }
+       ordinal= gen.nextZBetween(0, isolette.runtimemonitor.ObservationKind.numOfElements-1)
+       v = isolette.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
+     }
+    } else {
+     while(T){
+       if(get_Config_runtimemonitorObservationKindType.filter(v)) {
+        return v
+       }
+       if (get_Config_runtimemonitorObservationKindType.verbose) {
+         println(s"Retrying for failing value: $v")
+       }
+       ordinal= gen.nextZBetween(0, isolette.runtimemonitor.ObservationKind.numOfElements-1)
+       v = isolette.runtimemonitor.ObservationKind.byOrdinal(ordinal).get
+     }
+    }
+    assert(F, "Requirements too strict to generate")
+    halt("Requirements too strict to generate")
   }
 
   // ============= art.DataContent ===================
@@ -4587,6 +4626,18 @@ Aux_Types.scala
 
   def set_Config_U64(config: Config_U64): RandomLib ={
     config_U64 = config
+    return this
+  }
+
+  // ============= runtimemonitor.ObservationKind.Type ===================
+  def alwaysTrue_runtimemonitorObservationKindType(v: runtimemonitor.ObservationKind.Type): B = {return T}
+
+  var config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType = Config_runtimemonitorObservationKindType(100, _verbose, alwaysTrue_runtimemonitorObservationKindType _)
+
+  def get_Config_runtimemonitorObservationKindType: Config_runtimemonitorObservationKindType = {return config_runtimemonitorObservationKindType}
+
+  def set_Config_runtimemonitorObservationKindType(config: Config_runtimemonitorObservationKindType): RandomLib ={
+    config_runtimemonitorObservationKindType = config
     return this
   }
 

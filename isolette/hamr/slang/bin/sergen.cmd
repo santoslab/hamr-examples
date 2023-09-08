@@ -42,6 +42,7 @@ val files: ISZ[String] = ISZ("../src/main/data/isolette/Isolette_Environment/Hea
                              "../src/main/data/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala",
                              "../src/main/data/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala",
                              "../src/main/data/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala",
+                             "../src/main/architecture/isolette/runtimemonitor/ObservationKind.scala",
                              "../src/main/art/art/DataContent.scala",
                              "../src/main/data/isolette/Aux_Types.scala")
 

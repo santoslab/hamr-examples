@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, DataContent.scala, Aux_Types.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, ObservationKind.scala, DataContent.scala, Aux_Types.scala
 
 package isolette
 
@@ -577,6 +577,10 @@ object MsgPack {
       writer.writeZ(Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS)
       writeIsolette_Data_ModelMonitor_ModeType(o.lastMonitorMode)
       writeIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)
+    }
+
+    def writeruntimemonitorObservationKindType(o: runtimemonitor.ObservationKind.Type): Unit = {
+      writer.writeZ(o.ordinal)
     }
 
     def write_artDataContent(o: art.DataContent): Unit = {
@@ -1621,6 +1625,11 @@ object MsgPack {
       val lastMonitorMode = readIsolette_Data_ModelMonitor_ModeType()
       val api_monitor_mode = readIsolette_Data_ModelMonitor_ModeType()
       return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(lastMonitorMode, api_monitor_mode)
+    }
+
+    def readruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
+      val r = reader.readZ()
+      return runtimemonitor.ObservationKind.byOrdinal(r).get
     }
 
     def read_artDataContent(): art.DataContent = {
