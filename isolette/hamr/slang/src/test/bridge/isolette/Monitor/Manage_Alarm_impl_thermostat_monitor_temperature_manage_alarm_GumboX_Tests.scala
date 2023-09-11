@@ -70,7 +70,7 @@ class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests
     )
 
     val REQ_MA_4 = boundLUC(
-      name = "boundLUC + make sure we can cover/reach REQ_MA_4",
+      name = "boundLUC + generate some tests that cover/reach REQ_MA_4",
       numTests = 5,
       api_current_tempWstatus = boundLUC.api_current_tempWstatus.set_Config_F32(f32Config(96.6f, 101.4f))
     )
