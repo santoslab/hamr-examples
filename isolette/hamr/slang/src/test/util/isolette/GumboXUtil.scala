@@ -7,8 +7,6 @@ import org.sireum._
 
 object GumboXUtil {
 
-  var numTestVectorGenRetries: Z = 100
-
   @enum object GumboXResult {
     "Pre_Condition_Unsat"
     "Post_Condition_Pass"

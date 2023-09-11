@@ -11,6 +11,7 @@ import isolette.RandomLib
 @record class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P(
   val name: String,
   val numTests: Z, // number of tests to generate
+  var numTestVectorGenRetries: Z, // number of test vector generation retries
   var api_current_tempWstatus: RandomLib,
   var api_lower_alarm_temp: RandomLib,
   var api_monitor_mode: RandomLib,
@@ -20,6 +21,7 @@ import isolette.RandomLib
 @record class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS(
   val name: String,
   val numTests: Z, // number of tests to generate
+  var numTestVectorGenRetries: Z, // number of test vector generation retries
   var In_lastCmd: RandomLib,
   var api_current_tempWstatus: RandomLib,
   var api_lower_alarm_temp: RandomLib,
