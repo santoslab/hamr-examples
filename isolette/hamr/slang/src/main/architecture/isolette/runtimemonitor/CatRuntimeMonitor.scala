@@ -50,6 +50,7 @@ class CatRuntimeMonitor extends RuntimeMonitorListener {
     val catPane = new JScrollPane((catTreeTable))
     catFrame.add(catPane, BorderLayout.CENTER)
     catFrame.pack()
+    catFrame.setSize(new java.awt.Dimension(800, 600))
     catFrame.setVisible(true)
   }
 

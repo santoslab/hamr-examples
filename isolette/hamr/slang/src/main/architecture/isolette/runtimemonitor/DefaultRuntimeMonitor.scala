@@ -5,7 +5,7 @@ import org.sireum._
 import isolette.JSON
 
 import java.awt.datatransfer.StringSelection
-import java.awt.{BorderLayout, Dimension, Toolkit}
+import java.awt.{BorderLayout, Dimension, Point, Toolkit}
 import javax.swing._
 import javax.swing.table.AbstractTableModel
 
@@ -17,9 +17,12 @@ class DefaultRuntimeMonitor extends JFrame with RuntimeMonitorListener {
 
   var jtable: JTable = _
   var model: TableModel = _
+  var modelInfo: ModelInfo = _
 
   def init(modelInfo: ModelInfo): Unit = {
     this.setTitle("Visualizer")
+
+    this.modelInfo = modelInfo
 
     model = new TableModel()
     jtable = new JTable()
@@ -118,7 +121,9 @@ class DefaultRuntimeMonitor extends JFrame with RuntimeMonitorListener {
 
     pack()
     setResizable(true)
-    setLocationRelativeTo(null)
+    setSize(new java.awt.Dimension(1000,500))
+    //setLocationRelativeTo(null)
+    setLocation(new Point(300, 300))
     setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)
     setVisible(true)
   }
@@ -136,17 +141,20 @@ class DefaultRuntimeMonitor extends JFrame with RuntimeMonitorListener {
   }
 
   def dispatch(bridge: art.Art.BridgeId, observationKind: ObservationKind.Type, pre: Option[art.DataContent], post: Option[art.DataContent]): Unit = {
-    model.addRow(Row(bridge, observationKind,
+    val row = if (bridge.toZ > 3) bridge.toZ - 1 else bridge.toZ
+
+    val name = modelInfo.components(row).name
+    model.addRow(Row(bridge, name, observationKind,
       GumboXDispatcher.checkContract(observationKind, pre, post),
       if (pre.nonEmpty) Some(JSON.from_artDataContent(pre.get, T)) else None(),
       if (post.nonEmpty) Some(JSON.from_artDataContent(post.get, T)) else None()))
   }
 }
 
-case class Row(bridgeId: BridgeId, observationKind: ObservationKind.Type, result: Boolean, pre: Option[String], post: Option[String])
+case class Row(bridgeId: BridgeId, name: String, observationKind: ObservationKind.Type, result: Boolean, pre: Option[String], post: Option[String])
 
 class TableModel extends AbstractTableModel {
-  val columnNames = Array("BridgeId", "Kind", "Satisified")
+  val columnNames = Array("Component", "Kind", "Satisified")
 
   var data: ISZ[Row] = ISZ()
 
@@ -173,7 +181,7 @@ class TableModel extends AbstractTableModel {
 
   override def getValueAt(rowIndex: Int, columnIndex: Int): Object = {
     return columnIndex match {
-      case 0 => data(rowIndex).bridgeId.string.native
+      case 0 => data(rowIndex).name.string.native
       case 1 => data(rowIndex).observationKind.string.native
       case 2 => data(rowIndex).result.string.native
       case _ => halt("Infeasible")

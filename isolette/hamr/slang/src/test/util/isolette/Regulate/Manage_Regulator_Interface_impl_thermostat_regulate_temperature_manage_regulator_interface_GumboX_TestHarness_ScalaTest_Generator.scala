@@ -82,17 +82,27 @@ trait Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_reg
 
   def seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
 
-  def getProfiles_P: ISZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P]
+  def freshRandomLib: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+
+  def getInitialiseProfiles: MSZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile]
+
+  def getDefaultInitialiseProfile: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile = {
+    return Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile (
+      name = "Default Initialise Profile",
+      numTests = 100)
+  }
+
+  def getProfiles_P: MSZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P]
 
   def getDefaultProfile_P: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P = {
     return Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P (
       name = "Default Port Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_lower_desired_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_regulator_mode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_upper_desired_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      api_current_tempWstatus = freshRandomLib, 
+      api_lower_desired_tempWstatus = freshRandomLib, 
+      api_regulator_mode = freshRandomLib, 
+      api_upper_desired_tempWstatus = freshRandomLib)
   }
 
   def next(profile: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P): Option[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P] = {
@@ -120,11 +130,13 @@ trait Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_reg
     }
   }
 
-  def numInitialiseTests: Z = 100
+  for (profile <- getInitialiseProfiles) {
+    testInitialiseCB_Profile(profile)
+  }
 
-  {
-    for (i <- 0 until numInitialiseTests) {
-      val testName = s"testInitialiseCB_$i"
+  def testInitialiseCB_Profile(profile: Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile): Unit = {
+    for (i <- 0 until profile.numTests) {
+      val testName = s"Profile \"${profile.name}\": testInitialiseCB_$i"
       this.registerTest(testName) {
         val results = testInitialiseCB()
         updateReport("testInitialiseCB", results.name, testName, 0, None())

@@ -292,13 +292,11 @@ object GumboXDispatcher {
                     |test(s"manage_regulator_interface_preCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Pre_Container(preContainer))
-                    |}
-                    |
-                    |test(s"manage_regulator_interface_preCompute: Run testComputeCBV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBV(preContainer))
                     |}
                     |// End test cases for manage_regulator_interface_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_regulator_interface_postCompute =>
@@ -307,6 +305,10 @@ object GumboXDispatcher {
                     |test(s"manage_regulator_interface_postCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Pre_Container(preContainer))
                     |}
                     |
@@ -315,13 +317,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_regulator_interface_postCompute: Run testComputeCBV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBV(preContainer))
                     |}
                     |// End test cases for manage_regulator_interface_postCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_heat_source_postInit =>
@@ -339,13 +341,11 @@ object GumboXDispatcher {
                     |test(s"manage_heat_source_preCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Pre_Container(preContainer))
-                    |}
-                    |
-                    |test(s"manage_heat_source_preCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_heat_source_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_heat_source_postCompute =>
@@ -354,6 +354,10 @@ object GumboXDispatcher {
                     |test(s"manage_heat_source_postCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Pre_Container(preContainer))
                     |}
                     |
@@ -362,13 +366,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_heat_source_postCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_heat_source_postCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_regulator_mode_postInit =>
@@ -380,15 +384,6 @@ object GumboXDispatcher {
                     |  assert(isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX.inititialize_IEP_Post_Container(postContainer))
                     |}
                     |// End test cases for manage_regulator_mode_postInit""")
-      case isolette.runtimemonitor.ObservationKind.manage_regulator_mode_preCompute =>
-        return (st"""// Begin test cases for manage_regulator_mode_preCompute
-                    |
-                    |test(s"manage_regulator_mode_preCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
-                    |}
-                    |// End test cases for manage_regulator_mode_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_regulator_mode_postCompute =>
         return (st"""// Begin test cases for manage_regulator_mode_postCompute
                     |
@@ -397,13 +392,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_regulator_mode_postCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_regulator_mode_postCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_monitor_interface_postInit =>
@@ -415,15 +410,6 @@ object GumboXDispatcher {
                     |  assert(isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.inititialize_IEP_Post_Container(postContainer))
                     |}
                     |// End test cases for manage_monitor_interface_postInit""")
-      case isolette.runtimemonitor.ObservationKind.manage_monitor_interface_preCompute =>
-        return (st"""// Begin test cases for manage_monitor_interface_preCompute
-                    |
-                    |test(s"manage_monitor_interface_preCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
-                    |}
-                    |// End test cases for manage_monitor_interface_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_monitor_interface_postCompute =>
         return (st"""// Begin test cases for manage_monitor_interface_postCompute
                     |
@@ -432,13 +418,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_monitor_interface_postCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_monitor_interface_postCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_alarm_postInit =>
@@ -456,13 +442,11 @@ object GumboXDispatcher {
                     |test(s"manage_alarm_preCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Pre_Container(preContainer))
-                    |}
-                    |
-                    |test(s"manage_alarm_preCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_alarm_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_alarm_postCompute =>
@@ -471,6 +455,10 @@ object GumboXDispatcher {
                     |test(s"manage_alarm_postCompute: Check Pre-condition$suffix") {
                     |  val preJson: String = st${tq}${preContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(preJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |  }
                     |  assert(isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Pre_Container(preContainer))
                     |}
                     |
@@ -479,13 +467,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_alarm_postCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_alarm_postCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_monitor_mode_postInit =>
@@ -497,15 +485,6 @@ object GumboXDispatcher {
                     |  assert(isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX.inititialize_IEP_Post_Container(postContainer))
                     |}
                     |// End test cases for manage_monitor_mode_postInit""")
-      case isolette.runtimemonitor.ObservationKind.manage_monitor_mode_preCompute =>
-        return (st"""// Begin test cases for manage_monitor_mode_preCompute
-                    |
-                    |test(s"manage_monitor_mode_preCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
-                    |}
-                    |// End test cases for manage_monitor_mode_preCompute""")
       case isolette.runtimemonitor.ObservationKind.manage_monitor_mode_postCompute =>
         return (st"""// Begin test cases for manage_monitor_mode_postCompute
                     |
@@ -514,13 +493,13 @@ object GumboXDispatcher {
                     |  val postJson: String = st${tq}${postContainer.get}${tq}.render
                     |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(preJson).left
                     |  val postContainer = isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(postJson).left
+                    |  if (verbose) {
+                    |    println("Pre-State Values:")
+                    |    println(s"  $$preContainer")
+                    |    println("Post-State Values:")
+                    |    println(s"  $$postContainer");
+                    |  }
                     |  assert(isolette.Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX.compute_CEP_Post_Container(preContainer, postContainer))
-                    |}
-                    |
-                    |test(s"manage_monitor_mode_postCompute: Run testComputeCBwLV$suffix") {
-                    |  val preJson: String = st${tq}${preContainer.get}${tq}.render
-                    |  val preContainer = isolette.JSON.toMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS(preJson).left
-                    |  println(testComputeCBwLV(preContainer))
                     |}
                     |// End test cases for manage_monitor_mode_postCompute""")
       case _ => return st"// TODO ${observationKind}"

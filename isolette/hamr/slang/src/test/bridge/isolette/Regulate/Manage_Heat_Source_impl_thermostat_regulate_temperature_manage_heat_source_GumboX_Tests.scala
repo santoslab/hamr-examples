@@ -18,10 +18,19 @@ class Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P] = {
+    return MSZ(getDefaultProfile_P(numTests = 200))
+  }
 
   // profiles that will be used to generate the incoming port values
   // and the pre-state values of the state variables
-  override def getProfiles_PS: ISZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS] = ISZ(getDefaultProfile_PS)
+  override def getProfiles_PS: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS] = {
+    return MSZ(getDefaultProfile_PS(numTests = 200))
+  }
 }

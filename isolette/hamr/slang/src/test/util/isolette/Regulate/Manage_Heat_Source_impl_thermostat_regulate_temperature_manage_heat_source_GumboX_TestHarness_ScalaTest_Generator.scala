@@ -82,31 +82,41 @@ trait Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source
 
   def seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
 
-  def getProfiles_P: ISZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P]
+  def freshRandomLib: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+
+  def getInitialiseProfiles: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile]
+
+  def getDefaultInitialiseProfile: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile = {
+    return Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile (
+      name = "Default Initialise Profile",
+      numTests = 100)
+  }
+
+  def getProfiles_P: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P]
 
   def getDefaultProfile_P: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P = {
     return Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P (
       name = "Default Port Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_lower_desired_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_regulator_mode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_upper_desired_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      api_current_tempWstatus = freshRandomLib, 
+      api_lower_desired_temp = freshRandomLib, 
+      api_regulator_mode = freshRandomLib, 
+      api_upper_desired_temp = freshRandomLib)
   }
 
-  def getProfiles_PS: ISZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS]
+  def getProfiles_PS: MSZ[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS]
 
   def getDefaultProfile_PS: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS = {
     return Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_PS (
       name = "Default Port and State Variable Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      In_lastCmd = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_lower_desired_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_regulator_mode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_upper_desired_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      In_lastCmd = freshRandomLib, 
+      api_current_tempWstatus = freshRandomLib, 
+      api_lower_desired_temp = freshRandomLib, 
+      api_regulator_mode = freshRandomLib, 
+      api_upper_desired_temp = freshRandomLib)
   }
 
   def next(profile: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile_P): Option[Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_P] = {
@@ -150,11 +160,13 @@ trait Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source
     }
   }
 
-  def numInitialiseTests: Z = 100
+  for (profile <- getInitialiseProfiles) {
+    testInitialiseCB_Profile(profile)
+  }
 
-  {
-    for (i <- 0 until numInitialiseTests) {
-      val testName = s"testInitialiseCB_$i"
+  def testInitialiseCB_Profile(profile: Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Profile): Unit = {
+    for (i <- 0 until profile.numTests) {
+      val testName = s"Profile \"${profile.name}\": testInitialiseCB_$i"
       this.registerTest(testName) {
         val results = testInitialiseCB()
         updateReport("testInitialiseCB", results.name, testName, 0, None())

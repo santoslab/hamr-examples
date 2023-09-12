@@ -72,13 +72,13 @@ class JTreeTableSC(treeTableModel: TreeTableModelSC) extends JTable { // Create 
       super.getTreeCellRendererComponent(tree, value, sel, exp, leaf, row, hasFocus)
       if (value.isInstanceOf[InputSC]) {
         val input = value.asInstanceOf[InputSC]
-        setBackgroundNonSelectionColor(if (input.getUpdated) Color.yellow
-        else Color.white)
+        //setBackgroundNonSelectionColor(if (input.getUpdated) Color.yellow
+        //else Color.white)
       }
       else if (value.isInstanceOf[OutputSC]) {
         val output = value.asInstanceOf[OutputSC]
-        setBackgroundNonSelectionColor(if (output.getUpdated) Color.yellow
-        else Color.white)
+        //setBackgroundNonSelectionColor(if (output.getUpdated) Color.yellow
+        //else Color.white)
       }
       else setBackgroundNonSelectionColor(Color.white)
       this

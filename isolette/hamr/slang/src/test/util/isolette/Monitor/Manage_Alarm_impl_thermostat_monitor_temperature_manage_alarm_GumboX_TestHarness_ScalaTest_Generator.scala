@@ -82,31 +82,41 @@ trait Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestH
 
   def seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
 
-  def getProfiles_P: ISZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P]
+  def freshRandomLib: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+
+  def getInitialiseProfiles: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile]
+
+  def getDefaultInitialiseProfile: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile = {
+    return Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile (
+      name = "Default Initialise Profile",
+      numTests = 100)
+  }
+
+  def getProfiles_P: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P]
 
   def getDefaultProfile_P: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P = {
     return Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P (
       name = "Default Port Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_lower_alarm_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_monitor_mode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_upper_alarm_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      api_current_tempWstatus = freshRandomLib, 
+      api_lower_alarm_temp = freshRandomLib, 
+      api_monitor_mode = freshRandomLib, 
+      api_upper_alarm_temp = freshRandomLib)
   }
 
-  def getProfiles_PS: ISZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS]
+  def getProfiles_PS: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS]
 
   def getDefaultProfile_PS: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS = {
     return Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS (
       name = "Default Port and State Variable Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      In_lastCmd = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_lower_alarm_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_monitor_mode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_upper_alarm_temp = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      In_lastCmd = freshRandomLib, 
+      api_current_tempWstatus = freshRandomLib, 
+      api_lower_alarm_temp = freshRandomLib, 
+      api_monitor_mode = freshRandomLib, 
+      api_upper_alarm_temp = freshRandomLib)
   }
 
   def next(profile: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P): Option[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P] = {
@@ -150,11 +160,13 @@ trait Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestH
     }
   }
 
-  def numInitialiseTests: Z = 100
+  for (profile <- getInitialiseProfiles) {
+    testInitialiseCB_Profile(profile)
+  }
 
-  {
-    for (i <- 0 until numInitialiseTests) {
-      val testName = s"testInitialiseCB_$i"
+  def testInitialiseCB_Profile(profile: Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile): Unit = {
+    for (i <- 0 until profile.numTests) {
+      val testName = s"Profile \"${profile.name}\": testInitialiseCB_$i"
       this.registerTest(testName) {
         val results = testInitialiseCB()
         updateReport("testInitialiseCB", results.name, testName, 0, None())

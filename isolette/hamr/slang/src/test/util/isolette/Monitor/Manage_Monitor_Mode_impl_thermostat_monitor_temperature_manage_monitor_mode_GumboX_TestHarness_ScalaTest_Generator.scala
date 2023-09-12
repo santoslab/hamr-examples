@@ -82,29 +82,39 @@ trait Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mod
 
   def seedGen: Gen64 = Random.Gen64Impl(Xoshiro256.create)
 
-  def getProfiles_P: ISZ[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_P]
+  def freshRandomLib: RandomLib = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64())))
+
+  def getInitialiseProfiles: MSZ[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile]
+
+  def getDefaultInitialiseProfile: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile = {
+    return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile (
+      name = "Default Initialise Profile",
+      numTests = 100)
+  }
+
+  def getProfiles_P: MSZ[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_P]
 
   def getDefaultProfile_P: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_P = {
     return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_P (
       name = "Default Port Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_interface_failure = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_internal_failure = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      api_current_tempWstatus = freshRandomLib, 
+      api_interface_failure = freshRandomLib, 
+      api_internal_failure = freshRandomLib)
   }
 
-  def getProfiles_PS: ISZ[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_PS]
+  def getProfiles_PS: MSZ[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_PS]
 
   def getDefaultProfile_PS: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_PS = {
     return Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_PS (
       name = "Default Port and State Variable Profile", 
       numTests = 100, 
       numTestVectorGenRetries = 100, 
-      In_lastMonitorMode = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_current_tempWstatus = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_interface_failure = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))), 
-      api_internal_failure = RandomLib(Random.Gen64Impl(Xoshiro256.createSeed(seedGen.genU64()))))
+      In_lastMonitorMode = freshRandomLib, 
+      api_current_tempWstatus = freshRandomLib, 
+      api_interface_failure = freshRandomLib, 
+      api_internal_failure = freshRandomLib)
   }
 
   def next(profile: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile_P): Option[Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P] = {
@@ -146,11 +156,13 @@ trait Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mod
     }
   }
 
-  def numInitialiseTests: Z = 100
+  for (profile <- getInitialiseProfiles) {
+    testInitialiseCB_Profile(profile)
+  }
 
-  {
-    for (i <- 0 until numInitialiseTests) {
-      val testName = s"testInitialiseCB_$i"
+  def testInitialiseCB_Profile(profile: Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Profile): Unit = {
+    for (i <- 0 until profile.numTests) {
+      val testName = s"Profile \"${profile.name}\": testInitialiseCB_$i"
       this.registerTest(testName) {
         val results = testInitialiseCB()
         updateReport("testInitialiseCB", results.name, testName, 0, None())
