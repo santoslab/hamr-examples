@@ -33,7 +33,7 @@ if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"}".console.echo.run().exitCode
 }
 
-if(result) == 0 {
+if(result == 0) {
     result = proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang").console.echo.run().exitCode
 }
 
