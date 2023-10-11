@@ -19,5 +19,7 @@ class CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coinc
   override val failOnUnsatPreconditions: B = F
 
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[CoincidenceLogic_i_actuationSubsystem_actuationUnit2_saturationLogic_coincidenceLogic_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

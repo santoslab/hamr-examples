@@ -18,6 +18,13 @@ class Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_reg
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

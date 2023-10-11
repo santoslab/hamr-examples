@@ -18,6 +18,13 @@ class OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX_Tests extends 
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[OperatorInterfacePeriodic_p_tcproc_operatorInterface_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[OperatorInterfacePeriodic_p_tcproc_operatorInterface_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[OperatorInterfacePeriodic_p_tcproc_operatorInterface_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

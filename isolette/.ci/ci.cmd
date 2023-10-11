@@ -33,9 +33,13 @@ if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux".console.echo.run().exitCode
 }
 
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-jvm.cmd"}".console.echo.run().exitCode
+if(result) == 0 {
+    result = proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang").console.echo.run().exitCode
 }
+
+//if(result == 0) {
+//    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-jvm.cmd"}".console.echo.run().exitCode
+//}
 
 if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}".console.echo.run().exitCode

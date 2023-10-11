@@ -38,6 +38,9 @@ if(result == 0) {
     result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} seL4".console.echo.run().exitCode
 }
 
+if(result == 0) {
+    result = proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang").console.echo.run().exitCode
+}
 
 // TODO: add run-demo-jvm, run-demo-linux and perhaps run-demo-sel4 scripts
 //if(result == 0) {

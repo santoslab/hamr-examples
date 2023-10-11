@@ -42,7 +42,7 @@ object TempSensorPeriodic_p_tcproc_tempSensor_GumboX {
   @strictpure def inititialize_IEP_Post (
       api_currentTemp: TempSensor.Temperature_i): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempSensor's state variables and outgoing ports
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(api_currentTemp) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
 
      // I-Guar-Guard: Integration constraints for tempSensor's outgoing ports"
      I_Guar_currentTemp(api_currentTemp) & 
@@ -65,7 +65,7 @@ object TempSensorPeriodic_p_tcproc_tempSensor_GumboX {
   @strictpure def compute_CEP_Post (
       api_currentTemp: TempSensor.Temperature_i): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempSensor's state variables and outgoing ports
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(api_currentTemp) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
 
      // I-Guar-Guard: Integration constraints for tempSensor's outgoing ports
      I_Guar_currentTemp(api_currentTemp))

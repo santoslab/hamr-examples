@@ -44,7 +44,7 @@ Aux_Types.scala
 
 @datatype class Config_B(attempts: Z, verbose: B, filter: B => B) {}
 
-@datatype class Config_C(attempts: Z, verbose: B, filter: C => B) {}
+@datatype class Config_C(low: Option[C], high: Option[C], attempts: Z, verbose: B, filter: C => B) {}
 
 @datatype class Config_R(low: Option[R], high: Option[R], attempts: Z, verbose: B, filter: R => B) {}
 

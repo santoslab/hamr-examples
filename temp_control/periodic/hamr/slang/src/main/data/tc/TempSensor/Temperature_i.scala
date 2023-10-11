@@ -12,6 +12,21 @@ object Temperature_i {
     return TempSensor.Temperature_i(
       degrees = Base_Types.Float_32_example())
   }
+
+  /** invariant AbsZero
+    */
+  @strictpure def AbsZero_Invariant(value: TempSensor.Temperature_i): B =
+    value.degrees >= GUMBO_Definitions.GUMBO__Library.absoluteZero()
+
+  /** D-Inv Data Invariant for TempSensor.Temperature_i
+    */
+  @strictpure def D_Inv_Temperature_i(value: TempSensor.Temperature_i): B =
+    (AbsZero_Invariant(value))
+
+  /** D-Inv-Guard Data Invariant for TempSensor.Temperature_i
+    */
+  @strictpure def D_Inv_Guard_Temperature_i(value: Option[TempSensor.Temperature_i]): B =
+    value.nonEmpty -->: D_Inv_Temperature_i(value.get)
 }
 
 @datatype class Temperature_i(

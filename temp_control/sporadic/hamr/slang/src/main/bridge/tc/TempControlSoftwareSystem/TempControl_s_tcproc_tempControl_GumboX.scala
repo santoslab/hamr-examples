@@ -76,8 +76,8 @@ object TempControl_s_tcproc_tempControl_GumboX {
       latestTemp: TempSensor.Temperature_i,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and outgoing ports
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(currentSetPoint) &
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(latestTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(currentSetPoint) &
+     TempSensor.Temperature_i.D_Inv_Temperature_i(latestTemp) & 
 
      // IEP-Guar: Initialize Entrypoint contract for tempControl
      initialize_IEP_Guar(currentFanState, currentSetPoint, latestTemp, api_fanCmd))
@@ -112,10 +112,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
       api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i],
       api_currentTemp: TempSensor.Temperature_i): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and incoming ports
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(In_currentSetPoint) & 
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(In_latestTemp) & 
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_Guard_SetPoint_i(api_setPoint) & 
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(api_currentTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(In_currentSetPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(In_latestTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_Guard_SetPoint_i(api_setPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
 
      // I-Assm-Guard: Integration constraints for tempControl's incoming ports
      I_Assm_Guard_currentTemp(api_currentTemp))
@@ -239,10 +239,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
       latestTemp: TempSensor.Temperature_i,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and outgoing ports
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(In_currentSetPoint) & 
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(In_latestTemp) & 
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(currentSetPoint) & 
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(latestTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(In_currentSetPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(In_latestTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(currentSetPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(latestTemp) & 
 
      // CEP-Guar: guarantee clauses of tempControl's compute entrypoint
      compute_CEP_T_Guar (In_currentFanState, currentFanState, currentSetPoint, latestTemp, api_fanCmd))

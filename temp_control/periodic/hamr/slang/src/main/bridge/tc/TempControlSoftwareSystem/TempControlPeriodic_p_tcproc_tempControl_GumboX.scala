@@ -83,8 +83,8 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_fanAck: CoolingFan.FanAck.Type,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and incoming ports
-     TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i(api_currentTemp) & 
-     TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i(api_setPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(api_setPoint) & 
 
      // I-Assm-Guard: Integration constraints for tempControl's incoming ports
      I_Assm_Guard_currentTemp(api_currentTemp))

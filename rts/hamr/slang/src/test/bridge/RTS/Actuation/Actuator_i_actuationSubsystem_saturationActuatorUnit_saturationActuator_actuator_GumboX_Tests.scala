@@ -18,6 +18,13 @@ class Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_ac
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[Actuator_i_actuationSubsystem_saturationActuatorUnit_saturationActuator_actuator_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

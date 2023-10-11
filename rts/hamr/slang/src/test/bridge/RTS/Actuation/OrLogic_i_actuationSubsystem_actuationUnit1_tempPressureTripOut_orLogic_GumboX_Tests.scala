@@ -19,5 +19,7 @@ class OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_Gu
   override val failOnUnsatPreconditions: B = F
 
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[OrLogic_i_actuationSubsystem_actuationUnit1_tempPressureTripOut_orLogic_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

@@ -137,12 +137,25 @@ Aux_Types.scala
       halt("Requirements too strict to generate")
     }
 
-  // ========  C ==========}
+  // ========  C ==========
     def get_Config_C: Config_C
     def set_Config_C(config: Config_C): RandomLib
 
     def nextC(): C = {
-      var r = gen.nextC()
+      val conf = get_Config_C
+
+      var r: C = if (conf.low.isEmpty) {
+          if (conf.high.isEmpty)
+            gen.nextC()
+          else
+            gen.nextCBetween(C.fromZ(0), conf.high.get)
+        } else {
+          if (conf.high.isEmpty)
+            gen.nextCBetween(conf.low.get, C.fromZ(1114111))
+          else
+            gen.nextCBetween(conf.low.get, conf.high.get)
+        }
+
       if(get_Config_C.attempts >= 0) {
        for (i <- 0 to get_Config_C.attempts) {
          if (get_Config_C.filter(r)) {
@@ -151,7 +164,17 @@ Aux_Types.scala
          if (get_Config_C.verbose) {
            println(s"Retrying for failing value: $r")
          }
-         r = gen.nextC()
+         r = if (conf.low.isEmpty) {
+           if (conf.high.isEmpty)
+             gen.nextC()
+           else
+              gen.nextCBetween(C.fromZ(0), conf.high.get)
+          } else {
+            if (conf.high.isEmpty)
+              gen.nextCBetween(conf.low.get, C.fromZ(1114111))
+            else
+             gen.nextCBetween(conf.low.get, conf.high.get)
+         }
        }
       } else {
        while(T) {
@@ -161,7 +184,17 @@ Aux_Types.scala
          if (get_Config_C.verbose) {
            println(s"Retrying for failing value: $r")
          }
-         r = gen.nextC()
+         r = if (conf.low.isEmpty) {
+           if (conf.high.isEmpty)
+             gen.nextC()
+           else
+              gen.nextCBetween(C.fromZ(0), conf.high.get)
+          } else {
+            if (conf.high.isEmpty)
+              gen.nextCBetween(conf.low.get, C.fromZ(1114111))
+            else
+             gen.nextCBetween(conf.low.get, conf.high.get)
+         }
        }
       }
       assert(F, "Requirements too strict to generate")
@@ -3237,7 +3270,7 @@ Aux_Types.scala
   // ============= C ===================
   def alwaysTrue_C(v: C): B = {return T}
 
-  var config_C: Config_C = Config_C(100, _verbose, alwaysTrue_C _)
+  var config_C: Config_C = Config_C(None(), None(), 100, _verbose, alwaysTrue_C _)
   def get_Config_C: Config_C = {return config_C}
 
   def set_Config_C(config: Config_C): RandomLib ={
@@ -3777,7 +3810,7 @@ Aux_Types.scala
   // ============= TempControlSoftwareSystem.SetPoint_i ===================
   def alwaysTrue_TempControlSoftwareSystemSetPoint_i(v: TempControlSoftwareSystem.SetPoint_i): B = {return T}
 
-  var config_TempControlSoftwareSystemSetPoint_i: Config_TempControlSoftwareSystemSetPoint_i = Config_TempControlSoftwareSystemSetPoint_i(100, _verbose, TempControlSoftwareSystem.SetPoint_i_GumboX.D_Inv_SetPoint_i _)
+  var config_TempControlSoftwareSystemSetPoint_i: Config_TempControlSoftwareSystemSetPoint_i = Config_TempControlSoftwareSystemSetPoint_i(100, _verbose, tc.TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i _)
 
   def get_Config_TempControlSoftwareSystemSetPoint_i: Config_TempControlSoftwareSystemSetPoint_i = {return config_TempControlSoftwareSystemSetPoint_i}
 
@@ -3945,7 +3978,7 @@ Aux_Types.scala
   // ============= TempSensor.Temperature_i ===================
   def alwaysTrue_TempSensorTemperature_i(v: TempSensor.Temperature_i): B = {return T}
 
-  var config_TempSensorTemperature_i: Config_TempSensorTemperature_i = Config_TempSensorTemperature_i(100, _verbose, TempSensor.Temperature_i_GumboX.D_Inv_Temperature_i _)
+  var config_TempSensorTemperature_i: Config_TempSensorTemperature_i = Config_TempSensorTemperature_i(100, _verbose, tc.TempSensor.Temperature_i.D_Inv_Temperature_i _)
 
   def get_Config_TempSensorTemperature_i: Config_TempSensorTemperature_i = {return config_TempSensorTemperature_i}
 

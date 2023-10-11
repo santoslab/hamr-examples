@@ -19,5 +19,7 @@ class FanPeriodic_p_tcproc_fan_GumboX_Tests extends FanPeriodic_p_tcproc_fan_Gum
   override val failOnUnsatPreconditions: B = F
 
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[FanPeriodic_p_tcproc_fan_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[FanPeriodic_p_tcproc_fan_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

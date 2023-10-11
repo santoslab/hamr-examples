@@ -18,6 +18,13 @@ class TempSensorPeriodic_p_tcproc_tempSensor_GumboX_Tests extends TempSensorPeri
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[TempSensorPeriodic_p_tcproc_tempSensor_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[TempSensorPeriodic_p_tcproc_tempSensor_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[TempSensorPeriodic_p_tcproc_tempSensor_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 }

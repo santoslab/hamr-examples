@@ -18,10 +18,19 @@ class Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_Tests
   // test vectors are never able to satisfy an entry point's assume pre-condition
   override val failOnUnsatPreconditions: B = F
 
+  // profiles that will be used for the initialise tests
+  override def getInitialiseProfiles: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile] = {
+    return MSZ(getDefaultInitialiseProfile)
+  }
+
   // profiles that will be used to generate the incoming port values
-  override def getProfiles_P: ISZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P] = ISZ(getDefaultProfile_P)
+  override def getProfiles_P: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_P] = {
+    return MSZ(getDefaultProfile_P)
+  }
 
   // profiles that will be used to generate the incoming port values
   // and the pre-state values of the state variables
-  override def getProfiles_PS: ISZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS] = ISZ(getDefaultProfile_PS)
+  override def getProfiles_PS: MSZ[Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Profile_PS] = {
+    return MSZ(getDefaultProfile_PS)
+  }
 }
