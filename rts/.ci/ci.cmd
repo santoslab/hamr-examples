@@ -20,26 +20,42 @@ import org.sireum._
 
 val homeDir = Os.slashDir.up
 
-val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin" 
-val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
-
+val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin"
+val sireum = sireumBin / (if (Os.isWin) "sireum.bat" else "sireum")
 var result: Z = 0
 
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "clean.cmd"}".console.echo.run().exitCode
+def run(title: String, verbose: B, proc: OsProto.Proc): Z = {
+  println(s"$title ...")
+  val r = (if (verbose) proc.console.echo else proc).run()
+  if (!r.ok) {
+    println(s"$title failed!")
+    cprintln(F, r.out)
+    cprintln(T, r.err)
+  }
+  return r.exitCode
+}
+
+println(
+  st"""**************************************************************************
+      |*                                RTS                                     *
+      |**************************************************************************""".render
+)
+
+if (result == 0) {
+  result = run("Cleaning", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "clean.cmd"}")
 }
 
 // need to run both Linux and seL4 to ensure results contain both the c and camkes codegen artifacts
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux".console.echo.run().exitCode
+if (result == 0) {
+  result = run("Running codegen targeting Linux", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux")
 }
 
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} seL4".console.echo.run().exitCode
+if (result == 0) {
+  result = run("Running codegen targeting seL4", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} seL4")
 }
 
-if(result == 0) {
-    result = proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang").console.echo.run().exitCode
+if (result == 0) {
+  result = run("Compiling Proyek project", F, proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang"))
 }
 
 // TODO: add run-demo-jvm, run-demo-linux and perhaps run-demo-sel4 scripts
@@ -47,8 +63,8 @@ if(result == 0) {
 //    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-demo-linux.cmd"}".console.echo.run().exitCode
 //}
 
-if(result == 0) {
-    result = proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}".console.echo.run().exitCode
+if (result == 0) {
+  result = run("Verifying via Logika", T, proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}")
 }
 
 Os.exit(result)
