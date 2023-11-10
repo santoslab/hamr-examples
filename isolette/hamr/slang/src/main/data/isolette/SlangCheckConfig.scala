@@ -38,18 +38,30 @@ Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Cont
 
 Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala
 
+Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure__Containers.scala
+
 Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala
 
 Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure__Containers.scala
+
+operator_interface_thread_impl_operator_interface_oip_oit__Containers.scala
+
+Temperature_Sensor_impl_temperature_sensor_cpi_thermostat__Containers.scala
+
+Heat_Source_impl_heat_source_cpi_heat_controller__Containers.scala
+
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala
 
 */
-
+@datatype class Config_String(minSize: Z, maxSize: Z, attempts: Z, verbose: B, filter: String => B) {}
 @datatype class Config_Z(low: Option[Z], high: Option[Z], attempts: Z, verbose: B, filter: Z => B) {}
 
 @datatype class Config_B(attempts: Z, verbose: B, filter: B => B) {}
@@ -77,6 +89,8 @@ Aux_Types.scala
 @datatype class Config_U32(low: Option[U32], high: Option[U32], attempts: Z, verbose: B, filter: U32 => B) {}
 
 @datatype class Config_U64(low: Option[U64], high: Option[U64], attempts: Z, verbose: B, filter: U64 => B) {}
+
+@datatype class Config_runtimemonitorObservationKindType(attempts: Z, verbose: B, filter: runtimemonitor.ObservationKind.Type => B) {}
 
 @datatype class Config__artDataContent(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[_artDataContent_DataTypeId.Type], filter: art.DataContent => B) {}
 
@@ -113,6 +127,42 @@ Aux_Types.scala
 @datatype class Config_Base_TypesString_Payload(attempts: Z, verbose: B, filter: Base_Types.String_Payload => B) {}
 
 @datatype class Config_Base_TypesBits_Payload(attempts: Z, verbose: B, filter: Base_Types.Bits_Payload => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_DataTypeId.Type], filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(attempts: Z, verbose: B, filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(attempts: Z, verbose: B, filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_DataTypeId.Type], filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(attempts: Z, verbose: B, filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => B) {}
+
+@datatype class Config_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(attempts: Z, verbose: B, filter: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_DataTypeId.Type], filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(attempts: Z, verbose: B, filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(attempts: Z, verbose: B, filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_DataTypeId.Type], filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(attempts: Z, verbose: B, filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => B) {}
+
+@datatype class Config_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(attempts: Z, verbose: B, filter: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_DataTypeId.Type], filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(attempts: Z, verbose: B, filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(attempts: Z, verbose: B, filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_DataTypeId.Type], filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(attempts: Z, verbose: B, filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => B) {}
+
+@datatype class Config_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(attempts: Z, verbose: B, filter: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => B) {}
 
 @datatype class Config_Isolette_Data_ModelFailure_Flag_impl(attempts: Z, verbose: B, filter: Isolette_Data_Model.Failure_Flag_impl => B) {}
 
@@ -158,6 +208,18 @@ Aux_Types.scala
 
 @datatype class Config_Isolette_EnvironmentInterface_Interaction_Payload(attempts: Z, verbose: B, filter: Isolette_Environment.Interface_Interaction_Payload => B) {}
 
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_DataTypeId.Type], filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container => B) {}
+
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(attempts: Z, verbose: B, filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => B) {}
+
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(attempts: Z, verbose: B, filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => B) {}
+
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_DataTypeId.Type], filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container => B) {}
+
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(attempts: Z, verbose: B, filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => B) {}
+
+@datatype class Config_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(attempts: Z, verbose: B, filter: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => B) {}
+
 @datatype class Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_DataTypeId.Type], filter: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container => B) {}
 
 @datatype class Config_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(attempts: Z, verbose: B, filter: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P => B) {}
@@ -193,6 +255,18 @@ Aux_Types.scala
 @datatype class Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P(attempts: Z, verbose: B, filter: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P => B) {}
 
 @datatype class Config_MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(attempts: Z, verbose: B, filter: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_DataTypeId.Type], filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(attempts: Z, verbose: B, filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(attempts: Z, verbose: B, filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_DataTypeId.Type], filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(attempts: Z, verbose: B, filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => B) {}
+
+@datatype class Config_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(attempts: Z, verbose: B, filter: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => B) {}
 
 @datatype class Config_RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container_DataTypeId.Type], filter: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PreState_Container => B) {}
 

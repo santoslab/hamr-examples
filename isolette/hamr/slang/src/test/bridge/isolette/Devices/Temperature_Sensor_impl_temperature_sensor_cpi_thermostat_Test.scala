@@ -14,10 +14,12 @@ class Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_Test extends Tem
     // retrieve values from output ports and check against expected results
   }
 
+  /*
   test("Example Unit Test for Compute Entry Point"){
     // use put_XXX methods from test/util/../YYY_TestApi to seed input ports with values
     testCompute()
     // use get_XXX methods and check_concrete_output() from test/util/../YYY_TestApi
     // retrieve values from output ports and check against expected results
   }
+  */
 }

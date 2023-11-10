@@ -28,8 +28,9 @@ import org.sireum._
 //   IS[Z,art.Art.PortId]=5 - Needed for the sending and receiving of messages in ART and the bridges
 //   IS[Z,art.UPort]=5 - Needed for manage_regulator_interface's dataOuts ports
 //   IS[Z,(Z,art.ArtSlangMessage)]=61 - Needed for the backing store of Map[Z, ArgSlangMessage] in ArtNativeSlang
-//   IS[Z,art.Art.BridgeId]=11 - Needed for the example round robin schedule in Schedulers
-//   IS[Z,art.scheduling.static.Schedule.Slot]=11 - Needed for the example static schedule in Schedulers
+//   IS[Z,art.Art.BridgeId]=11 - Needed for Schedulers.roundRobinSchedule
+//   IS[Z,art.scheduling.static.Schedule.Slot]=11 - Needed for Schedulers.staticSchedule
+//   IS[Z,(String,art.Art.BridgeId)]=11 - Needed for the backing store of Scheduler.threadNickNames
 
 val SCRIPT_HOME: Os.Path = Os.slashDir
 val PATH_SEP: String = Os.pathSep
@@ -66,7 +67,7 @@ var project: ISZ[String] = Cli(Os.pathSepChar).parseTranspile(Os.cliArgs, 0) mat
         "--bits", "32",
         "--string-size", "256",
         "--sequence-size", "1",
-        "--sequence", s"MS[Z,Option[art.Bridge]]=11;IS[Z,String]=3;IS[Z,art.Art.PortId]=5;IS[Z,art.UPort]=5;IS[Z,(Z,art.ArtSlangMessage)]=61;IS[Z,art.Art.BridgeId]=11;IS[Z,art.scheduling.static.Schedule.Slot]=11",
+        "--sequence", s"MS[Z,Option[art.Bridge]]=11;IS[Z,String]=3;IS[Z,art.Art.PortId]=5;IS[Z,art.UPort]=5;IS[Z,(Z,art.ArtSlangMessage)]=61;IS[Z,art.Art.BridgeId]=11;IS[Z,art.scheduling.static.Schedule.Slot]=11;IS[Z,(String,art.Art.BridgeId)]=11",
         "--constants", s"art.Art.numComponents=11;art.Art.numPorts=61;art.Art.numConnections=27",
         "--forward", "art.ArtNative=art.ArtNativeSlang",
         "--stack-size", "491520",

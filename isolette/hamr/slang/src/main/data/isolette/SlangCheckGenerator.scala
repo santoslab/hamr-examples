@@ -38,17 +38,48 @@ Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Cont
 
 Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala
 
+Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure__Containers.scala
+
 Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala
 
 Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
 
 Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
 
+Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure__Containers.scala
+
+operator_interface_thread_impl_operator_interface_oip_oit__Containers.scala
+
+Temperature_Sensor_impl_temperature_sensor_cpi_thermostat__Containers.scala
+
+Heat_Source_impl_heat_source_cpi_heat_controller__Containers.scala
+
+ObservationKind.scala
+
 DataContent.scala
 
 Aux_Types.scala
 
 */
+
+@record class Gen_String(param: RandomLibI) extends MJen[String] {
+  override def generate(f: String => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextString())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
 
 @record class Gen_Z(param: RandomLibI) extends MJen[Z] {
   override def generate(f: Z => Jen.Action): Jen.Action = {
@@ -316,6 +347,25 @@ Aux_Types.scala
   }
 }
 
+
+@record class Gen_runtimemonitorObservationKindType(param: RandomLibI) extends MJen[runtimemonitor.ObservationKind.Type] {
+  override def generate(f: runtimemonitor.ObservationKind.Type => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextruntimemonitorObservationKindType())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
 
 @record class Gen__artDataContent(param: RandomLibI) extends MJen[art.DataContent] {
   override def generate(f: art.DataContent => Jen.Action): Jen.Action = {
@@ -646,6 +696,348 @@ Aux_Types.scala
     while (T) {
 
       continue = f(param.nextBase_TypesBits_Payload())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(param: RandomLibI) extends MJen[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS] {
+  override def generate(f: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(param: RandomLibI) extends MJen[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS] {
+  override def generate(f: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(param: RandomLibI) extends MJen[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS] {
+  override def generate(f: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS())
 
       if (!continue) {
         return Jen.End
@@ -1077,6 +1469,120 @@ Aux_Types.scala
   }
 }
 
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(param: RandomLibI) extends MJen[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS] {
+  override def generate(f: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
 @record class Gen_MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container(param: RandomLibI) extends MJen[Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container] {
   override def generate(f: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container => Jen.Action): Jen.Action = {
     var continue = Jen.Continue
@@ -1406,6 +1912,120 @@ Aux_Types.scala
     while (T) {
 
       continue = f(param.nextMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(param: RandomLibI) extends MJen[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS] {
+  override def generate(f: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS())
 
       if (!continue) {
         return Jen.End

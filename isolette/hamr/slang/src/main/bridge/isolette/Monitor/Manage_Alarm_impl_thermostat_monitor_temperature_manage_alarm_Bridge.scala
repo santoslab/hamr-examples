@@ -105,16 +105,27 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
+      Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: Manage_Alarm_impl_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
+      Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: Manage_Alarm_impl_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
+
+      Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

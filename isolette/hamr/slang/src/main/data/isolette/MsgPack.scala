@@ -1,7 +1,7 @@
 // #Sireum
 // @formatter:off
 
-// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, DataContent.scala, Aux_Types.scala
+// This file is auto-generated from Heat.scala, Interface_Interaction.scala, PhysicalTemp_impl.scala, ValueStatus.scala, TempWstatus_impl.scala, On_Off.scala, Status.scala, Temp_impl.scala, Regulator_Mode.scala, Failure_Flag_impl.scala, Monitor_Mode.scala, Base_Types.scala, Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala, Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala, Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala, Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure__Containers.scala, Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala, Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala, Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala, Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure__Containers.scala, operator_interface_thread_impl_operator_interface_oip_oit__Containers.scala, Temperature_Sensor_impl_temperature_sensor_cpi_thermostat__Containers.scala, Heat_Source_impl_heat_source_cpi_heat_controller__Containers.scala, ObservationKind.scala, DataContent.scala, Aux_Types.scala
 
 package isolette
 
@@ -97,31 +97,71 @@ object MsgPack {
 
     val RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS: Z = 10
 
-    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P: Z = 11
+    val RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P: Z = 11
 
-    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS: Z = 12
+    val RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS: Z = 12
 
-    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P: Z = 13
+    val RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P: Z = 13
 
-    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS: Z = 14
+    val RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS: Z = 14
 
-    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P: Z = 15
+    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P: Z = 15
 
-    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS: Z = 16
+    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS: Z = 16
 
-    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P: Z = 17
+    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P: Z = 17
 
-    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS: Z = 18
+    val MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS: Z = 18
 
-    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P: Z = 19
+    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P: Z = 19
 
-    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS: Z = 20
+    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS: Z = 20
 
-    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P: Z = 21
+    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P: Z = 21
 
-    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS: Z = 22
+    val MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PS: Z = 22
 
-    val _artEmpty: Z = 23
+    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_P: Z = 23
+
+    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PreState_Container_PS: Z = 24
+
+    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_P: Z = 25
+
+    val MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS: Z = 26
+
+    val MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P: Z = 27
+
+    val MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS: Z = 28
+
+    val MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P: Z = 29
+
+    val MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS: Z = 30
+
+    val Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P: Z = 31
+
+    val Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS: Z = 32
+
+    val Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P: Z = 33
+
+    val Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS: Z = 34
+
+    val DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P: Z = 35
+
+    val DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS: Z = 36
+
+    val DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P: Z = 37
+
+    val DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS: Z = 38
+
+    val DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P: Z = 39
+
+    val DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS: Z = 40
+
+    val DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P: Z = 41
+
+    val DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS: Z = 42
+
+    val _artEmpty: Z = 43
 
   }
 
@@ -449,6 +489,38 @@ object MsgPack {
       writeIsolette_Data_ModelRegulator_ModeType(o.api_regulator_mode)
     }
 
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container): Unit = {
+      o match {
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(o)
+      }
+    }
+
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P)
+    }
+
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS)
+    }
+
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container): Unit = {
+      o match {
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(o)
+      }
+    }
+
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P)
+      writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
+    }
+
+    def writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS)
+      writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
+    }
+
     def writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container): Unit = {
       o match {
         case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P => writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o)
@@ -579,6 +651,156 @@ object MsgPack {
       writeIsolette_Data_ModelMonitor_ModeType(o.api_monitor_mode)
     }
 
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container): Unit = {
+      o match {
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(o)
+      }
+    }
+
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P)
+    }
+
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS)
+    }
+
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container): Unit = {
+      o match {
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(o)
+      }
+    }
+
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P)
+      writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
+    }
+
+    def writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS)
+      writeIsolette_Data_ModelFailure_Flag_impl(o.api_internal_failure)
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container): Unit = {
+      o match {
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(o)
+      }
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P)
+      writeIsolette_Data_ModelOn_OffType(o.api_alarm_control)
+      writeIsolette_Data_ModelTemp_impl(o.api_display_temperature)
+      writeIsolette_Data_ModelStatusType(o.api_monitor_status)
+      writeIsolette_Data_ModelStatusType(o.api_regulator_status)
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS)
+      writeIsolette_Data_ModelOn_OffType(o.api_alarm_control)
+      writeIsolette_Data_ModelTemp_impl(o.api_display_temperature)
+      writeIsolette_Data_ModelStatusType(o.api_monitor_status)
+      writeIsolette_Data_ModelStatusType(o.api_regulator_status)
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container): Unit = {
+      o match {
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(o)
+      }
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_alarm_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_desired_tempWstatus)
+    }
+
+    def writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_alarm_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_lower_desired_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_alarm_tempWstatus)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_upper_desired_tempWstatus)
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container): Unit = {
+      o match {
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(o)
+      }
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P)
+      writeIsolette_Data_ModelPhysicalTemp_impl(o.api_air)
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS)
+      writeIsolette_Data_ModelPhysicalTemp_impl(o.api_air)
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container): Unit = {
+      o match {
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(o)
+      }
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
+    }
+
+    def writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS)
+      writeIsolette_Data_ModelTempWstatus_impl(o.api_current_tempWstatus)
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container): Unit = {
+      o match {
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(o)
+      }
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P): Unit = {
+      writer.writeZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P)
+      writeIsolette_Data_ModelOn_OffType(o.api_heat_control)
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS): Unit = {
+      writer.writeZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS)
+      writeIsolette_Data_ModelOn_OffType(o.api_heat_control)
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container): Unit = {
+      o match {
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(o)
+      }
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P): Unit = {
+      writer.writeZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P)
+      writeIsolette_EnvironmentHeatType(o.api_heat_out)
+    }
+
+    def writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS): Unit = {
+      writer.writeZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS)
+      writeIsolette_EnvironmentHeatType(o.api_heat_out)
+    }
+
+    def writeruntimemonitorObservationKindType(o: runtimemonitor.ObservationKind.Type): Unit = {
+      writer.writeZ(o.ordinal)
+    }
+
     def write_artDataContent(o: art.DataContent): Unit = {
       o match {
         case o: art.Empty => write_artEmpty(o)
@@ -609,6 +831,18 @@ object MsgPack {
         case o: Isolette_Data_Model.Failure_Flag_impl_Payload => writeIsolette_Data_ModelFailure_Flag_impl_Payload(o)
         case o: Isolette_Data_Model.PhysicalTemp_impl_Payload => writeIsolette_Data_ModelPhysicalTemp_impl_Payload(o)
         case o: Isolette_Environment.Interface_Interaction_Payload => writeIsolette_EnvironmentInterface_Interaction_Payload(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(o)
+        case o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(o)
+        case o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(o)
+        case o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(o)
         case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P => writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P(o)
         case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS => writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS(o)
         case o: Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P => writeMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P(o)
@@ -621,14 +855,22 @@ object MsgPack {
         case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P => writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P(o)
         case o: Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS => writeMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(o)
         case o: Regulate.Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS => writeRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(o)
         case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P => writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(o)
         case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS => writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(o)
+        case o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(o)
         case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P => writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P(o)
         case o: Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS => writeRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(o)
         case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P => writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P(o)
         case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS => writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS(o)
         case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P => writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P(o)
         case o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS => writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(o)
+        case o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(o)
         case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P => writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P(o)
         case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS => writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS(o)
         case o: Regulate.Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P => writeRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P(o)
@@ -1361,6 +1603,82 @@ object MsgPack {
       return Regulate.Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS(lastRegulatorMode, api_regulator_mode)
     }
 
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PT(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container.")
+          val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P = {
+      val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PT(F)
+      return r
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PT(typeParsed: B): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P)
+      }
+      return Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P()
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS = {
+      val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PST(F)
+      return r
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PST(typeParsed: B): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS)
+      }
+      return Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS()
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PT(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container.")
+          val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P = {
+      val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PT(F)
+      return r
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PT(typeParsed: B): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P)
+      }
+      val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
+      return Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(api_internal_failure)
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS = {
+      val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PST(F)
+      return r
+    }
+
+    def readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PST(typeParsed: B): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS)
+      }
+      val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
+      return Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(api_internal_failure)
+    }
+
     def readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(): Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container = {
       val i = reader.curr
       val t = reader.readZ()
@@ -1623,6 +1941,333 @@ object MsgPack {
       return Monitor.Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS(lastMonitorMode, api_monitor_mode)
     }
 
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PT(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container.")
+          val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P = {
+      val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PT(F)
+      return r
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PT(typeParsed: B): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P)
+      }
+      return Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P()
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS = {
+      val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PST(F)
+      return r
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PST(typeParsed: B): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS)
+      }
+      return Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS()
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PT(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container.")
+          val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P = {
+      val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PT(F)
+      return r
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PT(typeParsed: B): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P)
+      }
+      val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
+      return Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(api_internal_failure)
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS = {
+      val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PST(F)
+      return r
+    }
+
+    def readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PST(typeParsed: B): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS)
+      }
+      val api_internal_failure = readIsolette_Data_ModelFailure_Flag_impl()
+      return Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(api_internal_failure)
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PT(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container.")
+          val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P = {
+      val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PT(F)
+      return r
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PT(typeParsed: B): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P)
+      }
+      val api_alarm_control = readIsolette_Data_ModelOn_OffType()
+      val api_display_temperature = readIsolette_Data_ModelTemp_impl()
+      val api_monitor_status = readIsolette_Data_ModelStatusType()
+      val api_regulator_status = readIsolette_Data_ModelStatusType()
+      return Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(api_alarm_control, api_display_temperature, api_monitor_status, api_regulator_status)
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS = {
+      val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PST(F)
+      return r
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PST(typeParsed: B): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS)
+      }
+      val api_alarm_control = readIsolette_Data_ModelOn_OffType()
+      val api_display_temperature = readIsolette_Data_ModelTemp_impl()
+      val api_monitor_status = readIsolette_Data_ModelStatusType()
+      val api_regulator_status = readIsolette_Data_ModelStatusType()
+      return Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(api_alarm_control, api_display_temperature, api_monitor_status, api_regulator_status)
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PT(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container.")
+          val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P = {
+      val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PT(F)
+      return r
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PT(typeParsed: B): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P)
+      }
+      val api_lower_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_lower_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_upper_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_upper_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      return Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(api_lower_alarm_tempWstatus, api_lower_desired_tempWstatus, api_upper_alarm_tempWstatus, api_upper_desired_tempWstatus)
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS = {
+      val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PST(F)
+      return r
+    }
+
+    def readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PST(typeParsed: B): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS)
+      }
+      val api_lower_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_lower_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_upper_alarm_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      val api_upper_desired_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      return Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(api_lower_alarm_tempWstatus, api_lower_desired_tempWstatus, api_upper_alarm_tempWstatus, api_upper_desired_tempWstatus)
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PT(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container.")
+          val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P = {
+      val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PT(F)
+      return r
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PT(typeParsed: B): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P)
+      }
+      val api_air = readIsolette_Data_ModelPhysicalTemp_impl()
+      return Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(api_air)
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS = {
+      val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PST(F)
+      return r
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PST(typeParsed: B): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS)
+      }
+      val api_air = readIsolette_Data_ModelPhysicalTemp_impl()
+      return Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(api_air)
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PT(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container.")
+          val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P = {
+      val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PT(F)
+      return r
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PT(typeParsed: B): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P)
+      }
+      val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      return Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(api_current_tempWstatus)
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS = {
+      val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PST(F)
+      return r
+    }
+
+    def readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PST(typeParsed: B): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS)
+      }
+      val api_current_tempWstatus = readIsolette_Data_ModelTempWstatus_impl()
+      return Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(api_current_tempWstatus)
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PT(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container.")
+          val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P = {
+      val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PT(F)
+      return r
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PT(typeParsed: B): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P)
+      }
+      val api_heat_control = readIsolette_Data_ModelOn_OffType()
+      return Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(api_heat_control)
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS = {
+      val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PST(F)
+      return r
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PST(typeParsed: B): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS)
+      }
+      val api_heat_control = readIsolette_Data_ModelOn_OffType()
+      return Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(api_heat_control)
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container = {
+      val i = reader.curr
+      val t = reader.readZ()
+      t match {
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PT(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PST(T); return r
+        case _ =>
+          reader.error(i, s"$t is not a valid type of Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container.")
+          val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PST(T)
+          return r
+      }
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P = {
+      val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PT(F)
+      return r
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PT(typeParsed: B): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P)
+      }
+      val api_heat_out = readIsolette_EnvironmentHeatType()
+      return Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(api_heat_out)
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS = {
+      val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PST(F)
+      return r
+    }
+
+    def readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PST(typeParsed: B): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS = {
+      if (!typeParsed) {
+        reader.expectZ(Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS)
+      }
+      val api_heat_out = readIsolette_EnvironmentHeatType()
+      return Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(api_heat_out)
+    }
+
+    def readruntimemonitorObservationKindType(): runtimemonitor.ObservationKind.Type = {
+      val r = reader.readZ()
+      return runtimemonitor.ObservationKind.byOrdinal(r).get
+    }
+
     def read_artDataContent(): art.DataContent = {
       val i = reader.curr
       val t = reader.readZ()
@@ -1655,6 +2300,18 @@ object MsgPack {
         case Constants.Isolette_Data_ModelFailure_Flag_impl_Payload => val r = readIsolette_Data_ModelFailure_Flag_impl_PayloadT(T); return r
         case Constants.Isolette_Data_ModelPhysicalTemp_impl_Payload => val r = readIsolette_Data_ModelPhysicalTemp_impl_PayloadT(T); return r
         case Constants.Isolette_EnvironmentInterface_Interaction_Payload => val r = readIsolette_EnvironmentInterface_Interaction_PayloadT(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PT(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PST(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PT(T); return r
+        case Constants.DevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS => val r = readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PST(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PT(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PST(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PT(T); return r
+        case Constants.DevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS => val r = readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PST(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PT(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PST(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PT(T); return r
+        case Constants.Isoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS => val r = readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PST(T); return r
         case Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_P => val r = readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PT(T); return r
         case Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PS => val r = readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PreState_Container_PST(T); return r
         case Constants.MonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_P => val r = readMonitorManage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_PostState_Container_PT(T); return r
@@ -1667,14 +2324,22 @@ object MsgPack {
         case Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_P => val r = readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PT(T); return r
         case Constants.MonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS => val r = readMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PST(T); return r
         case Constants.RegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PS => val r = readRegulateManage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_PostState_Container_PST(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PT(T); return r
         case Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_P => val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PT(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PST(T); return r
         case Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PS => val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PreState_Container_PST(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PT(T); return r
+        case Constants.MonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS => val r = readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PST(T); return r
         case Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_P => val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PT(T); return r
         case Constants.RegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS => val r = readRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PST(T); return r
         case Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_P => val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PT(T); return r
         case Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PS => val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container_PST(T); return r
         case Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_P => val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PT(T); return r
         case Constants.MonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PS => val r = readMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PostState_Container_PST(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PT(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PST(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PT(T); return r
+        case Constants.RegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS => val r = readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PST(T); return r
         case Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_P => val r = readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PT(T); return r
         case Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PS => val r = readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PreState_Container_PST(T); return r
         case Constants.RegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_P => val r = readRegulateManage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_PostState_Container_PT(T); return r
@@ -2445,6 +3110,96 @@ object MsgPack {
     return r
   }
 
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container _)
+    return r
+  }
+
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_P _)
+    return r
+  }
+
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PreState_Container_PS _)
+    return r
+  }
+
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container _)
+    return r
+  }
+
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_P _)
+    return r
+  }
+
+  def fromRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(o: Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(data: ISZ[U8]): Either[Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS(reader: Reader): Regulate.Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS = {
+      val r = reader.readRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fRegulateDetect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_PostState_Container_PS _)
+    return r
+  }
+
   def fromMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o: Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container, pooling: B): ISZ[U8] = {
     val w = Writer.Default(MessagePack.writer(pooling))
     w.writeMonitorManage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_PreState_Container(o)
@@ -2712,6 +3467,366 @@ object MsgPack {
       return r
     }
     val r = to(data, fMonitorManage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_PostState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_P _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PreState_Container_PS _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_P _)
+    return r
+  }
+
+  def fromMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(o: Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(data: ISZ[U8]): Either[Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS(reader: Reader): Monitor.Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS = {
+      val r = reader.readMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fMonitorDetect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_PostState_Container_PS _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_P _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PreState_Container_PS _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_P _)
+    return r
+  }
+
+  def fromIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(o: Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(data: ISZ[U8]): Either[Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS(reader: Reader): Isolette.operator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS = {
+      val r = reader.readIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fIsoletteoperator_interface_thread_impl_operator_interface_oip_oit_PostState_Container_PS _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_P _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PreState_Container_PS _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_P _)
+    return r
+  }
+
+  def fromDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(o: Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(data: ISZ[U8]): Either[Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS(reader: Reader): Devices.Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS = {
+      val r = reader.readDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fDevicesTemperature_Sensor_impl_temperature_sensor_cpi_thermostat_PostState_Container_PS _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_P _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PreState_Container_PS _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_P _)
+    return r
+  }
+
+  def fromDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(o: Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS, pooling: B): ISZ[U8] = {
+    val w = Writer.Default(MessagePack.writer(pooling))
+    w.writeDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(o)
+    return w.result
+  }
+
+  def toDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(data: ISZ[U8]): Either[Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS, MessagePack.ErrorMsg] = {
+    def fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS(reader: Reader): Devices.Heat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS = {
+      val r = reader.readDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS()
+      return r
+    }
+    val r = to(data, fDevicesHeat_Source_impl_heat_source_cpi_heat_controller_PostState_Container_PS _)
     return r
   }
 

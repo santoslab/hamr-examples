@@ -26,7 +26,7 @@ object Art {
   val connections: MS[Art.PortId, IS[Art.ConnectionId, Art.PortId]] = MS.create[Art.PortId, IS[Art.ConnectionId, Art.PortId]](numPorts, IS())
 
   // Note on transpiling:
-  // ports and conenctions are not touched/transpiled when targeting seL4. Bridges
+  // ports and connections are not touched/transpiled when targeting seL4. Bridges
   // are isolated when transpiling so BridgeId.Max could be 0, but changing Min/Max is
   // not currently supported by the transpiler so instead bridges is defined as an MSZ
   // so that that its size can be set to 1 and thus reduce stack space requirements
@@ -204,6 +204,11 @@ object Art {
     // remove all bridges
     for (i <- bridges.indices) {
       bridges(i) = None()
+    }
+
+    // remove all connections
+    for (i <- connections.indices) {
+      connections(i) = IS()
     }
 
     // remove all ports

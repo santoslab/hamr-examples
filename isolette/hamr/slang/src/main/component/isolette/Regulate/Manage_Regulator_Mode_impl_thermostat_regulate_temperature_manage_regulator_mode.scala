@@ -30,6 +30,8 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
         // END INITIALIZES ENSURES
       )
     )
+    Manage_Regulator_Mode__InjectionProvider.init()
+
     // example api usage
     lastRegulatorMode = Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
     api.put_regulator_mode(lastRegulatorMode)
@@ -161,4 +163,8 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
   def finalise(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = { }
 
   def recover(api: Manage_Regulator_Mode_impl_Operational_Api): Unit = { }
+}
+
+@ext object Manage_Regulator_Mode__InjectionProvider {
+  def init(): Unit = $
 }

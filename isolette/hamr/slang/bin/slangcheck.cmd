@@ -39,9 +39,15 @@ val files: ISZ[String] = ISZ("../src/main/data/isolette/Isolette_Environment/Hea
                              "../src/main/data/isolette/Regulate/Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala",
                              "../src/main/data/isolette/Regulate/Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala",
                              "../src/main/data/isolette/Regulate/Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala",
+                             "../src/main/data/isolette/Regulate/Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure__Containers.scala",
                              "../src/main/data/isolette/Monitor/Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala",
                              "../src/main/data/isolette/Monitor/Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala",
                              "../src/main/data/isolette/Monitor/Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala",
+                             "../src/main/data/isolette/Monitor/Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure__Containers.scala",
+                             "../src/main/data/isolette/Isolette/operator_interface_thread_impl_operator_interface_oip_oit__Containers.scala",
+                             "../src/main/data/isolette/Devices/Temperature_Sensor_impl_temperature_sensor_cpi_thermostat__Containers.scala",
+                             "../src/main/data/isolette/Devices/Heat_Source_impl_heat_source_cpi_heat_controller__Containers.scala",
+                             "../src/main/architecture/isolette/runtimemonitor/ObservationKind.scala",
                              "../src/main/art/art/DataContent.scala",
                              "../src/main/data/isolette/Aux_Types.scala")
 

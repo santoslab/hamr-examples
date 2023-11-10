@@ -28,6 +28,8 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
         // END INITIALIZES ENSURES
       )
     )
+    Manage_Monitor_Mode__InjectionProvider.init()
+
     // example api usage
     api.put_monitor_mode(Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
 
@@ -129,4 +131,8 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
   def finalise(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = { }
 
   def recover(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = { }
+}
+
+@ext object Manage_Monitor_Mode__InjectionProvider {
+  def init(): Unit = $
 }
