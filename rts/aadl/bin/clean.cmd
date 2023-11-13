@@ -28,7 +28,8 @@ val toKeep = ops.ISZOps(ISZ(
   (slangDir / "bin" / "transpile-sel4-cust.cmd"), // customized transpiler script
   (slangDir / ".idea"),
   (slangDir / "src" / "main" / "component"), // contains user code
-  (slangDir / "src" / "test" / "bridge") // contains user code
+  (slangDir / "src" / "test" / "bridge"), // contains user code
+  (slangDir / "src" / "test" / "system")
 ))
 
 

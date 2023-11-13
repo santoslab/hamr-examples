@@ -106,7 +106,7 @@ object StateObserver {
     println("****************************")
     println(" Input Ports")
     println(" ===============")
-    println(s"  ${printPortInfo(inPortInfo)}")
+    printPortInfo(inPortInfo)
     println()
     println(" Output Ports")
     println(" ================")

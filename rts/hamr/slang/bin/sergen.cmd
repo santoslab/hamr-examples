@@ -42,4 +42,6 @@ val files: ISZ[String] = ISZ("../src/main/data/RTS/Base_Types.scala",
 
 val toolargs: String = st"${(files, " ")}".render
 
-proc"$sireum tools sergen -p RTS -m json,msgpack -o ${Os.slashDir.up}/src/main/data/RTS $toolargs".at(Os.slashDir).console.runCheck()
+(Os.slashDir.up / "src" / "main" / "util" / "RTS").mkdirAll()
+
+proc"$sireum tools sergen -p RTS -m json,msgpack -o ${Os.slashDir.up}/src/main/util/RTS $toolargs".at(Os.slashDir).console.runCheck()

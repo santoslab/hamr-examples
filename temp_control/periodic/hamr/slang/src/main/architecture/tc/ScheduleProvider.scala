@@ -13,6 +13,6 @@ object ScheduleProvider {
   }
 
   def getStaticSchedule(): DScheduleSpec = {
-    return Schedulers.staticSchedule
+    return Schedulers.defaultStaticSchedule
   }
 }

@@ -84,16 +84,27 @@ object OperatorInterfacePeriodic_p_tcproc_operatorInterface_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: OperatorInterfacePeriodic_p_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: OperatorInterfacePeriodic_p_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
+
+      OperatorInterfacePeriodic_p_tcproc_operatorInterface_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

@@ -265,6 +265,11 @@ object Art {
       bridges(i) = None()
     }
 
+    // remove all connections
+    for (i <- connections.indices) {
+      connections(i) = IS()
+    }
+
     // remove all ports
     for (i <- ports.indices) {
       ports(i) = None()

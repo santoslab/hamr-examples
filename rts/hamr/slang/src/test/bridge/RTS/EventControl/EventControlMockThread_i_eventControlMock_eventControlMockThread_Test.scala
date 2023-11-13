@@ -5,7 +5,7 @@ import RTS.EventControl._
 
 // This file will not be overwritten so is safe to edit
 class EventControlMockThread_i_eventControlMock_eventControlMockThread_Test extends EventControlMockThread_i_eventControlMock_eventControlMockThread_ScalaTest {
-/*
+
   test("Example Unit Test for Initialise Entry Point"){
     // Initialise Entry Point doesn't read input port values, so just proceed with
     // launching the entry point code
@@ -20,6 +20,4 @@ class EventControlMockThread_i_eventControlMock_eventControlMockThread_Test exte
     // use get_XXX methods and check_concrete_output() from test/util/../YYY_TestApi
     // retrieve values from output ports and check against expected results
   }
-
- */
 }

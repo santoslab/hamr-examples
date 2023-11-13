@@ -79,16 +79,27 @@ object TempSensorPeriodic_p_tcproc_tempSensor_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
+      TempSensorPeriodic_p_tcproc_tempSensor_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: TempSensorPeriodic_p_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      TempSensorPeriodic_p_tcproc_tempSensor_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
+      TempSensorPeriodic_p_tcproc_tempSensor_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      TempSensorPeriodic_p_tcproc_tempSensor_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: TempSensorPeriodic_p_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
+
+      TempSensorPeriodic_p_tcproc_tempSensor_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

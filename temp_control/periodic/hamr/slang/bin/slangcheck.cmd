@@ -35,9 +35,12 @@ val files: ISZ[String] = ISZ("../src/main/data/tc/TempSensor/Temperature_i.scala
                              "../src/main/data/tc/CoolingFan/FanPeriodic_p_tcproc_fan__Containers.scala",
                              "../src/main/data/tc/TempControlSoftwareSystem/TempControlPeriodic_p_tcproc_tempControl__Containers.scala",
                              "../src/main/data/tc/TempControlSoftwareSystem/OperatorInterfacePeriodic_p_tcproc_operatorInterface__Containers.scala",
+                             "../src/main/util/tc/runtimemonitor/ObservationKind.scala",
                              "../src/main/art/art/DataContent.scala",
                              "../src/main/data/tc/Aux_Types.scala")
 
 val toolargs: String = st"${(files, " ")}".render
 
-proc"$sireum proyek slangcheck -p tc -o ${Os.slashDir.up}/src/main/data/tc ${Os.slashDir.up} $toolargs".at(Os.slashDir).console.runCheck()
+(Os.slashDir.up / "src" / "main" / "util" / "tc").mkdirAll()
+
+proc"$sireum proyek slangcheck -p tc -o ${Os.slashDir.up}/src/main/util/tc ${Os.slashDir.up} $toolargs".at(Os.slashDir).console.runCheck()

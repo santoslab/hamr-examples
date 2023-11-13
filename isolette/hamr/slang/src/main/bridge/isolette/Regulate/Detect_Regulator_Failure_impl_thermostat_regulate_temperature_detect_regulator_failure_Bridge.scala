@@ -79,27 +79,16 @@ object Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regu
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
-      Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_EntryPoint_Companion.pre_initialise()
-
       // implement the following method in 'component':  def initialise(api: Detect_Regulator_Failure_impl_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
-
-      Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_EntryPoint_Companion.post_initialise()
-
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
-      Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_Injection_Service.pre_receiveInput()
-
       Art.receiveInput(eventInPortIds, dataInPortIds)
-
-      Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: Detect_Regulator_Failure_impl_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
-
-      Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

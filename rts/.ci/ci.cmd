@@ -45,6 +45,10 @@ if (result == 0) {
   result = run("Cleaning", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "clean.cmd"}")
 }
 
+if (result == 0) {
+  result = run("Running codegen targeting JVM with runtime monitoring", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} JVM")
+}
+
 // need to run both Linux and seL4 to ensure results contain both the c and camkes codegen artifacts
 if (result == 0) {
   result = run("Running codegen targeting Linux", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux")

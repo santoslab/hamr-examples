@@ -49,6 +49,10 @@ object ArtTimer_Ext {
       return
     }
 
+    // the below runnable will be run in a separate thread when it's
+    // dispatched by the executor. If the user requests to cancel the
+    // timeout before that then shouldInvokeCallback will be set to
+    // false and therefore the callback will not be invoked
     val shouldInvokeCallback = new AtomicBoolean(T)
 
     val task = new Runnable {
@@ -67,6 +71,6 @@ object ArtTimer_Ext {
     val adjusted = delay.toMP.toLong * ArtNative_Ext.slowdown.toMP.toLong
     executor.schedule(task, adjusted, TimeUnit.MILLISECONDS)
 
-    ArtNative.logInfo(Art.logTitle, s"Callback scheduled for $id")
+    ArtNative.logInfo(Art.logTitle, s"Callback scheduled for $id: $delay ms")
   }
 }

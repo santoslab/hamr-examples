@@ -84,16 +84,27 @@ object FanPeriodic_p_tcproc_fan_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS()
 
     def initialise(): Unit = {
+      FanPeriodic_p_tcproc_fan_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: FanPeriodic_p_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      FanPeriodic_p_tcproc_fan_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
+      FanPeriodic_p_tcproc_fan_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      FanPeriodic_p_tcproc_fan_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: FanPeriodic_p_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
+
+      FanPeriodic_p_tcproc_fan_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

@@ -35,9 +35,12 @@ val files: ISZ[String] = ISZ("../src/main/data/tc/TempSensor/Temperature_i.scala
                              "../src/main/data/tc/CoolingFan/Fan_s_tcproc_fan__Containers.scala",
                              "../src/main/data/tc/TempControlSoftwareSystem/TempControl_s_tcproc_tempControl__Containers.scala",
                              "../src/main/data/tc/TempControlSoftwareSystem/OperatorInterface_s_tcproc_operatorInterface__Containers.scala",
+                             "../src/main/util/tc/runtimemonitor/ObservationKind.scala",
                              "../src/main/art/art/DataContent.scala",
                              "../src/main/data/tc/Aux_Types.scala")
 
 val toolargs: String = st"${(files, " ")}".render
 
-proc"$sireum tools sergen -p tc -m json,msgpack -o ${Os.slashDir.up}/src/main/data/tc $toolargs".at(Os.slashDir).console.runCheck()
+(Os.slashDir.up / "src" / "main" / "util" / "tc").mkdirAll()
+
+proc"$sireum tools sergen -p tc -m json,msgpack -o ${Os.slashDir.up}/src/main/util/tc $toolargs".at(Os.slashDir).console.runCheck()

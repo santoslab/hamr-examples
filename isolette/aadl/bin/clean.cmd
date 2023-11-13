@@ -28,6 +28,7 @@ val toKeep = ops.ISZOps(ISZ(
   (slangDir / "bin" / "transpile-cust.cmd"),
   (slangDir / "src" / "main" / "component"),
   (slangDir / "src" / "test" / "bridge"),
+  (slangDir / "src" / "test" / "system")
 ))
 
 

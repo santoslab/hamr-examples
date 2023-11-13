@@ -84,8 +84,13 @@ object Fan_s_tcproc_fan_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS(fanAck_Id)
 
     def initialise(): Unit = {
+      Fan_s_tcproc_fan_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: Fan_s_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      Fan_s_tcproc_fan_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
@@ -110,7 +115,11 @@ object Fan_s_tcproc_fan_Bridge {
         if(dispatchTriggers.isEmpty) receivedEvents
         else filter(receivedEvents, dispatchTriggers.get)
 
+      Fan_s_tcproc_fan_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      Fan_s_tcproc_fan_EntryPoint_Companion.pre_compute()
 
       for(portId <- dispatchableEventPorts) {
         if(portId == fanCmd_Id){
@@ -120,6 +129,8 @@ object Fan_s_tcproc_fan_Bridge {
           component.handle_fanCmd(operational_api, value)
         }
       }
+
+      Fan_s_tcproc_fan_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }

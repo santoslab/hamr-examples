@@ -301,9 +301,11 @@ object ArtNative_Ext {
     ArtTimer_Ext.finalise()
   }
 
+  var logStream: java.io.PrintStream = System.out
+
   def log(kind: String, title: String, msg: String): Unit = {
-    Console.out.println(st"""{ "log" : "$kind", "title" : ${Json.Printer.printString(title)}, "msg" : ${Json.Printer.printString(msg)}, "time" : "${time()}" }""".render)
-    Console.out.flush()
+    logStream.println(st"""{ "log" : "$kind", "title" : ${Json.Printer.printString(title)}, "msg" : ${Json.Printer.printString(msg)}, "time" : "${time()}" }""".render)
+    logStream.flush()
   }
 
   def toS64(value: Long): S64 = S64(value)

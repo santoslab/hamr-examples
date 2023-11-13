@@ -5,7 +5,7 @@
 // Transpiled signature of the Slang variable RTS.Schedulers.staticSchedule
 // in architecture/RTS/Schedulers.scala.  This weak function declaration allows
 // RTS_ScheduleProviderI_getStaticSchedule to detect whether the Slang variable was deleted
-__attribute__((weak)) art_scheduling_static_Schedule_DScheduleSpec RTS_Schedulers_staticSchedule(STACK_FRAME_ONLY);
+__attribute__((weak)) art_scheduling_static_Schedule_DScheduleSpec RTS_Schedulers_defaultStaticSchedule(STACK_FRAME_ONLY);
 
 // helper method
 void fillInSlot(IS_5AA467 slotSequence, int index, Z bridgeId, int length);
@@ -19,12 +19,12 @@ void fillInSlot(IS_5AA467 slotSequence, int index, Z bridgeId, int length);
 void RTS_ScheduleProviderI_getStaticSchedule(STACK_FRAME art_scheduling_static_Schedule_DScheduleSpec result){
   DeclNewStackFrame(caller, "static_scheduler.c", "", "RTS_ScheduleProviderI_getStaticSchedule", 0);
 
-  if(RTS_Schedulers_staticSchedule) {
+  if(RTS_Schedulers_defaultStaticSchedule) {
     printf("Using the static schedule provided in architecture/RTS/Schedulers.scala. Edit method \n");
     printf("  RTS_ScheduleProviderI_getStaticSchedule located in static_scheduler.c\n");
     printf("to supply your own\n");
 
-    art_scheduling_static_Schedule_DScheduleSpec schedule = RTS_Schedulers_staticSchedule(SF_LAST);
+    art_scheduling_static_Schedule_DScheduleSpec schedule = RTS_Schedulers_defaultStaticSchedule(SF_LAST);
     result->hyperPeriod = schedule->hyperPeriod;
     result->maxDomain = schedule->maxDomain;
     memcpy(&result->schedule, &schedule->schedule, sizeof(struct art_scheduling_static_Schedule_DSchedule));
@@ -67,6 +67,8 @@ void RTS_ScheduleProviderI_getStaticSchedule(STACK_FRAME art_scheduling_static_S
 }
 
 void fillInSlot(IS_5AA467 slotSequence, int index, Z bridgeId, int length) {
-  slotSequence->value[index].bridgeId = bridgeId;
-  slotSequence->value[index].length = length;
+  // TODO: need to refactor to adjust to 2023.10 Slang changes
+  exit(1);
+  //slotSequence->value[index].bridgeId = bridgeId;
+  //slotSequence->value[index].length = length;
 }

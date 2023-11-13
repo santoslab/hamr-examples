@@ -46,6 +46,10 @@ if (result == 0) {
 }
 
 if (result == 0) {
+  result = run("Running codegen targeting JVM with runtime monitoring", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} JVM")
+}
+
+if (result == 0) {
   result = run("Running codegen targeting Linux", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux")
 }
 

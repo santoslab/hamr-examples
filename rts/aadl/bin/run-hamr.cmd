@@ -1,4 +1,4 @@
-::#! 2> /dev/null                                   #
+::/*#! 2> /dev/null                                 #
 @ 2>/dev/null # 2>nul & echo off & goto BOF         #
 if [ -z ${SIREUM_HOME} ]; then                      #
   echo "Please set SIREUM_HOME env var"             #
@@ -13,7 +13,7 @@ if not defined SIREUM_HOME (
 )
 %SIREUM_HOME%\\bin\\sireum.bat slang run "%0" %*
 exit /B %errorlevel%
-::!#
+::!#*/
 // #Sireum
 
 import org.sireum._
@@ -24,19 +24,21 @@ val aadlDir = Os.slashDir.up
 val sireumBin = Os.path(Os.env("SIREUM_HOME").get) / "bin" 
 val sireum = sireumBin / (if(Os.isWin) "sireum.bat" else "sireum")
 
-var osate : Os.Path = 
-  if(Os.isWin) sireumBin / "win" / "fmide" / "fmide.exe"
-  else if(Os.isLinux) sireumBin / "linux" / "fmide" / "fmide"
-  else if(Os.isMac) sireumBin / "mac" / "fmide.app" / "Contents" / "MacOS" / "osate"
-  else sireum / "unsupported-OS"
+val osate: Os.Path = Os.env("OSATE_HOME") match {
+  case Some(s) => Os.path(s) / (if (Os.isWin) "osate.exe" else if (Os.isLinux) "osate" else "Contents/MacOs/osate")
+  case _ if (Os.isWin) => sireumBin / "win" / "fmide" / "fmide.exe"
+  case _ if (Os.isMac) => sireumBin / "mac" / "fmide.app" / "Contents" / "MacOs" / "osate"
+  case _ if (Os.isLinux) => sireumBin / "linux" / "fmide" / "fmide"
+  case _ =>
+    println("Unsupported operating system")
+    Os.exit(1)
+    halt("")
+}
 
-if(!osate.exists) {
-  Os.env("OSATE") match {
-    case Some(p) if Os.path(p).exists => osate = Os.path(p)
-    case _ =>
-      println(s"Please install FMIDE by running ${ (sireumBin / "install" / "fmide.cmd").canon.string }");
-      Os.exit(-1);
-  }
+if (!osate.exists) {
+  eprintln("Please install FMIDE (e.g. '$SIREUM_HOME/bin/install/fmide.cmd') or OSATE (e.g. 'sireum hamr phantom -u')")
+  Os.exit(1)
+  halt("")
 }
 
 val osireum = ISZ(osate.string, "-nosplash", "--launcher.suppressErrors", "-data", "@user.home/.sireum", "-application", "org.sireum.aadl.osate.cli")
@@ -64,8 +66,15 @@ var codegenArgs = ISZ("hamr", "codegen",
   "--max-string-size", "256",
   "--max-array-size", "1",
   "--verbose",
-  "--runtime-monitoring",
   "--aadl-root-dir", aadlDir.string)
+
+if (platform == "JVM") {
+  codegenArgs = codegenArgs :+ "--runtime-monitoring"
+} else {
+  println("***********************************************************************")
+  println(s"Note: runtime-monitoring support is not yet avialable for ${platform}")
+  println("***********************************************************************")
+}
 
 if (excludeComponentImpl) {
   codegenArgs = codegenArgs :+ "--exclude-component-impl"

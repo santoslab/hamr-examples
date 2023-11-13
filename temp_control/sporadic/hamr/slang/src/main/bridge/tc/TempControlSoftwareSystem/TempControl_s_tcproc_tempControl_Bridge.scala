@@ -103,8 +103,13 @@ object TempControl_s_tcproc_tempControl_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS(fanCmd_Id)
 
     def initialise(): Unit = {
+      TempControl_s_tcproc_tempControl_EntryPoint_Companion.pre_initialise()
+
       // implement the following method in 'component':  def initialise(api: TempControl_s_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
+
+      TempControl_s_tcproc_tempControl_EntryPoint_Companion.post_initialise()
+
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
@@ -129,7 +134,11 @@ object TempControl_s_tcproc_tempControl_Bridge {
         if(dispatchTriggers.isEmpty) receivedEvents
         else filter(receivedEvents, dispatchTriggers.get)
 
+      TempControl_s_tcproc_tempControl_Injection_Service.pre_receiveInput()
+
       Art.receiveInput(eventInPortIds, dataInPortIds)
+
+      TempControl_s_tcproc_tempControl_EntryPoint_Companion.pre_compute()
 
       for(portId <- dispatchableEventPorts) {
         if(portId == fanAck_Id){
@@ -149,6 +158,8 @@ object TempControl_s_tcproc_tempControl_Bridge {
           component.handle_tempChanged(operational_api)
         }
       }
+
+      TempControl_s_tcproc_tempControl_EntryPoint_Companion.post_compute()
 
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
