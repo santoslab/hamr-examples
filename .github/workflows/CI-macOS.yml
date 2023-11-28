@@ -42,12 +42,12 @@ jobs:
         with:
           path: cache/coursier
           key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-coursier
-      - name: Cache OSATE
-        id: cache-osate
+      - name: Cache FMIDE
+        id: cache-fmide
         uses: actions/cache@v3
         with:
-          path: kekinian/bin/mac/osate.app
-          key: ${{ runner.os }}-${{ hashFiles('jvm/src/main/resources/phantom_versions.properties') }}-osate
+          path: kekinian/bin/mac/fmide.app
+          key: ${{ runner.os }}-${{ hashFiles('kekinian/hamr/codegen/jvm/src/main/resources/phantom_versions.properties') }}-fmide
       - name: Test
         run: |
           export COURSIER_CACHE=$GITHUB_WORKSPACE/cache/coursier

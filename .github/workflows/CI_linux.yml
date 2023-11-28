@@ -24,6 +24,7 @@ jobs:
       - name: Retrieve versions.properties
         run: |
           wget -q https://raw.githubusercontent.com/sireum/kekinian/master/versions.properties
+          wget -q https://raw.githubusercontent.com/sireum/hamr-codegen/master/jvm/src/main/resources/phantom_versions.properties
       - name: Cache Java
         id: cache-java
         uses: actions/cache@v3
@@ -42,12 +43,12 @@ jobs:
         with:
           path: cache/coursier
           key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-coursier
-      - name: Cache OSATE
-        id: cache-osate
+      - name: Cache FMIDE
+        id: cache-fmide
         uses: actions/cache@v3
         with:
-          path: kekinian/bin/linux/osate
-          key: ${{ runner.os }}-${{ hashFiles('jvm/src/main/resources/phantom_versions.properties') }}-osate
+          path: kekinian/bin/linux/fmide
+          key: ${{ runner.os }}-${{ hashFiles('kekinian/bin/linux/fmide/VER') }}-fmide
       - name: Test
         run: |
           export COURSIER_CACHE=$GITHUB_WORKSPACE/cache/coursier
