@@ -6,15 +6,26 @@ import org.sireum._
 
 object InitialValues {
 
+  // current temperature: 68..105   (Table A-3)
   val DEFAULT_CURRENT_TEMPERATURE: F32 = 98f
+  val CURRENT_TEMPERATURE_LOWER_RANGE: F32 = 68f
+  val CURRENT_TEMPERATURE_UPPER_RANGE: F32 = 105f
+
+  // display temperature: 68..105 (Table A-6)
   val DEFAULT_DISPLAYED_TEMPERATURE: F32 = 98f
+  val DISPLAY_TEMPERATURE_LOWER_RANGE: F32 = 68f
+  val DISPLAY_TEMPERATURE_UPPER_RANGE: F32 = 105f
 
   // ------ Regulator Subsystem -------
 
+  // lower desired temperature: 97..99  (Table A-5)
+  //    96..101 (Table A-7)  ..ToDo: why are these numbers different than the ones above
   val DEFAULT_LOWER_DESIRED_TEMPERATURE: F32 = 97f // [97..99]
   val LOWER_DESIRED_TEMPERATURE_LOWER_RANGE: F32 = 97f
   val LOWER_DESIRED_TEMPERATURE_UPPER_RANGE: F32 = 99f
 
+  // upper desired temperature: 98..100 (Table A-5)
+  //    97..102 (Table A-7) ..ToDo: why are these numbers different than the ones above
   val DEFAULT_UPPER_DESIRED_TEMPERATURE: F32 = 99f // [98..100]
   val UPPER_DESIRED_TEMPERATURE_LOWER_RANGE: F32 = 98f
   val UPPER_DESIRED_TEMPERATURE_UPPER_RANGE: F32 = 100f
@@ -40,6 +51,8 @@ object InitialValues {
    val LOWER_ALARM_TEMPERATURE_UPPER_RANGE: F32 = 98f
    */
 
+  // lower alarm temperature: 93..98 (Table A-5)
+  //    96..101 (Table A-12)  ..ToDo: why are these numbers different than the ones above
   val DEFAULT_LOWER_ALARM_TEMPERATURE: F32 = 97f // [96..101]
   val LOWER_ALARM_TEMPERATURE_LOWER_RANGE: F32 = 96f // used by operator interface
   val LOWER_ALARM_TEMPERATURE_UPPER_RANGE: F32 = 101f // used by operator interface
@@ -53,6 +66,8 @@ object InitialValues {
   val UPPER_ALARM_TEMPERATURE_UPPER_RANGE: F32 = 103f
   */
 
+  // upper alarm temperature: 99..103 (Table A-5)
+  //    97..102 (Table A-12)  ..ToDo: why are these numbers different than the ones above
   val DEFAULT_UPPER_ALARM_TEMPERATURE: F32 = 101f // [97..102]
   val UPPER_ALARM_TEMPERATURE_LOWER_RANGE: F32 = 97f // used by operator interface
   val UPPER_ALARM_TEMPERATURE_UPPER_RANGE: F32 = 102f //used by operator interface
