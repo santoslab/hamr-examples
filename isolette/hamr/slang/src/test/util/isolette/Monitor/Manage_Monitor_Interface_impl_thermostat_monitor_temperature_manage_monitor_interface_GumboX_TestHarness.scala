@@ -112,7 +112,7 @@ import isolette.GumboXUtil.GumboXResult
     }
 
     // [CheckPost]: invoke the oracle function
-    val postResult = isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
+    val postResult = isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
     val result: GumboXResult.Type =
       if (!postResult) GumboXResult.Post_Condition_Fail
       else GumboXResult.Post_Condition_Pass
@@ -186,7 +186,7 @@ import isolette.GumboXUtil.GumboXResult
     }
 
     // [CheckPost]: invoke the oracle function
-    val postResult = isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
+    val postResult = isolette.Monitor.Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX.compute_CEP_Post(In_lastCmd, lastCmd, api_current_tempWstatus, api_lower_alarm_tempWstatus, api_monitor_mode, api_upper_alarm_tempWstatus, api_interface_failure, api_lower_alarm_temp, api_monitor_status, api_upper_alarm_temp)
     val result: GumboXResult.Type =
       if (!postResult) GumboXResult.Post_Condition_Fail
       else GumboXResult.Post_Condition_Pass

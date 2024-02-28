@@ -198,6 +198,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     *
     * @param In_lastCmd pre-state state variable
     * @param lastCmd post-state state variable
+    * @param api_current_tempWstatus incoming data port
     * @param api_lower_alarm_tempWstatus incoming data port
     * @param api_monitor_mode incoming data port
     * @param api_upper_alarm_tempWstatus incoming data port
@@ -209,6 +210,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   @strictpure def compute_CEP_Post (
       In_lastCmd: Isolette_Data_Model.On_Off.Type,
       lastCmd: Isolette_Data_Model.On_Off.Type,
+      api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_lower_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
@@ -230,6 +232,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     compute_CEP_Post(
       In_lastCmd = pre.In_lastCmd,
       lastCmd = post.lastCmd,
+      api_current_tempWstatus = pre.api_current_tempWstatus,
       api_lower_alarm_tempWstatus = pre.api_lower_alarm_tempWstatus,
       api_monitor_mode = pre.api_monitor_mode,
       api_upper_alarm_tempWstatus = pre.api_upper_alarm_tempWstatus,

@@ -49,6 +49,10 @@ if (result == 0) {
   result = run("Running codegen targeting JVM with runtime monitoring", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} JVM")
 }
 
+if (result == 0) {
+  result = run("Testing Proyek project", F, proc"$sireum proyek test .".at(homeDir / "hamr" / "slang"))
+}
+
 // need to run both Linux and seL4 to ensure results contain both the c and camkes codegen artifacts
 if (result == 0) {
   result = run("Running codegen targeting Linux", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux")
@@ -58,9 +62,6 @@ if (result == 0) {
   result = run("Running codegen targeting seL4", F, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} seL4")
 }
 
-if (result == 0) {
-  result = run("Compiling Proyek project", F, proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang"))
-}
 
 // TODO: add run-demo-jvm, run-demo-linux and perhaps run-demo-sel4 scripts
 //if(result == 0) {

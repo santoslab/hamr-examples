@@ -112,24 +112,9 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: Manage_Monitor_Mode_impl_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

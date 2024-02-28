@@ -84,49 +84,23 @@ object TempSensor_s_tcproc_tempSensor_Bridge {
     val eventOutPortIds: ISZ[Art.PortId] = IS(tempChanged_Id)
 
     def initialise(): Unit = {
-      TempSensor_s_tcproc_tempSensor_EntryPoint_Companion.pre_initialise()
-
       // implement the following method in 'component':  def initialise(api: TempSensor_s_Initialization_Api): Unit = {}
       component.initialise(initialization_api)
-
-      TempSensor_s_tcproc_tempSensor_EntryPoint_Companion.post_initialise()
-
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
     def compute(): Unit = {
-      TempSensor_s_tcproc_tempSensor_Injection_Service.pre_receiveInput()
-
       Art.receiveInput(eventInPortIds, dataInPortIds)
-
-      TempSensor_s_tcproc_tempSensor_EntryPoint_Companion.pre_compute()
 
       // implement the following in 'component':  def timeTriggered(api: TempSensor_s_Operational_Api): Unit = {}
       component.timeTriggered(operational_api)
 
-      TempSensor_s_tcproc_tempSensor_EntryPoint_Companion.post_compute()
-
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
-    }
-
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: TempSensor_s_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: TempSensor_s_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
     }
 
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: TempSensor_s_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: TempSensor_s_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

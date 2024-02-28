@@ -50,7 +50,7 @@ if (result == 0) {
 }
 
 if (result == 0) {
-  result = run("Compiling Proyek project", F, proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang"))
+  result = run("Testing Proyek project", F, proc"$sireum proyek test .".at(homeDir / "hamr" / "slang"))
 }
 
 // TODO: add run-demo-jvm

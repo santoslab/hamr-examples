@@ -46,11 +46,16 @@ object OperatorInterface_s_tcproc_operatorInterface_GumboX {
 
   /** CEP-Post: Compute Entrypoint Post-Condition for operatorInterface
     *
+    * @param api_tempChanged incoming event port
+    * @param api_currentTemp incoming data port
     * @param api_setPoint outgoing event data port
     */
   @strictpure def compute_CEP_Post (
+      api_tempChanged: Option[art.Empty],
+      api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i]): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with operatorInterface's state variables and outgoing ports
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
      TempControlSoftwareSystem.SetPoint_i.D_Inv_Guard_SetPoint_i(api_setPoint))
 
   /** CEP-Post: Compute Entrypoint Post-Condition for operatorInterface via containers
@@ -62,5 +67,7 @@ object OperatorInterface_s_tcproc_operatorInterface_GumboX {
       pre: OperatorInterface_s_tcproc_operatorInterface_PreState_Container_PS,
       post: OperatorInterface_s_tcproc_operatorInterface_PostState_Container_PS): B =
     compute_CEP_Post(
+      api_tempChanged = pre.api_tempChanged,
+      api_currentTemp = pre.api_currentTemp,
       api_setPoint = post.api_setPoint)
 }

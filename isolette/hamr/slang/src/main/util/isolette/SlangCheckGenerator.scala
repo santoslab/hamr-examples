@@ -32,17 +32,19 @@ Monitor_Mode.scala
 
 Base_Types.scala
 
-Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface__Containers.scala
+Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_Containers.scala
 
-Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source__Containers.scala
+Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_Containers.scala
 
-Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode__Containers.scala
+Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_Containers.scala
 
-Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface__Containers.scala
+Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_Containers.scala
 
-Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm__Containers.scala
+Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Containers.scala
 
-Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode__Containers.scala
+Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_Containers.scala
+
+Container.scala
 
 DataContent.scala
 
@@ -646,6 +648,25 @@ Aux_Types.scala
     while (T) {
 
       continue = f(param.nextBase_TypesString_Payload())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_ISZB(param: RandomLibI) extends MJen[ISZ[B]] {
+  override def generate(f: ISZ[B] => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextISZB())
 
       if (!continue) {
         return Jen.End
@@ -1767,6 +1788,44 @@ Aux_Types.scala
     while (T) {
 
       continue = f(param.nextRegulateManage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_PostState_Container_PS())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_utilContainer(param: RandomLibI) extends MJen[util.Container] {
+  override def generate(f: util.Container => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextutilContainer())
+
+      if (!continue) {
+        return Jen.End
+      }
+    }
+    return continue
+  }
+
+  override def string: String = {
+    return s""
+  }
+}
+
+@record class Gen_utilEmptyContainer(param: RandomLibI) extends MJen[util.EmptyContainer] {
+  override def generate(f: util.EmptyContainer => Jen.Action): Jen.Action = {
+    var continue = Jen.Continue
+    while (T) {
+
+      continue = f(param.nextutilEmptyContainer())
 
       if (!continue) {
         return Jen.End

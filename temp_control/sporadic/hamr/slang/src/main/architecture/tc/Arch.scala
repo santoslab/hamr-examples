@@ -78,6 +78,7 @@ object Arch {
   }
 
   val ad : ArchitectureDescription = {
+    TranspilerUtil.touch()
 
     ArchitectureDescription(
       components = IS[Art.BridgeId, Bridge] (TempControlSoftwareSystem_s_Instance_tcproc_tempSensor, TempControlSoftwareSystem_s_Instance_tcproc_fan, TempControlSoftwareSystem_s_Instance_tcproc_tempControl, TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface),
@@ -92,3 +93,96 @@ object Arch {
     )
   }
 }
+
+object TranspilerUtil {
+  def touch(): Unit = {
+    if(F) {
+      TranspilerToucher.touch()
+
+      // add types used in Platform.receive and Platform.receiveAsync
+      val mbox2Boolean_Payload: MBox2[Art.PortId, DataContent] = MBox2(portId"0", Base_Types.Boolean_Payload(T))
+      val mbox2OptionDataContent: MBox2[Art.PortId, Option[DataContent]] = MBox2(portId"0", None())
+
+      // touch process/thread timing properties
+      println(Schedulers.TempControlSoftwareSystem_s_Instance_tcproc_tempSensor_timingProperties)
+      println(Schedulers.TempControlSoftwareSystem_s_Instance_tcproc_fan_timingProperties)
+      println(Schedulers.TempControlSoftwareSystem_s_Instance_tcproc_tempControl_timingProperties)
+      println(Schedulers.TempControlSoftwareSystem_s_Instance_tcproc_operatorInterface_timingProperties)
+
+      // touch each payload/type in case some are only used as a field in a record
+      def printDataContent(a: art.DataContent): Unit = { println(s"${a}") }
+
+      printDataContent(Base_Types.Float_32_Payload(Base_Types.Float_32_example()))
+      printDataContent(Base_Types.Boolean_Payload(Base_Types.Boolean_example()))
+      printDataContent(Base_Types.Integer_Payload(Base_Types.Integer_example()))
+      printDataContent(Base_Types.Integer_8_Payload(Base_Types.Integer_8_example()))
+      printDataContent(Base_Types.Integer_16_Payload(Base_Types.Integer_16_example()))
+      printDataContent(Base_Types.Integer_32_Payload(Base_Types.Integer_32_example()))
+      printDataContent(Base_Types.Integer_64_Payload(Base_Types.Integer_64_example()))
+      printDataContent(Base_Types.Unsigned_8_Payload(Base_Types.Unsigned_8_example()))
+      printDataContent(Base_Types.Unsigned_16_Payload(Base_Types.Unsigned_16_example()))
+      printDataContent(Base_Types.Unsigned_32_Payload(Base_Types.Unsigned_32_example()))
+      printDataContent(Base_Types.Unsigned_64_Payload(Base_Types.Unsigned_64_example()))
+      printDataContent(Base_Types.Float_Payload(Base_Types.Float_example()))
+      printDataContent(Base_Types.Float_64_Payload(Base_Types.Float_64_example()))
+      printDataContent(Base_Types.Character_Payload(Base_Types.Character_example()))
+      printDataContent(Base_Types.String_Payload(Base_Types.String_example()))
+      printDataContent(TempSensor.Temperature_i_Payload(TempSensor.Temperature_i.example()))
+      printDataContent(CoolingFan.FanCmd_Payload(CoolingFan.FanCmd.byOrdinal(0).get))
+      printDataContent(CoolingFan.FanAck_Payload(CoolingFan.FanAck.byOrdinal(0).get))
+      printDataContent(TempControlSoftwareSystem.SetPoint_i_Payload(TempControlSoftwareSystem.SetPoint_i.example()))
+      printDataContent(art.Empty())
+
+      {
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_initialization_api.get.logInfo("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_initialization_api.get.logDebug("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_initialization_api.get.logError("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_operational_api.get.logInfo("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_operational_api.get.logDebug("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_operational_api.get.logError("")
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_initialization_api.get.put_currentTemp(TempSensor.Temperature_i.example())
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_operational_api.get.put_currentTemp(TempSensor.Temperature_i.example())
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_initialization_api.get.put_tempChanged()
+        tc.TempSensor.TempSensor_s_tcproc_tempSensor_Bridge.c_operational_api.get.put_tempChanged()
+      }
+      {
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_initialization_api.get.logInfo("")
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_initialization_api.get.logDebug("")
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_initialization_api.get.logError("")
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_operational_api.get.logInfo("")
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_operational_api.get.logDebug("")
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_operational_api.get.logError("")
+        val apiUsage_fanCmd: Option[CoolingFan.FanCmd.Type] = tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_operational_api.get.get_fanCmd()
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_initialization_api.get.put_fanAck(CoolingFan.FanAck.byOrdinal(0).get)
+        tc.CoolingFan.Fan_s_tcproc_fan_Bridge.c_operational_api.get.put_fanAck(CoolingFan.FanAck.byOrdinal(0).get)
+      }
+      {
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_initialization_api.get.logInfo("")
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_initialization_api.get.logDebug("")
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_initialization_api.get.logError("")
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.logInfo("")
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.logDebug("")
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.logError("")
+        val apiUsage_currentTemp: Option[TempSensor.Temperature_i] = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.get_currentTemp()
+        val apiUsage_fanAck: Option[CoolingFan.FanAck.Type] = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.get_fanAck()
+        val apiUsage_setPoint: Option[TempControlSoftwareSystem.SetPoint_i] = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.get_setPoint()
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_initialization_api.get.put_fanCmd(CoolingFan.FanCmd.byOrdinal(0).get)
+        tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.put_fanCmd(CoolingFan.FanCmd.byOrdinal(0).get)
+        val apiUsage_tempChanged: Option[art.Empty] = tc.TempControlSoftwareSystem.TempControl_s_tcproc_tempControl_Bridge.c_operational_api.get.get_tempChanged()
+      }
+      {
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_initialization_api.get.logInfo("")
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_initialization_api.get.logDebug("")
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_initialization_api.get.logError("")
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.logInfo("")
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.logDebug("")
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.logError("")
+        val apiUsage_currentTemp: Option[TempSensor.Temperature_i] = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.get_currentTemp()
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_initialization_api.get.put_setPoint(TempControlSoftwareSystem.SetPoint_i.example())
+        tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.put_setPoint(TempControlSoftwareSystem.SetPoint_i.example())
+        val apiUsage_tempChanged: Option[art.Empty] = tc.TempControlSoftwareSystem.OperatorInterface_s_tcproc_operatorInterface_Bridge.c_operational_api.get.get_tempChanged()
+      }
+    }
+  }
+}
+

@@ -140,24 +140,9 @@ object operator_interface_thread_impl_operator_interface_oip_oit_Bridge {
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: operator_interface_thread_impl_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: operator_interface_thread_impl_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: operator_interface_thread_impl_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: operator_interface_thread_impl_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

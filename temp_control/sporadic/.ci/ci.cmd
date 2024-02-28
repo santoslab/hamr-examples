@@ -50,7 +50,7 @@ if (result == 0) {
 }
 
 if (result == 0) {
-  result = run("Compiling Proyek project", F, proc"$sireum proyek compile .".at(homeDir / "hamr" / "slang"))
+  result = run("Testing Proyek project", F, proc"$sireum proyek test .".at(homeDir / "hamr" / "slang"))
 }
 
 // TODO: add run-demo-jvm
@@ -60,6 +60,10 @@ if (result == 0) {
 
 if (result == 0) {
   result = run("Verifying via Logika", T, proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-logika.cmd"}")
+}
+
+if (result == 0) {
+  result = run("Running codegen targeting C", T, proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-hamr.cmd"} Linux")
 }
 
 Os.exit(result)

@@ -9,7 +9,7 @@ object CliInfoProvider {
 
   // prototyping APIs that any HAMR debugging interface should support
   def message(m: String): Unit = {
-    println(m)
+    StaticSchedulerIO.message(m)
   }
 
   def printHelpMessage(): Unit = {

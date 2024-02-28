@@ -255,6 +255,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
     * @param In_latestFanCmd pre-state state variable
     * @param latestFanCmd post-state state variable
     * @param api_currentTemp incoming data port
+    * @param api_fanAck incoming data port
     * @param api_setPoint incoming data port
     * @param api_fanCmd outgoing data port
     */
@@ -262,9 +263,14 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       In_latestFanCmd: CoolingFan.FanCmd.Type,
       latestFanCmd: CoolingFan.FanCmd.Type,
       api_currentTemp: TempSensor.Temperature_i,
+      api_fanAck: CoolingFan.FanAck.Type,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (// CEP-Guar: guarantee clauses of tempControl's compute entrypoint
+    (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and outgoing ports
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(api_setPoint) & 
+
+     // CEP-Guar: guarantee clauses of tempControl's compute entrypoint
      compute_CEP_T_Guar (In_latestFanCmd, latestFanCmd, api_currentTemp, api_setPoint, api_fanCmd) & 
 
      // CEP-T-Case: case clauses of tempControl's compute entrypoint
@@ -282,6 +288,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       In_latestFanCmd = pre.In_latestFanCmd,
       latestFanCmd = post.latestFanCmd,
       api_currentTemp = pre.api_currentTemp,
+      api_fanAck = pre.api_fanAck,
       api_setPoint = pre.api_setPoint,
       api_fanCmd = post.api_fanCmd)
 }

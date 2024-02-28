@@ -109,24 +109,9 @@ object FanPeriodic_p_tcproc_fan_Bridge {
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: FanPeriodic_p_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: FanPeriodic_p_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: FanPeriodic_p_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: FanPeriodic_p_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

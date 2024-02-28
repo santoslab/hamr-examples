@@ -12,8 +12,8 @@ object TempControl_s_tcproc_tempControl_GumboX {
     * assume currentTempRange
     */
   @strictpure def I_Assm_currentTemp(currentTemp: TempSensor.Temperature_i): B =
-    currentTemp.degrees >= -70.0f &
-      currentTemp.degrees <= 180.0f
+    currentTemp.degrees >= -128.6f &
+      currentTemp.degrees <= 134.0f
 
   // I-Assm-Guard: Integration constraint on tempControl's incoming data port currentTemp
   @strictpure def I_Assm_Guard_currentTemp(currentTemp: TempSensor.Temperature_i): B =
@@ -93,6 +93,49 @@ object TempControl_s_tcproc_tempControl_GumboX {
       latestTemp = post.latestTemp,
       api_fanCmd = post.api_fanCmd)
 
+  /** Compute Entrypoint Contract
+    *
+    * assumes a1
+    *   If the previously received currentTemp was less than the previously
+    *   received setPoint then the last fan command must have been Off
+    * @param In_currentFanState pre-state state variable
+    * @param In_currentSetPoint pre-state state variable
+    * @param In_latestTemp pre-state state variable
+    */
+  @strictpure def compute_spec_a1_assume(
+      In_currentFanState: CoolingFan.FanCmd.Type,
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      In_latestTemp: TempSensor.Temperature_i): B =
+    (In_latestTemp.degrees < In_currentSetPoint.low.degrees) ->: (In_currentFanState == CoolingFan.FanCmd.Off)
+
+  /** Compute Entrypoint Contract
+    *
+    * assumes a2
+    *   If the previously received currentTemp was more than the previously
+    *   received setPoint then the last fan command must have been On
+    * @param In_currentFanState pre-state state variable
+    * @param In_currentSetPoint pre-state state variable
+    * @param In_latestTemp pre-state state variable
+    */
+  @strictpure def compute_spec_a2_assume(
+      In_currentFanState: CoolingFan.FanCmd.Type,
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      In_latestTemp: TempSensor.Temperature_i): B =
+    (In_latestTemp.degrees > In_currentSetPoint.high.degrees) ->: (In_currentFanState == CoolingFan.FanCmd.On)
+
+  /** CEP-T-Assm: Top-level assume contracts for tempControl's compute entrypoint
+    *
+    * @param In_currentFanState pre-state state variable
+    * @param In_currentSetPoint pre-state state variable
+    * @param In_latestTemp pre-state state variable
+    */
+  @strictpure def compute_CEP_T_Assm (
+      In_currentFanState: CoolingFan.FanCmd.Type,
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      In_latestTemp: TempSensor.Temperature_i): B =
+    compute_spec_a1_assume(In_currentFanState, In_currentSetPoint, In_latestTemp) &
+    compute_spec_a2_assume(In_currentFanState, In_currentSetPoint, In_latestTemp)
+
   /** CEP-Pre: Compute Entrypoint Pre-Condition for tempControl
     *
     * @param In_currentFanState pre-state state variable
@@ -118,7 +161,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
      TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
 
      // I-Assm-Guard: Integration constraints for tempControl's incoming ports
-     I_Assm_Guard_currentTemp(api_currentTemp))
+     I_Assm_Guard_currentTemp(api_currentTemp) & 
+
+     // CEP-Assm: assume clauses of tempControl's compute entrypoint
+     compute_CEP_T_Assm (In_currentFanState, In_currentSetPoint, In_latestTemp))
 
   /** CEP-Pre: Compute Entrypoint Pre-Condition for tempControl via container
     *
@@ -220,6 +266,152 @@ object TempControl_s_tcproc_tempControl_GumboX {
     compute_spec_TC_Req_03_guarantee(In_currentFanState, currentFanState, currentSetPoint, latestTemp) &
     compute_spec_mustSendFanCmd_guarantee(In_currentFanState, currentFanState, api_fanCmd)
 
+  /** Compute Entrypoint Contract for setPoint's setPointChanged guarantee clause
+    *
+    * guarantee setPointChanged
+    * @param currentSetPoint post-state state variable
+    * @param api_setPoint incoming event data port
+    */
+  @strictpure def compute_handle_setPoint_setPointChanged_guarantee(
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i]): B =
+    currentSetPoint == api_setPoint.get
+
+  /** Compute Entrypoint Contract for setPoint's latestTempNotModified guarantee clause
+    *
+    * guarantee latestTempNotModified
+    * @param In_latestTemp pre-state state variable
+    * @param latestTemp post-state state variable
+    */
+  @strictpure def compute_handle_setPoint_latestTempNotModified_guarantee(
+      In_latestTemp: TempSensor.Temperature_i,
+      latestTemp: TempSensor.Temperature_i): B =
+    latestTemp == In_latestTemp
+
+  /** CEP-T-Handle_setPoint_Guar: Top-level guarantee contracts for tempControl's compute setPoint handler
+    *
+    * @param In_latestTemp pre-state state variable
+    * @param currentSetPoint post-state state variable
+    * @param latestTemp post-state state variable
+    * @param api_setPoint incoming event data port
+    */
+  @strictpure def compute_CEP_Handler_setPoint_Guar (
+      In_latestTemp: TempSensor.Temperature_i,
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      latestTemp: TempSensor.Temperature_i,
+      api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i]): B =
+    api_setPoint.nonEmpty -->: (
+      compute_handle_setPoint_setPointChanged_guarantee(currentSetPoint, api_setPoint) &
+      compute_handle_setPoint_latestTempNotModified_guarantee(In_latestTemp, latestTemp))
+
+  /** Compute Entrypoint Contract for tempChanged's tempChanged guarantee clause
+    *
+    * guarantee tempChanged
+    * @param latestTemp post-state state variable
+    * @param api_currentTemp incoming data port
+    */
+  @strictpure def compute_handle_tempChanged_tempChanged_guarantee(
+      latestTemp: TempSensor.Temperature_i,
+      api_currentTemp: TempSensor.Temperature_i): B =
+    latestTemp == api_currentTemp
+
+  /** Compute Entrypoint Contract for tempChanged's setPointNotModified guarantee clause
+    *
+    * guarantee setPointNotModified
+    * @param In_currentSetPoint pre-state state variable
+    * @param currentSetPoint post-state state variable
+    */
+  @strictpure def compute_handle_tempChanged_setPointNotModified_guarantee(
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i): B =
+    currentSetPoint == In_currentSetPoint
+
+  /** CEP-T-Handle_tempChanged_Guar: Top-level guarantee contracts for tempControl's compute tempChanged handler
+    *
+    * @param In_currentSetPoint pre-state state variable
+    * @param currentSetPoint post-state state variable
+    * @param latestTemp post-state state variable
+    * @param api_tempChanged incoming event port
+    * @param api_currentTemp incoming data port
+    */
+  @strictpure def compute_CEP_Handler_tempChanged_Guar (
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      latestTemp: TempSensor.Temperature_i,
+      api_tempChanged: Option[art.Empty],
+      api_currentTemp: TempSensor.Temperature_i): B =
+    api_tempChanged.nonEmpty -->: (
+      compute_handle_tempChanged_tempChanged_guarantee(latestTemp, api_currentTemp) &
+      compute_handle_tempChanged_setPointNotModified_guarantee(In_currentSetPoint, currentSetPoint))
+
+  /** Compute Entrypoint Contract for fanAck's setPointNotModified guarantee clause
+    *
+    * guarantee setPointNotModified
+    * @param In_currentSetPoint pre-state state variable
+    * @param currentSetPoint post-state state variable
+    */
+  @strictpure def compute_handle_fanAck_setPointNotModified_guarantee(
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i): B =
+    currentSetPoint == In_currentSetPoint
+
+  /** Compute Entrypoint Contract for fanAck's lastTempNotModified guarantee clause
+    *
+    * guarantee lastTempNotModified
+    * @param In_latestTemp pre-state state variable
+    * @param latestTemp post-state state variable
+    */
+  @strictpure def compute_handle_fanAck_lastTempNotModified_guarantee(
+      In_latestTemp: TempSensor.Temperature_i,
+      latestTemp: TempSensor.Temperature_i): B =
+    latestTemp == In_latestTemp
+
+  /** Compute Entrypoint Contract for fanAck's currentFanState guarantee clause
+    *
+    * guarantee currentFanState
+    * @param In_currentFanState pre-state state variable
+    * @param currentFanState post-state state variable
+    */
+  @strictpure def compute_handle_fanAck_currentFanState_guarantee(
+      In_currentFanState: CoolingFan.FanCmd.Type,
+      currentFanState: CoolingFan.FanCmd.Type): B =
+    currentFanState == In_currentFanState
+
+  /** Compute Entrypoint Contract for fanAck's noEventsSent guarantee clause
+    *
+    * guarantee noEventsSent
+    * @param api_fanCmd outgoing event data port
+    */
+  @strictpure def compute_handle_fanAck_noEventsSent_guarantee(
+      api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
+    api_fanCmd.isEmpty
+
+  /** CEP-T-Handle_fanAck_Guar: Top-level guarantee contracts for tempControl's compute fanAck handler
+    *
+    * @param In_currentFanState pre-state state variable
+    * @param In_currentSetPoint pre-state state variable
+    * @param In_latestTemp pre-state state variable
+    * @param currentFanState post-state state variable
+    * @param currentSetPoint post-state state variable
+    * @param latestTemp post-state state variable
+    * @param api_fanAck incoming event data port
+    * @param api_fanCmd outgoing event data port
+    */
+  @strictpure def compute_CEP_Handler_fanAck_Guar (
+      In_currentFanState: CoolingFan.FanCmd.Type,
+      In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      In_latestTemp: TempSensor.Temperature_i,
+      currentFanState: CoolingFan.FanCmd.Type,
+      currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
+      latestTemp: TempSensor.Temperature_i,
+      api_fanAck: Option[CoolingFan.FanAck.Type],
+      api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
+    api_fanAck.nonEmpty -->: (
+      compute_handle_fanAck_setPointNotModified_guarantee(In_currentSetPoint, currentSetPoint) &
+      compute_handle_fanAck_lastTempNotModified_guarantee(In_latestTemp, latestTemp) &
+      compute_handle_fanAck_currentFanState_guarantee(In_currentFanState, currentFanState) &
+      compute_handle_fanAck_noEventsSent_guarantee(api_fanCmd))
+
   /** CEP-Post: Compute Entrypoint Post-Condition for tempControl
     *
     * @param In_currentFanState pre-state state variable
@@ -228,6 +420,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
     * @param currentFanState post-state state variable
     * @param currentSetPoint post-state state variable
     * @param latestTemp post-state state variable
+    * @param api_tempChanged incoming event port
+    * @param api_fanAck incoming event data port
+    * @param api_setPoint incoming event data port
+    * @param api_currentTemp incoming data port
     * @param api_fanCmd outgoing event data port
     */
   @strictpure def compute_CEP_Post (
@@ -237,15 +433,26 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentFanState: CoolingFan.FanCmd.Type,
       currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       latestTemp: TempSensor.Temperature_i,
+      api_tempChanged: Option[art.Empty],
+      api_fanAck: Option[CoolingFan.FanAck.Type],
+      api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i],
+      api_currentTemp: TempSensor.Temperature_i,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
     (// D-Inv-Guard: Datatype invariants for the types associated with tempControl's state variables and outgoing ports
      TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(In_currentSetPoint) & 
      TempSensor.Temperature_i.D_Inv_Temperature_i(In_latestTemp) & 
      TempControlSoftwareSystem.SetPoint_i.D_Inv_SetPoint_i(currentSetPoint) & 
      TempSensor.Temperature_i.D_Inv_Temperature_i(latestTemp) & 
+     TempControlSoftwareSystem.SetPoint_i.D_Inv_Guard_SetPoint_i(api_setPoint) & 
+     TempSensor.Temperature_i.D_Inv_Temperature_i(api_currentTemp) & 
 
      // CEP-Guar: guarantee clauses of tempControl's compute entrypoint
-     compute_CEP_T_Guar (In_currentFanState, currentFanState, currentSetPoint, latestTemp, api_fanCmd))
+     compute_CEP_T_Guar (In_currentFanState, currentFanState, currentSetPoint, latestTemp, api_fanCmd) & 
+
+     // CEP-T-Handlers: handler clauses of tempControl's compute entrypoint
+     compute_CEP_Handler_setPoint_Guar (In_latestTemp, currentSetPoint, latestTemp, api_setPoint) & 
+     compute_CEP_Handler_tempChanged_Guar (In_currentSetPoint, currentSetPoint, latestTemp, api_tempChanged, api_currentTemp) & 
+     compute_CEP_Handler_fanAck_Guar (In_currentFanState, In_currentSetPoint, In_latestTemp, currentFanState, currentSetPoint, latestTemp, api_fanAck, api_fanCmd))
 
   /** CEP-Post: Compute Entrypoint Post-Condition for tempControl via containers
     *
@@ -262,5 +469,9 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentFanState = post.currentFanState,
       currentSetPoint = post.currentSetPoint,
       latestTemp = post.latestTemp,
+      api_tempChanged = pre.api_tempChanged,
+      api_fanAck = pre.api_fanAck,
+      api_setPoint = pre.api_setPoint,
+      api_currentTemp = pre.api_currentTemp,
       api_fanCmd = post.api_fanCmd)
 }

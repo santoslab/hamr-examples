@@ -100,24 +100,9 @@ object ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_Bridge {
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: ActuatorsMockThread_i_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: ActuatorsMockThread_i_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: ActuatorsMockThread_i_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: ActuatorsMockThread_i_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

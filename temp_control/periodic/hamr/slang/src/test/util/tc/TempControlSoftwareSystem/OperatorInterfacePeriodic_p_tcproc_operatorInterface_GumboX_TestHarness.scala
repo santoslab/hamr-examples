@@ -86,7 +86,7 @@ import tc.GumboXUtil.GumboXResult
     }
 
     // [CheckPost]: invoke the oracle function
-    val postResult = tc.TempControlSoftwareSystem.OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX.compute_CEP_Post(api_setPoint)
+    val postResult = tc.TempControlSoftwareSystem.OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX.compute_CEP_Post(api_currentTemp, api_setPoint)
     val result: GumboXResult.Type =
       if (!postResult) GumboXResult.Post_Condition_Fail
       else GumboXResult.Post_Condition_Pass

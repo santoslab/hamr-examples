@@ -99,7 +99,7 @@ import tc.GumboXUtil.GumboXResult
     }
 
     // [CheckPost]: invoke the oracle function
-    val postResult = tc.TempControlSoftwareSystem.TempControlPeriodic_p_tcproc_tempControl_GumboX.compute_CEP_Post(In_latestFanCmd, latestFanCmd, api_currentTemp, api_setPoint, api_fanCmd)
+    val postResult = tc.TempControlSoftwareSystem.TempControlPeriodic_p_tcproc_tempControl_GumboX.compute_CEP_Post(In_latestFanCmd, latestFanCmd, api_currentTemp, api_fanAck, api_setPoint, api_fanCmd)
     val result: GumboXResult.Type =
       if (!postResult) GumboXResult.Post_Condition_Fail
       else GumboXResult.Post_Condition_Pass
@@ -166,7 +166,7 @@ import tc.GumboXUtil.GumboXResult
     }
 
     // [CheckPost]: invoke the oracle function
-    val postResult = tc.TempControlSoftwareSystem.TempControlPeriodic_p_tcproc_tempControl_GumboX.compute_CEP_Post(In_latestFanCmd, latestFanCmd, api_currentTemp, api_setPoint, api_fanCmd)
+    val postResult = tc.TempControlSoftwareSystem.TempControlPeriodic_p_tcproc_tempControl_GumboX.compute_CEP_Post(In_latestFanCmd, latestFanCmd, api_currentTemp, api_fanAck, api_setPoint, api_fanCmd)
     val result: GumboXResult.Type =
       if (!postResult) GumboXResult.Post_Condition_Fail
       else GumboXResult.Post_Condition_Pass

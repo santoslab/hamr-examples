@@ -22,15 +22,17 @@ GUMBO__Library.scala
 
 GUMBO__Library.scala
 
-TempSensorPeriodic_p_tcproc_tempSensor__Containers.scala
+TempSensorPeriodic_p_tcproc_tempSensor_Containers.scala
 
-FanPeriodic_p_tcproc_fan__Containers.scala
+FanPeriodic_p_tcproc_fan_Containers.scala
 
-TempControlPeriodic_p_tcproc_tempControl__Containers.scala
+TempControlPeriodic_p_tcproc_tempControl_Containers.scala
 
-OperatorInterfacePeriodic_p_tcproc_operatorInterface__Containers.scala
+OperatorInterfacePeriodic_p_tcproc_operatorInterface_Containers.scala
 
 ObservationKind.scala
+
+Container.scala
 
 DataContent.scala
 
@@ -100,6 +102,8 @@ Aux_Types.scala
 
 @datatype class Config_Base_TypesString_Payload(attempts: Z, verbose: B, filter: Base_Types.String_Payload => B) {}
 
+@datatype class Config_ISZB(minSize: Z, maxSize: Z, attempts: Z, verbose: B, filter: ISZ[B] => B) {}
+
 @datatype class Config_Base_TypesBits_Payload(attempts: Z, verbose: B, filter: Base_Types.Bits_Payload => B) {}
 
 @datatype class Config_CoolingFanFanAckType(attempts: Z, verbose: B, filter: CoolingFan.FanAck.Type => B) {}
@@ -165,6 +169,10 @@ Aux_Types.scala
 @datatype class Config_TempSensorTemperature_i(attempts: Z, verbose: B, filter: TempSensor.Temperature_i => B) {}
 
 @datatype class Config_TempSensorTemperature_i_Payload(attempts: Z, verbose: B, filter: TempSensor.Temperature_i_Payload => B) {}
+
+@datatype class Config_utilContainer(attempts: Z, verbose: B, additiveTypeFiltering: B, typeFilter: ISZ[utilContainer_DataTypeId.Type], filter: util.Container => B) {}
+
+@datatype class Config_utilEmptyContainer(attempts: Z, verbose: B, filter: util.EmptyContainer => B) {}
 
 @datatype class Config_runtimemonitorObservationKindType(attempts: Z, verbose: B, filter: runtimemonitor.ObservationKind.Type => B) {}
 

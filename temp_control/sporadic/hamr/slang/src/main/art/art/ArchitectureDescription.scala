@@ -98,18 +98,12 @@ import org.sireum._
 
 object Bridge {
 
-  // initialise()  ( compute() | activate() deactivate() | recover() )* finalise()
+  // initialise()  ( compute() )* finalise()
   @sig trait EntryPoints {
 
     def initialise(): Unit
 
-    def activate(): Unit
-
-    def deactivate(): Unit
-
     def compute(): Unit
-
-    def recover(): Unit
 
     def finalise(): Unit
 

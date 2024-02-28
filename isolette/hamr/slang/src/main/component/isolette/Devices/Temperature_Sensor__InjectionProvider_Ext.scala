@@ -11,7 +11,7 @@ object Temperature_Sensor__InjectionProvider_Ext {
       new Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_Injection_Provider {
 
         var lastTemperature = Isolette_Data_Model.PhysicalTemp_impl(InitialValues.DEFAULT_CURRENT_TEMPERATURE)
-        var rand = new java.util.Random
+        val rand = new java.util.Random
 
         override def pre_receiveInput(): Unit = {
           // simulate the arrival of data on the unconnected air incoming data port

@@ -61,8 +61,9 @@ object TempControl_s_tcproc_tempControl {
       Requires(
         // belt: can't add a class invariant asserting the following so adding them here.
         // or, could add them in the model
-        (latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
-        (latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
+        // 2024.04.23 update -- gumbox unit testing requires these be stated in the model
+        //(latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
+        //(latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
 
         // BEGIN COMPUTE REQUIRES fanAck
         // assume HAMR-Guarantee built-in
@@ -72,7 +73,15 @@ object TempControl_s_tcproc_tempControl {
         api.fanAck.get == value,
         // assume AADL_Requirement
         //   All outgoing event ports must be empty
-        api.fanCmd.isEmpty
+        api.fanCmd.isEmpty,
+        // assume a1
+        //   If the previously received currentTemp was less than the previously
+        //   received setPoint then the last fan command must have been Off
+        ((In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        // assume a2
+        //   If the previously received currentTemp was more than the previously
+        //   received setPoint then the last fan command must have been On
+        ((In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
         // END COMPUTE REQUIRES fanAck
       ),
       Modifies(
@@ -140,7 +149,15 @@ object TempControl_s_tcproc_tempControl {
         api.setPoint.get == value,
         // assume AADL_Requirement
         //   All outgoing event ports must be empty
-        api.fanCmd.isEmpty
+        api.fanCmd.isEmpty,
+        // assume a1
+        //   If the previously received currentTemp was less than the previously
+        //   received setPoint then the last fan command must have been Off
+        ((In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        // assume a2
+        //   If the previously received currentTemp was more than the previously
+        //   received setPoint then the last fan command must have been On
+        ((In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
         // END COMPUTE REQUIRES setPoint
       ),
       Modifies(
@@ -175,7 +192,7 @@ object TempControl_s_tcproc_tempControl {
           (currentFanState == In(currentFanState)) -->:
             api.fanCmd.isEmpty,
         // guarantees setPointChanged
-        currentSetPoint == value,
+        currentSetPoint == api.setPoint.get,
         // guarantees latestTempNotModified
         latestTemp == In(latestTemp)
         // END COMPUTE ENSURES setPoint
@@ -202,7 +219,15 @@ object TempControl_s_tcproc_tempControl {
         api.tempChanged.nonEmpty,
         // assume AADL_Requirement
         //   All outgoing event ports must be empty
-        api.fanCmd.isEmpty
+        api.fanCmd.isEmpty,
+        // assume a1
+        //   If the previously received currentTemp was less than the previously
+        //   received setPoint then the last fan command must have been Off
+        ((In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        // assume a2
+        //   If the previously received currentTemp was more than the previously
+        //   received setPoint then the last fan command must have been On
+        ((In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
         // END COMPUTE REQUIRES tempChanged
       ),
       Modifies(

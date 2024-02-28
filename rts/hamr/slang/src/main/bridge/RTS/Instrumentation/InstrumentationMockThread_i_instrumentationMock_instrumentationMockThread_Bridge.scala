@@ -254,24 +254,9 @@ object InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: InstrumentationMockThread_i_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: InstrumentationMockThread_i_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: InstrumentationMockThread_i_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: InstrumentationMockThread_i_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override

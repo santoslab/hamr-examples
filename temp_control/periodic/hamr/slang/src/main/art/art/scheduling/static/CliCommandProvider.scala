@@ -10,7 +10,7 @@ import org.sireum._
   }
 
   def getCommand(): Command = {
-    val cmdString: String = cliIO.getCommand("HAMR> ")
+    val cmdString: String = StaticSchedulerIO.getCommand("HAMR> ")
     val args: ISZ[String] = ops.StringOps(cmdString).split(c => c == ' ')
     val arg0: String = args(0)
     if (arg0 == "x") {
@@ -99,8 +99,4 @@ import org.sireum._
       return Unsupported()
     }
   }
-}
-
-@ext("CliIOExt") object cliIO {
-  def getCommand(prompt: String): String = $
 }

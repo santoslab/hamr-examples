@@ -33,6 +33,11 @@ class SystemTests extends SystemTestSuite {
   // import isolette.Devices.{Heat_Source_impl_heat_source_cpi_heat_controller_SystemTestAPI => nickname}
 
   test("Example system test") {
+
+    // TODO: this test will fail if codegen's target is Linux as the injection services are
+    //       only supported/inserted for the JVM target.  Unconnected incoming data ports
+    //       therefore will be None
+
     // run the initialization phase
     Art.initializePhase(scheduler)
 

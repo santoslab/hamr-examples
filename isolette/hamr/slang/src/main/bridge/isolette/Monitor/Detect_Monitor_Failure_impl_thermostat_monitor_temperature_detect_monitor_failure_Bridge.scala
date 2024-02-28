@@ -93,24 +93,9 @@ object Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor
       Art.sendOutput(eventOutPortIds, dataOutPortIds)
     }
 
-    def activate(): Unit = {
-      // implement the following method in 'component':  def activate(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
-      component.activate(operational_api)
-    }
-
-    def deactivate(): Unit = {
-      // implement the following method in 'component':  def deactivate(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
-      component.deactivate(operational_api)
-    }
-
     def finalise(): Unit = {
       // implement the following method in 'component':  def finalise(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
       component.finalise(operational_api)
-    }
-
-    def recover(): Unit = {
-      // implement the following method in 'component':  def recover(api: Detect_Monitor_Failure_impl_Operational_Api): Unit = {}
-      component.recover(operational_api)
     }
 
     override
