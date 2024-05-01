@@ -63,7 +63,7 @@ if (result == 0) {
 }
 
 if (result == 0) {
-  result = run("Running codegen targeting C", T, proc"$sireum slang run ${homeDir / "hamr" / "slang" / "bin" / "run-hamr.cmd"} Linux")
+  result = run("Running codegen targeting C", T, proc"$sireum slang run ${homeDir / "aadl" / "bin" / "run-hamr.cmd"} Linux")
 }
 
 Os.exit(result)
