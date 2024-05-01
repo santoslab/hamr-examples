@@ -59,12 +59,6 @@ object TempControl_s_tcproc_tempControl {
   def handle_fanAck(api: TempControl_s_Operational_Api, value : CoolingFan.FanAck.Type): Unit = {
     Contract(
       Requires(
-        // belt: can't add a class invariant asserting the following so adding them here.
-        // or, could add them in the model
-        // 2024.04.23 update -- gumbox unit testing requires these be stated in the model
-        //(latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
-        //(latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
-
         // BEGIN COMPUTE REQUIRES fanAck
         // assume HAMR-Guarantee built-in
         //   The spec var corresponding to the handled event must be non-empty and
