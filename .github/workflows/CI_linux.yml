@@ -43,12 +43,12 @@ jobs:
         with:
           path: cache/coursier
           key: ${{ runner.os }}-${{ hashFiles('versions.properties') }}-coursier
-      - name: Cache FMIDE
-        id: cache-fmide
+      - name: Cache OSATE
+        id: cache-osate
         uses: actions/cache@v3
         with:
-          path: kekinian/bin/linux/fmide
-          key: ${{ runner.os }}-${{ hashFiles('kekinian/hamr/codegen/jvm/src/main/resources/phantom_versions.properties') }}-fmide
+          path: kekinian/bin/linux/osate
+          key: ${{ runner.os }}-${{ hashFiles('kekinian/hamr/codegen/jvm/src/main/resources/phantom_versions.properties') }}-osate
       - name: Test
         run: |
           export COURSIER_CACHE=$GITHUB_WORKSPACE/cache/coursier
@@ -70,9 +70,12 @@ jobs:
 
 
           ################################################
-          # Install FMIDE
+          # Install OSATE
           ################################################
 
-          $SIREUM_HOME/bin/install/fmide.cmd --verbose
+          export OSATE_HOME=$SIREUM_HOME/bin/linux/osate
+
+          $SIREUM_HOME/hamr/codegen/bin/build.cmd install-osate-gumbo
+
 
           .ci/test.cmd
