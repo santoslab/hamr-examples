@@ -14,3 +14,5 @@
 **/target/
 **/lib/
 **/slang/js/
+**/.metals/
+**/.vscode/

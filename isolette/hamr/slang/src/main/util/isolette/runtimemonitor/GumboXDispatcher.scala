@@ -182,15 +182,9 @@ object GumboXDispatcher {
                 |import isolette.Regulate._
                 |
                 |class ${suiteName} extends Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -207,15 +201,9 @@ object GumboXDispatcher {
                 |import isolette.Regulate._
                 |
                 |class ${suiteName} extends Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_source_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -232,15 +220,9 @@ object GumboXDispatcher {
                 |import isolette.Regulate._
                 |
                 |class ${suiteName} extends Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulator_mode_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -257,15 +239,9 @@ object GumboXDispatcher {
                 |import isolette.Regulate._
                 |
                 |class ${suiteName} extends Detect_Regulator_Failure_impl_thermostat_regulate_temperature_detect_regulator_failure_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -282,15 +258,9 @@ object GumboXDispatcher {
                 |import isolette.Monitor._
                 |
                 |class ${suiteName} extends Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monitor_interface_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -307,15 +277,9 @@ object GumboXDispatcher {
                 |import isolette.Monitor._
                 |
                 |class ${suiteName} extends Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -332,15 +296,9 @@ object GumboXDispatcher {
                 |import isolette.Monitor._
                 |
                 |class ${suiteName} extends Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -357,15 +315,9 @@ object GumboXDispatcher {
                 |import isolette.Monitor._
                 |
                 |class ${suiteName} extends Detect_Monitor_Failure_impl_thermostat_monitor_temperature_detect_monitor_failure_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -382,15 +334,9 @@ object GumboXDispatcher {
                 |import isolette.Isolette._
                 |
                 |class ${suiteName} extends operator_interface_thread_impl_operator_interface_oip_oit_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -407,15 +353,9 @@ object GumboXDispatcher {
                 |import isolette.Devices._
                 |
                 |class ${suiteName} extends Temperature_Sensor_impl_temperature_sensor_cpi_thermostat_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -432,15 +372,9 @@ object GumboXDispatcher {
                 |import isolette.Devices._
                 |
                 |class ${suiteName} extends Heat_Source_impl_heat_source_cpi_heat_controller_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)

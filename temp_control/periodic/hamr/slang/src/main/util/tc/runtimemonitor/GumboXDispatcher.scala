@@ -98,15 +98,9 @@ object GumboXDispatcher {
                 |import tc.TempSensor._
                 |
                 |class ${suiteName} extends TempSensorPeriodic_p_tcproc_tempSensor_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -123,15 +117,9 @@ object GumboXDispatcher {
                 |import tc.CoolingFan._
                 |
                 |class ${suiteName} extends FanPeriodic_p_tcproc_fan_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -148,15 +136,9 @@ object GumboXDispatcher {
                 |import tc.TempControlSoftwareSystem._
                 |
                 |class ${suiteName} extends TempControlPeriodic_p_tcproc_tempControl_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
@@ -173,15 +155,9 @@ object GumboXDispatcher {
                 |import tc.TempControlSoftwareSystem._
                 |
                 |class ${suiteName} extends OperatorInterfacePeriodic_p_tcproc_operatorInterface_GumboX_TestHarness_ScalaTest {
-                |  val verbose: B = true
+                |  val verbose: B = T
                 |
-                |  var i = 0 // ensures generated test case names are unique
-                |  def incrementI: Int = {
-                |    i += 1
-                |    return i
-                |  }
-                |
-                |  ${(p._2, "\nincrementI\n\n")}
+                |  ${p._2}
                 |}"""
           val filename = path / s"${suiteName}.scala"
           filename.writeOver(testSuite.render)
