@@ -115,7 +115,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api.get_interface_failure().get
 
     val internal_failure: Isolette_Data_Model.Failure_Flag_impl =
-       api.get_interface_failure().get
+       api.get_internal_failure().get
 
 
     // determine regulator status as specified in FAA REMH Table A-10
