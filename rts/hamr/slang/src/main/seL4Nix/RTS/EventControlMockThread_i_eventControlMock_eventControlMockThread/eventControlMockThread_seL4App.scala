@@ -13,7 +13,7 @@ import art.PortMode._
 import RTS._
 import RTS.EventControl.EventControlMockThread_i_eventControlMock_eventControlMockThread_seL4Nix
 
-object eventControlMockThread extends App {
+object eventControlMockThread_seL4App extends App {
 
   val eventControlMockThreadBridge : RTS.EventControl.EventControlMockThread_i_eventControlMock_eventControlMockThread_Bridge = {
     val manualActuatorInput1 = Port[Base_Types.Boolean] (id = portId"0", name = "RTS_i_Instance_eventControlMock_eventControlMockThread_manualActuatorInput1", mode = DataOut)

@@ -13,7 +13,7 @@ import art.PortMode._
 import RTS._
 import RTS.Instrumentation.InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread_seL4Nix
 
-object instrumentationMockThread extends App {
+object instrumentationMockThread_seL4App extends App {
 
   val instrumentationMockThreadBridge : RTS.Instrumentation.InstrumentationMockThread_i_instrumentationMock_instrumentationMockThread_Bridge = {
     val unit1_temperatureLogic_channel1 = Port[Base_Types.Boolean] (id = portId"0", name = "RTS_i_Instance_instrumentationMock_instrumentationMockThread_unit1_temperatureLogic_channel1", mode = DataOut)

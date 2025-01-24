@@ -13,7 +13,7 @@ import art.PortMode._
 import RTS._
 import RTS.Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_seL4Nix
 
-object orLogic extends App {
+object orLogic_seL4App extends App {
 
   val orLogicBridge : RTS.Actuation.OrLogic_i_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_Bridge = {
     val channel1 = Port[Base_Types.Boolean] (id = portId"0", name = "RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_actuateTempPressureActuator_orLogic_channel1", mode = DataIn)

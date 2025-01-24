@@ -13,7 +13,7 @@ import art.PortMode._
 import RTS._
 import RTS.Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_seL4Nix
 
-object actuator extends App {
+object actuator_seL4App extends App {
 
   val actuatorBridge : RTS.Actuation.Actuator_i_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_Bridge = {
     val input = Port[Base_Types.Boolean] (id = portId"0", name = "RTS_i_Instance_actuationSubsystem_tempPressureActuatorUnit_tempPressureActuator_actuator_input", mode = DataIn)

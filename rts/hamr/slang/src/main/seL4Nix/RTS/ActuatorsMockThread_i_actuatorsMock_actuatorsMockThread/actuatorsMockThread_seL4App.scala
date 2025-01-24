@@ -13,7 +13,7 @@ import art.PortMode._
 import RTS._
 import RTS.Actuators.ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_seL4Nix
 
-object actuatorsMockThread extends App {
+object actuatorsMockThread_seL4App extends App {
 
   val actuatorsMockThreadBridge : RTS.Actuators.ActuatorsMockThread_i_actuatorsMock_actuatorsMockThread_Bridge = {
     val tempPressureActuate = Port[Base_Types.Boolean] (id = portId"0", name = "RTS_i_Instance_actuatorsMock_actuatorsMockThread_tempPressureActuate", mode = DataIn)
