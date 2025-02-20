@@ -207,6 +207,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
 
   /** guarantee REQ_MRI_8
     *   If the Regulator Interface Failure is False
+    *   the Desired Range shall be set to the Desired Temperature Range.
     *   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
     * @param api_lower_desired_tempWstatus incoming data port
     * @param api_upper_desired_tempWstatus incoming data port

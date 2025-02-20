@@ -90,6 +90,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
            api.lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid)),
         // case REQ_MRI_8
         //   If the Regulator Interface Failure is False
+        //   the Desired Range shall be set to the Desired Temperature Range.
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=108 
         (T) -->: (!(api.interface_failure.value) ->: (api.lower_desired_temp.value == api.lower_desired_tempWstatus.value &
            api.upper_desired_temp.value == api.upper_desired_tempWstatus.value)),
