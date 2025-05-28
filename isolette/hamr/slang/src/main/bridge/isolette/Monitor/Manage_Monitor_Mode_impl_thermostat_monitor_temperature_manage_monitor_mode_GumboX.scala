@@ -66,10 +66,10 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
-    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
-      ((!(api_interface_failure.value || api_internal_failure.value) &&
-          api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode))
+    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) ___>:
+      (!(api_interface_failure.value || api_internal_failure.value) &&
+         api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode)
 
   /** guarantee REQ_MMM_3
     *   If the current Monitor mode is Normal, then
@@ -90,10 +90,10 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
-    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->:
-      ((api_interface_failure.value || api_internal_failure.value ||
-          api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
+    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) ___>:
+      (api_interface_failure.value || api_internal_failure.value ||
+         api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode)
 
   /** guarantee REQ_MMM_4
     *   If the current mode is Init, then
@@ -107,7 +107,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
   @strictpure def compute_case_REQ_MMM_4(
       In_lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type): B =
-    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
+    (In_lastMonitorMode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) ___>:
       (Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mode.timeout_condition_satisfied() == (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode))
 
   /** CEP-T-Case: Top-Level case contracts for manage_monitor_mode's compute entrypoint

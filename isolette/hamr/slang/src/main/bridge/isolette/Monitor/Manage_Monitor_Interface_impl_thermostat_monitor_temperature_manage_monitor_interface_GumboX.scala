@@ -71,7 +71,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   @strictpure def compute_case_REQ_MMI_1(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_monitor_status: Isolette_Data_Model.Status.Type): B =
-    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
+    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) ___>:
       (api_monitor_status == Isolette_Data_Model.Status.Init_Status)
 
   /** guarantee REQ_MMI_2
@@ -84,7 +84,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   @strictpure def compute_case_REQ_MMI_2(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_monitor_status: Isolette_Data_Model.Status.Type): B =
-    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) -->:
+    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode) ___>:
       (api_monitor_status == Isolette_Data_Model.Status.On_Status)
 
   /** guarantee REQ_MMI_3
@@ -99,7 +99,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   @strictpure def compute_case_REQ_MMI_3(
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_monitor_status: Isolette_Data_Model.Status.Type): B =
-    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
+    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) ___>:
       (api_monitor_status == Isolette_Data_Model.Status.Failed_Status)
 
   /** guarantee REQ_MMI_4
@@ -116,7 +116,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid |
-       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) -->:
+       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) ___>:
       (api_interface_failure.value)
 
   /** guarantee REQ_MMI_5
@@ -133,7 +133,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
-       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
+       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ___>:
       (!(api_interface_failure.value))
 
   /** guarantee REQ_MMI_6
@@ -152,10 +152,10 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_alarm_temp: Isolette_Data_Model.Temp_impl,
       api_upper_alarm_temp: Isolette_Data_Model.Temp_impl): B =
-    (T) -->:
-      (!(api_interface_failure.value) -->:
-         (api_lower_alarm_temp.value == api_lower_alarm_tempWstatus.value &
-           api_upper_alarm_temp.value == api_upper_alarm_tempWstatus.value))
+    (T) ___>:
+      (!(api_interface_failure.value) ___>:
+         api_lower_alarm_temp.value == api_lower_alarm_tempWstatus.value &
+           api_upper_alarm_temp.value == api_upper_alarm_tempWstatus.value)
 
   /** guarantee REQ_MMI_7
     *   If the Monitor Interface Failure is True,
@@ -165,8 +165,8 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
     */
   @strictpure def compute_case_REQ_MMI_7(
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
-    (T) -->:
-      (api_interface_failure.value -->: T)
+    (T) ___>:
+      (api_interface_failure.value ___>: T)
 
   /** CEP-T-Case: Top-Level case contracts for manage_monitor_interface's compute entrypoint
     *

@@ -118,7 +118,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
   @strictpure def compute_case_REQ_MRI_1(
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_regulator_status: Isolette_Data_Model.Status.Type): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) ___>:
       (api_regulator_status == Isolette_Data_Model.Status.Init_Status)
 
   /** guarantee REQ_MRI_2
@@ -131,7 +131,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
   @strictpure def compute_case_REQ_MRI_2(
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_regulator_status: Isolette_Data_Model.Status.Type): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) ___>:
       (api_regulator_status == Isolette_Data_Model.Status.On_Status)
 
   /** guarantee REQ_MRI_3
@@ -144,7 +144,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
   @strictpure def compute_case_REQ_MRI_3(
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_regulator_status: Isolette_Data_Model.Status.Type): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) ___>:
       (api_regulator_status == Isolette_Data_Model.Status.Failed_Status)
 
   /** guarantee REQ_MRI_4
@@ -160,7 +160,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_current_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_displayed_temp: Isolette_Data_Model.Temp_impl): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) ___>:
       (api_displayed_temp.value == Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_regulator_interface.ROUND(api_current_tempWstatus.value))
 
   /** guarantee REQ_MRI_5
@@ -170,7 +170,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     */
   @strictpure def compute_case_REQ_MRI_5(
       ): B =
-    (T) -->:
+    (T) ___>:
       (T)
 
   /** guarantee REQ_MRI_6
@@ -185,7 +185,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid |
-       api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
+       api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) ___>:
       (api_interface_failure.value)
 
   /** guarantee REQ_MRI_7
@@ -201,7 +201,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_lower_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
-    (T) -->:
+    (T) ___>:
       (api_interface_failure.value == !(api_upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
           api_lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid))
 
@@ -221,9 +221,10 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_lower_desired_temp: Isolette_Data_Model.Temp_impl,
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl): B =
-    (T) -->:
-      (!(api_interface_failure.value) ->: (api_lower_desired_temp.value == api_lower_desired_tempWstatus.value &
-          api_upper_desired_temp.value == api_upper_desired_tempWstatus.value))
+    (T) ___>:
+      (!(api_interface_failure.value) __>:
+         api_lower_desired_temp.value == api_lower_desired_tempWstatus.value &
+           api_upper_desired_temp.value == api_upper_desired_tempWstatus.value)
 
   /** guarantee REQ_MRI_9
     *   If the Regulator Interface Failure is True,
@@ -233,7 +234,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
     */
   @strictpure def compute_case_REQ_MRI_9(
       ): B =
-    (T) -->:
+    (T) ___>:
       (T)
 
   /** CEP-T-Case: Top-Level case contracts for manage_regulator_interface's compute entrypoint

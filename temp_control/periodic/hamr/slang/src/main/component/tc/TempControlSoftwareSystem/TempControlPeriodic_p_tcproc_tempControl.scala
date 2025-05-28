@@ -52,37 +52,39 @@ object TempControlPeriodic_p_tcproc_tempControl {
         // guarantee altCurrentTempLTSetPoint
         //   If current temperature is less than
         //   the current low set point, then the fan state shall be Off
-        (api.currentTemp.degrees < api.setPoint.low.degrees) ->: (latestFanCmd == CoolingFan.FanCmd.Off &&
-           api.fanCmd == CoolingFan.FanCmd.Off),
+        api.currentTemp.degrees < api.setPoint.low.degrees __>:
+          latestFanCmd == CoolingFan.FanCmd.Off &&
+            api.fanCmd == CoolingFan.FanCmd.Off,
         // guarantee altCurrentTempGTSetPoint
         //   If current temperature is greater than
         //   the current high set point, then the fan state shall be On
-        (api.currentTemp.degrees > api.setPoint.high.degrees) ->: (latestFanCmd == CoolingFan.FanCmd.On &
-           api.fanCmd == CoolingFan.FanCmd.On),
+        api.currentTemp.degrees > api.setPoint.high.degrees __>:
+          latestFanCmd == CoolingFan.FanCmd.On &
+            api.fanCmd == CoolingFan.FanCmd.On,
         // guarantee altCurrentTempInRange
         //   If current temperature is greater than or equal to the 
         //   current low set point and less than or equal to the current high set point, 
         //   then the current fan state is maintained.
-        (api.currentTemp.degrees >= api.setPoint.low.degrees &
-           api.currentTemp.degrees <= api.setPoint.high.degrees) -->:
-          (latestFanCmd == In(latestFanCmd) &
-            api.fanCmd == latestFanCmd),
+        api.currentTemp.degrees >= api.setPoint.low.degrees &
+          api.currentTemp.degrees <= api.setPoint.high.degrees ___>:
+          latestFanCmd == In(latestFanCmd) &
+            api.fanCmd == latestFanCmd,
         // case currentTempLTSetPoint
         //   If current temperature is less than
         //   the current low set point, then the fan state shall be Off
-        (api.currentTemp.degrees < api.setPoint.low.degrees) -->: (latestFanCmd == CoolingFan.FanCmd.Off &
+        (api.currentTemp.degrees < api.setPoint.low.degrees) ___>: (latestFanCmd == CoolingFan.FanCmd.Off &
           api.fanCmd == CoolingFan.FanCmd.Off),
         // case currentTempGTSetPoint
         //   If current temperature is greater than
         //   the current high set point, then the fan state shall be On
-        (api.currentTemp.degrees > api.setPoint.high.degrees) -->: (latestFanCmd == CoolingFan.FanCmd.On &
+        (api.currentTemp.degrees > api.setPoint.high.degrees) ___>: (latestFanCmd == CoolingFan.FanCmd.On &
           api.fanCmd == CoolingFan.FanCmd.On),
         // case currentTempInRange
         //   If current temperature is greater than or equal to the 
         //   current low set point and less than or equal to the current high set point, 
         //   then the current fan state is maintained.
         (api.currentTemp.degrees >= api.setPoint.low.degrees &
-           api.currentTemp.degrees <= api.setPoint.high.degrees) -->: (latestFanCmd == In(latestFanCmd) &
+           api.currentTemp.degrees <= api.setPoint.high.degrees) ___>: (latestFanCmd == In(latestFanCmd) &
           api.fanCmd == latestFanCmd)
         // END COMPUTE ENSURES timeTriggered
       )

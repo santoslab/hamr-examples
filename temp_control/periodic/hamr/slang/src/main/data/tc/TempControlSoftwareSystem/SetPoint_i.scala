@@ -29,7 +29,7 @@ object SetPoint_i {
   /** D-Inv-Guard Data Invariant for TempControlSoftwareSystem.SetPoint_i
     */
   @strictpure def D_Inv_Guard_SetPoint_i(value: Option[TempControlSoftwareSystem.SetPoint_i]): B =
-    value.nonEmpty -->: D_Inv_SetPoint_i(value.get)
+    value.nonEmpty ___>: D_Inv_SetPoint_i(value.get)
 }
 
 @datatype class SetPoint_i(

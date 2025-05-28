@@ -73,13 +73,15 @@ object TempControl_s_tcproc_tempControl {
         // assume a1
         //   If the previously received currentTemp was less than the previously
         //   received setPoint then the last fan command must have been Off
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        !(In(fanError)) &
+          (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.Off,
         // assume a2
         //   If the previously received currentTemp was more than the previously
         //   received setPoint then the last fan command must have been On
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
+        !(In(fanError)) &
+          (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.On
         // END COMPUTE REQUIRES fanAck
       ),
       Modifies(
@@ -96,40 +98,48 @@ object TempControl_s_tcproc_tempControl {
         // guarantee errorState
         //   If the fan sent FanAck.Error then continue sending the
         //   last fan command until the fan sends FanAck.Ok
-        fanError ->: (In(currentFanState) == currentFanState &&
-           (api.fanCmd.nonEmpty &&
-             api.fanCmd.get == currentFanState)),
+        fanError __>:
+          In(currentFanState) == currentFanState &&
+            (api.fanCmd.nonEmpty &&
+              api.fanCmd.get == currentFanState),
         // guarantee TC_Req_01
         //   If the current temperature is less than the set point, then the fan state shall be Off.
-        (!fanError &
-           latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
+        !fanError &
+          latestTemp.degrees < currentSetPoint.low.degrees __>:
+          currentFanState == CoolingFan.FanCmd.Off,
         // guarantee TC_Req_02
         //   If the current temperature is greater than the set point,
         //   then the fan state shall be On.
-        (!fanError &
-           latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
+        !fanError &
+          latestTemp.degrees > currentSetPoint.high.degrees __>:
+          currentFanState == CoolingFan.FanCmd.On,
         // guarantee TC_Req_03
         //   If the current temperature is greater than or equal to the
         //   current low set point and less than or equal to the current high set point,
         //   then the current fan state is maintained.
-        (!fanError &
-           latestTemp.degrees >= currentSetPoint.low.degrees &
-           latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
+        !fanError &
+          latestTemp.degrees >= currentSetPoint.low.degrees &
+          latestTemp.degrees <= currentSetPoint.high.degrees __>:
+          currentFanState == In(currentFanState),
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        (!fanError &
-           In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (!fanError &
-            currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        !fanError &
+          In(currentFanState) != currentFanState __>:
+          api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState &&
+            (!fanError &
+              currentFanState == In(currentFanState)) __>:
+            api.fanCmd.isEmpty,
         // guarantees setPointNotModified
         currentSetPoint == In(currentSetPoint),
         // guarantees lastTempNotModified
         latestTemp == In(latestTemp),
         // guarantees manageErrorState
-        (api.fanAck.get == CoolingFan.FanAck.Ok) ->: !fanError &
-          (api.fanAck.get == CoolingFan.FanAck.Error) ->: fanError
+        api.fanAck.get == CoolingFan.FanAck.Ok __>:
+          !fanError &
+            api.fanAck.get == CoolingFan.FanAck.Error __>:
+            fanError
         // END COMPUTE ENSURES fanAck
       )
     )
@@ -160,13 +170,15 @@ object TempControl_s_tcproc_tempControl {
         // assume a1
         //   If the previously received currentTemp was less than the previously
         //   received setPoint then the last fan command must have been Off
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        !(In(fanError)) &
+          (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.Off,
         // assume a2
         //   If the previously received currentTemp was more than the previously
         //   received setPoint then the last fan command must have been On
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
+        !(In(fanError)) &
+          (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.On
         // END COMPUTE REQUIRES setPoint
       ),
       Modifies(
@@ -183,33 +195,39 @@ object TempControl_s_tcproc_tempControl {
         // guarantee errorState
         //   If the fan sent FanAck.Error then continue sending the
         //   last fan command until the fan sends FanAck.Ok
-        fanError ->: (In(currentFanState) == currentFanState &&
-           (api.fanCmd.nonEmpty &&
-             api.fanCmd.get == currentFanState)),
+        fanError __>:
+          In(currentFanState) == currentFanState &&
+            (api.fanCmd.nonEmpty &&
+              api.fanCmd.get == currentFanState),
         // guarantee TC_Req_01
         //   If the current temperature is less than the set point, then the fan state shall be Off.
-        (!fanError &
-           latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
+        !fanError &
+          latestTemp.degrees < currentSetPoint.low.degrees __>:
+          currentFanState == CoolingFan.FanCmd.Off,
         // guarantee TC_Req_02
         //   If the current temperature is greater than the set point,
         //   then the fan state shall be On.
-        (!fanError &
-           latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
+        !fanError &
+          latestTemp.degrees > currentSetPoint.high.degrees __>:
+          currentFanState == CoolingFan.FanCmd.On,
         // guarantee TC_Req_03
         //   If the current temperature is greater than or equal to the
         //   current low set point and less than or equal to the current high set point,
         //   then the current fan state is maintained.
-        (!fanError &
-           latestTemp.degrees >= currentSetPoint.low.degrees &
-           latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
+        !fanError &
+          latestTemp.degrees >= currentSetPoint.low.degrees &
+          latestTemp.degrees <= currentSetPoint.high.degrees __>:
+          currentFanState == In(currentFanState),
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        (!fanError &
-           In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (!fanError &
-            currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        !fanError &
+          In(currentFanState) != currentFanState __>:
+          api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState &&
+            (!fanError &
+              currentFanState == In(currentFanState)) __>:
+            api.fanCmd.isEmpty,
         // guarantees setPointChanged
         currentSetPoint == api.setPoint.get,
         // guarantees latestTempNotModified
@@ -242,13 +260,15 @@ object TempControl_s_tcproc_tempControl {
         // assume a1
         //   If the previously received currentTemp was less than the previously
         //   received setPoint then the last fan command must have been Off
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.Off),
+        !(In(fanError)) &
+          (In(latestTemp)).degrees < (In(currentSetPoint)).low.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.Off,
         // assume a2
         //   If the previously received currentTemp was more than the previously
         //   received setPoint then the last fan command must have been On
-        (!(In(fanError)) &
-           (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees) ->: (In(currentFanState) == CoolingFan.FanCmd.On)
+        !(In(fanError)) &
+          (In(latestTemp)).degrees > (In(currentSetPoint)).high.degrees __>:
+          In(currentFanState) == CoolingFan.FanCmd.On
         // END COMPUTE REQUIRES tempChanged
       ),
       Modifies(
@@ -265,33 +285,39 @@ object TempControl_s_tcproc_tempControl {
         // guarantee errorState
         //   If the fan sent FanAck.Error then continue sending the
         //   last fan command until the fan sends FanAck.Ok
-        fanError ->: (In(currentFanState) == currentFanState &&
-           (api.fanCmd.nonEmpty &&
-             api.fanCmd.get == currentFanState)),
+        fanError __>:
+          In(currentFanState) == currentFanState &&
+            (api.fanCmd.nonEmpty &&
+              api.fanCmd.get == currentFanState),
         // guarantee TC_Req_01
         //   If the current temperature is less than the set point, then the fan state shall be Off.
-        (!fanError &
-           latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off),
+        !fanError &
+          latestTemp.degrees < currentSetPoint.low.degrees __>:
+          currentFanState == CoolingFan.FanCmd.Off,
         // guarantee TC_Req_02
         //   If the current temperature is greater than the set point,
         //   then the fan state shall be On.
-        (!fanError &
-           latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On),
+        !fanError &
+          latestTemp.degrees > currentSetPoint.high.degrees __>:
+          currentFanState == CoolingFan.FanCmd.On,
         // guarantee TC_Req_03
         //   If the current temperature is greater than or equal to the
         //   current low set point and less than or equal to the current high set point,
         //   then the current fan state is maintained.
-        (!fanError &
-           latestTemp.degrees >= currentSetPoint.low.degrees &
-           latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In(currentFanState)),
+        !fanError &
+          latestTemp.degrees >= currentSetPoint.low.degrees &
+          latestTemp.degrees <= currentSetPoint.high.degrees __>:
+          currentFanState == In(currentFanState),
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        (!fanError &
-           In(currentFanState) != currentFanState) ->: (api.fanCmd.nonEmpty &&
-           api.fanCmd.get == currentFanState) &&
-          (!fanError &
-            currentFanState == In(currentFanState)) ->: api.fanCmd.isEmpty,
+        !fanError &
+          In(currentFanState) != currentFanState __>:
+          api.fanCmd.nonEmpty &&
+            api.fanCmd.get == currentFanState &&
+            (!fanError &
+              currentFanState == In(currentFanState)) __>:
+            api.fanCmd.isEmpty,
         // guarantees tempChanged
         latestTemp == api.currentTemp,
         // guarantees setPointNotModified

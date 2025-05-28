@@ -141,7 +141,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
   @strictpure def compute_case_REQ_MHS_1(
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
   /** guarantee REQ_MHS_2
@@ -159,7 +159,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
-       api_current_tempWstatus.value < api_lower_desired_temp.value) -->:
+       api_current_tempWstatus.value < api_lower_desired_temp.value) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Onn)
 
   /** guarantee REQ_MHS_3
@@ -177,7 +177,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
-       api_current_tempWstatus.value > api_upper_desired_temp.value) -->:
+       api_current_tempWstatus.value > api_upper_desired_temp.value) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
   /** guarantee REQ_MHS_4
@@ -202,7 +202,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
        (api_current_tempWstatus.value >= api_lower_desired_temp.value &
-         api_current_tempWstatus.value <= api_upper_desired_temp.value)) -->:
+         api_current_tempWstatus.value <= api_upper_desired_temp.value)) ___>:
       (api_heat_control == In_lastCmd)
 
   /** guarantee REQ_MHS_5
@@ -215,7 +215,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
   @strictpure def compute_case_REQ_MHS_5(
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
-    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->:
+    (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
   /** CEP-T-Case: Top-Level case contracts for manage_heat_source's compute entrypoint

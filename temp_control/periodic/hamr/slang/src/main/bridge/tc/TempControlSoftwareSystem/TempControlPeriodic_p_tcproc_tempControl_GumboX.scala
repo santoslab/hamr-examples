@@ -115,8 +115,9 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (api_currentTemp.degrees < api_setPoint.low.degrees) ->: (latestFanCmd == CoolingFan.FanCmd.Off &&
-       api_fanCmd == CoolingFan.FanCmd.Off)
+    api_currentTemp.degrees < api_setPoint.low.degrees __>:
+      latestFanCmd == CoolingFan.FanCmd.Off &&
+        api_fanCmd == CoolingFan.FanCmd.Off
 
   /** Compute Entrypoint Contract
     *
@@ -133,8 +134,9 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (api_currentTemp.degrees > api_setPoint.high.degrees) ->: (latestFanCmd == CoolingFan.FanCmd.On &
-       api_fanCmd == CoolingFan.FanCmd.On)
+    api_currentTemp.degrees > api_setPoint.high.degrees __>:
+      latestFanCmd == CoolingFan.FanCmd.On &
+        api_fanCmd == CoolingFan.FanCmd.On
 
   /** Compute Entrypoint Contract
     *
@@ -154,10 +156,10 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (api_currentTemp.degrees >= api_setPoint.low.degrees &
-       api_currentTemp.degrees <= api_setPoint.high.degrees) -->:
-      (latestFanCmd == In_latestFanCmd &
-        api_fanCmd == latestFanCmd)
+    api_currentTemp.degrees >= api_setPoint.low.degrees &
+      api_currentTemp.degrees <= api_setPoint.high.degrees ___>:
+      latestFanCmd == In_latestFanCmd &
+        api_fanCmd == latestFanCmd
 
   /** CEP-T-Guar: Top-level guarantee contracts for tempControl's compute entrypoint
     *
@@ -190,7 +192,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (api_currentTemp.degrees < api_setPoint.low.degrees) -->:
+    (api_currentTemp.degrees < api_setPoint.low.degrees) ___>:
       (latestFanCmd == CoolingFan.FanCmd.Off &
          api_fanCmd == CoolingFan.FanCmd.Off)
 
@@ -207,7 +209,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_currentTemp: TempSensor.Temperature_i,
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
-    (api_currentTemp.degrees > api_setPoint.high.degrees) -->:
+    (api_currentTemp.degrees > api_setPoint.high.degrees) ___>:
       (latestFanCmd == CoolingFan.FanCmd.On &
          api_fanCmd == CoolingFan.FanCmd.On)
 
@@ -228,7 +230,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
     (api_currentTemp.degrees >= api_setPoint.low.degrees &
-       api_currentTemp.degrees <= api_setPoint.high.degrees) -->:
+       api_currentTemp.degrees <= api_setPoint.high.degrees) ___>:
       (latestFanCmd == In_latestFanCmd &
          api_fanCmd == latestFanCmd)
 

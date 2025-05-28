@@ -16,7 +16,7 @@ object TempSensor_s_tcproc_tempSensor_GumboX {
 
   // I_Guar-Guard: Integration constraint on tempSensor's outgoing data port currentTemp
   @strictpure def I_Guar_Guard_currentTemp(currentTemp: Option[TempSensor.Temperature_i]): B =
-    currentTemp.nonEmpty -->: I_Guar_currentTemp(currentTemp.get)
+    currentTemp.nonEmpty ___>: I_Guar_currentTemp(currentTemp.get)
 
   /** Initialize Entrypoint Contract
     *

@@ -144,7 +144,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       lastCmd: Isolette_Data_Model.On_Off.Type,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
-    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) -->:
+    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode) ___>:
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
 
@@ -169,7 +169,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
        (api_current_tempWstatus.value < api_lower_alarm_temp.value ||
-         api_current_tempWstatus.value > api_upper_alarm_temp.value)) -->:
+         api_current_tempWstatus.value > api_upper_alarm_temp.value)) ___>:
       (api_alarm_control == Isolette_Data_Model.On_Off.Onn &
          lastCmd == Isolette_Data_Model.On_Off.Onn)
 
@@ -201,7 +201,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
        (api_current_tempWstatus.value >= api_lower_alarm_temp.value &&
          api_current_tempWstatus.value < api_lower_alarm_temp.value + 0.5f ||
          api_current_tempWstatus.value > api_upper_alarm_temp.value - 0.5f &&
-           api_current_tempWstatus.value <= api_upper_alarm_temp.value)) -->:
+           api_current_tempWstatus.value <= api_upper_alarm_temp.value)) ___>:
       (api_alarm_control == In_lastCmd &
          lastCmd == In_lastCmd)
 
@@ -227,7 +227,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
     (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
        api_current_tempWstatus.value >= api_lower_alarm_temp.value + 0.5f &
-       api_current_tempWstatus.value <= api_upper_alarm_temp.value - 0.5f) -->:
+       api_current_tempWstatus.value <= api_upper_alarm_temp.value - 0.5f) ___>:
       (api_alarm_control == Isolette_Data_Model.On_Off.Off &
          lastCmd == Isolette_Data_Model.On_Off.Off)
 
@@ -243,7 +243,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_GumboX {
       lastCmd: Isolette_Data_Model.On_Off.Type,
       api_monitor_mode: Isolette_Data_Model.Monitor_Mode.Type,
       api_alarm_control: Isolette_Data_Model.On_Off.Type): B =
-    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) -->:
+    (api_monitor_mode == Isolette_Data_Model.Monitor_Mode.Failed_Monitor_Mode) ___>:
       (api_alarm_control == Isolette_Data_Model.On_Off.Onn &
          lastCmd == Isolette_Data_Model.On_Off.Onn)
 

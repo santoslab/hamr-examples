@@ -113,8 +113,9 @@ object TempControl_s_tcproc_tempControl_GumboX {
       In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       In_fanError: Base_Types.Boolean,
       In_latestTemp: TempSensor.Temperature_i): B =
-    (!In_fanError &
-       In_latestTemp.degrees < In_currentSetPoint.low.degrees) ->: (In_currentFanState == CoolingFan.FanCmd.Off)
+    !In_fanError &
+      In_latestTemp.degrees < In_currentSetPoint.low.degrees __>:
+      In_currentFanState == CoolingFan.FanCmd.Off
 
   /** Compute Entrypoint Contract
     *
@@ -131,8 +132,9 @@ object TempControl_s_tcproc_tempControl_GumboX {
       In_currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       In_fanError: Base_Types.Boolean,
       In_latestTemp: TempSensor.Temperature_i): B =
-    (!In_fanError &
-       In_latestTemp.degrees > In_currentSetPoint.high.degrees) ->: (In_currentFanState == CoolingFan.FanCmd.On)
+    !In_fanError &
+      In_latestTemp.degrees > In_currentSetPoint.high.degrees __>:
+      In_currentFanState == CoolingFan.FanCmd.On
 
   /** CEP-T-Assm: Top-level assume contracts for tempControl's compute entrypoint
     *
@@ -211,9 +213,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentFanState: CoolingFan.FanCmd.Type,
       fanError: Base_Types.Boolean,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
-    fanError ->: (In_currentFanState == currentFanState &&
-       (api_fanCmd.nonEmpty &&
-         api_fanCmd.get == currentFanState))
+    fanError __>:
+      In_currentFanState == currentFanState &&
+        (api_fanCmd.nonEmpty &&
+          api_fanCmd.get == currentFanState)
 
   /** Compute Entrypoint Contract
     *
@@ -229,8 +232,9 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       fanError: Base_Types.Boolean,
       latestTemp: TempSensor.Temperature_i): B =
-    (!fanError &
-       latestTemp.degrees < currentSetPoint.low.degrees) ->: (currentFanState == CoolingFan.FanCmd.Off)
+    !fanError &
+      latestTemp.degrees < currentSetPoint.low.degrees __>:
+      currentFanState == CoolingFan.FanCmd.Off
 
   /** Compute Entrypoint Contract
     *
@@ -247,8 +251,9 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       fanError: Base_Types.Boolean,
       latestTemp: TempSensor.Temperature_i): B =
-    (!fanError &
-       latestTemp.degrees > currentSetPoint.high.degrees) ->: (currentFanState == CoolingFan.FanCmd.On)
+    !fanError &
+      latestTemp.degrees > currentSetPoint.high.degrees __>:
+      currentFanState == CoolingFan.FanCmd.On
 
   /** Compute Entrypoint Contract
     *
@@ -268,9 +273,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       fanError: Base_Types.Boolean,
       latestTemp: TempSensor.Temperature_i): B =
-    (!fanError &
-       latestTemp.degrees >= currentSetPoint.low.degrees &
-       latestTemp.degrees <= currentSetPoint.high.degrees) ->: (currentFanState == In_currentFanState)
+    !fanError &
+      latestTemp.degrees >= currentSetPoint.low.degrees &
+      latestTemp.degrees <= currentSetPoint.high.degrees __>:
+      currentFanState == In_currentFanState
 
   /** Compute Entrypoint Contract
     *
@@ -287,11 +293,13 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentFanState: CoolingFan.FanCmd.Type,
       fanError: Base_Types.Boolean,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
-    (!fanError &
-       In_currentFanState != currentFanState) ->: (api_fanCmd.nonEmpty &&
-       api_fanCmd.get == currentFanState) &&
-      (!fanError &
-        currentFanState == In_currentFanState) ->: api_fanCmd.isEmpty
+    !fanError &
+      In_currentFanState != currentFanState __>:
+      api_fanCmd.nonEmpty &&
+        api_fanCmd.get == currentFanState &&
+        (!fanError &
+          currentFanState == In_currentFanState) __>:
+        api_fanCmd.isEmpty
 
   /** CEP-T-Guar: Top-level guarantee contracts for tempControl's compute entrypoint
     *
@@ -349,7 +357,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentSetPoint: TempControlSoftwareSystem.SetPoint_i,
       latestTemp: TempSensor.Temperature_i,
       api_setPoint: Option[TempControlSoftwareSystem.SetPoint_i]): B =
-    api_setPoint.nonEmpty -->: (
+    api_setPoint.nonEmpty ___>: (
       compute_handle_setPoint_setPointChanged_guarantee(currentSetPoint, api_setPoint) &
       compute_handle_setPoint_latestTempNotModified_guarantee(In_latestTemp, latestTemp))
 
@@ -389,7 +397,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
       latestTemp: TempSensor.Temperature_i,
       api_tempChanged: Option[art.Empty],
       api_currentTemp: TempSensor.Temperature_i): B =
-    api_tempChanged.nonEmpty -->: (
+    api_tempChanged.nonEmpty ___>: (
       compute_handle_tempChanged_tempChanged_guarantee(latestTemp, api_currentTemp) &
       compute_handle_tempChanged_setPointNotModified_guarantee(In_currentSetPoint, currentSetPoint))
 
@@ -424,8 +432,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
   @strictpure def compute_handle_fanAck_manageErrorState_guarantee(
       fanError: Base_Types.Boolean,
       api_fanAck: Option[CoolingFan.FanAck.Type]): B =
-    (api_fanAck.get == CoolingFan.FanAck.Ok) ->: !fanError &
-      (api_fanAck.get == CoolingFan.FanAck.Error) ->: fanError
+    api_fanAck.get == CoolingFan.FanAck.Ok __>:
+      !fanError &
+        api_fanAck.get == CoolingFan.FanAck.Error __>:
+        fanError
 
   /** CEP-T-Handle_fanAck_Guar: Top-level guarantee contracts for tempControl's compute fanAck handler
     *
@@ -443,7 +453,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
       fanError: Base_Types.Boolean,
       latestTemp: TempSensor.Temperature_i,
       api_fanAck: Option[CoolingFan.FanAck.Type]): B =
-    api_fanAck.nonEmpty -->: (
+    api_fanAck.nonEmpty ___>: (
       compute_handle_fanAck_setPointNotModified_guarantee(In_currentSetPoint, currentSetPoint) &
       compute_handle_fanAck_lastTempNotModified_guarantee(In_latestTemp, latestTemp) &
       compute_handle_fanAck_manageErrorState_guarantee(fanError, api_fanAck))

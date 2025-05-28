@@ -26,7 +26,7 @@ object Temperature_i {
   /** D-Inv-Guard Data Invariant for TempSensor.Temperature_i
     */
   @strictpure def D_Inv_Guard_Temperature_i(value: Option[TempSensor.Temperature_i]): B =
-    value.nonEmpty -->: D_Inv_Temperature_i(value.get)
+    value.nonEmpty ___>: D_Inv_Temperature_i(value.get)
 }
 
 @datatype class Temperature_i(

@@ -69,11 +69,11 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
-      ((!(api_interface_failure.value || api_internal_failure.value) &&
-          api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
-           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode))
+    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) ___>:
+      (!(api_interface_failure.value || api_internal_failure.value) &&
+         api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
+           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode)
 
   /** guarantee REQ_MRM_Maintain_Normal
     *   'maintaining NORMAL, NORMAL to NORMAL'
@@ -99,11 +99,11 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
-      ((!(api_interface_failure.value || api_internal_failure.value) &&
-          api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
-           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode))
+    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) ___>:
+      (!(api_interface_failure.value || api_internal_failure.value) &&
+         api_current_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &&
+           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode)
 
   /** guarantee REQ_MRM_3
     *   'transition for NORMAL to FAILED'
@@ -127,11 +127,11 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) -->:
-      (((api_interface_failure.value || api_internal_failure.value) &&
-          api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
-           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
+    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode) ___>:
+      ((api_interface_failure.value || api_internal_failure.value) &&
+         api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
+           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode)
 
   /** guarantee REQ_MRM_4
     *   'transition from INIT to FAILED' 
@@ -155,11 +155,11 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_internal_failure: Isolette_Data_Model.Failure_Flag_impl,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) -->:
-      (((api_interface_failure.value || api_internal_failure.value) &&
-          api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) -->:
-         (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
-           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode))
+    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode) ___>:
+      ((api_interface_failure.value || api_internal_failure.value) &&
+         api_current_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid ___>:
+         api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
+           lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode)
 
   /** guarantee REQ_MRM_MaintainFailed
     *   'maintaining FAIL, FAIL to FAIL'
@@ -174,7 +174,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
       In_lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
       lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type,
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type): B =
-    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) -->:
+    (In_lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode) ___>:
       (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode &&
          lastRegulatorMode == Isolette_Data_Model.Regulator_Mode.Failed_Regulator_Mode)
 
