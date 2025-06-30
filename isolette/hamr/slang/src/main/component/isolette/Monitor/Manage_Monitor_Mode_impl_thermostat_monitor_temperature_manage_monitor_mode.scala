@@ -13,7 +13,7 @@ object Manage_Monitor_Mode_impl_thermostat_monitor_temperature_manage_monitor_mo
   @strictpure def timeout_condition_satisfied(): Base_Types.Boolean = F
   // END FUNCTIONS
   // BEGIN STATE VARS
-  var lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type = Isolette_Data_Model.Monitor_Mode.byOrdinal(0).get
+  var lastMonitorMode: Isolette_Data_Model.Monitor_Mode.Type = Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode
   // END STATE VARS
 
   def initialise(api: Manage_Monitor_Mode_impl_Initialization_Api): Unit = {

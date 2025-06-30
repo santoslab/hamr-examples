@@ -134,16 +134,16 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_App extends
       // touch each payload/type in case some are only used as a field in a record
       def printDataContent(a: art.DataContent): Unit = { println(s"${a}") }
 
-      printDataContent(Isolette_Environment.Heat_Payload(Isolette_Environment.Heat.byOrdinal(0).get))
-      printDataContent(Isolette_Environment.Interface_Interaction_Payload(Isolette_Environment.Interface_Interaction.byOrdinal(0).get))
+      printDataContent(Isolette_Environment.Heat_Payload(Isolette_Environment.Heat.Dummy_Head_Enum))
+      printDataContent(Isolette_Environment.Interface_Interaction_Payload(Isolette_Environment.Interface_Interaction.Dummy_Interface_Interaction_Enum))
       printDataContent(Base_Types.Float_32_Payload(Base_Types.Float_32_example()))
       printDataContent(Isolette_Data_Model.PhysicalTemp_impl_Payload(Isolette_Data_Model.PhysicalTemp_impl.example()))
-      printDataContent(Isolette_Data_Model.ValueStatus_Payload(Isolette_Data_Model.ValueStatus.byOrdinal(0).get))
+      printDataContent(Isolette_Data_Model.ValueStatus_Payload(Isolette_Data_Model.ValueStatus.Valid))
       printDataContent(Isolette_Data_Model.TempWstatus_impl_Payload(Isolette_Data_Model.TempWstatus_impl.example()))
-      printDataContent(Isolette_Data_Model.On_Off_Payload(Isolette_Data_Model.On_Off.byOrdinal(0).get))
-      printDataContent(Isolette_Data_Model.Status_Payload(Isolette_Data_Model.Status.byOrdinal(0).get))
+      printDataContent(Isolette_Data_Model.On_Off_Payload(Isolette_Data_Model.On_Off.Onn))
+      printDataContent(Isolette_Data_Model.Status_Payload(Isolette_Data_Model.Status.Init_Status))
       printDataContent(Isolette_Data_Model.Temp_impl_Payload(Isolette_Data_Model.Temp_impl.example()))
-      printDataContent(Isolette_Data_Model.Regulator_Mode_Payload(Isolette_Data_Model.Regulator_Mode.byOrdinal(0).get))
+      printDataContent(Isolette_Data_Model.Regulator_Mode_Payload(Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode))
       printDataContent(Base_Types.Boolean_Payload(Base_Types.Boolean_example()))
       printDataContent(Isolette_Data_Model.Failure_Flag_impl_Payload(Isolette_Data_Model.Failure_Flag_impl.example()))
       printDataContent(Base_Types.Integer_Payload(Base_Types.Integer_example()))
@@ -159,7 +159,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_App extends
       printDataContent(Base_Types.Float_64_Payload(Base_Types.Float_64_example()))
       printDataContent(Base_Types.Character_Payload(Base_Types.Character_example()))
       printDataContent(Base_Types.String_Payload(Base_Types.String_example()))
-      printDataContent(Isolette_Data_Model.Monitor_Mode_Payload(Isolette_Data_Model.Monitor_Mode.byOrdinal(0).get))
+      printDataContent(Isolette_Data_Model.Monitor_Mode_Payload(Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode))
       printDataContent(art.Empty())
 
       isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_initialization_api.get.logInfo("")
@@ -172,8 +172,8 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_App extends
       val apiUsage_lower_alarm_temp: Option[Isolette_Data_Model.Temp_impl] = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_operational_api.get.get_lower_alarm_temp()
       val apiUsage_upper_alarm_temp: Option[Isolette_Data_Model.Temp_impl] = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_operational_api.get.get_upper_alarm_temp()
       val apiUsage_monitor_mode: Option[Isolette_Data_Model.Monitor_Mode.Type] = isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_operational_api.get.get_monitor_mode()
-      isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_initialization_api.get.put_alarm_control(Isolette_Data_Model.On_Off.byOrdinal(0).get)
-      isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_operational_api.get.put_alarm_control(Isolette_Data_Model.On_Off.byOrdinal(0).get)
+      isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_initialization_api.get.put_alarm_control(Isolette_Data_Model.On_Off.Onn)
+      isolette.Monitor.Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm_Bridge.c_operational_api.get.put_alarm_control(Isolette_Data_Model.On_Off.Onn)
     }
   }
 

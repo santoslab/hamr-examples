@@ -100,7 +100,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
 
   /** Compute Entrypoint Contract
     *
-    * assumes a1
+    * assume a1
     *   If the previously received currentTemp was less than the previously
     *   received setPoint then the last fan command must have been Off
     * @param In_currentFanState pre-state state variable
@@ -119,7 +119,7 @@ object TempControl_s_tcproc_tempControl_GumboX {
 
   /** Compute Entrypoint Contract
     *
-    * assumes a2
+    * assume a2
     *   If the previously received currentTemp was more than the previously
     *   received setPoint then the last fan command must have been On
     * @param In_currentFanState pre-state state variable
@@ -293,13 +293,13 @@ object TempControl_s_tcproc_tempControl_GumboX {
       currentFanState: CoolingFan.FanCmd.Type,
       fanError: Base_Types.Boolean,
       api_fanCmd: Option[CoolingFan.FanCmd.Type]): B =
-    !fanError &
-      In_currentFanState != currentFanState __>:
-      api_fanCmd.nonEmpty &&
-        api_fanCmd.get == currentFanState &&
-        (!fanError &
-          currentFanState == In_currentFanState) __>:
-        api_fanCmd.isEmpty
+    (!fanError &
+       In_currentFanState != currentFanState __>:
+       api_fanCmd.nonEmpty &&
+         api_fanCmd.get == currentFanState) &&
+      (!fanError &
+        currentFanState == In_currentFanState __>:
+        api_fanCmd.isEmpty)
 
   /** CEP-T-Guar: Top-level guarantee contracts for tempControl's compute entrypoint
     *
@@ -432,10 +432,10 @@ object TempControl_s_tcproc_tempControl_GumboX {
   @strictpure def compute_handle_fanAck_manageErrorState_guarantee(
       fanError: Base_Types.Boolean,
       api_fanAck: Option[CoolingFan.FanAck.Type]): B =
-    api_fanAck.get == CoolingFan.FanAck.Ok __>:
-      !fanError &
-        api_fanAck.get == CoolingFan.FanAck.Error __>:
-        fanError
+    (api_fanAck.get == CoolingFan.FanAck.Ok __>:
+       !fanError &
+         api_fanAck.get == CoolingFan.FanAck.Error) __>:
+      fanError
 
   /** CEP-T-Handle_fanAck_Guar: Top-level guarantee contracts for tempControl's compute fanAck handler
     *

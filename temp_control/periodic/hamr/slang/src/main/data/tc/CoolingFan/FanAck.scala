@@ -14,7 +14,7 @@ import tc._
 
 object FanAck_Payload {
   def example(): FanAck_Payload = {
-    return FanAck_Payload(CoolingFan.FanAck.byOrdinal(0).get)
+    return FanAck_Payload(CoolingFan.FanAck.Ok)
   }
 }
 

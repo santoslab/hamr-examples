@@ -202,9 +202,9 @@ public
         
         guarantee mustSendFanCmd "If the local record of the fan state was updated, 
                                  |then send a fan command event with this updated value.":
-          ((!fanError) & In(currentFanState) != currentFanState) ->: MustSend(fanCmd, currentFanState) && 
+          (((!fanError) & In(currentFanState) != currentFanState) ->: MustSend(fanCmd, currentFanState)) && 
 
-          ((!fanError) & currentFanState == In(currentFanState)) ->: NoSend(fanCmd);
+          (((!fanError) & currentFanState == In(currentFanState)) ->: NoSend(fanCmd));
           
         --    ---------------------------
         --     Compute Entry Point Handler Contracts

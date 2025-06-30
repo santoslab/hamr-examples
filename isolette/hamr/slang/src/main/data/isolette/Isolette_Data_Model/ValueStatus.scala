@@ -14,7 +14,7 @@ import isolette._
 
 object ValueStatus_Payload {
   def example(): ValueStatus_Payload = {
-    return ValueStatus_Payload(Isolette_Data_Model.ValueStatus.byOrdinal(0).get)
+    return ValueStatus_Payload(Isolette_Data_Model.ValueStatus.Valid)
   }
 }
 

@@ -116,7 +116,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid |
-       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) ___>:
+      api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) ___>:
       (api_interface_failure.value)
 
   /** guarantee REQ_MMI_5
@@ -133,7 +133,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
       api_upper_alarm_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
-       api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ___>:
+      api_upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ___>:
       (!(api_interface_failure.value))
 
   /** guarantee REQ_MMI_6

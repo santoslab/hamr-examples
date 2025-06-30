@@ -13,7 +13,7 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
   @strictpure def timeout_condition_satisfied(): Base_Types.Boolean = T
   // END FUNCTIONS
   // BEGIN STATE VARS
-  var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.byOrdinal(0).get
+  var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.Onn
   // END STATE VARS
 
   def initialise(api: Manage_Alarm_impl_Initialization_Api): Unit = {
@@ -78,8 +78,8 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   Temperature, the Alarm Control shall be set to On.
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-           (api.current_tempWstatus.value < api.lower_alarm_temp.value ||
-             api.current_tempWstatus.value > api.upper_alarm_temp.value)) ___>: (api.alarm_control == Isolette_Data_Model.On_Off.Onn &
+          (api.current_tempWstatus.value < api.lower_alarm_temp.value ||
+            api.current_tempWstatus.value > api.upper_alarm_temp.value)) ___>: (api.alarm_control == Isolette_Data_Model.On_Off.Onn &
           lastCmd == Isolette_Data_Model.On_Off.Onn),
         // case REQ_MA_3
         //   If the Monitor Mode is NORMAL and the Current Temperature
@@ -90,10 +90,10 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   not be changed.
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-           (api.current_tempWstatus.value >= api.lower_alarm_temp.value &&
-             api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f ||
-             api.current_tempWstatus.value > api.upper_alarm_temp.value - 0.5f &&
-               api.current_tempWstatus.value <= api.upper_alarm_temp.value)) ___>: (api.alarm_control == In(lastCmd) &
+          (api.current_tempWstatus.value >= api.lower_alarm_temp.value &&
+            api.current_tempWstatus.value < api.lower_alarm_temp.value + 0.5f ||
+            api.current_tempWstatus.value > api.upper_alarm_temp.value - 0.5f &&
+              api.current_tempWstatus.value <= api.upper_alarm_temp.value)) ___>: (api.alarm_control == In(lastCmd) &
           lastCmd == In(lastCmd)),
         // case REQ_MA_4
         //   If the Monitor Mode is NORMAL and the value of the Current
@@ -102,8 +102,8 @@ object Manage_Alarm_impl_thermostat_monitor_temperature_manage_alarm {
         //   -0.5 degrees, the Alarm Control shall be set to Off.
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=115 
         (api.monitor_mode == Isolette_Data_Model.Monitor_Mode.Normal_Monitor_Mode &
-           api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f &
-           api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) ___>: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
+          api.current_tempWstatus.value >= api.lower_alarm_temp.value + 0.5f &
+          api.current_tempWstatus.value <= api.upper_alarm_temp.value - 0.5f) ___>: (api.alarm_control == Isolette_Data_Model.On_Off.Off &
           lastCmd == Isolette_Data_Model.On_Off.Off),
         // case REQ_MA_5
         //   If the Monitor Mode is FAILED, the Alarm Control shall be

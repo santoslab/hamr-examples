@@ -11,7 +11,7 @@ object TempWstatus_impl {
   def example(): Isolette_Data_Model.TempWstatus_impl = {
     return Isolette_Data_Model.TempWstatus_impl(
       value = Base_Types.Float_32_example(),
-      status = Isolette_Data_Model.ValueStatus.byOrdinal(0).get)
+      status = Isolette_Data_Model.ValueStatus.Valid)
   }
 }
 

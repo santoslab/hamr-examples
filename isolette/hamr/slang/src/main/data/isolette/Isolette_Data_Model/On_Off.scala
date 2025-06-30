@@ -14,7 +14,7 @@ import isolette._
 
 object On_Off_Payload {
   def example(): On_Off_Payload = {
-    return On_Off_Payload(Isolette_Data_Model.On_Off.byOrdinal(0).get)
+    return On_Off_Payload(Isolette_Data_Model.On_Off.Onn)
   }
 }
 

@@ -12,7 +12,7 @@ object Manage_Regulator_Mode_impl_thermostat_regulate_temperature_manage_regulat
   @strictpure def ROUND(num: Base_Types.Float_32): Base_Types.Float_32 = num
   // END FUNCTIONS
   // BEGIN STATE VARS
-  var lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type = Isolette_Data_Model.Regulator_Mode.byOrdinal(0).get
+  var lastRegulatorMode: Isolette_Data_Model.Regulator_Mode.Type = Isolette_Data_Model.Regulator_Mode.Init_Regulator_Mode
   // END STATE VARS
 
   def initialise(api: Manage_Regulator_Mode_impl_Initialization_Api): Unit = {

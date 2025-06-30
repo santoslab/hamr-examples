@@ -15,7 +15,7 @@ import isolette._
 
 object Monitor_Mode_Payload {
   def example(): Monitor_Mode_Payload = {
-    return Monitor_Mode_Payload(Isolette_Data_Model.Monitor_Mode.byOrdinal(0).get)
+    return Monitor_Mode_Payload(Isolette_Data_Model.Monitor_Mode.Init_Monitor_Mode)
   }
 }
 

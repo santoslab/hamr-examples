@@ -13,7 +13,7 @@ object TempControl_s_tcproc_tempControl {
   // BEGIN STATE VARS
   var currentSetPoint: TempControlSoftwareSystem.SetPoint_i = TempControlSoftwareSystem.SetPoint_i.example()
 
-  var currentFanState: CoolingFan.FanCmd.Type = CoolingFan.FanCmd.byOrdinal(0).get
+  var currentFanState: CoolingFan.FanCmd.Type = CoolingFan.FanCmd.On
 
   var latestTemp: TempSensor.Temperature_i = TempSensor.Temperature_i.example()
 
@@ -124,22 +124,22 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        !fanError &
-          In(currentFanState) != currentFanState __>:
-          api.fanCmd.nonEmpty &&
-            api.fanCmd.get == currentFanState &&
-            (!fanError &
-              currentFanState == In(currentFanState)) __>:
-            api.fanCmd.isEmpty,
+        (!fanError &
+           In(currentFanState) != currentFanState __>:
+           api.fanCmd.nonEmpty &&
+             api.fanCmd.get == currentFanState) &&
+          (!fanError &
+            currentFanState == In(currentFanState) __>:
+            api.fanCmd.isEmpty),
         // guarantees setPointNotModified
         currentSetPoint == In(currentSetPoint),
         // guarantees lastTempNotModified
         latestTemp == In(latestTemp),
         // guarantees manageErrorState
-        api.fanAck.get == CoolingFan.FanAck.Ok __>:
-          !fanError &
-            api.fanAck.get == CoolingFan.FanAck.Error __>:
-            fanError
+        (api.fanAck.get == CoolingFan.FanAck.Ok __>:
+           !fanError &
+             api.fanAck.get == CoolingFan.FanAck.Error) __>:
+          fanError
         // END COMPUTE ENSURES fanAck
       )
     )
@@ -221,13 +221,13 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        !fanError &
-          In(currentFanState) != currentFanState __>:
-          api.fanCmd.nonEmpty &&
-            api.fanCmd.get == currentFanState &&
-            (!fanError &
-              currentFanState == In(currentFanState)) __>:
-            api.fanCmd.isEmpty,
+        (!fanError &
+           In(currentFanState) != currentFanState __>:
+           api.fanCmd.nonEmpty &&
+             api.fanCmd.get == currentFanState) &&
+          (!fanError &
+            currentFanState == In(currentFanState) __>:
+            api.fanCmd.isEmpty),
         // guarantees setPointChanged
         currentSetPoint == api.setPoint.get,
         // guarantees latestTempNotModified
@@ -311,13 +311,13 @@ object TempControl_s_tcproc_tempControl {
         // guarantee mustSendFanCmd
         //   If the local record of the fan state was updated, 
         //   then send a fan command event with this updated value.
-        !fanError &
-          In(currentFanState) != currentFanState __>:
-          api.fanCmd.nonEmpty &&
-            api.fanCmd.get == currentFanState &&
-            (!fanError &
-              currentFanState == In(currentFanState)) __>:
-            api.fanCmd.isEmpty,
+        (!fanError &
+           In(currentFanState) != currentFanState __>:
+           api.fanCmd.nonEmpty &&
+             api.fanCmd.get == currentFanState) &&
+          (!fanError &
+            currentFanState == In(currentFanState) __>:
+            api.fanCmd.isEmpty),
         // guarantees tempChanged
         latestTemp == api.currentTemp,
         // guarantees setPointNotModified

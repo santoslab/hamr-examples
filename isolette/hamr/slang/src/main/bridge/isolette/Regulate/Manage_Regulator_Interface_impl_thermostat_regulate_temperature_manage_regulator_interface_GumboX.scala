@@ -63,7 +63,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
 
   /** Compute Entrypoint Contract
     *
-    * assumes lower_is_not_higher_than_upper
+    * assume lower_is_not_higher_than_upper
     * @param api_lower_desired_tempWstatus incoming data port
     * @param api_upper_desired_tempWstatus incoming data port
     */
@@ -185,7 +185,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_upper_desired_tempWstatus: Isolette_Data_Model.TempWstatus_impl,
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid |
-       api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) ___>:
+      api_upper_desired_tempWstatus.status != Isolette_Data_Model.ValueStatus.Valid) ___>:
       (api_interface_failure.value)
 
   /** guarantee REQ_MRI_7
@@ -203,7 +203,7 @@ object Manage_Regulator_Interface_impl_thermostat_regulate_temperature_manage_re
       api_interface_failure: Isolette_Data_Model.Failure_Flag_impl): B =
     (T) ___>:
       (api_interface_failure.value == !(api_upper_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
-          api_lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid))
+         api_lower_desired_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid))
 
   /** guarantee REQ_MRI_8
     *   If the Regulator Interface Failure is False,

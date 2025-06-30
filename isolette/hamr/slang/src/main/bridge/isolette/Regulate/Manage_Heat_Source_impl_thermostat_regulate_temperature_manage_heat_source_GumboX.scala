@@ -61,7 +61,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
 
   /** Compute Entrypoint Contract
     *
-    * assumes lower_is_lower_temp
+    * assume lower_is_lower_temp
     * @param api_lower_desired_temp incoming data port
     * @param api_upper_desired_temp incoming data port
     */
@@ -159,7 +159,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_regulator_mode: Isolette_Data_Model.Regulator_Mode.Type,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
-       api_current_tempWstatus.value < api_lower_desired_temp.value) ___>:
+      api_current_tempWstatus.value < api_lower_desired_temp.value) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Onn)
 
   /** guarantee REQ_MHS_3
@@ -177,7 +177,7 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
-       api_current_tempWstatus.value > api_upper_desired_temp.value) ___>:
+      api_current_tempWstatus.value > api_upper_desired_temp.value) ___>:
       (api_heat_control == Isolette_Data_Model.On_Off.Off)
 
   /** guarantee REQ_MHS_4
@@ -201,8 +201,8 @@ object Manage_Heat_Source_impl_thermostat_regulate_temperature_manage_heat_sourc
       api_upper_desired_temp: Isolette_Data_Model.Temp_impl,
       api_heat_control: Isolette_Data_Model.On_Off.Type): B =
     (api_regulator_mode == Isolette_Data_Model.Regulator_Mode.Normal_Regulator_Mode &
-       (api_current_tempWstatus.value >= api_lower_desired_temp.value &
-         api_current_tempWstatus.value <= api_upper_desired_temp.value)) ___>:
+      (api_current_tempWstatus.value >= api_lower_desired_temp.value &
+        api_current_tempWstatus.value <= api_upper_desired_temp.value)) ___>:
       (api_heat_control == In_lastCmd)
 
   /** guarantee REQ_MHS_5

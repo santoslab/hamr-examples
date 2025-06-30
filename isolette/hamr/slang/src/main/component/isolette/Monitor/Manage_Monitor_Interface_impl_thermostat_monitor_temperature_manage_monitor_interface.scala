@@ -13,7 +13,7 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
   @strictpure def timeout_condition_satisfied(): Base_Types.Boolean = T
   // END FUNCTIONS
   // BEGIN STATE VARS
-  var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.byOrdinal(0).get
+  var lastCmd: Isolette_Data_Model.On_Off.Type = Isolette_Data_Model.On_Off.Onn
   // END STATE VARS
 
   def initialise(api: Manage_Monitor_Interface_impl_Initialization_Api): Unit = {
@@ -67,14 +67,14 @@ object Manage_Monitor_Interface_impl_thermostat_monitor_temperature_manage_monit
         //   the Monitor Interface Failure shall be set to True
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
         (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid |
-           api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) ___>: (api.interface_failure.value),
+          api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Invalid) ___>: (api.interface_failure.value),
         // case REQ_MMI_5
         //   If the Status attribute of the Lower Alarm Temperature
         //   and the Upper Alarm Temperature is Valid,
         //   the Monitor Interface Failure shall be set to False
         //   http://pub.santoslab.org/high-assurance/module-requirements/reading/FAA-DoT-Requirements-AR-08-32.pdf#page=113 
         (api.lower_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid &
-           api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ___>: (!(api.interface_failure.value)),
+          api.upper_alarm_tempWstatus.status == Isolette_Data_Model.ValueStatus.Valid) ___>: (!(api.interface_failure.value)),
         // case REQ_MMI_6
         //   If the Monitor Interface Failure is False,
         //   the Alarm Range variable shall be set to the Desired Temperature Range

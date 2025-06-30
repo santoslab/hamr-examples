@@ -230,7 +230,7 @@ object TempControlPeriodic_p_tcproc_tempControl_GumboX {
       api_setPoint: TempControlSoftwareSystem.SetPoint_i,
       api_fanCmd: CoolingFan.FanCmd.Type): B =
     (api_currentTemp.degrees >= api_setPoint.low.degrees &
-       api_currentTemp.degrees <= api_setPoint.high.degrees) ___>:
+      api_currentTemp.degrees <= api_setPoint.high.degrees) ___>:
       (latestFanCmd == In_latestFanCmd &
          api_fanCmd == latestFanCmd)
 

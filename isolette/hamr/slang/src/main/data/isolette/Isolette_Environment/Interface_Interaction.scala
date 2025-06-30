@@ -13,7 +13,7 @@ import isolette._
 
 object Interface_Interaction_Payload {
   def example(): Interface_Interaction_Payload = {
-    return Interface_Interaction_Payload(Isolette_Environment.Interface_Interaction.byOrdinal(0).get)
+    return Interface_Interaction_Payload(Isolette_Environment.Interface_Interaction.Dummy_Interface_Interaction_Enum)
   }
 }
 

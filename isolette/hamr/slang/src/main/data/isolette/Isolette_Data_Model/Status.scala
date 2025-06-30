@@ -15,7 +15,7 @@ import isolette._
 
 object Status_Payload {
   def example(): Status_Payload = {
-    return Status_Payload(Isolette_Data_Model.Status.byOrdinal(0).get)
+    return Status_Payload(Isolette_Data_Model.Status.Init_Status)
   }
 }
 

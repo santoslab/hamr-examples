@@ -13,7 +13,7 @@ import isolette._
 
 object Heat_Payload {
   def example(): Heat_Payload = {
-    return Heat_Payload(Isolette_Environment.Heat.byOrdinal(0).get)
+    return Heat_Payload(Isolette_Environment.Heat.Dummy_Head_Enum)
   }
 }
 
